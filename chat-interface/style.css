@@ -77,14 +77,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add styles to the form container */
-.form-container {
+.chat-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
 
 /* Full-width textarea */
-.form-container textarea {
+.chat-container textarea {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -95,13 +95,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* When the textarea gets focus, do something */
-.form-container textarea:focus {
+.chat-container textarea:focus {
   background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the submit/send button */
-.form-container .btn {
+.chat-container .btn {
   background-color: #4CAF50;
   color: white;
   padding: 16px 20px;
@@ -113,11 +113,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+.chat-container .cancel {
   background-color: red;
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.chat-container .btn:hover, .open-button:hover {
   opacity: 1;
 }

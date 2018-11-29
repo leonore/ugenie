@@ -12,14 +12,13 @@
   <button class="open-button" onclick="openForm()">GUVA</button>
 
   <div class="chat-popup" id="myForm">
-    <div class="form-container">
+    <div class="chat-container">
       <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      <h1>Chat</h1>
 
       <div class="messages"></div>
       <form class="message-form" onsubmit="return false;">
         <input class="message-form__input" placeholder="Type a message.." type="text"/>
-        <input class="message-form__button" value="Send" type="submit"/>
+        <input class="message-form__button btn" value="Send" type="submit"/>
       </form>
       
     </div>
