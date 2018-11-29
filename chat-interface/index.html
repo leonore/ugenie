@@ -9,27 +9,25 @@
 </head>
 <body>
 
-  <button class="open-button" onclick="openForm()">Chat</button>
+  <button class="open-button" onclick="openForm()">GUVA</button>
 
   <div class="chat-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
+    <div class="form-container">
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
       <h1>Chat</h1>
 
-      <label for="msg"><b>Message</b></label>
-      <textarea placeholder="Type message.." name="msg" required></textarea>
-
-      <button type="submit" class="btn">Send</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
+      <div class="messages"></div>
+      <form class="message-form" onsubmit="return false;">
+        <input class="message-form__input" placeholder="Type a message.." type="text"/>
+        <input class="message-form__button" value="Send" type="submit"/>
+      </form>
+      
+    </div>
   </div>
 
   <!--<div class="members-count">-</div>-->
   <!--<div class="members-list">-</div>-->
-  <div class="messages"></div>
-  <form class="message-form" onsubmit="return false;">
-    <input class="message-form__input" placeholder="Type a message.." type="text"/>
-    <input class="message-form__button" value="Send" type="submit"/>
-  </form>
+  
   <script src="./script.js"></script>
 </body>
 </html>

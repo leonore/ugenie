@@ -82,6 +82,8 @@ const DOM = {
   form: document.querySelector('.message-form'),
 };
 
+console.log("DOM.form:", DOM.form);
+
 DOM.form.addEventListener('submit', sendMessage);
 
 function sendMessage() {
