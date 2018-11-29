@@ -59,6 +59,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
+  max-height: 40px;
 }
 
 /* Add a red background color to the cancel button */
@@ -101,11 +102,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 	flex-shrink: 0;
 }
 .message-form__input {
-	flex-grow: 1;
 	border: 1px solid #dfdfdf;
-	padding-left: 10px;
 	font-size: 16px;
+	max-height: 40px;
 }
 .message-form__button {
-	margin: 10px;
+	max-height: 40px;
 }
