@@ -134,8 +134,10 @@ function addMessageToListDOM(text, member) {
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
+	document.getElementsByClassName("open-button").style.visibility = 'hidden';
 }
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
+	document.getElementsByClassName("open-button").style.visibility = 'visible';
 }
