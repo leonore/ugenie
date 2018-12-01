@@ -108,11 +108,12 @@ function createMemberElement(member) {
 }
 
 function updateMembersDOM() {
-  DOM.membersCount.innerText = `${members.length} users in room:`;
-  DOM.membersList.innerHTML = '';
-  members.forEach(member =>
-    DOM.membersList.appendChild(createMemberElement(member))
-  );
+  // Commented out for now as members list isn't on the html
+  //DOM.membersCount.innerText = `${members.length} users in room:`;
+  //DOM.membersList.innerHTML = '';
+  //members.forEach(member =>
+  //  DOM.membersList.appendChild(createMemberElement(member))
+  //);
 }
 
 function createMessageElement(text, member) {
@@ -134,8 +135,10 @@ function addMessageToListDOM(text, member) {
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
+    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
 }
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
+    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
 }

@@ -81,6 +81,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 
 .messages {
+        height: 300px;
 	flex-shrink: 1;
 	overflow: auto;
 }
