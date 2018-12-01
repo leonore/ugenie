@@ -1,26 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Flask_Chat_App</title>
+    <title>Flask Chat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 
 <body>
 
-    <div class="message_holder"></div>
+    <button class="open-button" onclick="openForm()">Glasgow University Virtual Assistant</button>
 
-    <form action="" method="POST">
-        <input type="text" class="username" placeholder="User Name" />
-        <input type="text" class="message" placeholder="Messages" />
-        <input type="submit" />
-    </form>
+    <div class="chat-popup" id="myForm">
+        <div class="chat-container">
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+            <div class="messages"></div>
+            <form class="message-form" onsubmit="return false;" action="" method="POST">
+                <input class="message-form__input" placeholder="Type a message.." type="text" />
+                <input class="message-form__button btn" value="Send" type="submit" />
+            </form>
+
+        </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script type="text/javascript">
-		// Establish the connection and create the session
-		// document.domain represents the IP address of the computer you are working on and location.port represents the port
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+            document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+            document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
+        }
+
+        // Establish the connection and create the session
+        // document.domain represents the IP address of the computer you are working on and location.port represents the port
         var socket = io.connect('http://' + document.domain + ':' + location.port);
         socket.on('connect', function() {
             socket.emit('my event', {
@@ -28,23 +48,23 @@
             })
             var form = $('form').on('submit', function(e) {
                 e.preventDefault()
-                let user_name = $('input.username').val()
-                let user_input = $('input.message').val()
+                //let user_name = $('input.username').val()
+				let user_name = 'You'
+                let user_input = $('input.message-form__input').val()
                 socket.emit('my event', {
                     user_name: user_name,
                     message: user_input
                 })
-                $('input.message').val('').focus()
+                $('input.message-form__input').val('').focus()
             })
         })
         socket.on('my response', function(msg) {
             console.log(msg)
             if (typeof msg.user_name !== 'undefined') {
-                $('div.message_holder').append('<div><b style="color: #000">' + msg.user_name + '</b> ' + msg.message + '</div>')
+                $('div.messages').append('<div><b style="color: #000">' + msg.user_name + '</b> ' + msg.message + '</div>')
             }
         })
     </script>
-
 </body>
 
 </html>
