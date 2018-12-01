@@ -11,3 +11,7 @@
 *.cb
 *.cb2
 .*.lb
+
+## Python cache files
+*.pyc
+__pycache__/
