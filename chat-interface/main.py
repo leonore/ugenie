@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_socketio import SocketIO
 
 app = Flask(__name__) # Wrap Flask around __name__
@@ -19,4 +19,4 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 
 if __name__ == '__main__':
 	# Takes optional host and port arguments but by efault will listen on localhost:5000
-	socketio.run(app, debug==true) 
+	socketio.run(app, debug=True) 
