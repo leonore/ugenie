@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask Chat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body>
+
+    <button class="open-button" onclick="openForm()">Glasgow University Virtual Assistant</button>
+
+    <div class="chat-popup" id="myForm">
+        <div class="chat-container">
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+            <div class="messages"></div>
+            <form class="message-form" onsubmit="return false;" action="" method="POST">
+                <input class="message-form__input" placeholder="Type a message.." type="text" />
+                <input class="message-form__button btn" value="Send" type="submit" />
+            </form>
+
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script type="text/javascript"  src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
