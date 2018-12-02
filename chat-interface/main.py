@@ -10,15 +10,28 @@ socketio = SocketIO(app) # Apply SocketIO to 'app' to use it instead of app for 
 def sessions():
 	return render_template('session.html') # Helps render the HTML page, called a 'template'
 
-def messageReceived(methods=['GET', 'POST']):
-	print('Message received!')
+def messageReceived(message):
+	print('Message received:', message)
+	
+def sendMessage():
+	print('Sending message!')
+	json = {}
+	json['user_name'] = "GUVA"
+	json['message'] = "I'm a robot lmao"
+	socketio.emit('print message', json)
 
 @socketio.on('my event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
 	print('Received event: ' + str(json))
-	# If the message is received by the server messageReceived is called
-	socketio.emit('my response', json, callback=messageReceived)
+	
+	# Send the event back in case it needs to be shown on the chat
+	socketio.emit('print message', json)
+	
+	# If this event contains a message, answer it
+	if 'message' in json:
+		messageReceived(json['message'])
+		sendMessage()
 
 if __name__ == '__main__':
-	# Takes optional host and port arguments but by efault will listen on localhost:5000
+	# Takes optional host and port arguments but by default will listen on localhost:5000
 	socketio.run(app, debug=True) 
