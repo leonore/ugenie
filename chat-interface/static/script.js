@@ -13,7 +13,7 @@ function closeForm() {
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 socket.on('connect', function() {
     socket.emit('my event', {
-        data: 'User Connected'
+        state: 'User Connected'
     })
     var form = $('form').on('submit', function(e) {
         e.preventDefault()

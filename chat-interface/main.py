@@ -13,11 +13,11 @@ def sessions():
 def messageReceived(message):
 	print('Message received:', message)
 	
-def sendMessage():
+def sendMessage(message):
 	print('Sending message!')
 	json = {}
 	json['user_name'] = "GUVA"
-	json['message'] = "Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?"
+	json['message'] = message
 	socketio.emit('print message', json)
 
 @socketio.on('my event')
@@ -27,11 +27,26 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 	# Send the event back in case it needs to be shown on the chat
 	socketio.emit('print message', json)
 	
+	# If this event is a user connection
+	if 'state' in json:
+		sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
+	
 	# If this event contains a message, answer it
-	if 'message' in json:
+	elif 'message' in json:
 		messageReceived(json['message'])
-		sendMessage()
+		sendMessage(respond(json['message']))
+		
+	
+responses = {
+  "Here's the description for pyschology: ": ("tell me about psychology", "whats psychology about?")
+}	
 
+def respond(message):
+        for response in responses.keys():
+                if message in responses[response]:
+                        return response
+        return "Sorry, I couldn't understand what you said, could you please rephrase that?"
+	
 if __name__ == '__main__':
 	# Takes optional host and port arguments but by default will listen on localhost:5000
 	socketio.run(app, debug=True) 
