@@ -17,7 +17,7 @@ def sendMessage():
 	print('Sending message!')
 	json = {}
 	json['user_name'] = "GUVA"
-	json['message'] = "I'm a robot lmao"
+	json['message'] = "Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?"
 	socketio.emit('print message', json)
 
 @socketio.on('my event')
