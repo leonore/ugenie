@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
+#from sample_query import *
+from difflib import SequenceMatcher
 
 app = Flask(__name__) # Wrap Flask around __name__
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
@@ -35,17 +37,36 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 	elif 'message' in json:
 		messageReceived(json['message'])
 		sendMessage(respond(json['message']))
-		
-	
-responses = {
-  "Here's the description for pyschology: ": ("tell me about psychology", "whats psychology about?")
-}	
+
+# Remove these and use sample_query file after database is working	
+def get_fee(course):
+        return "Home fees for " + course + " are: $100"
+def get_description(course):
+        return "The official description for " + course + " is: A good course"
+
+intents = {
+        get_fee: ("how much is ", "how much are the fees for "),
+        get_description: ("tell me about ", "what's the description for ")
+}
 
 def respond(message):
-        for response in responses.keys():
-                if message in responses[response]:
-                        return response
-        return "Sorry, I couldn't understand what you said, could you please rephrase that?"
+        highest_match = 0
+        message = message.lower()
+        for intent in intents.keys():
+                for question in intents[intent]:
+                        similarity = SequenceMatcher(None, message, question).ratio()
+                        print('similar(',message,',',question,') = ', similarity)
+                        if similarity > highest_match:
+                                highest_match = similarity
+        if highest_match > 0.4:
+                for intent in intents.keys():
+                        for question in intents[intent]:
+                                if highest_match == SequenceMatcher(None, message, question).ratio():
+                                        print('Most likely intent: ', intent)
+                                        print('Most likely entity: ', message.replace(question, ''))
+                                        return intent(message.replace(question, ''))
+        else:
+                return "Sorry, I couldn't understand what you said, could you please rephrase that?"
 	
 if __name__ == '__main__':
 	# Takes optional host and port arguments but by default will listen on localhost:5000
