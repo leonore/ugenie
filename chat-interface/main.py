@@ -26,18 +26,16 @@ def sendMessage(message):
 def handle_my_custom_event(json, methods=['GET', 'POST']):
 	print('Received event: ' + str(json))
 
-	# Send the event back in case it needs to be shown on the chat
-	socketio.emit('print message', json)
-
 	# If this event is a user connection
 	if 'state' in json:
 		sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
 
 	# If this event contains a message, answer it
-	elif 'message' in json:
-		messageReceived(json['message'])
-		sendMessage(respond(json['message']))
-
+	elif ('message' in json and json['message'] != ''):
+                socketio.emit('print message', json)
+                messageReceived(json['message'])
+                sendMessage(respond(json['message']))
+		
 # Remove these and use sample_query file after database is working
 intents = {
         get_fee: ("how much is ", "how much are the fees for "),
