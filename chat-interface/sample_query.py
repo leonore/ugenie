@@ -17,8 +17,11 @@ def get_fee(name):
     table = Table('general', metadata, autoload=True, autoload_with=engine)
     query = select([table.columns.intl_fee]).where(table.columns.course_name==name)
     result = connection.execute(query)
-    r = result.fetchall()
-    return "The international fees for " + name + " are " + str(r)
+    fees = ""
+    for fee in result.fetchall():
+        if fee[0]:
+            fees += str(fee[0]) + ", "
+    return "The international fees for " + name + " are " + fees.rstrip(", ")
 
 # SELECT description FROM course in short
 def get_description(name):
