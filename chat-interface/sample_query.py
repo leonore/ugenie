@@ -18,7 +18,7 @@ def get_fee(name):
     query = select([table.columns.intl_fee]).where(table.columns.course_name==name)
     result = connection.execute(query)
     r = result.fetchall()
-    return "The fees for " + name + " is " + str(r)
+    return "The international fees for " + name + " are " + str(r)
 
 # SELECT description FROM course in short
 def get_description(name):
