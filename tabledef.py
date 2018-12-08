@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import *
-from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy_utils import database_exists, create_database, drop_database
 from datetime import datetime
 
 # 1 - create engine to initialise the database
@@ -16,8 +16,10 @@ Base = declarative_base()
 # dialect+driver://username:password@host:port/database
 engine = create_engine('mysql+mysqlconnector://root:root@localhost/courses_test')
 #engine = create_engine('sqlite:///course_test.db')
-if not database_exists(engine.url):
-    create_database(engine.url)
+
+if database_exists(engine.url):
+    drop_database(engine.url)
+create_database(engine.url)
 
 # 2 - table definitions
 class GeneralCourse(Base):
