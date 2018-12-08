@@ -21,17 +21,24 @@ mysql> exit # see link below for more SQL commands
 
 ---
 
-### ⚠ Updating the database ⚠     
-right now, if the database schema is updated, you need to drop(:delete) the database, initialise the tables, and populate them again, that is:
+### Updating database fields
+
+Once you've changed the fields in the `tabledef.py` file and given appropriate data for population in `readtodb.py`:
+
 ```bash
-mysql -u root -p
-password: ****
-mysql> drop database database_name; exit;
 python3 tabledef.py
 python3 readtodb.py
 ```
 
-This is obviously something that should be changed. 
+That will populate the database accordingly if done right.
+I will be working on how to make the database more modular and sustainable by providing an interface to it that should:
+- allow people to read in a file
+- allow people to delete the database & repopulate it
+- allow people to create a new database
+- etc.
+
+The only issue is we need to follow a general structure for the fields of the database, otherwise it won't work. I.E. fields that we will always need in the database.
+This should come with working on issue #30 Making an ER diagram of the database.
 
 ---
 
