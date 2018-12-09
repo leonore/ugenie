@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import *
-from sqlalchemy_utils import database_exists, create_database
+from sqlalchemy_utils import database_exists, create_database, drop_database
 from datetime import datetime
 
 # 1 - create engine to initialise the database
@@ -16,8 +16,10 @@ Base = declarative_base()
 # dialect+driver://username:password@host:port/database
 engine = create_engine('mysql+mysqlconnector://root:root@localhost/courses_test')
 #engine = create_engine('sqlite:///course_test.db')
-if not database_exists(engine.url):
-    create_database(engine.url)
+
+if database_exists(engine.url):
+    drop_database(engine.url)
+create_database(engine.url)
 
 # 2 - table definitions
 class GeneralCourse(Base):
@@ -45,7 +47,8 @@ class GeneralCourse(Base):
     def __init__(self, course_name, qualification, code, rio, mario, full_time, part_time,
                     requirements, ielts, info, jacs, atas, jan_start, subject, degree, status,
                     admit_term, home_fee, intl_fee):
-        self.code = code+"-"+str(admit_term)
+        # rio is ignored
+        self.code = code+"-"+str(admit_term) # code is made with the year to make it unique
         self.course_name = course_name
         self.qualification = qualification
         self.mario = bool(mario)
@@ -64,12 +67,7 @@ class GeneralCourse(Base):
         self.home_fee = home_fee
         self.intl_fee = intl_fee
 
-
-# TODO consider making this
-#class Requirements(Base):
-#    __tablename__ = 'requirements'
-
-
+# INFO: Short Courses team would rather the database keeps general and short data separate
 class ShortCourse(Base):
     __tablename__ = 'short'
 
@@ -108,6 +106,24 @@ class ShortCourse(Base):
         self.description = description
         self.credits = credits
         self.language_links = language_links
+
+# Answers to common questions
+class GeneralQuestion(Base):
+    __tablename__ = 'general_question'
+    id = Column(Integer, primary_key=True) # auto-incremented pk
+
+    question = Column(Text, nullable=False)
+    topic = Column(String(50), nullable=False)
+    answer = Column(Text)
+
+# Answers to non-course specific questions
+class ShortQuestion(Base):
+    __tablename__ = 'short_question'
+    id = Column(Integer, primary_key=True) # auto-incremented pk
+
+    question = Column(Text, nullable=False)
+    topic = Column(String(50), nullable=False)
+    answer = Column(Text, nullable=False)
 
 # 3 - create tables
 Base.metadata.create_all(engine)
