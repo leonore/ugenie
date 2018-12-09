@@ -31,5 +31,6 @@ socket.on('print message', function(msg) {
     console.log(msg)
     if (typeof msg.user_name !== 'undefined') {
         $('div.messages').append('<div><b style="color: #000">' + msg.user_name + ': </b> ' + msg.message + '</div>')
+		$('div.messages').scrollTop = $('div.messages').scrollHeight;
     }
 })
