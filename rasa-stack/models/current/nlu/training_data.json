@@ -1,0 +1,1353 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "intent": "greet",
+        "text": "Hi"
+      },
+      {
+        "intent": "greet",
+        "text": "Hey"
+      },
+      {
+        "intent": "greet",
+        "text": "Hi bot"
+      },
+      {
+        "intent": "greet",
+        "text": "Hey bot"
+      },
+      {
+        "intent": "greet",
+        "text": "Hello"
+      },
+      {
+        "intent": "greet",
+        "text": "Good morning"
+      },
+      {
+        "intent": "greet",
+        "text": "hi again"
+      },
+      {
+        "intent": "greet",
+        "text": "hi folks"
+      },
+      {
+        "intent": "greet",
+        "text": "hi Mister"
+      },
+      {
+        "intent": "greet",
+        "text": "hi pal!"
+      },
+      {
+        "intent": "greet",
+        "text": "hi there"
+      },
+      {
+        "intent": "greet",
+        "text": "greetings"
+      },
+      {
+        "intent": "greet",
+        "text": "hello everybody"
+      },
+      {
+        "intent": "greet",
+        "text": "hello is anybody there"
+      },
+      {
+        "intent": "greet",
+        "text": "hello robot"
+      },
+      {
+        "intent": "goodbye",
+        "text": "okay see you later"
+      },
+      {
+        "intent": "goodbye",
+        "text": "hope to see you later"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye for now"
+      },
+      {
+        "intent": "goodbye",
+        "text": "till next time"
+      },
+      {
+        "intent": "goodbye",
+        "text": "I must go"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "goodbye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "see you"
+      },
+      {
+        "intent": "goodbye",
+        "text": "see you soon"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye-bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye bye good night"
+      },
+      {
+        "intent": "goodbye",
+        "text": "good bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye bye see you"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye bye see you soon"
+      },
+      {
+        "intent": "goodbye",
+        "text": "bye bye take care"
+      },
+      {
+        "intent": "goodbye",
+        "text": "I said bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "never mind bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "now bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "that's all goodbye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "that's it goodbye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "leave me alone"
+      },
+      {
+        "intent": "goodbye",
+        "text": "go to bed"
+      },
+      {
+        "intent": "goodbye",
+        "text": "goodbye for now"
+      },
+      {
+        "intent": "goodbye",
+        "text": "talk to you later"
+      },
+      {
+        "intent": "goodbye",
+        "text": "you can go now"
+      },
+      {
+        "intent": "goodbye",
+        "text": "get lost"
+      },
+      {
+        "intent": "goodbye",
+        "text": "goodbye see you later"
+      },
+      {
+        "intent": "goodbye",
+        "text": "alright bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "see ya"
+      },
+      {
+        "intent": "goodbye",
+        "text": "thanks bye bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "okay bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "okay thank you bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "see you tomorrow"
+      },
+      {
+        "intent": "goodbye",
+        "text": "ok bye"
+      },
+      {
+        "intent": "goodbye",
+        "text": "see you later alligator"
+      },
+      {
+        "intent": "thanks",
+        "text": "Thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "Thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "Thank you so much"
+      },
+      {
+        "intent": "thanks",
+        "text": "Thanks bot"
+      },
+      {
+        "intent": "thanks",
+        "text": "Thanks for that"
+      },
+      {
+        "intent": "thanks",
+        "text": "cheers"
+      },
+      {
+        "intent": "thanks",
+        "text": "cheers bro"
+      },
+      {
+        "intent": "thanks",
+        "text": "ok thanks!"
+      },
+      {
+        "intent": "thanks",
+        "text": "perfect thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks a bunch for everything"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks for the help"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks a lot"
+      },
+      {
+        "intent": "thanks",
+        "text": "amazing, thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "cool, thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "cool thank you"
+      },
+      {
+        "intent": "good",
+        "text": "yes"
+      },
+      {
+        "intent": "good",
+        "text": "yes sure"
+      },
+      {
+        "intent": "good",
+        "text": "absolutely"
+      },
+      {
+        "intent": "good",
+        "text": "for sure"
+      },
+      {
+        "intent": "good",
+        "text": "yes yes yes"
+      },
+      {
+        "intent": "good",
+        "text": "definitely"
+      },
+      {
+        "intent": "good",
+        "text": "so cool"
+      },
+      {
+        "intent": "good",
+        "text": "cool"
+      },
+      {
+        "intent": "good",
+        "text": "that is good"
+      },
+      {
+        "intent": "good",
+        "text": "glad to hear that"
+      },
+      {
+        "intent": "good",
+        "text": "that's very nice of you"
+      },
+      {
+        "intent": "good",
+        "text": "terrific"
+      },
+      {
+        "intent": "good",
+        "text": "it's amazing"
+      },
+      {
+        "intent": "good",
+        "text": "that's awesome"
+      },
+      {
+        "intent": "good",
+        "text": "perfect"
+      },
+      {
+        "intent": "good",
+        "text": "excellent"
+      },
+      {
+        "intent": "good",
+        "text": "brilliant"
+      },
+      {
+        "intent": "good",
+        "text": "that's great"
+      },
+      {
+        "intent": "good",
+        "text": "it's good"
+      },
+      {
+        "intent": "good",
+        "text": "it's great"
+      },
+      {
+        "intent": "good",
+        "text": "fine"
+      },
+      {
+        "intent": "good",
+        "text": "good"
+      },
+      {
+        "intent": "good",
+        "text": "nice"
+      },
+      {
+        "intent": "good",
+        "text": "that's fine"
+      },
+      {
+        "intent": "good",
+        "text": "very good"
+      },
+      {
+        "intent": "good",
+        "text": "amazing"
+      },
+      {
+        "intent": "good",
+        "text": "fantastic"
+      },
+      {
+        "intent": "good",
+        "text": "great"
+      },
+      {
+        "intent": "good",
+        "text": "good very good"
+      },
+      {
+        "intent": "good",
+        "text": "that's very good"
+      },
+      {
+        "intent": "good",
+        "text": "really good"
+      },
+      {
+        "intent": "good",
+        "text": "it is fine"
+      },
+      {
+        "intent": "good",
+        "text": "it is good"
+      },
+      {
+        "intent": "good",
+        "text": "it's great"
+      },
+      {
+        "intent": "good",
+        "text": "it's perfect"
+      },
+      {
+        "intent": "good",
+        "text": "much better"
+      },
+      {
+        "intent": "good",
+        "text": "not bad"
+      },
+      {
+        "intent": "good",
+        "text": "not too bad"
+      },
+      {
+        "intent": "good",
+        "text": "it's very good"
+      },
+      {
+        "intent": "good",
+        "text": "marvelous"
+      },
+      {
+        "intent": "good",
+        "text": "that's nice"
+      },
+      {
+        "intent": "good",
+        "text": "pleasant"
+      },
+      {
+        "intent": "good",
+        "text": "pretty good"
+      },
+      {
+        "intent": "good",
+        "text": "really nice"
+      },
+      {
+        "intent": "good",
+        "text": "splendid"
+      },
+      {
+        "intent": "good",
+        "text": "straight"
+      },
+      {
+        "intent": "good",
+        "text": "super"
+      },
+      {
+        "intent": "good",
+        "text": "super fantastic"
+      },
+      {
+        "intent": "good",
+        "text": "sweet"
+      },
+      {
+        "intent": "good",
+        "text": "really well"
+      },
+      {
+        "intent": "good",
+        "text": "very well"
+      },
+      {
+        "intent": "good",
+        "text": "that is awesome"
+      },
+      {
+        "intent": "good",
+        "text": "that is nice"
+      },
+      {
+        "intent": "good",
+        "text": "that is wonderful"
+      },
+      {
+        "intent": "good",
+        "text": "that was amazing"
+      },
+      {
+        "intent": "good",
+        "text": "that was awesome"
+      },
+      {
+        "intent": "good",
+        "text": "that was cute"
+      },
+      {
+        "intent": "good",
+        "text": "that was pretty good"
+      },
+      {
+        "intent": "good",
+        "text": "that was very good"
+      },
+      {
+        "intent": "good",
+        "text": "that's a good idea"
+      },
+      {
+        "intent": "good",
+        "text": "that's a good thing"
+      },
+      {
+        "intent": "good",
+        "text": "that's amazing"
+      },
+      {
+        "intent": "good",
+        "text": "that's awesome thank you"
+      },
+      {
+        "intent": "good",
+        "text": "that's better"
+      },
+      {
+        "intent": "good",
+        "text": "that's cute"
+      },
+      {
+        "intent": "good",
+        "text": "that's fantastic"
+      },
+      {
+        "intent": "good",
+        "text": "that's much better"
+      },
+      {
+        "intent": "good",
+        "text": "that's nice of you"
+      },
+      {
+        "intent": "good",
+        "text": "that's not bad"
+      },
+      {
+        "intent": "good",
+        "text": "that's perfect"
+      },
+      {
+        "intent": "good",
+        "text": "that's pretty good"
+      },
+      {
+        "intent": "good",
+        "text": "that's really good"
+      },
+      {
+        "intent": "good",
+        "text": "that's really nice"
+      },
+      {
+        "intent": "good",
+        "text": "that's sweet of you"
+      },
+      {
+        "intent": "good",
+        "text": "that's very nice"
+      },
+      {
+        "intent": "good",
+        "text": "that's wonderful"
+      },
+      {
+        "intent": "good",
+        "text": "this is awesome"
+      },
+      {
+        "intent": "good",
+        "text": "this is good"
+      },
+      {
+        "intent": "good",
+        "text": "this is great"
+      },
+      {
+        "intent": "good",
+        "text": "very nice"
+      },
+      {
+        "intent": "good",
+        "text": "very then"
+      },
+      {
+        "intent": "good",
+        "text": "wonderful"
+      },
+      {
+        "intent": "good",
+        "text": "I'm glad to hear that"
+      },
+      {
+        "intent": "good",
+        "text": "ok good"
+      },
+      {
+        "intent": "good",
+        "text": "good for you"
+      },
+      {
+        "intent": "good",
+        "text": "good to know"
+      },
+      {
+        "intent": "good",
+        "text": "glad to hear it"
+      },
+      {
+        "intent": "good",
+        "text": "so good"
+      },
+      {
+        "intent": "good",
+        "text": "so nice of you"
+      },
+      {
+        "intent": "good",
+        "text": "so sweet of you"
+      },
+      {
+        "intent": "good",
+        "text": "it was good"
+      },
+      {
+        "intent": "good",
+        "text": "oh well"
+      },
+      {
+        "intent": "good",
+        "text": "good thing"
+      },
+      {
+        "intent": "good",
+        "text": "that was good"
+      },
+      {
+        "intent": "good",
+        "text": "it's awesome"
+      },
+      {
+        "intent": "good",
+        "text": "okay good"
+      },
+      {
+        "intent": "good",
+        "text": "it's fine"
+      },
+      {
+        "intent": "good",
+        "text": "no it's okay"
+      },
+      {
+        "intent": "good",
+        "text": "that's great"
+      },
+      {
+        "intent": "good",
+        "text": "very nice"
+      },
+      {
+        "intent": "good",
+        "text": "it's very good"
+      },
+      {
+        "intent": "good",
+        "text": "that's fine"
+      },
+      {
+        "intent": "help",
+        "text": "I need you to help me"
+      },
+      {
+        "intent": "help",
+        "text": "I need you to do something for me"
+      },
+      {
+        "intent": "help",
+        "text": "I need a hand"
+      },
+      {
+        "intent": "help",
+        "text": "will you help me"
+      },
+      {
+        "intent": "help",
+        "text": "can you do something for me"
+      },
+      {
+        "intent": "help",
+        "text": "help me with a problem"
+      },
+      {
+        "intent": "help",
+        "text": "can you help me"
+      },
+      {
+        "intent": "help",
+        "text": "help me"
+      },
+      {
+        "intent": "help",
+        "text": "assistance"
+      },
+      {
+        "intent": "help",
+        "text": "I need your help"
+      },
+      {
+        "intent": "help",
+        "text": "I need help"
+      },
+      {
+        "intent": "help",
+        "text": "you can help me"
+      },
+      {
+        "intent": "help",
+        "text": "can you help me with something"
+      },
+      {
+        "intent": "help",
+        "text": "can you help"
+      },
+      {
+        "intent": "help",
+        "text": "assist"
+      },
+      {
+        "intent": "help",
+        "text": "can u help me"
+      },
+      {
+        "intent": "help",
+        "text": "I need some help"
+      },
+      {
+        "intent": "help",
+        "text": "you help me"
+      },
+      {
+        "intent": "help",
+        "text": "do you help me"
+      },
+      {
+        "intent": "help",
+        "text": "can help me"
+      },
+      {
+        "intent": "help",
+        "text": "could you give me a hand"
+      },
+      {
+        "intent": "help",
+        "text": "can you help me out"
+      },
+      {
+        "intent": "help",
+        "text": "need help"
+      },
+      {
+        "intent": "help",
+        "text": "I need you"
+      },
+      {
+        "intent": "help",
+        "text": "can you help me now"
+      },
+      {
+        "intent": "help",
+        "text": "I want your help"
+      },
+      {
+        "intent": "help",
+        "text": "need your help"
+      },
+      {
+        "intent": "help",
+        "text": "assist me"
+      },
+      {
+        "intent": "help",
+        "text": "are you going to help me"
+      },
+      {
+        "intent": "help",
+        "text": "can you help me with that"
+      },
+      {
+        "intent": "help",
+        "text": "help"
+      },
+      {
+        "intent": "help",
+        "text": "I need you right now"
+      },
+      {
+        "intent": "help",
+        "text": "would you help me"
+      },
+      {
+        "intent": "help",
+        "text": "can you assist me"
+      },
+      {
+        "intent": "help",
+        "text": "sos"
+      },
+      {
+        "intent": "help",
+        "text": "do you want to help me"
+      },
+      {
+        "intent": "help",
+        "text": "please help me"
+      },
+      {
+        "intent": "help",
+        "text": "can you help us"
+      },
+      {
+        "intent": "help",
+        "text": "do me a favor"
+      },
+      {
+        "intent": "answer_question",
+        "text": "I want you to answer me"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answer"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answer my question"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answer me"
+      },
+      {
+        "intent": "answer_question",
+        "text": "give me an answer"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answer the question"
+      },
+      {
+        "intent": "answer_question",
+        "text": "can you answer my question"
+      },
+      {
+        "intent": "answer_question",
+        "text": "tell me the answer"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answer it"
+      },
+      {
+        "intent": "answer_question",
+        "text": "give me the answer"
+      },
+      {
+        "intent": "answer_question",
+        "text": "I have a question"
+      },
+      {
+        "intent": "answer_question",
+        "text": "I want you to answer my question"
+      },
+      {
+        "intent": "answer_question",
+        "text": "just answer the question"
+      },
+      {
+        "intent": "answer_question",
+        "text": "can you answer me"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answers"
+      },
+      {
+        "intent": "answer_question",
+        "text": "can you answer a question for me"
+      },
+      {
+        "intent": "answer_question",
+        "text": "can you answer"
+      },
+      {
+        "intent": "answer_question",
+        "text": "answering questions"
+      },
+      {
+        "intent": "answer_question",
+        "text": "I want the answer now"
+      },
+      {
+        "intent": "answer_question",
+        "text": "just answer my question"
+      },
+      {
+        "intent": "thanks",
+        "text": "you helped a lot thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "appreciate your help"
+      },
+      {
+        "intent": "thanks",
+        "text": "cheers"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks a lot"
+      },
+      {
+        "intent": "thanks",
+        "text": "terrific thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "great thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks so much"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you so much"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks for your help"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you for your help"
+      },
+      {
+        "intent": "thanks",
+        "text": "nice thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "I appreciate it"
+      },
+      {
+        "intent": "thanks",
+        "text": "I thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you that will be all"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks buddy"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks love"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you my friend"
+      },
+      {
+        "intent": "thanks",
+        "text": "well thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "very good thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "good thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanks again"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you again"
+      },
+      {
+        "intent": "thanks",
+        "text": "all thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "alright thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "alright thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "no thank you that's all"
+      },
+      {
+        "intent": "thanks",
+        "text": "perfect thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "so nice of you"
+      },
+      {
+        "intent": "thanks",
+        "text": "well thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "well thanks"
+      },
+      {
+        "intent": "thanks",
+        "text": "thnx"
+      },
+      {
+        "intent": "thanks",
+        "text": "thank you"
+      },
+      {
+        "intent": "thanks",
+        "text": "thanx"
+      },
+      {
+        "intent": "wait",
+        "text": "wait a second"
+      },
+      {
+        "intent": "wait",
+        "text": "could you wait"
+      },
+      {
+        "intent": "wait",
+        "text": "wait please"
+      },
+      {
+        "intent": "wait",
+        "text": "hold on"
+      },
+      {
+        "intent": "wait",
+        "text": "wait"
+      },
+      {
+        "intent": "wait",
+        "text": "oh wait"
+      },
+      {
+        "intent": "wait",
+        "text": "wait hold on"
+      },
+      {
+        "intent": "wait",
+        "text": "don't rush"
+      },
+      {
+        "intent": "sorry",
+        "text": "excuse me"
+      },
+      {
+        "intent": "sorry",
+        "text": "apologise"
+      },
+      {
+        "intent": "sorry",
+        "text": "I apologize"
+      },
+      {
+        "intent": "sorry",
+        "text": "sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "I'm sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "I am so sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "my apologies"
+      },
+      {
+        "intent": "sorry",
+        "text": "apologies"
+      },
+      {
+        "intent": "sorry",
+        "text": "apologies to me"
+      },
+      {
+        "intent": "sorry",
+        "text": "apology"
+      },
+      {
+        "intent": "sorry",
+        "text": "excuse"
+      },
+      {
+        "intent": "sorry",
+        "text": "I beg your pardon"
+      },
+      {
+        "intent": "sorry",
+        "text": "pardon"
+      },
+      {
+        "intent": "sorry",
+        "text": "I said sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "I am really sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "forgive me"
+      },
+      {
+        "intent": "sorry",
+        "text": "sorry about that"
+      },
+      {
+        "intent": "sorry",
+        "text": "sorry about this"
+      },
+      {
+        "intent": "sorry",
+        "text": "really sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "very sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "ok sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "I want to say sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "alright I'm sorry"
+      },
+      {
+        "intent": "sorry",
+        "text": "okay I'm sorry"
+      },
+      {
+        "intent": "wrong",
+        "text": "that was wrong"
+      },
+      {
+        "intent": "wrong",
+        "text": "that's not what I asked"
+      },
+      {
+        "intent": "wrong",
+        "text": "that's wrong"
+      },
+      {
+        "intent": "wrong",
+        "text": "wrong"
+      },
+      {
+        "intent": "wrong",
+        "text": "it is not right"
+      },
+      {
+        "intent": "wrong",
+        "text": "that's not right"
+      },
+      {
+        "intent": "wrong",
+        "text": "it's wrong"
+      },
+      {
+        "intent": "wrong",
+        "text": "that is incorrect"
+      },
+      {
+        "intent": "wrong",
+        "text": "incorrect"
+      },
+      {
+        "intent": "wrong",
+        "text": "not correct"
+      },
+      {
+        "intent": "wrong",
+        "text": "you are wrong"
+      },
+      {
+        "intent": "wrong",
+        "text": "not right"
+      },
+      {
+        "intent": "advice",
+        "text": "what should I do about it"
+      },
+      {
+        "intent": "advice",
+        "text": "any suggestions"
+      },
+      {
+        "intent": "advice",
+        "text": "what do you recommend"
+      },
+      {
+        "intent": "advice",
+        "text": "give me a wise advice"
+      },
+      {
+        "intent": "advice",
+        "text": "I need advice"
+      },
+      {
+        "intent": "advice",
+        "text": "any advice"
+      },
+      {
+        "intent": "advice",
+        "text": "do you have any advice for me"
+      },
+      {
+        "intent": "advice",
+        "text": "advise me"
+      },
+      {
+        "intent": "advice",
+        "text": "what should I do"
+      },
+      {
+        "intent": "advice",
+        "text": "can I ask for your advice"
+      },
+      {
+        "intent": "advice",
+        "text": "can you advise me"
+      },
+      {
+        "intent": "advice",
+        "text": "guide me"
+      },
+      {
+        "intent": "advice",
+        "text": "can you give me advice"
+      },
+      {
+        "intent": "advice",
+        "text": "can you offer any advice"
+      },
+      {
+        "intent": "advice",
+        "text": "give me some advice about"
+      },
+      {
+        "intent": "advice",
+        "text": "give me some good advice"
+      },
+      {
+        "intent": "advice",
+        "text": "help me with advice"
+      },
+      {
+        "intent": "advice",
+        "text": "I could use some advice"
+      },
+      {
+        "intent": "advice",
+        "text": "I need an advice from you"
+      },
+      {
+        "intent": "advice",
+        "text": "I seek your advice"
+      },
+      {
+        "intent": "advice",
+        "text": "what can you recommend"
+      },
+      {
+        "intent": "advice",
+        "text": "what do you suggest"
+      },
+      {
+        "intent": "advice",
+        "text": "what is your advice"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "test"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "I am testing you"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "can I test you"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "I want to test you"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "just testing you"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "let me test you"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "testing chatbot"
+      },
+      {
+        "intent": "testing_agent",
+        "text": "testing"
+      }
+    ],
+    "regex_features": [],
+    "lookup_tables": [],
+    "entity_synonyms": []
+  }
+}

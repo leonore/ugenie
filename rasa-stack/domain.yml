@@ -1,0 +1,51 @@
+intents:
+- greet
+- goodbye
+- good
+- thanks
+- help
+- answer_question
+- wait
+- sorry
+- what
+- wrong
+- advice
+- testing_agent
+
+
+entities:
+- name
+
+
+slots:
+  name:
+    type: text
+
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_welcome
+- utter_wait
+- utter_try_again
+- utter_test_answer
+
+
+templates:
+  utter_greet:
+  - text: "Hello! How can I help?"
+
+  utter_goodbye:
+  - text: "Talk to you later!"
+
+  utter_wait:
+  - text: "No worries, I'll be here when you're ready."
+
+  utter_welcome:
+  - text: "It was my pleasure, hopefully I have been of help."
+
+  utter_try_again:
+  - text: "I'm sorry, I didn't understand this. Could you clarify for me?"
+
+  utter_test_answer:
+  - text: "This seems to work!"

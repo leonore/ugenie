@@ -1,0 +1,2743 @@
+{
+  "greet": [
+    [{
+      "type": "Text",
+      "value": "hi good morning"
+    }],
+    [{
+      "type": "Text",
+      "value": "how is it going good night"
+    }],
+    [{
+      "type": "Text",
+      "value": "morning hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi good afternoon hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "good day hola hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola good morning hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "whats up how are things going"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy hi hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you there howdy hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi whatsup hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy good day hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you around hi hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy how are you"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi hola hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "good morning hey hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you around? how is it going"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola good day hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you around hola hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi how are you hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "good night howdy howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "good night how are you"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola hey howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey sup hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings hey howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you doing hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello are you there hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings good afternoon"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola how are you"
+    }],
+    [{
+      "type": "Text",
+      "value": "good day hey hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello hi hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "good day are you around"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you there hola howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola whatsup hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you doing howdy hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you around? good afternoon"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey are you around? hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "whatsup hola hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi hola hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you there howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "good day are you around?"
+    }],
+    [{
+      "type": "Text",
+      "value": "good afternoon hi hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi good morning howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you doing hola hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello good night hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are things going good morning"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey good morning howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "how is it going hello hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "morning morning"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi morning hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you around? hello howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey good day howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "good morning hey hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you there sup"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you there hi hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola are you around hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy howdy howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy are you around? hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you doing hi howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings good night"
+    }],
+    [{
+      "type": "Text",
+      "value": "sup hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello how is it going hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi sup"
+    }],
+    [{
+      "type": "Text",
+      "value": "good night hello howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello are you there hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "good morning how are you doing"
+    }],
+    [{
+      "type": "Text",
+      "value": "good day hey howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy sup hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "whatsup hi howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi hey hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you good afternoon"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey good afternoon howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi are you around? hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "how is it going howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello are you around? hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you doing hi hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello how is it going hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings how are you doing"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello good night hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola hola hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "good night hey hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola are you around? hola"
+    }],
+    [{
+      "type": "Text",
+      "value": "are you around good night"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey morning howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you good morning"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy hola hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "whatsup hola hey"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi good night"
+    }],
+    [{
+      "type": "Text",
+      "value": "good morning are you around?"
+    }],
+    [{
+      "type": "Text",
+      "value": "whats up hi hello"
+    }],
+    [{
+      "type": "Text",
+      "value": "whatsup howdy hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey whats up hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "howdy hey howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "whatsup good morning"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola sup hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "how is it going hola hi"
+    }],
+    [{
+      "type": "Text",
+      "value": "hola how is it going howdy"
+    }],
+    [{
+      "type": "Text",
+      "value": "how are you are you there"
+    }]
+  ],
+  "bye": [
+    [{
+      "type": "Text",
+      "value": "heading out gtg ttyl going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now gtg adieu chau going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go chau chao have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out ttyl chau chao im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving bye adios ttyl got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out ttyl chao adieu have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon ttyl adios chao talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out farewell gtg adios heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go bye adieu heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "goodbye ttyl farewell heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go ttyl farewell chao heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go goodbye adios chao"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go bye chao chau going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out ttyl adieu goodbye have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon chau gtg goodbye talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go chau goodbye adios heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out adieu farewell gtg"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out ttyl farewell bye talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now farewell adios bye"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving adios adios"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving gtg goodbye chao got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon chau ttyl ttyl talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out adios goodbye adios"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out gtg chao adios talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go adieu chao bye going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later ttyl chau gtg talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "adios gtg chau leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out chau adieu gtg talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving goodbye bye got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go farewell farewell bye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out goodbye chao adieu talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon chao adios leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go bye bye chau heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving gtg adios chau"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon adios farewell farewell leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out bye goodbye have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon bye chau ttyl heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out farewell adios chau talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now adieu ttyl goodbye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out chao adios adieu im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out gtg chao farewell have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later adios farewell goodbye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon ttyl ttyl talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon adios chau leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving gtg ttyl bye got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later goodbye farewell chao going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "chao bye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go ttyl chao"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now farewell chau ttyl leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "adieu gtg chao have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now chau goodbye going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go chao gtg bye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving bye chao chao going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out adieu ttyl farewell going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go ttyl gtg farewell got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out chao gtg farewell leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out chao goodbye goodbye have to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon chao adieu going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out goodbye bye bye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out ttyl goodbye goodbye talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go adieu adieu talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon adieu goodbye im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving adios adieu bye going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon adios chau chau"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now goodbye chau bye"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go chao chau talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving adieu ttyl adios im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out goodbye adios talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later adieu adios farewell im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go adieu goodbye ttyl talk to you later"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go ttyl bye chao got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon gtg ttyl going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later ttyl adios ttyl talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out ttyl chao goodbye"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now chao chao farewell im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving farewell chao chao got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go gtg bye farewell heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "chao chau adieu heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go chau bye chao"
+    }],
+    [{
+      "type": "Text",
+      "value": "adios adios going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now adios goodbye leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "heading out farewell ttyl adios leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "goodbye goodbye going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later farewell adieu going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go chau chao bye leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving goodbye adieu adios got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you soon farewell chau bye heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go goodbye bye adios heading out"
+    }],
+    [{
+      "type": "Text",
+      "value": "talk to you later ttyl farewell leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now goodbye adieu talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now chau chao farewell im leaving now"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving bye gtg chau got to go"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go adieu adieu goodbye leaving"
+    }],
+    [{
+      "type": "Text",
+      "value": "im leaving now goodbye bye adios"
+    }],
+    [{
+      "type": "Text",
+      "value": "have to go bye chao going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving farewell adieu ttyl going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "leaving bye chao gtg going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "adieu chau ttyl going out"
+    }],
+    [{
+      "type": "Text",
+      "value": "got to go farewell adios gtg talk to you soon"
+    }],
+    [{
+      "type": "Text",
+      "value": "going out chau adios gtg"
+    }]
+  ],
+  "affirmative": [
+    [{
+      "type": "Text",
+      "value": "correct correcto right ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "si si ok yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "si correct yes to that allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok right affirmative affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes yes to that yep right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yep right right"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok yes sir right"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok correcto yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative yep yes affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "right yep yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative yes to that affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "yep yes sir affirmative right"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes sir si correcto affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "si yes si right"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok si right right"
+    }],
+    [{
+      "type": "Text",
+      "value": "right si ok yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "right yes sir right affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "right correcto right right"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok yep si allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "right ok right right"
+    }],
+    [{
+      "type": "Text",
+      "value": "right ok yes sir right"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok correct yes affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto want that"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct ok right right"
+    }],
+    [{
+      "type": "Text",
+      "value": "right si right si"
+    }],
+    [{
+      "type": "Text",
+      "value": "right si affirmative ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct correct affirmative right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes to that yes si"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct right ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes to that allright allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "right yes to that yep affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto right right"
+    }],
+    [{
+      "type": "Text",
+      "value": "si right yes to that correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes sir si right"
+    }],
+    [{
+      "type": "Text",
+      "value": "right ok yes sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative affirmative correct yes sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that yes sir yes to that right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yep yes to that correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that affirmative si"
+    }],
+    [{
+      "type": "Text",
+      "value": "right correct yes sir yep"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes to that yep yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "right yes to that correcto yes sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes sir yes sir allright right"
+    }],
+    [{
+      "type": "Text",
+      "value": "yep yep allright yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct yep allright si"
+    }],
+    [{
+      "type": "Text",
+      "value": "right correct correcto correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that right right yep"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes right yep correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto allright yes yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "allright correct ok yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "right right yes right"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative yep allright correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes yes to that correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes sir yep si correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes sir si allright yes sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct ok affirmative yep"
+    }],
+    [{
+      "type": "Text",
+      "value": "right si yes right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto correcto affirmative right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yep yes to that affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok yes yes to that yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes allright ok yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes sir affirmative right si"
+    }],
+    [{
+      "type": "Text",
+      "value": "yep yep affirmative ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct yes sir yep correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that allright affirmative"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative right yes sir right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct allright ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that allright yes correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes si right"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yes right yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "yep si correcto allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct si yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "right correcto ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "right yes to that affirmative allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct yes to that yes to that correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "si affirmative affirmative correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto right right allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok yes to that"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes right correcto ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto yep yep right"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok ok right correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes correct yes to that right"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes sir yes allright si"
+    }],
+    [{
+      "type": "Text",
+      "value": "correct yes allright correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "right correcto allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "yep correcto allright ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that correcto correct allright"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that correct correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "right right affirmative right"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative correcto correcto right"
+    }],
+    [{
+      "type": "Text",
+      "value": "right yep yep yep"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok right correcto yes sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "yep allright allright yep"
+    }],
+    [{
+      "type": "Text",
+      "value": "right allright correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "affirmative allright correct yep"
+    }],
+    [{
+      "type": "Text",
+      "value": "right correct ok yes sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "correcto correct yes"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes ok si correcto"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok si"
+    }],
+    [{
+      "type": "Text",
+      "value": "yes to that correct yep yep"
+    }]
+  ],
+  "negative": [
+    [{
+      "type": "Text",
+      "value": "incorrect not good"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong not correct not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect didnt meant that"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect not good nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "no incorrect wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "no wrong nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative nope please"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir its bad not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct not correct no"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct dont mean that"
+    }],
+    [{
+      "type": "Text",
+      "value": "dont desire that"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative didnt meant that no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect wrong incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong wrong negative"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct ok its not fine not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope didnt meant that"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong wrong no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect dont desire that incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope incorrect wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "no no sir nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong didnt meant that incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong that is wrong nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope dont want that"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong incorrect negative"
+    }],
+    [{
+      "type": "Text",
+      "value": "ok its not fine no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "no incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir not correct incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct im not ok with that"
+    }],
+    [{
+      "type": "Text",
+      "value": "its not ok wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative negative not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "bad wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "im not good with that"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct its not ok not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "no im not ok with that not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct that is bad wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong im not ok with that incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct negative please"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "no dont mean that no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect didnt meant that no"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative dont want that nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope no not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct im not ok with that no"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong definitely no"
+    }],
+    [{
+      "type": "Text",
+      "value": "no bad"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct dont agree on that nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "its not ok incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong im not good with that incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct negative incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct bad no"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong no incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect didnt meant that nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct not good no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect wrong nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir definitely no no"
+    }],
+    [{
+      "type": "Text",
+      "value": "no im not good with that wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope its not ok no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope that is wrong wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope incorrect incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "no didnt meant that not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect negative incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "im not good with that wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative that is wrong negative"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct bad"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope dont agree on that nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "no no sir wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope not good for me not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "bad"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect not what i want"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir its not ok"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir im not good with that no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "no wrong no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "no not good not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope definitely no no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir incorrect no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong dont agree on that"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative that is bad wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative wrong incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct dont mean that no sir"
+    }],
+    [{
+      "type": "Text",
+      "value": "no not correct incorrect"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong negative"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct its not correct nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct no no"
+    }],
+    [{
+      "type": "Text",
+      "value": "not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "dont want that"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative no no"
+    }],
+    [{
+      "type": "Text",
+      "value": "incorrect bad negative"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong its not correct wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong its not correct nope"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope not good"
+    }],
+    [{
+      "type": "Text",
+      "value": "nope wrong wrong"
+    }],
+    [{
+      "type": "Text",
+      "value": "wrong not correct no"
+    }],
+    [{
+      "type": "Text",
+      "value": "negative that is bad not correct"
+    }],
+    [{
+      "type": "Text",
+      "value": "no sir incorrect not correct"
+    }]
+  ],
+  "findCourseByName": [
+    [{
+      "type": "Text",
+      "value": "greetings please identify "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please search "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey book "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please search "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi show me "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings show me "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please search "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings show "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello show me "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings find "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please find "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "please "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please show me "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please identify "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "please book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi show "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "identify "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey show me "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey show "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "please show me "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi identify "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello show "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please show "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please show me "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "please look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings find "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi look for "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please book "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please find "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey show me "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings book "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "please find "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please identify "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please show me "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "greetings please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi please find "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please search "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please show "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " spec"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey identify "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi find "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "hey please "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }],
+    [{
+      "type": "Text",
+      "value": "show me "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " info"
+    }],
+    [{
+      "type": "Text",
+      "value": "please identify "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "please search "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "search "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " description"
+    }],
+    [{
+      "type": "Text",
+      "value": "hello please show "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " information"
+    }],
+    [{
+      "type": "Text",
+      "value": "please look for "
+    }, {
+      "value": "musicology",
+      "type": "Slot",
+      "synonym": "musicology",
+      "slot": "course"
+    }, {
+      "type": "Text",
+      "value": " specification"
+    }],
+    [{
+      "type": "Text",
+      "value": "hi book "
+    }, {
+      "value": "biomedical sciences",
+      "type": "Slot",
+      "synonym": "biomedical sciences",
+      "slot": "course"
+    }]
+  ]
+}
