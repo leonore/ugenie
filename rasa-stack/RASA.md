@@ -5,29 +5,31 @@ cd rasa-stack
 pip install -r requirements.txt
 ```
 
-1. Create NLU examples
+##### 1. Create NLU examples  
 = define the user messages your bot should understand        
 = define the intents and providing ways users might express them         
 
 in nlu_data.md
 
-2. Define the NLU model config
+##### 2. Define the NLU model config
 for us, either `spacy_sklearn` or `tensorflow_embedding` (if we get over 1000 utterances)
 
-3. Train the model with your examples
+in nlu_config.yml
+
+##### 3. Train the model with your examples
 = learn to understand what the user says
 ```bash
 make train-nlu
 ```
 
-4. Test the model
+##### 4. Test the model
 see test_file.py
 
 ---
 It is possible to only get intents with steps 1-4. That's Rasa NLU.     
 But Rasa Core allows the bot to follow a story. See below:     
 
-5.  Write stories
+##### 5.  Write stories
 = teaching your bot to respond      
 = rasa core will train the dialogue model and predict response based on the specific state of the convo       
 
@@ -42,7 +44,7 @@ e.g. saying hello back:
 
 In this case, all of our actions are just messages sent back to the user, like utter_greet, but in general, an action can do anything, including calling an API and interacting with the outside world (see https://rasa.com/docs/core/customactions/).
 
-6. Define a domain
+##### 6. Define a domain
 = the universe your bot lives in      
 = what user inputs it should expect to get, what actions it should be able to predict, how to respond, what info to store       
 
@@ -50,12 +52,13 @@ in domain.yml
 
 Rasa Core’s job is to choose the right action to execute at each step of the conversation. Simple actions are just sending a message to a user. These simple actions are the actions in the domain, which start with utter_. They will just respond with a message based on a template from the templates section. See customactions for how to build more interesting actions.
 
-7. Train the dialogue model
+##### 7. Train the dialogue model
 ```bash
 make train-core
 ```
 
-8. Talk to your bot
+##### 8. Talk to your bot
+From within the command line:
 ```bash
 make cmdline
 ```
