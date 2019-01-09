@@ -1,0 +1,28 @@
+{
+  "states": [
+    "intent_advice",
+    "intent_answer_question",
+    "intent_good",
+    "intent_goodbye",
+    "intent_greet",
+    "intent_help",
+    "intent_sorry",
+    "intent_testing_agent",
+    "intent_thanks",
+    "intent_wait",
+    "intent_what",
+    "intent_wrong",
+    "entity_name",
+    "slot_name_0",
+    "prev_action_listen",
+    "prev_action_restart",
+    "prev_action_default_fallback",
+    "prev_action_deactivate_form",
+    "prev_utter_greet",
+    "prev_utter_goodbye",
+    "prev_utter_welcome",
+    "prev_utter_wait",
+    "prev_utter_try_again",
+    "prev_utter_test_answer"
+  ]
+}
