@@ -3,13 +3,7 @@
     "action_listen": {
       "slots": []
     },
-    "utter_greet": {
-      "slots": []
-    },
     "utter_goodbye": {
-      "slots": []
-    },
-    "utter_try_again": {
       "slots": []
     },
     "utter_welcome": {
@@ -18,7 +12,13 @@
     "utter_wait": {
       "slots": []
     },
+    "utter_greet": {
+      "slots": []
+    },
     "utter_test_answer": {
+      "slots": []
+    },
+    "utter_try_again": {
       "slots": []
     }
   },
@@ -33,5 +33,5 @@
     "rasa_core.policies.keras_policy.KerasPolicy",
     "rasa_core.policies.memoization.MemoizationPolicy"
   ],
-  "trained_at": "20181213-145054"
+  "trained_at": "20190103-182219"
 }
