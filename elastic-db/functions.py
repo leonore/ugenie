@@ -1,10 +1,4 @@
-# tutorial: https://tryolabs.com/blog/2015/02/17/python-elasticsearch-first-steps/
-#connect to our cluster
-# please leave this file for testing purposes
-# alternative: try from python within terminal
-
 from elasticsearch import Elasticsearch
-import requests
 
 es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
