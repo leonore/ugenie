@@ -1,0 +1,88 @@
+%YAML 1.1
+---
+actions:
+- utter_greet
+- utter_goodbye
+- utter_fee_check
+- utter_description_check
+- utter_ask_student
+config:
+  store_entities_as_slots: true
+entities:
+- course
+- student
+forms: []
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- fee_check:
+    use_entities: true
+- description_check:
+    use_entities: true
+- inform_student:
+    use_entities: true
+slots:
+  course:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  student:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - —
+    - ' '
+    - s
+    - c
+    - o
+    - t
+    - t
+    - i
+    - s
+    - h
+    - ' '
+    - —
+    - ' '
+    - e
+    - u
+    - ' '
+    - —
+    - ' '
+    - i
+    - n
+    - t
+    - e
+    - r
+    - n
+    - a
+    - t
+    - i
+    - o
+    - n
+    - a
+    - l
+    - ' '
+    - —
+    - ' '
+    - o
+    - t
+    - h
+    - e
+    - r
+    - '-'
+    - u
+    - k
+templates:
+  utter_ask_student:
+  - text: And are you a Scottish, EU, International, or Other-UK student?
+  utter_description_check:
+  - text: 'The course description for {course} is: ...'
+  utter_fee_check:
+  - text: The {course} fees for {student} students are ...
+  utter_goodbye:
+  - text: Goodbye!
+  utter_greet:
+  - text: Hello! How can I help?

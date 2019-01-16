@@ -1,0 +1,373 @@
+<!--- training data @ https://forum.rasa.com/t/rasa-starter-pack/704 -->
+<!-- this is about analysing what the user says, so when adding intents, think:
+what input do we want to be able to understand? -->
+
+## intent:fee_check
+- how much is [biology]{course}
+- how much are the fees for [science]{course}
+
+## intent:description_check
+- tell me about [biology]{course}
+- what's the description for [science]{course}
+
+## intent:greet  <!--- The label of the intent -->
+- Hi 	<!--- Training examples for intent 'greet'-->
+- Hey
+- Hi bot
+- Hey bot
+- Hello
+- Good morning
+- hi again
+- hi folks
+- hi Mister
+- hi pal!
+- hi there
+- greetings
+- hello everybody
+- hello is anybody there
+- hello robot
+
+## intent:goodbye
+- okay see you later
+- hope to see you later
+- bye for now
+- till next time
+- I must go
+- bye
+- goodbye
+- see you
+- see you soon
+- bye-bye
+- bye bye good night
+- good bye
+- bye bye see you
+- bye bye see you soon
+- bye bye take care
+- I said bye
+- never mind bye
+- now bye
+- that's all goodbye
+- that's it goodbye
+- leave me alone
+- go to bed
+- goodbye for now
+- talk to you later
+- you can go now
+- get lost
+- goodbye see you later
+- alright bye
+- see ya
+- thanks bye bye
+- okay bye
+- okay thank you bye
+- see you tomorrow
+- ok bye
+- see you later alligator
+
+## intent:thanks
+- Thanks
+- Thank you
+- Thank you so much
+- Thanks bot
+- Thanks for that
+- cheers
+- cheers bro
+- ok thanks!
+- perfect thank you
+- thanks a bunch for everything
+- thanks for the help
+- thanks a lot
+- amazing, thanks
+- cool, thanks
+- cool thank you
+
+## intent:good
+- yes
+- yes sure
+- absolutely
+- for sure
+- yes yes yes
+- definitely
+- so cool
+- cool
+- that is good
+- glad to hear that
+- that's very nice of you
+- terrific
+- it's amazing
+- that's awesome
+- perfect
+- excellent
+- brilliant
+- that's great
+- it's good
+- it's great
+- fine
+- good
+- nice
+- that's fine
+- very good
+- amazing
+- fantastic
+- great
+- good very good
+- that's very good
+- really good
+- it is fine
+- it is good
+- it's great
+- it's perfect
+- much better
+- not bad
+- not too bad
+- it's very good
+- marvelous
+- that's nice
+- pleasant
+- pretty good
+- really nice
+- splendid
+- straight
+- super
+- super fantastic
+- sweet
+- really well
+- very well
+- that is awesome
+- that is nice
+- that is wonderful
+- that was amazing
+- that was awesome
+- that was cute
+- that was pretty good
+- that was very good
+- that's a good idea
+- that's a good thing
+- that's amazing
+- that's awesome thank you
+- that's better
+- that's cute
+- that's fantastic
+- that's much better
+- that's nice of you
+- that's not bad
+- that's perfect
+- that's pretty good
+- that's really good
+- that's really nice
+- that's sweet of you
+- that's very nice
+- that's wonderful
+- this is awesome
+- this is good
+- this is great
+- very nice
+- very then
+- wonderful
+- I'm glad to hear that
+- ok good
+- good for you
+- good to know
+- glad to hear it
+- so good
+- so nice of you
+- so sweet of you
+- it was good
+- oh well
+- good thing
+- that was good
+- it's awesome
+- okay good
+- it's fine
+- no it's okay
+- that's great
+- very nice
+- it's very good
+- that's fine
+
+## intent:help
+- I need you to help me
+- I need you to do something for me
+- I need a hand
+- will you help me
+- can you do something for me
+- help me with a problem
+- can you help me
+- help me
+- assistance
+- I need your help
+- I need help
+- you can help me
+- can you help me with something
+- can you help
+- assist
+- can u help me
+- I need some help
+- you help me
+- do you help me
+- can help me
+- could you give me a hand
+- can you help me out
+- need help
+- I need you
+- can you help me now
+- I want your help
+- need your help
+- assist me
+- are you going to help me
+- can you help me with that
+- help
+- I need you right now
+- would you help me
+- can you assist me
+- sos
+- do you want to help me
+- please help me
+- can you help us
+- do me a favor
+
+## intent:answer_question
+- I want you to answer me
+- answer
+- answer my question
+- answer me
+- give me an answer
+- answer the question
+- can you answer my question
+- tell me the answer
+- answer it
+- give me the answer
+- I have a question
+- I want you to answer my question
+- just answer the question
+- can you answer me
+- answers
+- can you answer a question for me
+- can you answer
+- answering questions
+- I want the answer now
+- just answer my question
+
+
+## intent:thanks
+- you helped a lot thank you
+- appreciate your help
+- cheers
+- thank you
+- thanks
+- thanks a lot
+- terrific thank you
+- great thank you
+- thanks so much
+- thank you so much
+- thanks for your help
+- thank you for your help
+- nice thank you
+- I appreciate it
+- I thank you
+- thank you that will be all
+- thanks buddy
+- thanks love
+- thank you my friend
+- well thanks
+- very good thank you
+- good thanks
+- thanks again
+- thank you again
+- all thank you
+- alright thank you
+- alright thanks
+- no thank you that's all
+- perfect thank you
+- so nice of you
+- well thank you
+- well thanks
+- thnx
+- thank you
+- thanx
+
+## intent:wait
+- wait a second
+- could you wait
+- wait please
+- hold on
+- wait
+- oh wait
+- wait hold on
+- don't rush
+
+## intent:sorry
+- excuse me
+- apologise
+- I apologize
+- sorry
+- I'm sorry
+- I am so sorry
+- my apologies
+- apologies
+- apologies to me
+- apology
+- excuse
+- I beg your pardon
+- pardon
+- I said sorry
+- I am really sorry
+- forgive me
+- sorry about that
+- sorry about this
+- really sorry
+- very sorry
+- ok sorry
+- I want to say sorry
+- alright I'm sorry
+- okay I'm sorry
+
+## intent:wrong
+- that was wrong
+- that's not what I asked
+- that's wrong
+- wrong
+- it is not right
+- that's not right
+- it's wrong
+- that is incorrect
+- incorrect
+- not correct
+- you are wrong
+- not right
+
+## intent:advice
+- what should I do about it
+- any suggestions
+- what do you recommend
+- give me a wise advice
+- I need advice
+- any advice
+- do you have any advice for me
+- advise me
+- what should I do
+- can I ask for your advice
+- can you advise me
+- guide me
+- can you give me advice
+- can you offer any advice
+- give me some advice about
+- give me some good advice
+- help me with advice
+- I could use some advice
+- I need an advice from you
+- I seek your advice
+- what can you recommend
+- what do you suggest
+- what is your advice
+
+## intent:testing_agent
+- test
+- I am testing you
+- can I test you
+- I want to test you
+- just testing you
+- let me test you
+- testing chatbot
+- testing
+
