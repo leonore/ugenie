@@ -7,21 +7,21 @@
  - utter_ask_student
 * fee_check{"student": "eu"}
  - slot{"student": "eu"}
- - utter_fee_check
+ - action_get_fee
  
 ## story_fee_check_scottish
 * fee_check
  - utter_ask_student
 * fee_check{"student": "scottish"}
  - slot{"student": "scottish"}
- - utter_fee_check
+ - action_get_fee
  
 ## story_fee_check_international
 * fee_check
  - utter_ask_student
 * fee_check{"student": "international"}
  - slot{"student": "international"}
- - utter_fee_check
+ - action_get_fee
 
 ## story_description_check
 * description_check

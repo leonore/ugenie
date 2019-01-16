@@ -6,6 +6,7 @@ actions:
 - utter_fee_check
 - utter_description_check
 - utter_ask_student
+- action_get_fee
 config:
   store_entities_as_slots: true
 entities:

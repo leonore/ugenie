@@ -1,18 +1,11 @@
-from rasa_core_sdk import Action
-from rasa_core_sdk.events import SlotSet
+from rasa_core.actions.action import Action
 
-class CheckCourseFees(Action):
+#from rasa_core_sdk import Action
+
+class GetFees(Action):
     def name(self):
-        # type: () -> Text
-        return "check_course_fees"
+        return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        # type: (CollectingDispatcher, Tracker, Dict[Text, Any]) -> List[Dict[Text, Any]]
-
-        course = tracker.get_slot('course')
-
-        # THIS IS JUST AN EXAMPLE QUERY, REPLACE CODE WHEN NEW DB READY
-        q = "select * from restaurants where cuisine='{0}' limit 1".format(cuisine)
-        result = db.query(q)
-
-        return [SlotSet("matches", result if result is not None else [])]
+        print("CUSTOM ACTION WORKING!")
+        return 
