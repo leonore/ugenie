@@ -28,14 +28,14 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 
 	# If this event is a user connection
 	if 'state' in json:
-		sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
+		sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
 
 	# If this event contains a message, answer it
 	elif ('message' in json and json['message'] != ''):
                 socketio.emit('print message', json)
                 messageReceived(json['message'])
                 sendMessage(respond(json['message']))
-		
+
 # Remove these and use sample_query file after database is working
 intents = {
         get_fee: ("how much is ", "how much are the fees for "),
