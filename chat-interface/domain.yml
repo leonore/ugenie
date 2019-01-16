@@ -1,0 +1,44 @@
+slots:
+  course:
+    type: text
+  student:
+    type: categorical
+    values:
+      — scottish
+      — eu
+      — international
+      — other-uk
+
+intents:
+- greet
+- goodbye
+- fee_check
+- description_check
+- inform_student
+
+entities:
+- course
+- student
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_fee_check
+- utter_description_check
+- utter_ask_student
+
+templates:
+  utter_greet:
+  - text: "Hello! How can I help?"
+  
+  utter_goodbye:
+  - text: "Goodbye!"
+
+  utter_fee_check:
+  - text: "The {course} fees for {student} students are ..."
+
+  utter_description_check:
+  - text: "The course description for {course} is: ..."
+  
+  utter_ask_student:
+  - text: "And are you a Scottish, EU, International, or Other-UK student?"

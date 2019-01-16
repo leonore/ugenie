@@ -1,0 +1,67 @@
+intents:
+- fee_check
+- description_check
+- greet
+- goodbye
+- good
+- thanks
+- help
+- answer_question
+- wait
+- sorry
+- what
+- wrong
+- advice
+- testing_agent
+
+
+entities:
+- name
+- course
+
+
+slots:
+  name:
+    type: text
+  course:
+    type: text
+  student:
+    type: text
+    initial_value: "scottish"
+
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_welcome
+- utter_wait
+- utter_try_again
+- utter_test_answer
+- utter_fee_check
+- utter_description_check
+
+
+templates:
+  utter_greet:
+  - text: "Hello! How can I help?"
+
+  utter_goodbye:
+  - text: "Talk to you later!"
+
+  utter_wait:
+  - text: "No worries, I'll be here when you're ready."
+
+  utter_welcome:
+  - text: "It was my pleasure, hopefully I have been of help."
+
+  utter_try_again:
+  - text: "I'm sorry, I didn't understand this. Could you clarify for me?"
+
+  utter_test_answer:
+  - text: "This seems to work!"
+
+  utter_fee_check:
+  - text: "The {course} fees for {student} students are ..."
+
+  utter_description_check:
+  - text: "The course description for {course} is: ..."
