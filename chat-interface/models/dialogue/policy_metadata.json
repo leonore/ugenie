@@ -5,13 +5,16 @@
         "student"
       ]
     },
-    "action_get_fee": {
+    "utter_greet": {
       "slots": []
     },
     "utter_goodbye": {
       "slots": []
     },
-    "utter_greet": {
+    "action_get_fee": {
+      "slots": []
+    },
+    "utter_description_check": {
       "slots": []
     }
   },
@@ -26,5 +29,5 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190116-170408"
+  "trained_at": "20190116-174924"
 }

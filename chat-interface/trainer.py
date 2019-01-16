@@ -1,11 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
-import argparse
-import warnings
-
 from rasa_core import utils
 from rasa_core.agent import Agent
 from rasa_core.policies.keras_policy import KerasPolicy

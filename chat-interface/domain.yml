@@ -1,3 +1,5 @@
+action_factory: remote
+
 slots:
   course:
     type: text
