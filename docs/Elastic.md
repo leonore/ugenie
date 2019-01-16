@@ -2,11 +2,15 @@
 Follow the [official tutorial](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 
 ### Running Elasticsearch in the background
-on macOS:
+On macOS:
 ``` bash
 brew services start elasticsearch
 ```
-on other os:          
+On Ubuntu/Debian:
+``` bash
+sudo -i service elasticsearch start
+```
+On other os:          
 [official tutorial](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html)
 
 ### Populating the database
