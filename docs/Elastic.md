@@ -3,13 +3,17 @@ Follow the [official tutorial](https://www.elastic.co/guide/en/elasticsearch/ref
 
 ### Running Elasticsearch in the background
 on macOS:
-```brew services start elasticsearch```
-on other os:
+``` bash
+brew services start elasticsearch
+```
+on other os:          
 [official tutorial](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html)
 
 ### Populating the database
-```python load_questions.py
-python populate_elastic.py```
+```bash
+python load_questions.py
+python populate_elastic.py
+```
 
 Database queries are stored as functions in elastic-db/functions.py
 
