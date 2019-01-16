@@ -48,6 +48,7 @@ def read_into_list(wb):
 sc_courses = read_into_list(wb1)
 adm_courses = read_into_list(wb2)
 
+# read short courses data
 actions1 = [
     {
     "_index" : "short_courses",
@@ -58,6 +59,7 @@ actions1 = [
 for node in sc_courses
 ]
 
+# read general courses data
 actions2 = [
     {
     "_index" : "admissions",
@@ -68,6 +70,7 @@ actions2 = [
 for node in adm_courses
 ]
 
+# read common questions
 actions3 = [
     {
     "_index" : "questions",
@@ -78,7 +81,7 @@ actions3 = [
 for node in questions
 ]
 
-# WIPE INDEXES BEFORE RELOADING
+# WIPE INDICES BEFORE RELOADING
 es.indices.delete("_all")
 
 helpers.bulk(es, actions1)
