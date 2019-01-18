@@ -22,5 +22,7 @@ def getResponse(message):
     responses = agent.handle_text(message)
     print("Rasa-Core slots: ", tracker.slots)
     print("Rasa-Core responses: ", responses)
-    for response in responses:
-        return response["text"]
+    if(len(responses) > 0):
+        return responses[0]["text"]
+    else:
+        return "Sorry, I didn't understand, could you rephrase that?"

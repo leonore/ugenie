@@ -7,5 +7,5 @@ class GetFees(Action):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        print("CUSTOM ACTION WORKING!")
+        print(tracker.latest_message)
         return 
