@@ -29,6 +29,7 @@ actions:
 - utter_description_check
 - utter_ask_student
 - action_get_fee
+- action_get_description
 
 templates:
   utter_greet:

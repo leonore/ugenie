@@ -1,17 +1,15 @@
 {
   "action_fingerprints": {
     "action_listen": {
-      "slots": [
-        "student"
-      ]
-    },
-    "utter_description_check": {
       "slots": []
     },
-    "action_get_fee": {
+    "action_get_description": {
       "slots": []
     },
     "utter_goodbye": {
+      "slots": []
+    },
+    "action_get_fee": {
       "slots": []
     },
     "utter_greet": {
@@ -21,7 +19,7 @@
   "rasa_core": "0.12.3",
   "python": "3.6.7",
   "max_histories": [
-    3,
+    5,
     5
   ],
   "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
@@ -29,5 +27,5 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190118-171818"
+  "trained_at": "20190121-174507"
 }

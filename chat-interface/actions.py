@@ -7,5 +7,13 @@ class GetFees(Action):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        print(tracker.latest_message)
-        return 
+        print("Checking Fees...")
+        return "Checking Fees..."
+
+class GetDescription(Action):
+    def name(self):
+        return "action_get_description"
+
+    def run(self, dispatcher, tracker, domain):
+        print("Checking Description...")
+        return "Checking Description..."

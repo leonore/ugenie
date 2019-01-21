@@ -22,7 +22,7 @@ def train_core():
     training_data_file="data/stories.md"
     agent = Agent(
         domain_file,
-        policies=[MemoizationPolicy(max_history=3), KerasPolicy()]
+        policies=[MemoizationPolicy(max_history=5), KerasPolicy()]
         )
     training_data = agent.load_data(training_data_file)
     agent.train(

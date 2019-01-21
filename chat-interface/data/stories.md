@@ -14,5 +14,5 @@
 
 ## description_check
 * description_check
- - utter_description_check
+ - action_get_description
  

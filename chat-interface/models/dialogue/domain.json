@@ -59,6 +59,7 @@
     "prev_utter_fee_check",
     "prev_utter_description_check",
     "prev_utter_ask_student",
-    "prev_action_get_fee"
+    "prev_action_get_fee",
+    "prev_action_get_description"
   ]
 }
