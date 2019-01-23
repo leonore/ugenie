@@ -19,7 +19,6 @@ socket.on('connect', function() {
     })
     var form = $('form').on('submit', function(e) {
         e.preventDefault()
-        //let user_name = $('input.username').val()
         let user_name = 'You'
         let user_input = $('input.message-form__input').val()
         socket.emit('my event', {
