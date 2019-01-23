@@ -12,8 +12,10 @@ function closeForm() {
 // document.domain represents the IP address of the computer you are working on and location.port represents the port
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 socket.on('connect', function() {
+	console.log('New connection from ' + document.domain);
     socket.emit('my event', {
-        state: 'User Connected'
+        state: 'User Connected',
+		ip: document.domain
     })
     var form = $('form').on('submit', function(e) {
         e.preventDefault()
