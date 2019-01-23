@@ -35,10 +35,10 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
                 socketio.emit('print message', json)
                 messageReceived(json['message'])
                 sendMessage(agent.getResponse(json['message']))
-                
+
 if __name__ == '__main__':
         # Train Rasa-Core Dialogue Model
         #agent.train()
-        
+
         # Takes optional host and port arguments but by default will listen on localhost:5000
-        socketio.run(app, debug=True)
+        socketio.run(app, host='0.0.0.0', port=5000, debug=True)
