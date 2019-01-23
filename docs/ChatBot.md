@@ -32,6 +32,7 @@ python3 -m rasa_core_sdk.endpoint --actions actions
 ```
 
 This will start a running process, simply Ctrl-C after it has outputted the messages indicating all the functions are registered.
+
 ---
 
 ### Running the Chat Service:
