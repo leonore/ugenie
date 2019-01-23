@@ -1,8 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
 import argparse
 import warnings
 
@@ -13,10 +8,8 @@ from rasa_core.slots import TextSlot
 from rasa_core.events import SlotSet
 
 class SessionAgent:
-    def __init__(self, sid):
-        self.sid = sid
-        print("New SessionAgent for ",sid)
-        # Start Rasa-Core Agent
+    # Start Rasa-Core Agent
+    def __init__(self):
         interpreter = RasaNLUInterpreter("models/nlu/default/current")
         self.agent = Agent.load("models/dialogue", interpreter=interpreter)
 
