@@ -21,6 +21,19 @@ python3 -c 'import trainer; trainer.train()'
 ```
 ---
 
+### (Optional) Register Custom Actions:
+
+If changes have been made to the agent's custom actions (anything in actions.py), the bot needs to re-register the new functions.
+
+To do this, run:
+
+```bash
+python3 -m rasa_core_sdk.endpoint --actions actions
+```
+
+This will start a running process, simply Ctrl-C after it has outputted the messages indicating all the functions are registered.
+---
+
 ### Running the Chat Service:
 
 If the agent has been trained and is ready to use:
