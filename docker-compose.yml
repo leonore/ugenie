@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  database:
+    image: elasticsearch:6.5.4
+    ports:
+      - "9200:9200"
+  action_server:
+    image: rasa/rasa_core_sdk:latest
+    volumes:
+      - ./chat-interface:/app/chat-interface
+    ports:
+      - "5055:5055"
+  interface:
+    build: .
+    ports:
+      - "5000:5000"
