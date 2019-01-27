@@ -13,16 +13,15 @@ function closeForm() {
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 socket.on('connect', function() {
 	console.log('New connection from ' + document.domain);
-    socket.emit('my event', {
+    socket.emit('event', {
         state: 'User Connected',
 		ip: document.domain
     })
     var form = $('form').on('submit', function(e) {
         e.preventDefault()
-        //let user_name = $('input.username').val()
         let user_name = 'You'
         let user_input = $('input.message-form__input').val()
-        socket.emit('my event', {
+        socket.emit('event', {
 			user_name: user_name,
             message: user_input
         })

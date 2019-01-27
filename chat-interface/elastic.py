@@ -37,6 +37,6 @@ def get_sc_times(query):
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
 #print(get_sc_field("SPANISH STAGE 2", "Course description"))
 
-print(get_sc_times("Ancient Medicine: Theory and Practice"))
-print(get_sc_times("SPANISH STAGE 2"))
-print(get_sc_times("Scottish history in maps"))
+#print(get_sc_times("Ancient Medicine: Theory and Practice"))
+#print(get_sc_times("SPANISH STAGE 2"))
+#print(get_sc_times("Scottish history in maps"))

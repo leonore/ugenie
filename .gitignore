@@ -15,3 +15,6 @@
 ## Python cache files
 *.pyc
 **/__pycache__/*
+
+# Trained models
+chat-interface/models/*

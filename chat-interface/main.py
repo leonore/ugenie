@@ -1,13 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_socketio import SocketIO
-from difflib import SequenceMatcher
 
 import agent
-#import actions
 
 app = Flask(__name__) # Wrap Flask around __name__
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
 socketio = SocketIO(app) # Apply SocketIO to 'app' to use it instead of app for running the application
+
+sessionAgents = {} # Associate Session IDs with Agent objects
 
 # When the user enters the homepage ('/') it triggers the sessions view
 @app.route('/')
@@ -22,20 +22,31 @@ def sendMessage(message):
         json = {'user_name' : 'GUVA', 'message' : message}
         socketio.emit('print message', json)
 
-@socketio.on('my event')
+@socketio.on('event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
         print('Received event: ' + str(json))
 
-        # If this event is a user connection
-        if 'state' in json:
-                sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
+        # Get the session ID this event is associated with
+        sessionId = request.sid
 
+        # If this event is a new user connecting
+        if ('state' in json and json['state'] == 'User Connected'):
+                # Print the welcome message on the chat interface
+                sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
+
+                # Create an agent object for this session
+                sessionAgents[sessionId] = agent.SessionAgent() 
+                
         # If this event contains a message, answer it
         elif ('message' in json and json['message'] != ''):
-                socketio.emit('print message', json)
-                messageReceived(json['message'])
-                sendMessage(agent.getResponse(json['message']))
+                # Print the message that was sent
+                socketio.emit('print message', json)    # On the chat interface
+                messageReceived(json['message'])        # On the console
 
+                # Get and sent back a response to the chat interface
+                agentMessage = sessionAgents[sessionId].getResponse(json['message'])
+                sendMessage(agentMessage)
+                
 if __name__ == '__main__':
         # Train Rasa-Core Dialogue Model
         #agent.train()
