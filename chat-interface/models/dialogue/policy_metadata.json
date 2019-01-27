@@ -1,9 +1,11 @@
 {
   "action_fingerprints": {
     "action_listen": {
-      "slots": []
+      "slots": [
+        "student"
+      ]
     },
-    "action_get_description": {
+    "utter_greet": {
       "slots": []
     },
     "utter_goodbye": {
@@ -12,7 +14,7 @@
     "action_get_fee": {
       "slots": []
     },
-    "utter_greet": {
+    "action_get_description": {
       "slots": []
     }
   },
@@ -27,5 +29,5 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190121-174507"
+  "trained_at": "20190127-143158"
 }
