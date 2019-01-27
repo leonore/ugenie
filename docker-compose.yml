@@ -5,6 +5,12 @@ services:
     image: elasticsearch:6.5.4
     ports:
       - "9200:9200"
+  action_server:
+    image: rasa/rasa_core_sdk:latest
+    volumes:
+      - ./chat-interface/actions:/app/chat-interface/actions
+    ports:
+    - "5055:5055"
   interface:
     build: .
     ports:
