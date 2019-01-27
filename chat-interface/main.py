@@ -3,7 +3,7 @@ from flask_socketio import SocketIO
 from difflib import SequenceMatcher
 
 import agent
-import actions
+#import actions
 
 app = Flask(__name__) # Wrap Flask around __name__
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
@@ -28,7 +28,7 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
 
         # If this event is a user connection
         if 'state' in json:
-                sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
+                sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
 
         # If this event contains a message, answer it
         elif ('message' in json and json['message'] != ''):
