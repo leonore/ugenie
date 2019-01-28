@@ -7,9 +7,12 @@ class GetFees(Action):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Cost")
-        print("Elastic output: ", elastic_output)
-        response = "The cost of " + tracker.get_slot("course") + " is £" + str(elastic_output)
+        try:
+            elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Cost")
+            response = tracker.get_slot("course") + " costs £" + str(elastic_output) + "."
+        except:
+            response = "Sorry, I couldn't find any course fees for " + tracker.get_slot("course") + "."
+        
         dispatcher.utter_message(response)
         return 
 
@@ -18,8 +21,11 @@ class GetDescription(Action):
         return "action_get_description"
 
     def run(self, dispatcher, tracker, domain):
-        elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Course description")
-        print("Elastic output: ", elastic_output)
-        response = "The description for " + tracker.get_slot("course") + " is: " + str(elastic_output)
+        try:
+            elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Course description")
+            response = "The description for " + tracker.get_slot("course") + " is: " + str(elastic_output) + "."
+        except:
+            response = "Sorry, I couldn't find any description for " + tracker.get_slot("course") + "."
+            
         dispatcher.utter_message(response)
         return 
