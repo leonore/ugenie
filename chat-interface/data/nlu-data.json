@@ -1,11 +1,11 @@
-﻿{  
-   "rasa_nlu_data":{  
-      "common_examples":[  
-         {  
+﻿{
+   "rasa_nlu_data":{
+      "common_examples":[
+         {
             "text":"how much is biology?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":12,
                   "end":19,
                   "value":"biology",
@@ -13,11 +13,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how much are the fees for biology?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":26,
                   "end":33,
                   "value":"biology",
@@ -25,11 +25,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how much does it cost to do biology?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":28,
                   "end":35,
                   "value":"biology",
@@ -37,11 +37,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how much does it cost to study biology?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":31,
                   "end":38,
                   "value":"biology",
@@ -49,11 +49,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how much does biology cost?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":14,
                   "end":21,
                   "value":"biology",
@@ -61,11 +61,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what's the cost to do biology?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":22,
                   "end":29,
                   "value":"biology",
@@ -73,11 +73,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what's the price of biology?",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":20,
                   "end":27,
                   "value":"biology",
@@ -85,11 +85,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"tell me about biology",
             "intent":"description_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":14,
                   "end":21,
                   "value":"biology",
@@ -97,11 +97,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what's the description for biology?",
             "intent":"description_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":27,
                   "end":34,
                   "value":"biology",
@@ -109,88 +109,88 @@
                }
             ]
          },
-         {  
+         {
             "text":"hi",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"hey",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"hello",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"good morning",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"good afternoon",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"hi there",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"bye",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"goodbye",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"see you later",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"bye bye",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"alright bye",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"i'm an eu student",
             "intent":"inform_student",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":7,
                   "end":9,
                   "value":"eu",
@@ -198,11 +198,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"i'm from the eu",
             "intent":"inform_student",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":13,
                   "end":15,
                   "value":"eu",
@@ -210,11 +210,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"when does fancy florence start",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":10,
                   "end":24,
                   "value":"fancy florence",
@@ -222,11 +222,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"when does writing fiction begin",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":10,
                   "end":25,
                   "value":"writing fiction",
@@ -234,11 +234,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what date does french stage 5 begin",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":15,
                   "end":29,
                   "value":"french stage 5",
@@ -246,11 +246,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what time does geology in the field end",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":15,
                   "end":35,
                   "value":"geology in the field",
@@ -258,11 +258,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how long does counselling skills last",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":14,
                   "end":32,
                   "value":"counselling skills",
@@ -270,11 +270,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"when does scottish philosophy end",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":10,
                   "end":29,
                   "value":"scottish philosophy",
@@ -282,11 +282,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what date does opera afternoons 1 end",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":15,
                   "end":33,
                   "value":"opera afternoons 1",
@@ -294,11 +294,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what time does songwriting workshop begin",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":15,
                   "end":35,
                   "value":"songwriting workshop",
@@ -306,11 +306,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"whats the duration of spanish stage 2",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":22,
                   "end":37,
                   "value":"spanish stage 2",
@@ -318,11 +318,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what is the time span for orkney in scotland",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":26,
                   "end":44,
                   "value":"orkney in scotland",
@@ -330,11 +330,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"when does a guided tour of dutch, flemish and french art in kelvingrove art gallery take place",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":10,
                   "end":83,
                   "value":"a guided tour of dutch, flemish and french art in kelvingrove art gallery",
@@ -342,11 +342,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how long is festivals in ancient egypt",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":12,
                   "end":38,
                   "value":"festivals in ancient egypt",
@@ -354,11 +354,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how many credits is intermediate hieroglyphics",
             "intent":"credits_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":20,
                   "end":46,
                   "value":"intermediate hieroglyphics",
@@ -366,39 +366,39 @@
                }
             ]
          },
-         {  
+         {
             "text":"howdy",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"yo",
             "intent":"greet",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"so long",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"l8r alligator",
             "intent":"goodbye",
-            "entities":[  
+            "entities":[
 
             ]
          },
-         {  
+         {
             "text":"how much money is film studies 1",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":18,
                   "end":32,
                   "value":"film studies 1",
@@ -406,11 +406,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how much does the kennedy brothers course charge",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":13,
                   "end":34,
                   "value":" the kennedy brothers",
@@ -418,11 +418,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what is a history of the fbi",
             "intent":"description_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":8,
                   "end":28,
                   "value":"a history of the fbi",
@@ -430,11 +430,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what happens in arabic stage 1",
             "intent":"description_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":16,
                   "end":30,
                   "value":"arabic stage 1",
@@ -442,11 +442,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what courses are there in art and art history",
             "intent":"course_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":26,
                   "end":45,
                   "value":"art and art history",
@@ -454,11 +454,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how many pounds is west end lectures",
             "intent":"fee_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":19,
                   "end":36,
                   "value":"west end lectures",
@@ -466,11 +466,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what qualification do i get from astrophysics",
             "intent":"qualification_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":33,
                   "end":45,
                   "value":"astrophysics",
@@ -478,11 +478,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"is brain sciences full time",
             "intent":"full_part_time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":3,
                   "end":17,
                   "value":"brain sciences",
@@ -490,11 +490,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"is chinese studies available part time",
             "intent":"full_part_time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":3,
                   "end":18,
                   "value":"chinese studies",
@@ -502,11 +502,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"can i do data science part time",
             "intent":"full_part_time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":9,
                   "end":21,
                   "value":"data science",
@@ -514,11 +514,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"is endodontics part time",
             "intent":"full_part_time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":3,
                   "end":14,
                   "value":"endodontics",
@@ -526,11 +526,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"is food security available full time",
             "intent":"full_part_time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":3,
                   "end":16,
                   "value":"food security",
@@ -538,11 +538,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"can i do gender history full time",
             "intent":"full_part_time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":9,
                   "end":23,
                   "value":"gender history",
@@ -550,11 +550,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"what term does housing studies start",
             "intent":"term_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":15,
                   "end":30,
                   "value":"housing studies",
@@ -562,11 +562,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"tell me some science courses",
             "intent":"course_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":13,
                   "end":20,
                   "value":"science",
@@ -574,11 +574,11 @@
                }
             ]
          },
-         {  
+         {
             "text":"how many hours does working with trauma last",
             "intent":"time_check",
-            "entities":[  
-               {  
+            "entities":[
+               {
                   "start":20,
                   "end":39,
                   "value":"working with trauma",
