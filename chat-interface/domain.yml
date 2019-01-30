@@ -18,6 +18,8 @@ intents:
 - description_check
 - inform_student
 - time_check
+- tutor_check
+- acronym_check
 
 entities:
 - course
@@ -32,6 +34,8 @@ actions:
 - action_get_fee
 - action_get_description
 - action_get_time
+- action_get_tutor
+- action_get_acronym
 
 templates:
   utter_greet:

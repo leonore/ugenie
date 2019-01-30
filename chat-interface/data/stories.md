@@ -17,3 +17,7 @@
 ## time_check
 * time_check
  - action_get_time
+
+## acronym_check
+* acronym_check
+- action_get_acronym

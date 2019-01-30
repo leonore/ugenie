@@ -11,13 +11,13 @@ es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 def get_acronym_answer(query):
     res = es.search(index="questions", body={"query": {"match": {"question": query}}})
     first_hit = res['hits']['hits'][0]
-    return first_hit['_source']['answer'] # gives answer in text
+    return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
 
 # get specific field for given short course: fees, tutor, course description, credits attached, subject area
 def get_sc_field(query, field):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
     first_hit = res['hits']['hits'][0]
-    return first_hit['_source'][field] # gives field in text
+    return first_hit['_source']['Title'], first_hit['_source'][field] # gives field in text
 
 def get_sc_times(query):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
@@ -31,7 +31,7 @@ def get_sc_times(query):
     else:
         date = first_hit['Start date']
         answer = "%s runs from %s to %s on %s" % (title, start_time, end_time, date)
-    return answer
+    return title, answer
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
