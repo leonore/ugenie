@@ -11,9 +11,9 @@ from rasa_core.events import SlotSet
 class SessionAgent:
     # Start Rasa-Core Agent
     def __init__(self):
-        interpreter = RasaNLUInterpreter("models/nlu/default/current")
+        interpreter = RasaNLUInterpreter("agent-data/models/nlu/default/current")
         action_endpoint = EndpointConfig(url="http://localhost:5055/webhook")
-        self.agent = Agent.load("models/dialogue", interpreter=interpreter, action_endpoint=action_endpoint)
+        self.agent = Agent.load("agent-data/models/dialogue", interpreter=interpreter, action_endpoint=action_endpoint)
 
     # Handle user message and return response from training data
     def getResponse(self, message):

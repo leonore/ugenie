@@ -9,17 +9,17 @@ from rasa_nlu.model import Trainer
 
 # Train Rasa-NLU Model
 def train_nlu():
-    training_data = load_data('data/nlu-data.json')
+    training_data = load_data('agent-data/data/nlu-data.json')
     trainer = Trainer(config.load("nlu-config.yml"))
     trainer.train(training_data)
-    model_directory = trainer.persist('models/nlu/', fixed_model_name="current")
+    model_directory = trainer.persist('agent-data/models/nlu/', fixed_model_name="current")
     return model_directory
 
 # Train Rasa-Core Dialogue Model
 def train_core():
     domain_file="domain.yml"
-    model_path="models/dialogue"
-    training_data_file="data/stories.md"
+    model_path="agent-data/models/dialogue"
+    training_data_file="agent-data/data/stories.md"
     agent = Agent(
         domain_file,
         policies=[MemoizationPolicy(max_history=5), KerasPolicy()]
