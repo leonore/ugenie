@@ -3,13 +3,13 @@
     "action_listen": {
       "slots": []
     },
-    "utter_greet": {
-      "slots": []
-    },
     "action_get_description": {
       "slots": []
     },
     "utter_goodbye": {
+      "slots": []
+    },
+    "utter_greet": {
       "slots": []
     },
     "action_get_fee": {
@@ -27,5 +27,5 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190204-163538"
+  "trained_at": "20190205-160449"
 }
