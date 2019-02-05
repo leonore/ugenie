@@ -1,9 +1,6 @@
 from rasa_core_sdk import Action
 
-import os
-parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.sys.path.insert(0,parentdir) 
-from elastic import elastic
+import elastic
 
 class GetFees(Action):
     def name(self):

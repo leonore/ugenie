@@ -3,7 +3,7 @@ from flask_socketio import SocketIO
 
 from model.agent import agent
 
-app = Flask(__name__, root_path='view', static_folder='view/static')
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
 socketio = SocketIO(app) # Apply SocketIO to 'app' to use it instead of app for running the application
 
