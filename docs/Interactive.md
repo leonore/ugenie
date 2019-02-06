@@ -23,4 +23,5 @@ python3 -c 'import trainer; trainer.train_interactive()'
 
 In the second terminal, wait a while for it to perform the initial training, then when prompted for user input begin to converse with it and give feedback on its responses.
 You can track the flow of the conversation in your browser by going to "http://localhost:5005/visualization.html".
+
 ---
