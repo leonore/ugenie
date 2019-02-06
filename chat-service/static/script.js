@@ -13,23 +13,23 @@ function closeForm() {
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 socket.on('connect', function() {
 	console.log('New connection from ' + document.domain);
-    socket.emit('event', {
+    socket.emit('new_connection', {
         state: 'User Connected',
 		ip: document.domain
-    })
+    });
     var form = $('form').on('submit', function(e) {
         e.preventDefault()
         let user_name = 'You'
         let user_input = $('input.message-form__input').val()
-        socket.emit('event', {
+        socket.emit('new_message', {
 			user_name: user_name,
             message: user_input
         })
         $('input.message-form__input').val('').focus()
-    })
+    });
 })
 socket.on('print message', function(msg) {
-    console.log(msg)
+    console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
         $('div.messages').append('<div><b style="color: #000">' + msg.user_name + ': </b> ' + msg.message + '</div>')
 		$('div.messages').scrollTop = $('div.messages').scrollHeight;

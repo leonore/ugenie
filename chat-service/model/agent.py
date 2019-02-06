@@ -8,20 +8,20 @@ from rasa_core.trackers import DialogueStateTracker
 from rasa_core.slots import TextSlot
 from rasa_core.events import SlotSet
 
+# Get current directory for absolute path referencing
 import os
+current_directory = os.path.dirname(os.path.realpath(__file__))
 
-class SessionAgent:
-    # Start Rasa-Core Agent
-    def __init__(self):
-        interpreter = RasaNLUInterpreter(os.path.dirname(os.path.realpath(__file__)) + '/agent-data/models/nlu/default/current')
-        action_endpoint = EndpointConfig(url='http://localhost:5055/webhook')
-        self.agent = Agent.load(os.path.dirname(os.path.realpath(__file__)) + '/agent-data/models/dialogue', interpreter=interpreter, action_endpoint=action_endpoint)
+# Start Rasa-Core Agent
+interpreter = RasaNLUInterpreter(current_directory + '/agent-data/models/nlu/default/current')
+action_endpoint = EndpointConfig(url='http://localhost:5055/webhook')
+agent = Agent.load(current_directory + '/agent-data/models/dialogue', interpreter=interpreter, action_endpoint=action_endpoint)
 
-    # Handle user message and return response from training data
-    def getResponse(self, message):
-        responses = self.agent.handle_text(message)
-        print('Rasa-Core responses: ', responses)
-        if(len(responses) > 0):
-            return responses[0]['text']
-        else:
-            return "Sorry, I didn't understand, could you rephrase that?"
+# Handle user message and return response from training data
+def getResponse(sessionId, message):
+    responses = agent.handle_text(message, sender_id=sessionId)
+    print('Rasa-Core responses: ', responses)
+    if(len(responses) > 0):
+        return responses[0]['text']
+    else:
+        return "Sorry, I didn't understand, could you rephrase that?"
