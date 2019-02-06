@@ -8,7 +8,7 @@ services:
   action_server:
     image: rasa/rasa_core_sdk:latest
     volumes:
-      - ./chat-interface:/app/actions
+      - ./chat-interface/model:/app/actions
     ports:
       - "5055:5055"
     command:

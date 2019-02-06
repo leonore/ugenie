@@ -9,7 +9,7 @@ RUN apt-get install build-essential -y
 RUN pip install -r requirements.txt
 RUN python -m spacy download en
 
-WORKDIR chat-interface
+WORKDIR chat-service/model
 
 # set up RASA unit
 RUN python -c 'import trainer; trainer.train()'
