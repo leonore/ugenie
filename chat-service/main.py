@@ -7,39 +7,39 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
 socketio = SocketIO(app) # Apply SocketIO to 'app' to use it instead of app for running the application
 
-sessionIds = [] # Collect connected Session IDs
-
 # When the user enters the homepage ('/') it triggers the sessions view
 @app.route('/')
 def sessions():
         return render_template('session.html') # Helps render the HTML page, called a 'template'
 
 def messageReceived(sessionId, message):
-        print('Message received from', sessionID,': ', message)
+        print('Message received from', sessionId,': ', message)
 
 def sendMessage(sessionId, message):
         print('Sending message!')
         json = {'user_name' : 'GUVA', 'message' : message}
         socketio.emit('print message', json)
 
-@socketio.on('connect')
-def handle_connection():
+@socketio.on('new_connection')
+def handle_connection(json):
+        print('User connected: ' + str(json))
+        
         # Get the session ID this event is associated with
         sessionId = request.sid
         
         # Print the welcome message on the chat interface
         sendMessage(sessionId, "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
         
-@socketio.on('message')
-def handle_message(json, methods=['GET', 'POST']):
+@socketio.on('new_message')
+def handle_message(json):
         print('Received event: ' + str(json))
 
         # Get the session ID this event is associated with
         sessionId = request.sid
         
         # Print the message that was sent
-        socketio.emit('print message', json)    # On the chat interface
-        messageReceived(json['message'])        # On the console
+        socketio.emit('print message', json)            # On the chat interface
+        messageReceived(sessionId, json['message'])     # On the console
 
         # Get and sent back a response to the chat interface
         agentMessage = agent.getResponse(sessionId, json['message'])
