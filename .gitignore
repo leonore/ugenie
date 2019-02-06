@@ -17,4 +17,4 @@
 **/__pycache__/*
 
 # Trained models
-chat-interface/models/*
+chat-service/model/agent-data/models/*
