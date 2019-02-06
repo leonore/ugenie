@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 
-import agent
+from model import agent
 
-app = Flask(__name__) # Wrap Flask around __name__
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
 socketio = SocketIO(app) # Apply SocketIO to 'app' to use it instead of app for running the application
 
