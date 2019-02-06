@@ -10,6 +10,11 @@ slots:
       — eu
       — international
       — other-uk
+  requirement:
+    type: categorical
+     values:
+       - general
+       - ielts
 
 intents:
 - greet
@@ -20,6 +25,8 @@ intents:
 - time_check
 - tutor_check
 - acronym_check
+- requirements_check
+- give_req_type
 
 entities:
 - course
@@ -36,6 +43,9 @@ actions:
 - action_get_time
 - action_get_tutor
 - action_get_acronym
+- action_get_requirements
+- utter_give_requirements
+- utter_confirm_requirement_type
 
 templates:
   utter_greet:
@@ -52,3 +62,6 @@ templates:
 
   utter_ask_student:
   - text: "And are you a Scottish, EU, International, or Other-UK student?"
+
+  utter_confirm_requirement_type:
+  - text: "Do you mean general requirements or IELTS requirements?"

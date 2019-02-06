@@ -9,15 +9,20 @@ es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
 
 # get answer to common questions about ADMISSIONS acronyms
 def get_acronym_answer(query):
-    res = es.search(index="questions", body={"query": {"match": {"question": query}}})
+    res = es.search(index="general_questions", body={"query": {"match": {"question": query}}})
     first_hit = res['hits']['hits'][0]
     return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
+
+# returns the full title of course
+def get_sc_title(query):
+    title = get_sc_field(query, 'Title')
+    return title
 
 # get specific field for given short course: fees, tutor, course description, credits attached, subject area
 def get_sc_field(query, field):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
     first_hit = res['hits']['hits'][0]
-    return first_hit['_source']['Title'], first_hit['_source'][field] # gives field in text
+    return  first_hit['_source'][field] # gives field in text
 
 def get_sc_times(query):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
@@ -31,7 +36,19 @@ def get_sc_times(query):
     else:
         date = first_hit['Start date']
         answer = "%s runs from %s to %s on %s" % (title, start_time, end_time, date)
-    return title, answer
+    return answer
+
+def get_admission_requirements(query, requirement_type):
+    if requirement_type is "ielts":
+        field = "IELTS requirements"
+    elif requirement_type is "general":
+        field = "Ent Req"
+    else:
+        return False
+
+    res = es.search(index="admissions", body={"query": {"match": {"Title": query}}})
+    first_hit = res['hits']['hits'][0]
+    return first_hit['_source'][field]
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
