@@ -28,7 +28,7 @@ def handle_connection():
         sessionId = request.sid
         
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, "Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
+        sendMessage(sessionId, "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
         
 @socketio.on('message')
 def handle_message(json, methods=['GET', 'POST']):
