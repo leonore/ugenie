@@ -32,11 +32,11 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
         # If this event is a new user connecting
         if ('state' in json and json['state'] == 'User Connected'):
                 # Print the welcome message on the chat interface
-                sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assisstant. How can I help you?")
+                sendMessage("Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
 
                 # Create an agent object for this session
-                sessionAgents[sessionId] = agent.SessionAgent() 
-                
+                sessionAgents[sessionId] = agent.SessionAgent()
+
         # If this event contains a message, answer it
         elif ('message' in json and json['message'] != ''):
                 # Print the message that was sent
@@ -46,7 +46,7 @@ def handle_my_custom_event(json, methods=['GET', 'POST']):
                 # Get and sent back a response to the chat interface
                 agentMessage = sessionAgents[sessionId].getResponse(json['message'])
                 sendMessage(agentMessage)
-                
+
 if __name__ == '__main__':
         # Train Rasa-Core Dialogue Model
         #agent.train()
