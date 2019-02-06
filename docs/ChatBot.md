@@ -1,11 +1,11 @@
 ## Running the Chat
 
-### Start MySQL:
+### Start Elastic:
 
-Provided you've already followed the instructions in Database.md:
+Provided you've already followed the instructions in Elastic.md:
 
 ```bash
-sudo service mysql start
+sudo -i service elasticsearch start
 ```
 ---
 
