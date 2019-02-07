@@ -6,17 +6,16 @@
     "utter_greet": {
       "slots": []
     },
-    "action_get_fee": {
+    "action_get_time": {
       "slots": []
     },
     "utter_goodbye": {
       "slots": []
     },
-    "action_get_description": {
+    "action_get_fee": {
       "slots": []
     }
   },
-  "rasa_core": "0.12.3",
   "python": "3.6.7",
   "max_histories": [
     5,
@@ -27,5 +26,8 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190206-154130"
+  "trained_at": "20190207-192950",
+  "rasa_core": "0.13.0",
+  "tensorflow": "1.12.0",
+  "sklearn": "0.20.2"
 }

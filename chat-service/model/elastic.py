@@ -18,11 +18,34 @@ def get_sc_title(query):
     title = get_sc_field(query, 'Title')
     return title
 
+def get_admissions_title(query):
+    title = get_admissions_field(query, 'Lookup Name')
+    return title
+
+def get_course_title(query):
+    print("ES Get course title")
+    # title = get_sc_field(query, 'Title')
+    # res = es.search(index="short_courses, admissions", body={"query":{"dis_max":{"queries":[{"match": {"Title": query}}, {"match":{"Lookup Name": query}}]}}})
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+
+    first_hit = res['hits']['hits'][0]
+    course = first_hit['_source']['Lookup Name']
+    print(course)
+    return course
+    # return first_hit['_source']['Lookup Name']
+
+    # return title
+
 # get specific field for given short course: fees, tutor, course description, credits attached, subject area
 def get_sc_field(query, field):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
     first_hit = res['hits']['hits'][0]
     return  first_hit['_source'][field] # gives field in text
+
+def get_admissions_field(query, field):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    first_hit = res['hits']['hits'][0]
+    return first_hit['_source'][field]
 
 def get_sc_times(query):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
@@ -37,6 +60,21 @@ def get_sc_times(query):
         date = first_hit['Start date']
         answer = "%s runs from %s to %s on %s" % (title, start_time, end_time, date)
     return answer
+
+def get_ad_times(query):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    first_hit = res['hits']['hits'][0]['_source']
+    title = first_hit['Lookup Name']
+    term = first_hit['Admit Term']
+    january = first_hit['JanuaryStart']
+    print(january)
+    print(january == "TRUE")
+    if january:
+        answer = "%s starts in %s and begins in January." % (title, term)
+    else:
+        answer = "%s starts in %s" % (title, term)
+    return answer
+
 
 def get_admission_requirements(query, requirement_type):
     if requirement_type is "ielts":

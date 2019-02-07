@@ -530,6 +530,54 @@
         "text": "tell me some science courses"
       },
       {
+        "intent": "acronym_check",
+        "entities": [
+          {
+            "start": 10,
+            "end": 12,
+            "value": "FT",
+            "entity": "acronym"
+          }
+        ],
+        "text": "what does FT mean"
+      },
+      {
+        "intent": "acronym_check",
+        "entities": [
+          {
+            "start": 8,
+            "end": 26,
+            "value": "IELTS requirements",
+            "entity": "acronym"
+          }
+        ],
+        "text": "what is IELTS requirements"
+      },
+      {
+        "intent": "tutor_check",
+        "entities": [
+          {
+            "start": 12,
+            "end": 26,
+            "value": "french stage 1",
+            "entity": "course"
+          }
+        ],
+        "text": "who teaches french stage 1"
+      },
+      {
+        "intent": "tutor_check",
+        "entities": [
+          {
+            "start": 21,
+            "end": 35,
+            "value": "film studies 1",
+            "entity": "course"
+          }
+        ],
+        "text": "who is the tutor for flim studies 1"
+      },
+      {
         "intent": "time_check",
         "entities": [
           {
@@ -540,6 +588,66 @@
           }
         ],
         "text": "how many hours does working with trauma last"
+      },
+      {
+        "intent": "requirements_check",
+        "entities": [
+          {
+            "start": 30,
+            "end": 42,
+            "value": "mechatronics",
+            "entity": "course"
+          }
+        ],
+        "text": "what are the requirements for mechatronics"
+      },
+      {
+        "intent": "requirements_check",
+        "entities": [
+          {
+            "start": 27,
+            "end": 58,
+            "value": "genetic and genomic counselling",
+            "entity": "course"
+          }
+        ],
+        "text": "what do I need to get into genetic and genomic counselling"
+      },
+      {
+        "intent": "give_req_type",
+        "entities": [
+          {
+            "start": 8,
+            "end": 15,
+            "value": "general",
+            "entity": "requirement"
+          }
+        ],
+        "text": "I meant general requirements"
+      },
+      {
+        "intent": "give_req_type",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "general",
+            "entity": "requirement"
+          }
+        ],
+        "text": "general requirements"
+      },
+      {
+        "intent": "give_req_type",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "IELTS",
+            "entity": "requirement"
+          }
+        ],
+        "text": "IELTS"
       }
     ],
     "regex_features": [],

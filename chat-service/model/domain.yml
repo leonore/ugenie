@@ -9,15 +9,18 @@ actions:
 - action_get_time
 - action_get_acronym
 - action_get_tutor
+- action_course_validate
 - utter_give_requirements
 - utter_confirm_requirement_type
 - utter_fee_check
 - utter_description_check
 - utter_ask_student
+
 entities:
 - requirement
 - course
 - student
+
 intents:
 - requirements_check
 - goodbye
@@ -29,6 +32,7 @@ intents:
 - time_check
 - tutor_check
 - acronym_check
+
 slots:
   course:
     type: text
@@ -82,6 +86,7 @@ slots:
     - '-'
     - u
     - k
+
 templates:
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
