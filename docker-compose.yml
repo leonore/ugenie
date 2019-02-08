@@ -11,10 +11,6 @@ services:
       - ./chat-interface/model:/app/actions
     ports:
       - "5055:5055"
-    command:
-      - start
-      - --actions
-      - actions
   interface:
     build: .
     depends_on:

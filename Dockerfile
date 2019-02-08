@@ -9,10 +9,13 @@ RUN apt-get install build-essential -y
 RUN pip install -r requirements.txt
 RUN python -m spacy download en
 
-WORKDIR chat-service/model
+WORKDIR chat-service
 
-# set up RASA unit
-RUN python -c 'import trainer; trainer.train()'
+# need to figure out paths
+# train model
+#RUN python -c 'import trainer; trainer.train()'
+# spin up action server
+#RUN nohup python -m rasa_core_sdk.endpoint --actions actions &
 
 # Launch the whole stack
 CMD [ "python", "main.py" ]
