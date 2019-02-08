@@ -1,13 +1,11 @@
-FROM python:3.6.6-slim
+FROM rasa/rasa_core:0.12.4
 
 COPY . /app
 WORKDIR /app
 
 # install requirements
-RUN apt-get update
-RUN apt-get install build-essential -y
-RUN pip install -r requirements.txt
-RUN python -m spacy download en
+RUN apt-get update && \
+    pip install -r requirements.txt
 
 WORKDIR chat-service
 
