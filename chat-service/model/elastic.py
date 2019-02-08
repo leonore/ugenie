@@ -70,9 +70,11 @@ def get_course_title(query):
         course_cat = "AD"
     else:
         print("NO")
+        return None, None
+
     print("Course = " + course)
 
-    return course
+    return course, course_cat
 
 
 
@@ -100,10 +102,10 @@ def get_sc_times(query):
     start_time, end_time = first_hit['Start time'], first_hit['End time']
     if duration is not 1:
         start_date, end_date = first_hit['Start date'], first_hit['End date']
-        answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (title, start_date, end_date, start_time, end_time)
+        answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (title.title(), start_date, end_date, start_time, end_time)
     else:
         date = first_hit['Start date']
-        answer = "%s runs from %s to %s on %s" % (title, start_time, end_time, date)
+        answer = "%s runs from %s to %s on %s" % (title.title(), start_time, end_time, date)
     return answer
 
 def get_ad_times(query):
@@ -115,9 +117,9 @@ def get_ad_times(query):
     print(january)
     print(january == "TRUE")
     if january:
-        answer = "%s starts in %s and begins in January." % (title, term)
+        answer = "%s starts in %s and begins in January." % (title.title(), term)
     else:
-        answer = "%s starts in %s" % (title, term)
+        answer = "%s starts in %s" % (title.title(), term)
     return answer
 
 

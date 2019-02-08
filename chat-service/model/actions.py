@@ -24,7 +24,7 @@ class GetFees(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        elastic_title = get_course_title(tracker.get_slot("course"))
+        elastic_title = elastic.get_course_title(tracker.get_slot("course"))
         response = "Course: " + str(elastic_title)
         dispatcher.utter_message(response)
         return
@@ -76,16 +76,22 @@ class GetTime(Action):
         #     response = "Sorry :("
 
         print("A Get Time")
-        try:
-            elastic_title = get_course_title(tracker.get_slot("course"))
-        except:
-            response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
 
-        try:
-            elastic_output = elastic.get_ad_times(tracker.get_slot("course"))
+        if elastic_cat == "SC":
+            elastic_output = elastic.get_sc_times(elastic_title)
             response = str(elastic_output)
-        except:
-            response = "Sorry, I could not find any times for " + str(elastic_title) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_times(elastic_title)
+            response = str(elastic_output)
+        else:
+            response = "Sorry, I could not find the information for times for this course"
+
+        # try:
+        #     elastic_output = elastic.get_ad_times(tracker.get_slot("course"))
+        #     response = str(elastic_output)
+        # except:
+        #     response = "Sorry, I could not find any times for " + str(elastic_title) + "."
 
         #
         # dispatcher.utter_message("Time Out: ")
