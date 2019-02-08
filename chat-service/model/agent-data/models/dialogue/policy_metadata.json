@@ -3,16 +3,19 @@
     "action_listen": {
       "slots": []
     },
+    "action_get_fee": {
+      "slots": []
+    },
+    "utter_goodbye": {
+      "slots": []
+    },
     "utter_greet": {
       "slots": []
     },
     "action_get_time": {
       "slots": []
     },
-    "utter_goodbye": {
-      "slots": []
-    },
-    "action_get_fee": {
+    "action_get_description": {
       "slots": []
     }
   },
@@ -26,7 +29,7 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190208-171853",
+  "trained_at": "20190208-181438",
   "rasa_core": "0.13.0",
   "tensorflow": "1.12.0",
   "sklearn": "0.20.2"

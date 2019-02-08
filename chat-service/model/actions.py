@@ -24,8 +24,16 @@ class GetFees(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        elastic_title = elastic.get_course_title(tracker.get_slot("course"))
-        response = "Course: " + str(elastic_title)
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_cat == "SC":
+            elastic_output = elastic.get_sc_field(elastic_title, "Cost")
+            response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_fees(elastic_title)
+            response = str(elastic_output)
+
+
+
         dispatcher.utter_message(response)
         return
 
@@ -46,16 +54,15 @@ class GetDescription(Action):
     def run(self, dispatcher, tracker, domain):
         dispatcher.utter_message("Get Fee:")
 
-        try:
-            elastic_title = get_sc_title(tracker.get_slot("course"))
-        except:
-            response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
-
-        try:
-            elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Course description")
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_cat == "SC":
+            elastic_output = elastic.get_sc_field(elastic_title, "Course description")
             response = "The description for " + str(elastic_title) + " is: " + str(elastic_output) + "."
-        except:
-            response = "Sorry, I couldn't find any description for " + str(elastic_title) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_description(elastic_title)
+            response = str(elastic_output)
+        else:
+            response = "Sorry, I couldn't find any description for that course."
 
         dispatcher.utter_message(response)
         return

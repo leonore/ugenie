@@ -13,3 +13,7 @@
 ## time_check
 * time_check
  - action_get_time
+
+## description_check
+ * description_check
+  - action_get_description

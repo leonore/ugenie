@@ -13,14 +13,17 @@ def get_acronym_answer(query):
     first_hit = res['hits']['hits'][0]
     return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
 
+
 # returns the full title of course
 def get_sc_title(query):
     title = get_sc_field(query, 'Title')
     return title
 
+
 def get_admissions_title(query):
     title = get_admissions_field(query, 'Lookup Name')
     return title
+
 
 def get_course_title(query):
     print("ES Get course title")
@@ -34,7 +37,6 @@ def get_course_title(query):
     # print('Score 1 = ' + str(res['hits']['hits'][1]['_score']))
     # course1 = first_hit['_source']['Lookup Name']
     # print('Course = ' + course1)
-
     # if sc_res['hits']['max_score'] || ad_res['hits']['max_score']:
 
     sc = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
@@ -73,13 +75,8 @@ def get_course_title(query):
         return None, None
 
     print("Course = " + course)
-
     return course, course_cat
-
-
-
     # return first_hit['_source']['Lookup Name']
-
     # return title
 
 
@@ -89,10 +86,12 @@ def get_sc_field(query, field):
     first_hit = res['hits']['hits'][0]
     return  first_hit['_source'][field] # gives field in text
 
+
 def get_admissions_field(query, field):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]
     return first_hit['_source'][field]
+
 
 def get_sc_times(query):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
@@ -100,6 +99,7 @@ def get_sc_times(query):
     duration = first_hit['Duration (days)']
     title = first_hit['Title']
     start_time, end_time = first_hit['Start time'], first_hit['End time']
+
     if duration is not 1:
         start_date, end_date = first_hit['Start date'], first_hit['End date']
         answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (title.title(), start_date, end_date, start_time, end_time)
@@ -114,8 +114,7 @@ def get_ad_times(query):
     title = first_hit['Lookup Name']
     term = first_hit['Admit Term']
     january = first_hit['JanuaryStart']
-    print(january)
-    print(january == "TRUE")
+
     if january:
         answer = "%s starts in %s and begins in January." % (title.title(), term)
     else:
@@ -135,6 +134,26 @@ def get_admission_requirements(query, requirement_type):
     first_hit = res['hits']['hits'][0]
     return first_hit['_source'][field]
 
+
+def get_ad_fees(query):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    first_hit = res['hits']['hits'][0]['_source']
+    title = first_hit['Lookup Name']
+    home_fee = first_hit['Home Fee']
+    int_fee = first_hit['Int Fee']
+    response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
+    return response
+
+
+def get_ad_description(query):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    first_hit = res['hits']['hits'][0]['_source']
+    title = first_hit['Lookup Name']
+    desc = first_hit['Apply Centre Desciption']
+    response = "%s is a %s course" % (title.title(), desc)
+    return response
+
+
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
 #print(get_sc_field("SPANISH STAGE 2", "Course description"))
@@ -145,7 +164,6 @@ def get_admission_requirements(query, requirement_type):
 
 # print(get_sc_times("French stage 1"))
 # print(get_course_title("Brain Sciences"))
-#
 # print(get_course_title("French Stage 1"))
 # print(get_course_title("Orkney"))
 # print(get_course_title("Film"))
