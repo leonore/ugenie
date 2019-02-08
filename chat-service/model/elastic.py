@@ -26,15 +26,60 @@ def get_course_title(query):
     print("ES Get course title")
     # title = get_sc_field(query, 'Title')
     # res = es.search(index="short_courses, admissions", body={"query":{"dis_max":{"queries":[{"match": {"Title": query}}, {"match":{"Lookup Name": query}}]}}})
-    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    # res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    #
+    # first_hit = res['hits']['hits'][0]
+    # print('HIT = ' + str(res['hits']['hits'][0]))
+    # print('Score 0 = ' + str(res['hits']['hits'][0]['_score']))
+    # print('Score 1 = ' + str(res['hits']['hits'][1]['_score']))
+    # course1 = first_hit['_source']['Lookup Name']
+    # print('Course = ' + course1)
 
-    first_hit = res['hits']['hits'][0]
-    course = first_hit['_source']['Lookup Name']
-    print(course)
+    # if sc_res['hits']['max_score'] || ad_res['hits']['max_score']:
+
+    sc = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
+    print(str(sc))
+    if sc['hits']['total'] > 0:
+        sc_res = sc['hits']['hits'][0]
+    else:
+        sc_res = None
+
+    ad = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    if ad['hits']['total'] > 0:
+        ad_res = ad['hits']['hits'][0]
+    else:
+        ad_res = None
+
+    if sc_res != None and ad_res != None:
+        print('We have both with SC Score = ' + str(sc_res['_score']) + ', and AD Score = ' + str(ad_res['_score']))
+        if sc_res['_score'] >= ad_res['_score']:
+            print("SC = " + str(sc_res))
+            course = sc_res['_source']['Title']
+            course_cat = "SC"
+        else:
+            print("AD = " + str(ad_res))
+            course = ad_res['_source']['Lookup Name']
+            course_cat = "AD"
+    elif sc_res != None:
+        print("SC = " + str(sc_res))
+        course = sc_res['_source']['Title']
+        course_cat = "SC"
+    elif ad_res != None:
+        print("AD = " + str(ad_res))
+        course = ad_res['_source']['Lookup Name']
+        course_cat = "AD"
+    else:
+        print("NO")
+    print("Course = " + course)
+
     return course
+
+
+
     # return first_hit['_source']['Lookup Name']
 
     # return title
+
 
 # get specific field for given short course: fees, tutor, course description, credits attached, subject area
 def get_sc_field(query, field):
@@ -95,3 +140,11 @@ def get_admission_requirements(query, requirement_type):
 #print(get_sc_times("Ancient Medicine: Theory and Practice"))
 #print(get_sc_times("SPANISH STAGE 2"))
 #print(get_sc_times("Scottish history in maps"))
+
+# print(get_sc_times("French stage 1"))
+# print(get_course_title("Brain Sciences"))
+#
+# print(get_course_title("French Stage 1"))
+# print(get_course_title("Orkney"))
+# print(get_course_title("Film"))
+# print(get_course_title("Film Studies"))
