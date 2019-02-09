@@ -2,8 +2,8 @@ from rasa_core_sdk import Action
 
 import elastic
 
-
-
+# IN working
+#  sends the answer to common acronym questions
 class GetAcronym(Action):
     def name(self):
         return "action_get_acronym"
@@ -18,6 +18,7 @@ class GetAcronym(Action):
         dispatcher.utter_message(response)
         return
 
+# utters the cost of a course
 class GetFees(Action):
     def name(self):
         return "action_get_fee"
@@ -47,6 +48,7 @@ class GetFees(Action):
         # dispatcher.utter_message(response)
         # return
 
+# utters the description of a course
 class GetDescription(Action):
     def name(self):
         return "action_get_description"
@@ -67,6 +69,7 @@ class GetDescription(Action):
         dispatcher.utter_message(response)
         return
 
+# utters time related information to do with a course (e.g. start time, year)
 class GetTime(Action):
     def name(self):
         return "action_get_time"
@@ -107,6 +110,8 @@ class GetTime(Action):
         dispatcher.utter_message(response)
         return
 
+# IN WORK
+# utters the tutor for a course
 class GetTutor(Action):
     def name(self):
         return "action_get_tutor"
@@ -126,6 +131,8 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
+# IN WORK
+# utters the requirements to get into a course
 class GetRequirements(Action):
     def name(self):
         return "action_get_requirements"

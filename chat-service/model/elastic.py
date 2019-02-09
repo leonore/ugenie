@@ -14,17 +14,17 @@ def get_acronym_answer(query):
     return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
 
 
-# returns the full title of course
+# returns the full title of a short course
 def get_sc_title(query):
     title = get_sc_field(query, 'Title')
     return title
 
-
+# returns the full title of a admissions course
 def get_admissions_title(query):
     title = get_admissions_field(query, 'Lookup Name')
     return title
 
-
+# returns the most relevant course title in both the short courses and the admissions file, and returns the file it was in
 def get_course_title(query):
     print("ES Get course title")
     # title = get_sc_field(query, 'Title')
@@ -86,13 +86,13 @@ def get_sc_field(query, field):
     first_hit = res['hits']['hits'][0]
     return  first_hit['_source'][field] # gives field in text
 
-
+# get specific field for given admissions course: title, start date, int fee e.t.c.
 def get_admissions_field(query, field):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]
     return first_hit['_source'][field]
 
-
+# returns a string informing the start time, end time, start date, end date and title if exist
 def get_sc_times(query):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
     first_hit = res['hits']['hits'][0]['_source']
@@ -108,6 +108,7 @@ def get_sc_times(query):
         answer = "%s runs from %s to %s on %s" % (title.title(), start_time, end_time, date)
     return answer
 
+# returns the year in which the course starts and informs if it begins in january
 def get_ad_times(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
@@ -121,7 +122,7 @@ def get_ad_times(query):
         answer = "%s starts in %s" % (title.title(), term)
     return answer
 
-
+# returns the requirements for an admissions course
 def get_admission_requirements(query, requirement_type):
     if requirement_type is "ielts":
         field = "IELTS requirements"
@@ -134,7 +135,7 @@ def get_admission_requirements(query, requirement_type):
     first_hit = res['hits']['hits'][0]
     return first_hit['_source'][field]
 
-
+# returns the home fee and internaitonal fee of an admissions course
 def get_ad_fees(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
@@ -144,7 +145,7 @@ def get_ad_fees(query):
     response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
     return response
 
-
+# returns the kind of course an admissions course is
 def get_ad_description(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
