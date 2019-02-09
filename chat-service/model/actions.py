@@ -2,6 +2,8 @@ from rasa_core_sdk import Action
 
 import elastic
 
+# IN working
+#  sends the answer to common acronym questions
 class GetAcronym(Action):
     def name(self):
         return "action_get_acronym"
@@ -16,62 +18,100 @@ class GetAcronym(Action):
         dispatcher.utter_message(response)
         return
 
+# utters the cost of a course
 class GetFees(Action):
     def name(self):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        try:
-            elastic_title = get_sc_title(tracker.get_slot("course"))
-            try:
-                elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Cost")
-                response = str(elastic_title) + " costs £" + str(elastic_output) + "."
-            except:
-                response = "Sorry, I couldn't find any course fees for " + str(elastic_title) + "."
-        except:
-            response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
+
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_cat == "SC":
+            elastic_output = elastic.get_sc_field(elastic_title, "Cost")
+            response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_fees(elastic_title)
+            response = str(elastic_output)
+
+
 
         dispatcher.utter_message(response)
         return
 
+        # # elastic_title = get_sc_title(tracker.get_slot("course"))
+        # try:
+        #     elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Cost")
+        #     response = str(elastic_title) + " costs £" + str(elastic_output) + "."
+        # except:
+        #     response = "Sorry, I couldn't find any course fees for " + str(elastic_title) + "."
+        #
+        # dispatcher.utter_message(response)
+        # return
+
+# utters the description of a course
 class GetDescription(Action):
     def name(self):
         return "action_get_description"
 
     def run(self, dispatcher, tracker, domain):
-        try:
-            elastic_title = get_sc_title(tracker.get_slot("course"))
-        except:
-            response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
+        dispatcher.utter_message("Get Fee:")
 
-        try:
-            elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Course description")
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_cat == "SC":
+            elastic_output = elastic.get_sc_field(elastic_title, "Course description")
             response = "The description for " + str(elastic_title) + " is: " + str(elastic_output) + "."
-        except:
-            response = "Sorry, I couldn't find any description for " + str(elastic_title) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_description(elastic_title)
+            response = str(elastic_output)
+        else:
+            response = "Sorry, I couldn't find any description for that course."
 
         dispatcher.utter_message(response)
         return
 
+# utters time related information to do with a course (e.g. start time, year)
 class GetTime(Action):
     def name(self):
         return "action_get_time"
 
     def run(self, dispatcher, tracker, domain):
-        try:
-            elastic_title = get_sc_title(tracker.get_slot("course"))
-        except:
-            response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
+        # dispatcher.utter_message("Get Time: ")
+        # dispatcher.utter_message("Get Time2: ")
+        #
+        # try:
+        #     dispatcher.utter_message("Try: ")
+        #     elastic_title = get_course_title(tracker.get_slot("course"))
+        # except:
+        #     dispatcher.utter_message("Except: ")
+        #     response = "Sorry :("
 
-        try:
-            elastic_output = elastic.get_sc_times(tracker.get_slot("course"))
+        print("A Get Time")
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+
+        if elastic_cat == "SC":
+            elastic_output = elastic.get_sc_times(elastic_title)
             response = str(elastic_output)
-        except:
-            response = "Sorry, I could not find any times for " + str(elastic_title) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_times(elastic_title)
+            response = str(elastic_output)
+        else:
+            response = "Sorry, I could not find the information for times for this course"
+
+        # try:
+        #     elastic_output = elastic.get_ad_times(tracker.get_slot("course"))
+        #     response = str(elastic_output)
+        # except:
+        #     response = "Sorry, I could not find any times for " + str(elastic_title) + "."
+
+        #
+        # dispatcher.utter_message("Time Out: ")
+        # response = "Course Time : "
 
         dispatcher.utter_message(response)
         return
 
+# IN WORK
+# utters the tutor for a course
 class GetTutor(Action):
     def name(self):
         return "action_get_tutor"
@@ -91,6 +131,8 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
+# IN WORK
+# utters the requirements to get into a course
 class GetRequirements(Action):
     def name(self):
         return "action_get_requirements"

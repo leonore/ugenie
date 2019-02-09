@@ -1,23 +1,35 @@
 %YAML 1.1
 ---
 actions:
+- action_get_fee
+- action_get_requirements
 - utter_greet
 - utter_goodbye
+- action_get_description
+- action_get_time
+- action_get_acronym
+- action_get_tutor
+- action_course_validate
+- utter_give_requirements
+- utter_confirm_requirement_type
 - utter_fee_check
 - utter_description_check
 - utter_ask_student
-- action_get_fee
-- action_get_description
 config:
   store_entities_as_slots: true
 entities:
+- requirement
 - course
 - student
 forms: []
 intents:
-- greet:
+- requirements_check:
     use_entities: true
 - goodbye:
+    use_entities: true
+- give_req_type:
+    use_entities: true
+- greet:
     use_entities: true
 - fee_check:
     use_entities: true
@@ -25,11 +37,24 @@ intents:
     use_entities: true
 - inform_student:
     use_entities: true
+- time_check:
+    use_entities: true
+- tutor_check:
+    use_entities: true
+- acronym_check:
+    use_entities: true
 slots:
   course:
     auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
+  requirement:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - general
+    - ielts
   student:
     auto_fill: true
     initial_value: null
@@ -80,6 +105,8 @@ slots:
 templates:
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
+  utter_confirm_requirement_type:
+  - text: Do you mean general requirements or IELTS requirements?
   utter_description_check:
   - text: 'The course description for {course} is: ...'
   utter_fee_check:
