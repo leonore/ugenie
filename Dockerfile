@@ -1,18 +1,20 @@
-FROM python:3.6.6-slim
+FROM rasa/rasa_core:0.12.4
 
-COPY . /app
-WORKDIR /app
+COPY ./requirements.txt /app/requirements.txt
 
 # install requirements
-RUN apt-get update
-RUN apt-get install build-essential -y
-RUN pip install -r requirements.txt
-RUN python -m spacy download en
+RUN apt-get update && \
+    pip install -r requirements.txt
+    
+COPY . /app    
 
-WORKDIR chat-service/model
+WORKDIR chat-service
 
-# set up RASA unit
-RUN python -c 'import trainer; trainer.train()'
+# need to figure out paths
+# train model
+#RUN python -c 'import trainer; trainer.train()'
+# spin up action server
+#RUN nohup python -m rasa_core_sdk.endpoint --actions actions &
 
 # Launch the whole stack
 CMD [ "python", "main.py" ]

@@ -1,8 +1,13 @@
-image: blang/latex
+image: docker:stable
 
-build:
+stages:
+  - build
+  # TODO: - tests
+
+variables:
+  image_tag: latest
+
+build_chat:
+  stage: build
   script:
-    - latexmk -pdf -cd docs/dissertation/dissertation.tex
-  artifacts:
-    paths:
-      - "*.pdf"
+    - docker build -t interface/main:$image_tag .
