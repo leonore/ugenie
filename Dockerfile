@@ -6,7 +6,7 @@ COPY ./requirements.txt /app/requirements.txt
 RUN apt-get update && pip install -r requirements.txt
 RUN python -m spacy download en
 
-COPY . /app
+ADD . /app
 
 WORKDIR ./chat-service
 
