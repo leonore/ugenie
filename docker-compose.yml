@@ -1,4 +1,4 @@
-version: '3'
+version: '3.0'
 
 services:
   database:
@@ -8,13 +8,35 @@ services:
   action_server:
     image: rasa/rasa_core_sdk:latest
     volumes:
-      - ./chat-interface/model:/app/actions
+      - ./chat-service/model:/app/actions
     ports:
       - "5055:5055"
+  rasa_core:
+    image: rasa/rasa_core:0.12.4
+    ports:
+      - 5005:5005
+    volumes:
+      - ./chat-service/models/agent-data/models/dialogue:/app/models
+    command:
+      - start
+      - --core
+      - models
+      - -c
+      - rest
+  rasa_nlu:
+    image: rasa/rasa_nlu:latest-spacy
+    volumes:
+      - ./chat-service/models/agent-data/models/nlu:/app/models
+    command:
+      - start
+      - --path
+      - models
   interface:
     build: .
     depends_on:
       - database
       - action_server
+      - rasa_core
+      - rasa_nlu
     ports:
       - "5000:5000"
