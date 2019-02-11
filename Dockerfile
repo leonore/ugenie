@@ -3,12 +3,17 @@ FROM python:3.6.6-slim
 COPY ./requirements.txt /app/requirements.txt
 
 # install requirements
-RUN apt-get update && pip install -r requirements.txt
+RUN apt-get update
+RUN apt-get install build-essential -y
+
+WORKDIR app
+
+RUN pip install -r requirements.txt
 RUN python -m spacy download en
 
 ADD . /app
 
-WORKDIR ./chat-service
+WORKDIR chat-service
 
 # need to figure out paths
 # train model
