@@ -1,4 +1,4 @@
-FROM rasa/rasa_core:0.12.4
+FROM python:3.6.6-slim
 
 COPY ./requirements.txt /app/requirements.txt
 
