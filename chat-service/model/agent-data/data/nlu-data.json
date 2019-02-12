@@ -683,6 +683,66 @@
         "text": "wrong",
         "intent": "denial",
         "entities": []
+      },
+      {
+        "text": "how many credits do i get from doing opera afternoons 1",
+        "intent": "credits_check",
+        "entities": [
+          {
+            "start": 37,
+            "end": 55,
+            "value": "opera afternoons 1",
+            "entity": "course"
+          }
+        ]
+      },
+      {
+        "text": "is brain sciences a MSc",
+        "intent": "qualification_check",
+        "entities": [
+          {
+            "start": 3,
+            "end": 17,
+            "value": "brain sciences",
+            "entity": "course"
+          },
+          {
+            "start": 20,
+            "end": 23,
+            "value": "MSc",
+            "entity": "qualification"
+          }
+        ]
+      },
+      {
+        "text": "does brain sciences begin this year",
+        "intent": "term_check",
+        "entities": [
+          {
+            "start": 5,
+            "end": 19,
+            "value": "brain sciences",
+            "entity": "course"
+          }
+        ]
+      },
+      {
+        "text": "do i get a MEd from doing brain sciences",
+        "intent": "qualification_check",
+        "entities": [
+          {
+            "start": 26,
+            "end": 40,
+            "value": "brain sciences",
+            "entity": "course"
+          },
+          {
+            "start": 11,
+            "end": 14,
+            "value": "MEd",
+            "entity": "qualification"
+          }
+        ]
       }
     ]
   }

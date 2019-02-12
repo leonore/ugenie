@@ -664,6 +664,66 @@
       {
         "intent": "denial",
         "text": "wrong"
+      },
+      {
+        "intent": "credits_check",
+        "entities": [
+          {
+            "start": 37,
+            "end": 55,
+            "value": "opera afternoons 1",
+            "entity": "course"
+          }
+        ],
+        "text": "how many credits do i get from doing opera afternoons 1"
+      },
+      {
+        "intent": "qualification_check",
+        "entities": [
+          {
+            "start": 3,
+            "end": 17,
+            "value": "brain sciences",
+            "entity": "course"
+          },
+          {
+            "start": 20,
+            "end": 23,
+            "value": "MSc",
+            "entity": "qualification"
+          }
+        ],
+        "text": "is brain sciences a MSc"
+      },
+      {
+        "intent": "term_check",
+        "entities": [
+          {
+            "start": 5,
+            "end": 19,
+            "value": "brain sciences",
+            "entity": "course"
+          }
+        ],
+        "text": "does brain sciences begin this year"
+      },
+      {
+        "intent": "qualification_check",
+        "entities": [
+          {
+            "start": 26,
+            "end": 40,
+            "value": "brain sciences",
+            "entity": "course"
+          },
+          {
+            "start": 11,
+            "end": 14,
+            "value": "MEd",
+            "entity": "qualification"
+          }
+        ],
+        "text": "do i get a MEd from doing brain sciences"
       }
     ],
     "regex_features": [],
