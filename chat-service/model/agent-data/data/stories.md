@@ -12,7 +12,15 @@
 
 ## time_check
 * time_check
+- action_check_course
+*  confirmation
  - action_get_time
+
+## time_check
+* time_check
+ - action_check_course
+* denial
+  - action_get_time
 
 ## description_check
  * description_check

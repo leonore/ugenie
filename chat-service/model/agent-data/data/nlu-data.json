@@ -663,6 +663,26 @@
             "entity": "requirement"
           }
         ]
+      },
+      {
+        "text": "yes",
+        "intent": "confirmation",
+        "entities": []
+      },
+      {
+        "text": "yeah",
+        "intent": "confirmation",
+        "entities": []
+      },
+      {
+        "text": "no",
+        "intent": "denial",
+        "entities": []
+      },
+      {
+        "text": "wrong",
+        "intent": "denial",
+        "entities": []
       }
     ]
   }

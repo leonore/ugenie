@@ -15,6 +15,7 @@ actions:
 - utter_fee_check
 - utter_description_check
 - utter_ask_student
+- action_check_course
 config:
   store_entities_as_slots: true
 entities:
@@ -42,6 +43,10 @@ intents:
 - tutor_check:
     use_entities: true
 - acronym_check:
+    use_entities: true
+- confirmation:
+    use_entities: true
+- denial:
     use_entities: true
 slots:
   course:

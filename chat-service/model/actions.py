@@ -2,6 +2,16 @@ from rasa_core_sdk import Action
 
 import elastic
 
+class CheckCourse(Action):
+    def name(self):
+        return "action_check_course"
+
+    def run(self, dispatcher, tracker, domain):
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        response = "Did you want the course: " + str(elastic_title) + "?"
+        dispatcher.utter_message(response)
+        return
+
 # IN working
 #  sends the answer to common acronym questions
 class GetAcronym(Action):

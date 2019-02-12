@@ -648,6 +648,22 @@
           }
         ],
         "text": "IELTS"
+      },
+      {
+        "intent": "confirmation",
+        "text": "yes"
+      },
+      {
+        "intent": "confirmation",
+        "text": "yeah"
+      },
+      {
+        "intent": "denial",
+        "text": "no"
+      },
+      {
+        "intent": "denial",
+        "text": "wrong"
       }
     ],
     "regex_features": [],
