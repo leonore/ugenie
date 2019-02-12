@@ -16,6 +16,7 @@ actions:
 - utter_description_check
 - utter_ask_student
 - action_check_course
+- action_course_denied
 config:
   store_entities_as_slots: true
 entities:

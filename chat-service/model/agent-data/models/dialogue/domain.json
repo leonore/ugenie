@@ -81,6 +81,7 @@
     "prev_utter_fee_check",
     "prev_utter_description_check",
     "prev_utter_ask_student",
-    "prev_action_check_course"
+    "prev_action_check_course",
+    "prev_action_course_denied"
   ]
 }
