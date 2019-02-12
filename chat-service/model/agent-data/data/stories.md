@@ -8,7 +8,15 @@
 
 ## fee_check
 * fee_check
+ - action_check_course
+* confirmation
  - action_get_fee
+
+## fee_check
+* fee_check
+ - action_check_course
+* denial
+ - action_course_denied
 
 ## time_check
 * time_check
@@ -24,7 +32,15 @@
 
 ## description_check
  * description_check
- - action_get_description
+ - action_check_course
+ * confirmation
+  - action_get_description
+
+## description_check
+* description_check
+ - action_check_course
+* denial
+ - action_course_denied
 
 ## acronym_check
 * acronym_check

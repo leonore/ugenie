@@ -3,7 +3,7 @@
     "action_listen": {
       "slots": []
     },
-    "action_get_time": {
+    "action_get_requirements": {
       "slots": []
     },
     "action_course_denied": {
@@ -15,19 +15,19 @@
     "action_get_tutor": {
       "slots": []
     },
+    "action_get_acronym": {
+      "slots": []
+    },
     "utter_greet": {
-      "slots": []
-    },
-    "action_get_description": {
-      "slots": []
-    },
-    "action_get_requirements": {
       "slots": []
     },
     "utter_goodbye": {
       "slots": []
     },
-    "action_get_acronym": {
+    "action_get_description": {
+      "slots": []
+    },
+    "action_get_time": {
       "slots": []
     }
   },
@@ -41,7 +41,7 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.keras_policy.KerasPolicy"
   ],
-  "trained_at": "20190212-171937",
+  "trained_at": "20190212-174109",
   "rasa_core": "0.13.0",
   "tensorflow": "1.12.0",
   "sklearn": "0.20.2"
