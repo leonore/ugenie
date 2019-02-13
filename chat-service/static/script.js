@@ -27,9 +27,9 @@ socket.on('connect', function() {
         e.preventDefault()
         socket.emit('new_message', {
 			user_name: 'You',
-            message: $('input.message-form__input').val()
+            message: $('input.message-form-input').val()
         })
-        $('input.message-form__input').val('').focus()
+        $('input.message-form-input').val('').focus()
     });
 })
 

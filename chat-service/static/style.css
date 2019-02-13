@@ -95,7 +95,8 @@ input, textarea, select, button {
 }
 
 
-/* Modal Header */
+/* Chat Header */
+
 .chat-container .chat-header {
 	margin-top: 5px;
 	width: 100%;
@@ -106,16 +107,16 @@ input, textarea, select, button {
 	flex-shrink: 1;
 }
 
-/* Add a red background color to the cancel button */
+/* Add a red background color to the close button */
 
-.chat-header .cancel {
+.chat-header .close {
 	color: #fefefe;
 	font: 20px/100% arial, sans-serif;
 	float: right;
 	text-decoration: none;
 }
 
-.chat-header .cancel:after {
+.chat-header .close:after {
   content: '✖'; /* UTF-8 symbol */
 }
 
@@ -137,7 +138,7 @@ input, textarea, select, button {
 	background-color: #fefefe;
 	border: 1px solid #e4e4e4;
 	padding: 15px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 	margin-top: 10px;
 	height: 400px;
 	flex-shrink: 1;
@@ -162,8 +163,9 @@ input, textarea, select, button {
 	flex-shrink: 0;
 }
 
-.message-form__input {
+.message-form-input {
 	width: 100%;
 	border: 1px solid #dfdfdf;
-	min-height: 40px;
+	border-radius: 10px;
+	padding: 10px;
 }
