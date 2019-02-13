@@ -11,6 +11,7 @@ body {
 input, textarea, select, button {
 	font-family: 'nimbus-sans',sans-serif;
 	vertical-align: middle;
+	font-size: 15px;
 }
 
 
@@ -101,7 +102,6 @@ input, textarea, select, button {
 	text-align: center;
 	display: inline-block;
 	color: white;
-	font-weight: bold;
 	font-size: 20px;
 	flex-shrink: 1;
 }
@@ -139,7 +139,7 @@ input, textarea, select, button {
 	padding: 15px;
 	margin-bottom: 15px;
 	margin-top: 10px;
-	height: 300px;
+	height: 400px;
 	flex-shrink: 1;
 	overflow: auto;
 }
@@ -163,11 +163,7 @@ input, textarea, select, button {
 }
 
 .message-form__input {
+	width: 100%;
 	border: 1px solid #dfdfdf;
-	font-size: 16px;
-	max-height: 40px;
-}
-
-.message-form__button {
-	max-height: 40px;
+	min-height: 40px;
 }
