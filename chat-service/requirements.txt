@@ -24,7 +24,6 @@ decorator==4.3.0
 dill==0.2.9
 docopt==0.6.2
 docutils==0.14
-elasticsearch==6.3.1
 fakeredis==0.10.3
 fbmessenger==5.4.0
 Flask==1.0.2
@@ -81,7 +80,7 @@ python-telegram-bot==11.1.0
 pytz==2018.9
 PyYAML==3.13
 questionary==1.0.2
-rasa-core==0.13.0
+rasa-core==0.12.4
 rasa-core-sdk==0.12.1
 rasa-nlu==0.14.1
 redis==2.10.6
@@ -117,4 +116,5 @@ webexteamssdk==1.1.1
 websocket-client==0.54.0
 Werkzeug==0.14.1
 wrapt==1.10.11
+xlrd==1.2.0
 zope.interface==4.6.0
