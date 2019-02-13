@@ -40,7 +40,7 @@ def get_course_title(query):
     # if sc_res['hits']['max_score'] || ad_res['hits']['max_score']:
 
     sc = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
-    print(str(sc))
+    # print(str(sc))
     if sc['hits']['total'] > 0:
         sc_res = sc['hits']['hits'][0]
     else:
@@ -58,24 +58,28 @@ def get_course_title(query):
             print("SC = " + str(sc_res))
             course = sc_res['_source']['Title']
             course_cat = "SC"
+            course_score = sc_res['_score']
         else:
             print("AD = " + str(ad_res))
             course = ad_res['_source']['Lookup Name']
             course_cat = "AD"
+            course_score = ad_res['_score']
     elif sc_res != None:
         print("SC = " + str(sc_res))
         course = sc_res['_source']['Title']
         course_cat = "SC"
+        course_score = sc_res['_score']
     elif ad_res != None:
         print("AD = " + str(ad_res))
         course = ad_res['_source']['Lookup Name']
         course_cat = "AD"
+        course_score = ad_res['_score']
     else:
-        print("NO")
-        return None, None
+        print("Not a Course")
+        return None, None, None
 
     print("Course = " + course)
-    return course, course_cat
+    return course, course_cat, course_score
     # return first_hit['_source']['Lookup Name']
     # return title
 
@@ -84,7 +88,7 @@ def get_course_title(query):
 def get_sc_field(query, field):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
     first_hit = res['hits']['hits'][0]
-    return  first_hit['_source'][field] # gives field in text
+    return  first_hit['_source'][field], first_hit['_score'] # gives field in text
 
 # get specific field for given admissions course: title, start date, int fee e.t.c.
 def get_admissions_field(query, field):
@@ -148,18 +152,73 @@ def get_ad_fees(query):
 # returns the kind of course an admissions course is
 def get_ad_description(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
-    first_hit = res['hits']['hits'][0]['_source']
-    title = first_hit['Lookup Name']
-    desc = first_hit['Apply Centre Desciption']
+    first_hit = res['hits']['hits'][0]
+    title = first_hit['_source']['Lookup Name']
+    desc = first_hit['_source']['Apply Centre Description']
     response = "%s is a %s course" % (title.title(), desc)
-    return response
+    return response, first_hit['_score']
 
 def get_acronym_desc(query):
     # print(next(question["answer"] for question in general_questions if question["question"] == "FT"))
     # res = (next(question["answer"] for question in general_questions if question["question"] == query))
     res = es.search(index="general_questions", body={"query": {"match": {"answer":query}}})
-    first_hit = res['hits']['hits'][0]
-    print (first_hit['_source']['answer'])
+    if res['hits']['hits']:
+        first_hit = res['hits']['hits'][0]
+    # print (first_hit['_source']['answer'])
+        response = first_hit['_source']['answer']
+        score = first_hit['_score']
+        return response, score
+    else:
+        return None, None
+
+def get_description(query):
+    ct, cat, cscore = get_course_title(query)
+    # print("CT = " + str(ct) + ", " + str(cscore))
+
+    # sc, sc_score = get_sc_field(query, 'Course description')
+    # ad, ad_score = get_ad_description(query)
+    acro, acro_score = get_acronym_desc(query)
+    # print("AC = " + str(acro) + ", " + str(acro_score))
+
+    if cscore != None and acro_score != None:
+        if cscore >= acro_score:
+            if cat == "SC":
+                desc = get_sc_field(query, 'Course description')
+            elif cat == "AD":
+                desc = get_ad_description(query)
+        else:
+            desc = acro
+    elif cscore != None:
+        if cat == "SC":
+            desc = get_sc_field(query, 'Course description')
+        elif cat == "AD":
+            desc = get_ad_description(query)
+        else:
+            response = "Sorry, I could not find any details for that"
+
+    elif acro_score != None:
+        desc = acro
+
+    else:
+        response = "Sorry, I could not find any details for that"
+
+
+
+
+    # elif cscore == None:
+    #     if acro_score == None:
+    #         response = "Sorry, I could not find any details for that"
+    #     elif acro_score != None:
+    #         desc = acro
+    # elif acro_score == None:
+    #     if cat == "SC":
+    #         desc = get_sc_field(query, 'Course description')
+    #     elif cat == "AD":
+    #         desc = get_ad_description(query)
+    # else:
+
+
+    print("Meaning = " + str(desc))
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
@@ -176,3 +235,8 @@ def get_acronym_desc(query):
 # print(get_course_title("Film"))
 # print(get_course_title("Film Studies"))
 # print(get_acronym_desc("FT"))
+
+# print(get_description("french study 1"))
+# print(get_description("brain science"))
+# print(get_description("FT"))
+# print(get_description("french"))
