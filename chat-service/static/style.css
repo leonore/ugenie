@@ -1,4 +1,6 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+@import url(https://fonts.googleapis.com/css?family=Roboto%20Slab);
+
+body {font-family: 'Roboto Slab',serif}
 * {box-sizing: border-box;}
 
 /* Button used to open the chat form - fixed at the bottom of the page */
@@ -72,15 +74,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   opacity: 1;
 }
 
-.members-count,
-.members-list,
 .messages {
 	border: 1px solid #e4e4e4;
 	padding: 15px;
 	margin-bottom: 15px;
-}
-
-.messages {
     height: 300px;
 	flex-shrink: 1;
 	overflow: auto;
