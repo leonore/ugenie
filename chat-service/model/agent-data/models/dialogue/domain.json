@@ -1,6 +1,8 @@
 {
   "states": [
     "intent_acronym_check",
+    "intent_confirmation",
+    "intent_denial",
     "intent_description_check",
     "intent_fee_check",
     "intent_give_req_type",
@@ -78,6 +80,8 @@
     "prev_utter_confirm_requirement_type",
     "prev_utter_fee_check",
     "prev_utter_description_check",
-    "prev_utter_ask_student"
+    "prev_utter_ask_student",
+    "prev_action_check_course",
+    "prev_action_course_denied"
   ]
 }
