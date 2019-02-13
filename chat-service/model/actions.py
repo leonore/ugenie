@@ -9,7 +9,7 @@ class CheckCourse(Action):
 
     def run(self, dispatcher, tracker, domain):
         elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
-        response = "Did you want the course: " + str(elastic_title).title() + "?"
+        response = "Did you want the course: " + str(elastic_title).title() + "? (yes/no)"
         dispatcher.utter_message(response)
         return
 

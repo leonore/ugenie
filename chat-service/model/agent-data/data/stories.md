@@ -55,3 +55,17 @@
  - utter_confirm_requirement_type
 * give_req_type
  - action_get_requirements
+
+## Generated Story -2906752824971192833
+* time_check{"course": "brain science"}
+    - slot{"course": "brain science"}
+    - action_check_course
+* confirmation
+    - action_get_time
+
+## Generated Story 401500576632580407
+* time_check{"course": "french stage"}
+    - slot{"course": "french stage"}
+    - action_check_course
+* denial
+    - action_course_denied
