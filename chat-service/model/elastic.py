@@ -202,9 +202,6 @@ def get_description(query):
     else:
         response = "Sorry, I could not find any details for that"
 
-
-
-
     # elif cscore == None:
     #     if acro_score == None:
     #         response = "Sorry, I could not find any details for that"

@@ -8,7 +8,7 @@ class CheckCourse(Action):
         return "action_check_course"
 
     def run(self, dispatcher, tracker, domain):
-        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         response = "Did you want the course: " + str(elastic_title).title() + "? (yes/no)"
         dispatcher.utter_message(response)
         return
@@ -17,7 +17,7 @@ class CourseDenied(Action):
     def name(self):
         return "action_course_denied"
 
-    def run(self, dispathcer, tracker, domain):
+    def run(self, dispatcher, tracker, domain):
         response = "Sorry, could you please rephrase the question."
         dispatcher.utter_message(response)
         return
@@ -30,12 +30,7 @@ class GetAcronym(Action):
         return "action_get_acronym"
 
     def run(self, dispatcher, tracker, domain):
-        try:
-            elastic_acronym, elastic_output = elastic.get_acronym_answer("question")
-            response = str(elastic_output)
-        except:
-            response = "Sorry, I couldn't find any answer for " + str(elastic_acronym) + "."
-
+        response = elastic.get_description(tracker.get_slot("course"))
         dispatcher.utter_message(response)
         return
 
@@ -46,9 +41,9 @@ class GetFees(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         if elastic_cat == "SC":
-            elastic_output = elastic.get_sc_field(elastic_title, "Cost")
+            elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
             response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
         elif elastic_cat == "AD":
             elastic_output = elastic.get_ad_fees(elastic_title)
@@ -77,7 +72,7 @@ class GetDescription(Action):
     def run(self, dispatcher, tracker, domain):
         dispatcher.utter_message("Get Fee:")
 
-        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         if elastic_cat == "SC":
             elastic_output = elastic.get_sc_field(elastic_title, "Course description")
             response = "The description for " + str(elastic_title) + " is: " + str(elastic_output) + "."
@@ -107,7 +102,7 @@ class GetTime(Action):
         #     response = "Sorry :("
 
         print("A Get Time")
-        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
         if elastic_cat == "SC":
             elastic_output = elastic.get_sc_times(elastic_title)
@@ -144,7 +139,7 @@ class GetTutor(Action):
             response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
 
         try:
-            elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
+            elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
             response = "The tutor for " + str(elastic_title) + " is: " + str(elastic_output) + "."
         except:
             response = "Sorry, I could not find the tutor for " + str(elastic_title) + "."
