@@ -1,20 +1,8 @@
-FROM rasa/rasa_core:0.12.4
+# Extend the official Rasa Core SDK image
+FROM rasa/rasa_core_sdk:latest
 
-COPY ./requirements.txt /app/requirements.txt
+RUN apt-get update
 
-# install requirements
-RUN apt-get update && \
-    pip install -r requirements.txt
-    
-COPY . /app    
+RUN pip install elasticsearch
 
-WORKDIR chat-service
-
-# need to figure out paths
-# train model
-#RUN python -c 'import trainer; trainer.train()'
-# spin up action server
-#RUN nohup python -m rasa_core_sdk.endpoint --actions actions &
-
-# Launch the whole stack
-CMD [ "python", "main.py" ]
+COPY ./chat-service/model/elastic.py /app/elastic.py

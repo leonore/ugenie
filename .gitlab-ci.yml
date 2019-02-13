@@ -10,4 +10,4 @@ variables:
 build_chat:
   stage: build
   script:
-    - docker build -t interface/main:$image_tag .
+    - docker build -t interface/main:$image_tag ./chat-service
