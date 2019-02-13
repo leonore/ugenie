@@ -7,7 +7,7 @@ services:
       - "9200:9200"
 
   action_server:
-    image: ./actions
+    build: ./actions
     volumes:
       - ./chat-service/actions:/app/actions
     ports:
