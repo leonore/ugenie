@@ -1,84 +1,121 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto%20Slab);
+* {
+	box-sizing: border-box;
+}
 
-body {font-family: 'Roboto Slab',serif}
-* {box-sizing: border-box;}
+body {
+	font-family: 'nimbus-sans',sans-serif;
+	color: #343536;
+}
+
+input, textarea, select, button {
+	font-family: 'nimbus-sans',sans-serif;
+	vertical-align: middle;
+}
+
 
 /* Button used to open the chat form - fixed at the bottom of the page */
+
 .open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
+	background-color: #0274af;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	opacity: 0.8;
+	position: fixed;
+	bottom: 23px;
+	right: 28px;
+	width: 280px;
 }
+
 
 /* The popup chat - hidden by default */
+
 .chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 15px;
+	border: 3px solid #f1f1f1;
+	z-index: 9;
 }
 
-/* Add styles to the form container */
+
+/* Form container */
+
 .chat-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
+	max-width: 300px;
+	padding: 10px;
+	background-color: #F7F7F7;
 }
+
+
+/* Form container's header */
+
+.chat-header {
+	display:inline-block;
+	vertical-align: middle;
+}
+
 
 /* Full-width textarea */
+
 .chat-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-  resize: none;
-  min-height: 200px;
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+	resize: none;
+	min-height: 200px;
 }
+
 
 /* When the textarea gets focus, do something */
+
 .chat-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
+	background-color: #ddd;
+	outline: none;
 }
+
 
 /* Set a style for the submit/send button */
+
 .chat-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-  max-height: 40px;
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 10px;
+	opacity: 0.8;
+	max-height: 40px;
 }
+
 
 /* Add a red background color to the cancel button */
+
 .chat-container .cancel {
-  background-color: red;
+	background-color: #0274af;
+	color: #fefefe;
 }
 
+
 /* Add some hover effects to buttons */
-.chat-container .btn:hover, .open-button:hover {
-  opacity: 1;
+
+.chat-container .btn:hover,
+.open-button:hover {
+	opacity: 1;
 }
 
 .messages {
+	background-color: #fefefe;
 	border: 1px solid #e4e4e4;
 	padding: 15px;
 	margin-bottom: 15px;
-    height: 300px;
+	height: 300px;
 	flex-shrink: 1;
 	overflow: auto;
 }
@@ -86,6 +123,7 @@ body {font-family: 'Roboto Slab',serif}
 .message {
 	padding: 5px 0;
 }
+
 .message .member {
 	display: inline-block;
 }
@@ -99,11 +137,13 @@ body {font-family: 'Roboto Slab',serif}
 	display: flex;
 	flex-shrink: 0;
 }
+
 .message-form__input {
 	border: 1px solid #dfdfdf;
 	font-size: 16px;
 	max-height: 40px;
 }
+
 .message-form__button {
 	max-height: 40px;
 }
