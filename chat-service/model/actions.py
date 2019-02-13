@@ -1,6 +1,6 @@
 from rasa_core_sdk import Action
 
-import elastic
+from actions import elastic
 
 # IN working
 #  sends the answer to common acronym questions

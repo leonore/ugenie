@@ -9,6 +9,7 @@ services:
     image: rasa/rasa_core_sdk:latest
     volumes:
       - ./chat-service/model:/app/actions
+      - ./chat-service/model/elastic.py:/app/actions/elastic.py
     ports:
       - "5055:5055"
   rasa_core:
