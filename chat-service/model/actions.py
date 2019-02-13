@@ -2,6 +2,27 @@ from rasa_core_sdk import Action
 
 import elastic
 
+# asks the user to confirm the course
+class CheckCourse(Action):
+    def name(self):
+        return "action_check_course"
+
+    def run(self, dispatcher, tracker, domain):
+        elastic_title, elastic_cat = elastic.get_course_title(tracker.get_slot("course"))
+        response = "Did you want the course: " + str(elastic_title).title() + "? (yes/no)"
+        dispatcher.utter_message(response)
+        return
+
+class CourseDenied(Action):
+    def name(self):
+        return "action_course_denied"
+
+    def run(self, dispathcer, tracker, domain):
+        response = "Sorry, could you please rephrase the question."
+        dispatcher.utter_message(response)
+        return
+
+
 # IN working
 #  sends the answer to common acronym questions
 class GetAcronym(Action):

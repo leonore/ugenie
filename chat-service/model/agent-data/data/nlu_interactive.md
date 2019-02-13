@@ -1,11 +1,5 @@
-## intent:give_req_type
-- [general](requirement) requirements
+## intent:denial
+- no
 
-## intent:goodbye
-- bye
-
-## intent:greet
-- Hi
-
-## intent:requirements_check
-- what are the requirements for [mechatronics](course)
+## intent:time_check
+- what time is [french stage](course)
