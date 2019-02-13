@@ -2,7 +2,7 @@
 
 # don't forget to launch ES
 from elasticsearch import Elasticsearch, helpers
-from load_questions import questions
+from load_questions import general_questions, short_questions
 import xlrd, datetime
 
 es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
@@ -73,12 +73,12 @@ for node in adm_courses
 # read common questions
 actions3 = [
     {
-    "_index" : "questions",
+    "_index" : "general_questions",
     "_type" : "external",
     "_id" : str(node['index']),
     "_source" : node
     }
-for node in questions
+for node in general_questions
 ]
 
 # WIPE INDICES BEFORE RELOADING
@@ -87,3 +87,6 @@ es.indices.delete("_all")
 helpers.bulk(es, actions1)
 helpers.bulk(es, actions2)
 helpers.bulk(es, actions3)
+
+# print(next(question["answer"] for question in general_questions if question["question"] == "FT"))
+# print(general_questions)

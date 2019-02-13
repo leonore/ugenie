@@ -154,6 +154,12 @@ def get_ad_description(query):
     response = "%s is a %s course" % (title.title(), desc)
     return response
 
+def get_acronym_desc(query):
+    # print(next(question["answer"] for question in general_questions if question["question"] == "FT"))
+    # res = (next(question["answer"] for question in general_questions if question["question"] == query))
+    res = es.search(index="general_questions", body={"query": {"match": {"answer":query}}})
+    first_hit = res['hits']['hits'][0]
+    print (first_hit['_source']['answer'])
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
@@ -169,3 +175,4 @@ def get_ad_description(query):
 # print(get_course_title("Orkney"))
 # print(get_course_title("Film"))
 # print(get_course_title("Film Studies"))
+# print(get_acronym_desc("FT"))
