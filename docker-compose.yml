@@ -12,6 +12,8 @@ services:
       - ./chat-service/model:/app/actions
     ports:
       - "5055:5055"
+    depends_on:
+      - database
 
   # rasa_core:
   #   image: rasa/rasa_core:0.12.4

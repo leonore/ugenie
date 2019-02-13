@@ -13,11 +13,11 @@ RUN python -m spacy download en
 
 ADD . /app
 
-WORKDIR model
+#WORKDIR model
 
-RUN python -c 'import trainer; trainer.train()'
+#RUN python -c 'import trainer; trainer.train()'
 
-WORKDIR ..
+#WORKDIR ..
 
 # Launch the whole stack
 CMD [ "python", "main.py" ]
