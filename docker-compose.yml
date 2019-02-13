@@ -5,17 +5,18 @@ services:
     image: elasticsearch:6.5.4
     ports:
       - "9200:9200"
+
   action_server:
-    image: rasa/rasa_core_sdk:latest
+    image: ./actions
     volumes:
-      - ./chat-service/model:/app/actions
-      - ./chat-service/model/elastic.py:/app/actions/elastic.py
+      - ./chat-service/actions:/app/actions
     ports:
       - "5055:5055"
+
   rasa_core:
     image: rasa/rasa_core:0.12.4
     ports:
-      - 5005:5005
+      - "5005:5005"
     volumes:
       - ./chat-service/models/agent-data/models/dialogue:/app/models
     command:
@@ -24,6 +25,7 @@ services:
       - models
       - -c
       - rest
+
   rasa_nlu:
     image: rasa/rasa_nlu:latest-spacy
     volumes:
@@ -32,8 +34,9 @@ services:
       - start
       - --path
       - models
+      
   interface:
-    build: .
+    build: ./chat-service
     depends_on:
       - database
       - action_server
