@@ -111,6 +111,22 @@ button {
 	overflow: auto;
 }
 
+.message-area::-webkit-scrollbar {
+  width: 12.5px;
+}
+
+.message-area::-webkit-scrollbar-track {
+  background: #fefefe; 
+}
+ 
+.message-area::-webkit-scrollbar-thumb {
+  background: #bfbfbf; 
+}
+
+.message-area::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0; 
+}
+
 
 /* Sent message */
 
