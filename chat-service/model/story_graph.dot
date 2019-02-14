@@ -25,7 +25,7 @@ digraph  {
 25 [class=intent, fillcolor=lightblue, label=requirements_check, shape=rect, style=filled];
 26 [class="intent active", fillcolor=lightblue, label="what is french stage 1", shape=rect, style=filled];
 27 [class=intent, fillcolor=lightblue, label="description_checkcourse brain sciences", shape=rect, style=filled];
-28 [class="intent active", fillcolor=lightblue, label="what does FT stand for", shape=rect, style=filled];
+28 [class="intent active", fillcolor=lightblue, label="what happens in brain sciences", shape=rect, style=filled];
 0 -> 18  [class="", key=0];
 0 -> 19  [class="", key=0];
 0 -> 20  [class="", key=0];

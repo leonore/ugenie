@@ -1,4 +1,6 @@
 from rasa_core_sdk import Action
+from rasa_core_sdk.events import SlotSet
+
 
 import elastic
 
@@ -71,7 +73,11 @@ class GetDescription(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"), tracker.get_slot("acronym"))
+        if tracker.get_slot("acronym") != None:
+            elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
+            SlotSet("acronym", None)
+        elif tracker.get_slot("course") != None:
+            elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
         # elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         if elastic_topic:
             response = str(elastic_desc)

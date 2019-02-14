@@ -172,7 +172,7 @@ def get_acronym_desc(query):
     else:
         return None, None, None
 
-def get_description(query, acronym):
+def get_description(query):
     ct, cat, cscore = get_course_title(query)
     # print("CT = " + str(ct) + ", " + str(cscore))
 
@@ -206,7 +206,7 @@ def get_description(query, acronym):
             return False, False
 
     elif acro_score != None:
-        desc, ad_score = acro_desc
+        desc = acro_desc
         topic = acro
 
     else:
