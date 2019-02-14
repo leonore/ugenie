@@ -33,11 +33,20 @@ socket.on('connect', function() {
     });
 })
 
-// When the client receives a 'print message' event, print the message on the chat
-socket.on('print message', function(msg) {
+// When the client receives a 'user_message' event, print the message on the chat as a user message
+socket.on('user_message', function(msg) {
     console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
-        $('div.message-area').append('<div class="message"><b style="color: #000">' + msg.user_name + ': </b> ' + msg.message + '</div>')
+        $('div.message-area').append('<div class="message user-message">' + msg.message + '</div>')
+		$('div.message-area').scrollTop = $('div.message-area').scrollHeight;
+    }
+})
+
+// When the client receives a 'user_message' event, print the message on the chat as a bot message
+socket.on('bot_message', function(msg) {
+    console.log(msg);
+    if (typeof msg.user_name !== 'undefined') {
+        $('div.message-area').append('<div class="message bot-message">' + msg.message + '</div>')
 		$('div.message-area').scrollTop = $('div.message-area').scrollHeight;
     }
 })

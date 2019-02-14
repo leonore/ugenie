@@ -24,7 +24,7 @@ button {
 /* Button used to open the chat form */
 
 .open-button {
-	background-color: #0274af;
+	background-color: #005398;
 	color: white;
 	padding: 16px 20px;
 	border: none;
@@ -34,6 +34,10 @@ button {
 	bottom: 23px;
 	right: 28px;
 	width: 280px;
+}
+
+.open-button:hover {
+	opacity: 1;
 }
 
 
@@ -53,7 +57,7 @@ button {
 .chat-container {
 	max-width: 300px;
 	padding: 10px;
-	background-color: #0274af;
+	background-color: #005398;
 }
 
 
@@ -94,13 +98,6 @@ button {
 }
 
 
-/* Chat open button hover effect */
-
-.open-button:hover {
-	opacity: 1;
-}
-
-
 /* Sent message text area */
 
 .message-area {
@@ -118,7 +115,23 @@ button {
 /* Sent message */
 
 .message {
-	padding: 5px 0;
+	padding: 5px;
+	position: relative;
+	border-radius: .4em;
+	margin-bottom: 5px;
+	color: #fefefe;
+}
+
+.message.user-message {
+	background: #0075B0;
+	width: 90%;
+	float: left;
+}
+
+.message.bot-message {
+	background: #00B5D1;
+	width: 90%;
+	float: right;
 }
 
 
