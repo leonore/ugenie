@@ -102,7 +102,7 @@ button {
 
 .message-area {
 	background-color: #fefefe;
-	border: 1px solid #e4e4e4;
+	border-radius: 10px;
 	padding: 15px;
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -112,26 +112,28 @@ button {
 }
 
 .message-area::-webkit-scrollbar {
-  width: 12.5px;
+	width: 12.5px;
 }
 
 .message-area::-webkit-scrollbar-track {
-  background: #fefefe; 
+	border-radius: 15px;
+	background: #fefefe;
 }
- 
+
 .message-area::-webkit-scrollbar-thumb {
-  background: #bfbfbf; 
+	border-radius: 15px;
+	background: #bfbfbf;
 }
 
 .message-area::-webkit-scrollbar-thumb:hover {
-  background: #a0a0a0; 
+	background: #a0a0a0;
 }
 
 
 /* Sent message */
 
 .message {
-	padding:10px;
+	padding: 10px;
 	border-radius: .4em;
 	margin-bottom: 5px;
 	color: #fefefe;
