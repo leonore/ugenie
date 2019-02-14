@@ -70,19 +70,27 @@ class GetDescription(Action):
         return "action_get_description"
 
     def run(self, dispatcher, tracker, domain):
-        dispatcher.utter_message("Get Fee:")
 
-        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
-        if elastic_cat == "SC":
-            elastic_output = elastic.get_sc_field(elastic_title, "Course description")
-            response = "The description for " + str(elastic_title) + " is: " + str(elastic_output) + "."
-        elif elastic_cat == "AD":
-            elastic_output = elastic.get_ad_description(elastic_title)
-            response = str(elastic_output)
+        elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"), tracker.get_slot("acronym"))
+        # elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_topic:
+            response = str(elastic_desc)
         else:
-            response = "Sorry, I couldn't find any description for that course."
+            response = "Sorry, I could not find any details for that"
 
         dispatcher.utter_message(response)
+
+
+        # if elastic_cat == "SC":
+        #     elastic_title = elastic.get
+        #     elastic_output = elastic.get_sc_field(elastic_title, "Course description")
+        #     response = "The description for " + str(elastic_title) + " is: " + str(elastic_output) + "."
+        # elif elastic_cat == "AD":
+        #     elastic_output = elastic.get_ad_description(elastic_title)
+        #     response = str(elastic_output)
+        # else:
+        #     response = "Sorry, I couldn't find any description for that course."
+
         return
 
 # utters time related information to do with a course (e.g. start time, year)

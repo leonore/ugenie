@@ -166,41 +166,52 @@ def get_acronym_desc(query):
         first_hit = res['hits']['hits'][0]
     # print (first_hit['_source']['answer'])
         response = first_hit['_source']['answer']
+        acro = first_hit['_source']['question']
         score = first_hit['_score']
-        return response, score
+        return acro, response, score
     else:
-        return None, None
+        return None, None, None
 
-def get_description(query):
+def get_description(query, acronym):
     ct, cat, cscore = get_course_title(query)
     # print("CT = " + str(ct) + ", " + str(cscore))
 
     # sc, sc_score = get_sc_field(query, 'Course description')
     # ad, ad_score = get_ad_description(query)
-    acro, acro_score = get_acronym_desc(query)
+    acro, acro_desc, acro_score = get_acronym_desc(query)
     # print("AC = " + str(acro) + ", " + str(acro_score))
 
     if cscore != None and acro_score != None:
         if cscore >= acro_score:
             if cat == "SC":
-                desc = get_sc_field(query, 'Course description')
+                course_desc, score = get_sc_field(query, 'Course description')
+                desc = str(ct).title() + " is: " + str(course_desc)
+                topic = ct
             elif cat == "AD":
-                desc = get_ad_description(query)
+                desc, score = get_ad_description(query)
+                topic = ct
         else:
-            desc = acro
+            desc = acro_desc
+            topic = acro
     elif cscore != None:
         if cat == "SC":
-            desc = get_sc_field(query, 'Course description')
+            course_desc, score = get_sc_field(query, 'Course description')
+            desc = str(ct).title() + " is: " + str(course_desc)
+            topic = ct
         elif cat == "AD":
-            desc = get_ad_description(query)
+            desc, score = get_ad_description(query)
+            topic = ct
         else:
             response = "Sorry, I could not find any details for that"
+            return False, False
 
     elif acro_score != None:
-        desc = acro
+        desc, ad_score = acro_desc
+        topic = acro
 
     else:
         response = "Sorry, I could not find any details for that"
+        return False, False
 
     # elif cscore == None:
     #     if acro_score == None:
@@ -215,7 +226,9 @@ def get_description(query):
     # else:
 
 
-    print("Meaning = " + str(desc))
+    # print("Meaning = " + str(desc))
+    print("Topic = " + str(topic) + ", and desc = " + str(desc))
+    return topic, desc
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))

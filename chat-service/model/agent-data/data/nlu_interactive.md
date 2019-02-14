@@ -1,5 +1,3 @@
-## intent:denial
-- no
-
-## intent:time_check
-- what time is [french stage](course)
+## intent:description_check
+- tell me about [french stage 1](course)
+- tell me about [brain sciences](course)
