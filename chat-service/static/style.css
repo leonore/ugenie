@@ -115,22 +115,22 @@ button {
 /* Sent message */
 
 .message {
-	padding: 5px;
-	position: relative;
+	padding:10px;
 	border-radius: .4em;
 	margin-bottom: 5px;
 	color: #fefefe;
+	clear: both;
 }
 
 .message.user-message {
 	background: #0075B0;
-	width: 90%;
+	max-width: 95%;
 	float: left;
 }
 
 .message.bot-message {
 	background: #00B5D1;
-	width: 90%;
+	max-width: 95%;
 	float: right;
 }
 
