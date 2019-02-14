@@ -24,7 +24,7 @@ socket.on('connect', function() {
 	
 	// When the user submits a new message, send a message event to the server
     var form = $('form').on('submit', function(e) {
-        e.preventDefault()
+        e.preventDefault();
         socket.emit('new_message', {
 			user_name: 'You',
             message: $('input.message-form-input').val()
@@ -33,12 +33,14 @@ socket.on('connect', function() {
     });
 })
 
+var messageArea = $('div.message-area');
+
 // When the client receives a 'user_message' event, print the message on the chat as a user message
 socket.on('user_message', function(msg) {
     console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
-        $('div.message-area').append('<div class="message user-message">' + msg.message + '</div>')
-		$('div.message-area').scrollTop = $('div.message-area').scrollHeight;
+        messageArea.append('<div class="message user-message">' + msg.message + '</div>');
+		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
 
@@ -46,7 +48,7 @@ socket.on('user_message', function(msg) {
 socket.on('bot_message', function(msg) {
     console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
-        $('div.message-area').append('<div class="message bot-message">' + msg.message + '</div>')
-		$('div.message-area').scrollTop = $('div.message-area').scrollHeight;
+        messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
+		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
