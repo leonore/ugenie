@@ -5,16 +5,11 @@ services:
     image: elasticsearch:6.5.4
     ports:
       - 9200:9200
-    environment:
-      - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
     volumes:
       - esdata:/usr/share/elasticsearch/data
+    networks:
+      - deploy
+    container_name: database
 
   action_server:
     build: .
@@ -24,6 +19,8 @@ services:
       - 5055:5055
     depends_on:
       - database
+    networks:
+      - deploy
 
   interface:
     build: ./chat-service
@@ -34,6 +31,14 @@ services:
 #      - rasa_nlu
     ports:
       - 5000:5000
+    networks:
+      - deploy
+
+volumes:
+  esdata:
+
+networks:
+  deploy:
 
   # rasa_core:
   #   image: rasa/rasa_core:0.12.4
@@ -61,6 +66,3 @@ services:
   #     - models
   #     - -c
   #     - config/nlu-config.yml
-
-volumes:
-  esdata:
