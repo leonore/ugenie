@@ -75,7 +75,6 @@ class GetDescription(Action):
 
         if tracker.get_slot("acronym") != None:
             elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
-            SlotSet("acronym", None)
         elif tracker.get_slot("course") != None:
             elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
         # elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
@@ -97,7 +96,7 @@ class GetDescription(Action):
         # else:
         #     response = "Sorry, I couldn't find any description for that course."
 
-        return
+        return [SlotSet("acronym", None)]
 
 # utters time related information to do with a course (e.g. start time, year)
 class GetTime(Action):

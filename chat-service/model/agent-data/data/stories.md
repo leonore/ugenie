@@ -61,7 +61,7 @@
     - action_check_course
 * denial
     - action_course_denied
-    
+
 ## Generated Story -8439416083735920226
 * description_check{"course": "french stage 1"}
     - slot{"course": "french stage 1"}
@@ -69,3 +69,17 @@
 * description_check{"course": "brain sciences"}
     - slot{"course": "brain sciences"}
     - action_get_description
+
+## Generated Story -7533391507131635900
+* description_check{"acronym": "ft"}
+    - slot{"acronym": "ft"}
+    - action_get_description
+    - slot{"acronym": null}
+* description_check{"course": "french stage 1"}
+    - slot{"course": "french stage 1"}
+    - action_get_description
+    - slot{"acronym": null}
+* description_check{"course": "brain sciences"}
+    - slot{"course": "brain sciences"}
+    - action_get_description
+    - slot{"acronym": null}
