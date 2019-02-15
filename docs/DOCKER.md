@@ -12,11 +12,14 @@ Make sure docker is running in the background first.
 From the main directory of the project:
 ```bash
 docker-compose up
+# docker-compose up -d if you don't wanna see the logs (run in background)
+# then use docker-compose down to take down
 ```
 
 ### Populating the docker elastic container for the first time
 
 Make sure you've stopped your own background elastic processes in the background
+
 ```bash
 cd elastic-db
 python populate_elastic.py
@@ -25,5 +28,6 @@ curl localhost:9200/short_courses/_search?pretty # check it worked!
 
 ### Starting the chatbot
 
-The chatbot should be running at localhost:5000.
-tldr; spinning up docker-compose up will have everything running for you in one command.
+The chatbot should be running at localhost:5000.     
+
+**TLDR**; spinning up docker-compose up will have everything running for you in one command.
