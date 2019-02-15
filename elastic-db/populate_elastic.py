@@ -71,6 +71,7 @@ for node in adm_courses
 ]
 
 # read common questions
+# currently not reading in short questions
 actions3 = [
     {
     "_index" : "general_questions",
