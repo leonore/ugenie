@@ -22,6 +22,7 @@ entities:
 - requirement
 - course
 - student
+- acroynm
 
 intents:
 - requirements_check
@@ -49,48 +50,12 @@ slots:
   student:
     type: categorical
     values:
-    - —
-    - ' '
-    - s
-    - c
-    - o
-    - t
-    - t
-    - i
-    - s
-    - h
-    - ' '
-    - —
-    - ' '
-    - e
-    - u
-    - ' '
-    - —
-    - ' '
-    - i
-    - n
-    - t
-    - e
-    - r
-    - n
-    - a
-    - t
-    - i
-    - o
-    - n
-    - a
-    - l
-    - ' '
-    - —
-    - ' '
-    - o
-    - t
-    - h
-    - e
-    - r
-    - '-'
-    - u
-    - k
+    - scottish
+    - eu
+    - international
+    - other-uk
+  acronym:
+    type: text
 
 templates:
   utter_ask_student:

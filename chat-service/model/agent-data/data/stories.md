@@ -30,21 +30,13 @@
 * denial
  - action_course_denied
 
-## description_check_confirm
+## description_check
  * description_check
- - action_check_course
- * confirmation
   - action_get_description
-
-## description_check_deny
-* description_check
- - action_check_course
-* denial
- - action_course_denied
 
 ## acronym_check
 * acronym_check
- - action_get_acronym
+ - action_get_description
 
 ## tutor_check
 * tutor_check
@@ -69,3 +61,35 @@
     - action_check_course
 * denial
     - action_course_denied
+
+## Generated Story -8439416083735920226
+* description_check{"course": "french stage 1"}
+    - slot{"course": "french stage 1"}
+    - action_get_description
+* description_check{"course": "brain sciences"}
+    - slot{"course": "brain sciences"}
+    - action_get_description
+
+## Generated Story -7533391507131635900
+* description_check{"acronym": "ft"}
+    - slot{"acronym": "ft"}
+    - action_get_description
+    - slot{"acronym": null}
+* description_check{"course": "french stage 1"}
+    - slot{"course": "french stage 1"}
+    - action_get_description
+    - slot{"acronym": null}
+* description_check{"course": "brain sciences"}
+    - slot{"course": "brain sciences"}
+    - action_get_description
+    - slot{"acronym": null}
+    
+## Generated Story -38991934262801992
+* description_check{"acronym": "ATAS"}
+    - slot{"acronym": "ATAS"}
+    - action_get_description
+    - slot{"acronym": null}
+* description_check{"course": "opera afternoons 1"}
+    - slot{"course": "opera afternoons 1"}
+    - action_get_description
+    - slot{"acronym": null}

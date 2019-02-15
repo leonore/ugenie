@@ -1,20 +1,53 @@
-version: '3'
+version: '3.0'
 
 services:
   database:
     image: elasticsearch:6.5.4
     ports:
       - "9200:9200"
+
   action_server:
-    image: rasa/rasa_core_sdk:latest
+    build: .
     volumes:
-      - ./chat-interface/model:/app/actions
+      - ./chat-service/model:/app/actions
     ports:
       - "5055:5055"
+    depends_on:
+      - database
+
+  # rasa_core:
+  #   image: rasa/rasa_core:0.12.4
+  #   ports:
+  #     - "5005:5005"
+  #   volumes:
+  #     - ./chat-service/models/agent-data/models/dialogue:/app/models
+  #   command:
+  #     - start
+  #     - --core
+  #     - models
+  #     - -c
+  #     - rest
+  #   depends_on:
+  #     - rasa_nlu
+  #
+  # rasa_nlu:
+  #   image: rasa/rasa_nlu:latest-spacy
+  #   volumes:
+  #     - ./chat-service/models/agent-data/models/nlu:/app/models
+  #     - ./chat-service/model/nlu-config.yml:/app/config/nlu-config.yml
+  #   command:
+  #     - start
+  #     - --path
+  #     - models
+  #     - -c
+  #     - config/nlu-config.yml
+
   interface:
-    build: .
+    build: ./chat-service
     depends_on:
       - database
       - action_server
+#      - rasa_core
+#      - rasa_nlu
     ports:
       - "5000:5000"
