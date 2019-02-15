@@ -10,8 +10,11 @@ Our system consists of:
 
 Get yourself set up with dependencies:
 ```bash
-pip install -r requirements.txt
+pip install rasa_core
+pip install rasa_nlu[spacy]
 python -m spacy download en
+pip install flask-socketio
+pip install elasticsearch
 ```
 Provided your python is python 3.
 
