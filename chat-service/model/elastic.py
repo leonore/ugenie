@@ -172,14 +172,10 @@ def get_acronym_desc(query):
     else:
         return None, None, None
 
+# returns the course desciption or the terminology explanation depending on which was aksed
 def get_description(query):
     ct, cat, cscore = get_course_title(query)
-    # print("CT = " + str(ct) + ", " + str(cscore))
-
-    # sc, sc_score = get_sc_field(query, 'Course description')
-    # ad, ad_score = get_ad_description(query)
     acro, acro_desc, acro_score = get_acronym_desc(query)
-    # print("AC = " + str(acro) + ", " + str(acro_score))
 
     if cscore != None and acro_score != None:
         if cscore >= acro_score:
@@ -227,7 +223,7 @@ def get_description(query):
 
 
     # print("Meaning = " + str(desc))
-    print("Topic = " + str(topic) + ", and desc = " + str(desc))
+    # print("Topic = " + str(topic) + ", and desc = " + str(desc))
     return topic, desc
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))

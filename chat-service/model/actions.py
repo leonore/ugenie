@@ -66,7 +66,7 @@ class GetFees(Action):
         # dispatcher.utter_message(response)
         # return
 
-# utters the description of a course
+# utters the description of a course or tells the description of a term used
 class GetDescription(Action):
     def name(self):
         return "action_get_description"
@@ -77,14 +77,13 @@ class GetDescription(Action):
             elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
         elif tracker.get_slot("course") != None:
             elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
-        # elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+            
         if elastic_topic:
             response = str(elastic_desc)
         else:
             response = "Sorry, I could not find any details for that"
 
         dispatcher.utter_message(response)
-
 
         # if elastic_cat == "SC":
         #     elastic_title = elastic.get
@@ -96,6 +95,7 @@ class GetDescription(Action):
         # else:
         #     response = "Sorry, I couldn't find any description for that course."
 
+        # Used to clear the acronym slot in the tracker
         return [SlotSet("acronym", None)]
 
 # utters time related information to do with a course (e.g. start time, year)
