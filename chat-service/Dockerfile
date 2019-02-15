@@ -3,8 +3,7 @@ FROM python:3.6.6-slim
 COPY ./requirements.txt /app/requirements.txt
 
 # install requirements
-RUN apt-get update
-RUN apt-get install build-essential -y
+RUN apt-get update && apt-get install build-essential -y
 
 WORKDIR app
 
