@@ -5,7 +5,7 @@
     <title>Flask Chat</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -14,12 +14,16 @@
 
     <div class="chat-popup" id="myForm">
         <div class="chat-container">
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-
-            <div class="messages"></div>
+            
+			<div class="chat-header">
+				<a href="#" class="close" onclick="closeForm()"></a>
+				<div class="title">GUVA</div>
+			</div>
+  
+            <div class="message-area"></div>
+			
             <form class="message-form" onsubmit="return false;" action="" method="POST">
-                <input class="message-form__input" placeholder="Type a message.." type="text" />
-                <input class="message-form__button btn" value="Send" type="submit" />
+                <input class="message-form-input" placeholder="Type a message..." type="text" />
             </form>
 
         </div>
@@ -29,6 +33,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script type="text/javascript"  src="{{ url_for('static', filename='script.js') }}"></script>
+	
 </body>
 
 </html>
