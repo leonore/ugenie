@@ -38,9 +38,17 @@
 * acronym_check
  - action_get_description
 
-## tutor_check
+## tutor_check_confirm
 * tutor_check
+ - action_check_course
+* confirmation
  - action_get_tutor
+
+## tutor_check_deny
+* tutor_check
+ - action_check_course
+* denial
+ - action_course_denied
 
 ## requirements_check
 * requirements_check
@@ -99,10 +107,38 @@
     - slot{"acronym": "ATAS"}
     - action_get_description
     - slot{"acronym": null}
-    
+
 ## Generated Story -80120238664483409
 * time_check{"course": "brain science"}
     - slot{"course": "brain science"}
     - action_check_course
 * confirmation
     - action_get_time
+## Generated Story -8446625055458395372
+* fee_check{"course": "german stage 2"}
+    - slot{"course": "german stage 2"}
+    - action_check_course
+* confirmation
+    - action_get_fee
+
+## Generated Story -1947807233046006126
+* time_check{"course": "french stage 1"}
+    - slot{"course": "french stage 1"}
+    - action_check_course
+* confirmation
+    - action_get_time
+
+## Generated Story 6367092150298876504
+* tutor_check{"course": "german stage 2"}
+    - slot{"course": "german stage 2"}
+    - action_check_course
+* confirmation
+    - action_get_tutor
+
+## Generated Story -8976798553218325342
+* tutor_check{"course": "spanish stage 4"}
+    - slot{"course": "spanish stage 4"}
+    - action_check_course
+* confirmation
+    - action_get_tutor
+

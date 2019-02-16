@@ -3,6 +3,10 @@
 - yeah
 - y
 - yes
+- yes
+- yes
+- yes
+- yes
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -31,11 +35,12 @@
 - how much does it cost to do [biology](course)?
 - how much does it cost to study [biology](course)?
 - how much does [biology](course) cost?
-- what's the cost to do [biology](course)?
-- what's the price of [biology](course)?
+- whats the cost to do [biology](course)?
+- whats the price of [biology](course)?
 - how much money is [film studies 1](course)
 - how much does[ the kennedy brothers](course) course charge
 - how many pounds is [west end lectures](course)
+- how much is [german stage 2](course)
 
 ## intent:full_part_time_check
 - is [brain sciences](course) full time
@@ -67,7 +72,6 @@
 - good afternoon
 - hi there
 - howdy
-- yo
 
 ## intent:inform_student
 - i'm an [eu](student) student
@@ -101,10 +105,13 @@
 - how long is [festivals in ancient egypt](course)
 - how many hours does [working with trauma](course) last
 - what time is [brain science](course)
+- what time is [french stage 1](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
 - who is the tutor for [flim studies 1](course:film studies 1)
+- who teaches [german stage 2](course)
+- who is the tutor for [spanish stage 4](course)
 
 ## synonym:film studies 1
 - flim studies 1

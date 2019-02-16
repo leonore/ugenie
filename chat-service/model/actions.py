@@ -148,16 +148,16 @@ class GetTutor(Action):
         return "action_get_tutor"
 
     def run(self, dispatcher, tracker, domain):
-        try:
-            elastic_title = get_sc_title(tracker.get_slot("course"))
-        except:
-            response = "Sorry, I could not find any course called " + str(tracker.get_slot("course")) + "."
 
-        try:
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+
+        if elastic_cat == "SC":
             elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
-            response = "The tutor for " + str(elastic_title) + " is: " + str(elastic_output) + "."
-        except:
-            response = "Sorry, I could not find the tutor for " + str(elastic_title) + "."
+            response = "The tutor for " + str(elastic_title).title() + " is: " + str(elastic_output) + "."
+        elif elastic_output == "AD":
+            response = "Sorry, I do not know who teaches " + str(elastic_title).title()
+        else:
+            response = "Sorry, I could not find the tutor for " + str(elastic_title).title()
 
         dispatcher.utter_message(response)
         return
