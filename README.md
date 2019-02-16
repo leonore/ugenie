@@ -15,6 +15,7 @@ pip install rasa_nlu[spacy]
 python -m spacy download en
 pip install flask-socketio
 pip install elasticsearch
+pip install xlrd
 ```
 Provided your python is python 3.
 
