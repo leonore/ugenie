@@ -674,7 +674,7 @@
         "intent": "confirmation",
         "entities": []
       },
-      
+
       {
         "text": "how many credits do i get from doing opera afternoons 1",
         "intent": "credits_check",

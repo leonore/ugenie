@@ -1,10 +1,12 @@
-## intent:acronym_check
-- what does [FT](acronym) mean
-- what is [IELTS requirements](acronym)
-
 ## intent:confirmation
 - yes
 - yeah
+- y
+
+## intent:denial
+- no
+- wrong
+- n
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
