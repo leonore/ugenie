@@ -35,6 +35,7 @@
 - what does [PT](acronym) mean
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
+- what is [plan code](acronym)
 
 ## intent:fee_check
 - how much is [biology](course)?

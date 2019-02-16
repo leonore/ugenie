@@ -189,3 +189,8 @@
     - action_get_description
     - slot{"acronym": null}
 
+## Generated Story -48418464369663666
+* description_check{"acronym": "plan code"}
+    - slot{"acronym": "plan code"}
+    - action_get_description
+    - slot{"acronym": null}
