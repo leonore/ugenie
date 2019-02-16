@@ -2,11 +2,7 @@
 - yes
 - yeah
 - y
-
-## intent:denial
-- no
-- wrong
-- n
+- yes
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -16,11 +12,18 @@
 - how many credits is [intermediate hieroglyphics](course)
 - how many credits do i get from doing [opera afternoons 1](course)
 
+## intent:denial
+- no
+- wrong
+- n
+
 ## intent:description_check
 - tell me about [biology](course)
 - what's the description for [biology](course)?
 - what is [a history of the fbi](course)
 - what happens in [arabic stage 1](course)
+- what does [ATAS](acronym) mean
+- what does [FT](acronym) stand for
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -97,7 +100,11 @@
 - when does [a guided tour of dutch, flemish and french art in kelvingrove art gallery](course) take place
 - how long is [festivals in ancient egypt](course)
 - how many hours does [working with trauma](course) last
+- what time is [brain science](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
 - who is the tutor for [flim studies 1](course:film studies 1)
+
+## synonym:film studies 1
+- flim studies 1

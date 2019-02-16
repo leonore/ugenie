@@ -75,8 +75,10 @@ class GetDescription(Action):
 
         if tracker.get_slot("acronym") != None:
             elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
-        elif tracker.get_slot("course") != None:
+        else:
+         #tracker.get_slot("course") != None:
             elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
+
 
         if elastic_topic:
             response = str(elastic_desc)

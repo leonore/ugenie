@@ -99,3 +99,10 @@
     - slot{"acronym": "ATAS"}
     - action_get_description
     - slot{"acronym": null}
+    
+## Generated Story -80120238664483409
+* time_check{"course": "brain science"}
+    - slot{"course": "brain science"}
+    - action_check_course
+* confirmation
+    - action_get_time
