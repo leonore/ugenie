@@ -1,4 +1,7 @@
 ## intent:description_check
+- what does [ATAS](acronym) stand for
+
+## intent:description_check
 - what does [ATAS](acronym) mean
 - what happens in [opera afternoons 1](course)
 

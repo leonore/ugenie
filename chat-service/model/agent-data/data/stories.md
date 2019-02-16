@@ -83,7 +83,7 @@
     - slot{"course": "brain sciences"}
     - action_get_description
     - slot{"acronym": null}
-    
+
 ## Generated Story -38991934262801992
 * description_check{"acronym": "ATAS"}
     - slot{"acronym": "ATAS"}
@@ -91,5 +91,11 @@
     - slot{"acronym": null}
 * description_check{"course": "opera afternoons 1"}
     - slot{"course": "opera afternoons 1"}
+    - action_get_description
+    - slot{"acronym": null}
+
+## Generated Story 4143942832046725484
+* description_check{"acronym": "ATAS"}
+    - slot{"acronym": "ATAS"}
     - action_get_description
     - slot{"acronym": null}
