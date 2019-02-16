@@ -133,7 +133,6 @@ class GetTime(Action):
         #     response = str(elastic_output)
         # except:
         #     response = "Sorry, I could not find any times for " + str(elastic_title) + "."
-
         #
         # dispatcher.utter_message("Time Out: ")
         # response = "Course Time : "

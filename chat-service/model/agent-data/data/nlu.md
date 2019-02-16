@@ -7,6 +7,9 @@
 - yes
 - yes
 - yes
+- yes
+- yes
+- yes
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -28,6 +31,10 @@
 - what happens in [arabic stage 1](course)
 - what does [ATAS](acronym) mean
 - what does [FT](acronym) stand for
+- what does [IELTS](acronym) requirements mean
+- what does [PT](acronym) mean
+- what is [working with trauma](course)
+- tell me about [opera afternoons](course)
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -41,6 +48,7 @@
 - how much does[ the kennedy brothers](course) course charge
 - how many pounds is [west end lectures](course)
 - how much is [german stage 2](course)
+- what is [the price of fancy florence](course)
 
 ## intent:full_part_time_check
 - is [brain sciences](course) full time
@@ -72,6 +80,9 @@
 - good afternoon
 - hi there
 - howdy
+- hi
+- hi
+- hi
 
 ## intent:inform_student
 - i'm an [eu](student) student
@@ -106,12 +117,14 @@
 - how many hours does [working with trauma](course) last
 - what time is [brain science](course)
 - what time is [french stage 1](course)
+- when is [fancy florence](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
 - who is the tutor for [flim studies 1](course:film studies 1)
 - who teaches [german stage 2](course)
 - who is the tutor for [spanish stage 4](course)
+- who teaches [fancy florence](course)
 
 ## synonym:film studies 1
 - flim studies 1
