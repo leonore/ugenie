@@ -22,14 +22,14 @@ def train_interactive():
     agent = Agent(domain_file,
                   policies=[MemoizationPolicy(max_history=5), KerasPolicy()],
                   interpreter=interpreter, action_endpoint=action_endpoint)
-    data = agent.load_data(training_data_file)			   
+    data = agent.load_data(training_data_file)
     agent.train(data)
     interactive.run_interactive_learning(agent, training_data_file)
     return agent
 
 # Train Rasa-NLU Model
 def train_nlu():
-    training_data = load_data('agent-data/data/nlu-data.json')
+    training_data = load_data('agent-data/data/nlu.md')
     trainer = Trainer(config.load("nlu-config.yml"))
     trainer.train(training_data)
     model_directory = trainer.persist('agent-data/models/nlu/', fixed_model_name="current")

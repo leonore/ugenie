@@ -20,7 +20,7 @@ class CourseDenied(Action):
         return "action_course_denied"
 
     def run(self, dispatcher, tracker, domain):
-        response = "Sorry, could you please rephrase the question."
+        response = "Sorry I did not understand, could you please rephrase the question."
         dispatcher.utter_message(response)
         return
 
@@ -77,7 +77,7 @@ class GetDescription(Action):
             elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
         elif tracker.get_slot("course") != None:
             elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
-            
+
         if elastic_topic:
             response = str(elastic_desc)
         else:
