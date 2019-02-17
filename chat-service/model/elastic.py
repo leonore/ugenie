@@ -1,11 +1,11 @@
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+#es = Elasticsearch([{'host': 'elastic', 'port': 9200}]) # FOR DOCKER
+es = Elasticsearch(['host': 'localhost', 'port': 9200]) # FOR LOCAL DEPLOYMENT
 
-# TODO confirm_query question for things such as clarifying courses
 # TODO tokenize?, e.g. for questions such as "who teaches X", how much is "X"
 # --> only one function, returns one field
-# TODO deal with duplicate short_courses
+# TODO deal with duplicate courses
 
 # get answer to common questions about ADMISSIONS acronyms
 def get_acronym_answer(query):
