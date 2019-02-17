@@ -1,6 +1,6 @@
 from elasticsearch import Elasticsearch
 
-#es = Elasticsearch([{'host': 'elastic', 'port': 9200}]) # FOR DOCKER
+#es = Elasticsearch([{'host': 'elastic', 'port': 9200}]) # FOR DOCKER DEPLOYMENT
 es = Elasticsearch(['host': 'localhost', 'port': 9200]) # FOR LOCAL DEPLOYMENT
 
 # TODO tokenize?, e.g. for questions such as "who teaches X", how much is "X"
