@@ -91,8 +91,8 @@ def get_sc_field(query, field):
     return  first_hit['_source'][field], first_hit['_score'] # gives field in text
 
 # get specfic field for a give admissions course: int fees, rio, ielts requirements EndpointConfig
-def get_ad_field(query, feild):
-    res 
+# def get_ad_field(query, feild):
+#     res
 
 # get specific field for given admissions course: title, start date, int fee e.t.c.
 def get_admissions_field(query, field):
