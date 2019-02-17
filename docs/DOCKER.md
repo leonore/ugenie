@@ -5,6 +5,18 @@
 Follow the [official tutorial for Docker CE](https://docs.docker.com/install/)     
 Follow the [official tutorial for docker-compose](https://docs.docker.com/compose/install/)
 
+### Unconvenient setup
+
+For the chat to work from a Docker base, you need to uncomment / comment some lines in:
+```
+trainer.py
+elastic.py
+agent.py
+endpoints.yml
+```
+
+for inner-Docker interaction to work correctly.
+
 ### Starting the docker compose
 
 Make sure docker is running in the background first.     
@@ -18,7 +30,8 @@ docker-compose up
 
 ### Populating the docker elastic container for the first time
 
-Make sure you've stopped your own background elastic processes in the background
+Make sure you've stopped your own background elastic processes in the background    
+change "9200" to "9200:9200" in docker-compose.
 
 ```bash
 cd elastic-db

@@ -17,7 +17,8 @@ def train_interactive():
     current_directory = os.path.dirname(os.path.realpath(__file__))
     domain_file = 'domain.yml'
     interpreter = RasaNLUInterpreter(current_directory + '/agent-data/models/nlu/default/current')
-    action_endpoint = EndpointConfig(url='http://localhost:5055/webhook')
+    action_endpoint = EndpointConfig(url='http://localhost:5055/webhook') # FOR LOCAL DEPLOYMENT
+    #action_endpoint = EndpointConfig(url='http://action_server:5055/webhook') # FOR DOCKER DEPLOYMENT
     training_data_file = current_directory + '/agent-data/data/stories.md'
     agent = Agent(domain_file,
                   policies=[MemoizationPolicy(max_history=5), KerasPolicy()],
