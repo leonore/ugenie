@@ -674,16 +674,7 @@
         "intent": "confirmation",
         "entities": []
       },
-      {
-        "text": "no",
-        "intent": "denial",
-        "entities": []
-      },
-      {
-        "text": "wrong",
-        "intent": "denial",
-        "entities": []
-      },
+
       {
         "text": "how many credits do i get from doing opera afternoons 1",
         "intent": "credits_check",
