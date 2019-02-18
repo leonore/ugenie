@@ -11,7 +11,7 @@ Make sure docker is running in the background first.
 
 From the main directory of the project:
 ```bash
-docker-compose up # --build if you change things to the project/first time you run it
+docker-compose up --build # if you change things to the project/first time you run it
 docker-compose up
 # docker-compose up -d if you don't wanna see the logs (run in background)
 # then use docker-compose down to take down
