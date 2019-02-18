@@ -1,0 +1,8 @@
+import os
+
+if os.environ.get('DOCKER', True): # DOCKER DEPLOYMENT
+    actionIP = "http://action_server:5055/webhook"
+    elasticIP = "http://elastic:9200"
+else: # LOCAL DEPLOYMENT
+    actionIP = "http://localhost:5055/webhook"
+    elasticIP = "http://localhost:9200"
