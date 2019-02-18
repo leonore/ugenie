@@ -1,7 +1,7 @@
 from elasticsearch import Elasticsearch
+from network_config import elasticIP
 
-#es = Elasticsearch([{'host': 'elastic', 'port': 9200}]) # FOR DOCKER DEPLOYMENT
-es = Elasticsearch(['host': 'localhost', 'port': 9200]) # FOR LOCAL DEPLOYMENT
+es = Elasticsearch([elasticIP])
 
 # TODO tokenize?, e.g. for questions such as "who teaches X", how much is "X"
 # --> only one function, returns one field

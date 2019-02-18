@@ -12,10 +12,11 @@ from rasa_core.events import SlotSet
 import os
 current_directory = os.path.dirname(os.path.realpath(__file__))
 
+from network_config import actionIP
+
 # Start Rasa-Core Agent
 interpreter = RasaNLUInterpreter(current_directory + '/agent-data/models/nlu/default/current')
-#action_endpoint = EndpointConfig(url='http://action_server:5055/webhook') # FOR DOCKER DEPLOYMENT
-action_endpoint = EndpointConfig(url='http://localhost:5055/webhook') # FOR LOCAL DEPLOYMENT
+action_endpoint = EndpointConfig(url=actionIP)
 agent = Agent.load(current_directory + '/agent-data/models/dialogue', interpreter=interpreter, action_endpoint=action_endpoint)
 
 # Handle user message and return response from training data

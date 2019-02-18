@@ -10,13 +10,11 @@ WORKDIR app
 RUN pip install -r requirements.txt
 RUN python -m spacy download en
 
+COPY ./model/network_config.py /app/network_config.py
+
 ADD . /app
 
-#WORKDIR model
-
-#RUN python -c 'import trainer; trainer.train()'
-
-#WORKDIR ..
+ENV DOCKER Yes
 
 # Launch the whole stack
 CMD [ "python", "main.py" ]
