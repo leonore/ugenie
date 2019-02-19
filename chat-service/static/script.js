@@ -14,8 +14,6 @@ var socket = io.connect('http://' + document.domain + ':' + location.port);
 
 // When the user connects, run this function
 socket.on('connect', function() {
-	console.log('New connection from ' + document.domain);
-	
 	// Sent an event to the server with details on the newly connected user
     socket.emit('new_connection', {
         state: 'User Connected',
@@ -25,11 +23,16 @@ socket.on('connect', function() {
 	// When the user submits a new message, send a message event to the server
     var form = $('form').on('submit', function(e) {
         e.preventDefault();
-        socket.emit('new_message', {
-			user_name: 'You',
-            message: $('input.message-form-input').val()
-        })
-        $('input.message-form-input').val('').focus()
+		var messageInput = $('input.message-form-input');
+		console.log('messageInput.val(): ', messageInput.val());
+		// Check if the user has entered anything before sending a socket event for the message
+		if(messageInput.val() !== ''){
+			socket.emit('new_message', {
+				user_name: 'You',
+				message: messageInput.val()
+			})
+			messageInput.val('').focus()
+		}
     });
 })
 
@@ -37,8 +40,8 @@ var messageArea = $('div.message-area');
 
 // When the client receives a 'user_message' event, print the message on the chat as a user message
 socket.on('user_message', function(msg) {
-    console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
+		console.log('msg.message: ', msg.message);
         messageArea.append('<div class="message user-message">' + msg.message + '</div>');
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
@@ -46,7 +49,6 @@ socket.on('user_message', function(msg) {
 
 // When the client receives a 'user_message' event, print the message on the chat as a bot message
 socket.on('bot_message', function(msg) {
-    console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));

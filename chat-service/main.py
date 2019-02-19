@@ -38,7 +38,7 @@ def handle_message(json):
         sessionId = request.sid
         
         # Print the message that was sent
-        socketio.emit('user_message', json)            # On the chat interface
+        socketio.emit('user_message', json)             # On the chat interface
         messageReceived(sessionId, json['message'])     # On the console
 
         # Get and sent back a response to the chat interface

@@ -140,14 +140,14 @@ button {
 	clear: both;
 }
 
-.message.user-message {
-	background: #0075B0;
+.message.bot-message {
+	background: #00B5D1;
 	max-width: 95%;
 	float: left;
 }
 
-.message.bot-message {
-	background: #00B5D1;
+.message.user-message {
+	background: #0075B0;
 	max-width: 95%;
 	float: right;
 }
