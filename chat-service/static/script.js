@@ -24,6 +24,7 @@ socket.on('connect', function() {
     var form = $('form').on('submit', function(e) {
         e.preventDefault();
 		var messageInput = $('input.message-form-input');
+		console.log('messageInput.val(): ', messageInput.val());
 		// Check if the user has entered anything before sending a socket event for the message
 		if(messageInput.val() !== ''){
 			socket.emit('new_message', {
@@ -40,6 +41,7 @@ var messageArea = $('div.message-area');
 // When the client receives a 'user_message' event, print the message on the chat as a user message
 socket.on('user_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
+		console.log('msg.message: ', msg.message);
         messageArea.append('<div class="message user-message">' + msg.message + '</div>');
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
