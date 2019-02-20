@@ -230,6 +230,7 @@ def get_description(query):
     # print("Topic = " + str(topic) + ", and desc = " + str(desc))
     return topic, desc
 
+# returns the tutor's name and a list of classes tbat they teach
 def get_tutor_courses(query):
     res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
     # response = "You have picked " + str(tutor)
@@ -275,6 +276,6 @@ def get_tutor_courses(query):
 # print(get_description("FT"))
 # print(get_description("french"))
 
-# print(get_tutor_courses("Ruth Ezra"))
-# print(get_tutor_courses("Sarah Wolstencroft"))
-# print(get_tutor_courses("Sam Cook"))
+# print(get_tutor_courses("Ruth Ezra")) # >1 class
+# print(get_tutor_courses("Sarah Wolstencroft")) # 1 class
+# print(get_tutor_courses("Sam Cook")) # 0 classes

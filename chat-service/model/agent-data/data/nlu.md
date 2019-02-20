@@ -130,7 +130,7 @@
 
 ## intent:tutor_courses_check
 - what courses does [Ruth Ezra](tutor) teach
-- what does [Ruth Ezrar](tutor) teach
+- what does [Ruth Ezra](tutor) teach
 - what other courses does [Ruth Ezra](tutor) teach
 - what courses does [Alison Greer](tutor) teach
 - what does [Clare Crines](tutor) teach

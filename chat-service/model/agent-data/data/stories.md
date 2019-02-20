@@ -228,13 +228,13 @@
 * tutor_courses_check{"tutor": "Stephen Mather"}
     - slot{"tutor": "Stephen Mather"}
     - action_get_tutor_courses
-    
+
 ## Generated Story -2118669979413158424
 * tutor_courses_check{"tutor": "Ronnie Scott"}
     - slot{"tutor": "Ronnie Scott"}
     - action_get_tutor_courses
+    
 ## Generated Story 5961721126681444915
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
-
