@@ -138,6 +138,4 @@
 - what does [Stephen Mather](tutor) teach
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
-
-## synonym:film studies 1
-- flim studies 1
+- what other courses does [Sonia Bates](tutor) tutor
