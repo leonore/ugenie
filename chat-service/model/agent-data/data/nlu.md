@@ -129,6 +129,8 @@
 
 ## intent:tutor_courses_check
 - what courses does [Ruth Ezra](tutor) teach
+- what does [Ruth Eszr](tutor:Ruth Ezra) teach
+- what other courses does [Ruth Ezra](tutor) teach
 
 ## synonym:film studies 1
 - flim studies 1

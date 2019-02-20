@@ -266,4 +266,4 @@ def get_tutor_courses(query):
 # print(get_description("brain science"))
 # print(get_description("FT"))
 # print(get_description("french"))
-print(get_tutor_courses("Ruth Ezra"))
+# print(get_tutor_courses("Ruth Ezra"))
