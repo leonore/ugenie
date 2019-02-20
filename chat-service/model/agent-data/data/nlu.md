@@ -127,5 +127,8 @@
 - who is the tutor for [spanish stage 4](course)
 - who teaches [fancy florence](course)
 
+## intent:tutor_courses_check
+- what courses does [Ruth Ezra](tutor) teach
+
 ## synonym:film studies 1
 - flim studies 1

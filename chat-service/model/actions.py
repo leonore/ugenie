@@ -184,7 +184,7 @@ class GetRequirements(Action):
 
         return response
 
-def GetTutorCourses(Action):
+class GetTutorCourses(Action):
     def name(self):
         return "action_get_tutor_courses"
 
@@ -195,4 +195,5 @@ def GetTutorCourses(Action):
         else:
             response = "Sorry, I could not find any courses with that tutor"
 
-        return response
+        dispatcher.utter_message(response)
+        return
