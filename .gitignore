@@ -18,3 +18,4 @@
 
 # Trained models
 chat-service/model/agent-data/models/
+*.dot

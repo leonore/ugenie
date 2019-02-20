@@ -11,6 +11,7 @@ Make sure docker is running in the background first.
 
 From the main directory of the project:
 ```bash
+docker-compose up --build # if you change things to the project/first time you run it
 docker-compose up
 # docker-compose up -d if you don't wanna see the logs (run in background)
 # then use docker-compose down to take down
@@ -18,7 +19,10 @@ docker-compose up
 
 ### Populating the docker elastic container for the first time
 
-Make sure you've stopped your own background elastic processes in the background
+`TODO make this a nicer process, see issue #90`   
+
+Make sure you've stopped your own background elastic processes in the background    
+change "9200" to "9200:9200" in docker-compose.
 
 ```bash
 cd elastic-db
