@@ -248,10 +248,10 @@ def get_tutor_courses(query):
         for counter in res['hits']['hits']:
             if counter != res['hits']['hits'][res_len-1]:
                 print(counter['_source']['Title'])
-                course_list += counter['_source']['Title'] + ", "
-        course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title'])
+                course_list += str(counter['_source']['Title']).title() + ", "
+        course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 
-    print(course_list)
+    # print(course_list)
     return tutor, course_list
 
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
@@ -275,6 +275,6 @@ def get_tutor_courses(query):
 # print(get_description("FT"))
 # print(get_description("french"))
 
-print(get_tutor_courses("Ruth Ezra"))
-print(get_tutor_courses("Sarah Wolstencroft"))
-print(get_tutor_courses("Sam Cook"))
+# print(get_tutor_courses("Ruth Ezra"))
+# print(get_tutor_courses("Sarah Wolstencroft"))
+# print(get_tutor_courses("Sam Cook"))

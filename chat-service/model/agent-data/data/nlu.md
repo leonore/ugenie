@@ -132,6 +132,12 @@
 - what courses does [Ruth Ezra](tutor) teach
 - what does [Ruth Ezrar](tutor) teach
 - what other courses does [Ruth Ezra](tutor) teach
+- what courses does [Alison Greer](tutor) teach
+- what does [Clare Crines](tutor) teach
+- what classes does [Ann Laird](tutor) tutor
+- what does [Stephen Mather](tutor) teach
+- what other courses does [Ronnie Scott](tutor) teach
+- what does [Fiona Reid](tutor) teach
 
 ## synonym:film studies 1
 - flim studies 1
