@@ -230,6 +230,15 @@ def get_description(query):
     # print("Topic = " + str(topic) + ", and desc = " + str(desc))
     return topic, desc
 
+def get_tutor_courses(query):
+    res = es.search(index="admissions", body={"query": {"match": {"Tutor": query}}})
+    first_hit = res['hits']['hits'][0]
+    tutor = first_hit['_source']['Tutor']
+    response = "You have picked " + str(tutor)
+
+
+    return tutor, response
+
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
 #print(get_sc_field("SPANISH STAGE 2", "Course description"))
