@@ -194,3 +194,17 @@
     - slot{"acronym": "plan code"}
     - action_get_description
     - slot{"acronym": null}
+
+## Generated Story 5942406380568682275
+* tutor_courses_check{"tutor": "Ruth Ezra"}
+    - slot{"tutor": "Ruth Ezra"}
+    - action_get_tutor_courses
+
+## Generated Story -4738793752722995132
+* tutor_courses_check{"tutor": "Ruth Ezra"}
+    - slot{"tutor": "Ruth Ezra"}
+    - action_get_tutor_courses
+
+## tutor_courses_check
+* tutor_courses_check
+ - action_get_tutor_courses

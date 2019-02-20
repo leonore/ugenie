@@ -17,12 +17,14 @@ actions:
 - utter_ask_student
 - action_check_course
 - action_course_denied
+- action_get_tutor_courses
 
 entities:
 - requirement
 - course
 - student
 - acroynm
+- tutor
 
 intents:
 - requirements_check
@@ -37,6 +39,7 @@ intents:
 - acronym_check
 - confirmation
 - denial
+- tutor_courses_check
 
 
 slots:
@@ -55,6 +58,8 @@ slots:
     - international
     - other-uk
   acronym:
+    type: text
+  tutor:
     type: text
 
 templates:
