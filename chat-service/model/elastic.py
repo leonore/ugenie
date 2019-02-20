@@ -243,7 +243,7 @@ def get_tutor_courses(query):
     if res_len == 0:
         return False, False
     elif res_len == 1:
-        course_list = res['hits']['hits'][0]['_source']['Title']
+        course_list = str(res['hits']['hits'][0]['_source']['Title']).title()
     elif res_len > 1:
         for counter in res['hits']['hits']:
             if counter != res['hits']['hits'][res_len-1]:
