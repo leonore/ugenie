@@ -190,6 +190,10 @@ class GetTutorCourses(Action):
 
     def run(self, dispatcher, tracker, domain):
         elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
+
+        # if not elastic_output:
+        #     elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("course"))
+
         if elastic_output:
             response = str(elastic_tutor) + " teaches: " + str(elastic_output)
         else:

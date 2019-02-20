@@ -126,11 +126,16 @@
 - who teaches [german stage 2](course)
 - who is the tutor for [spanish stage 4](course)
 - who teaches [fancy florence](course)
+- who is the teacher for [art and anatomy](course)
 
 ## intent:tutor_courses_check
 - what courses does [Ruth Ezra](tutor) teach
-- what does [Ruth Eszr](tutor:Ruth Ezra) teach
+- what does [Ruth Ezra](tutor) teach
 - what other courses does [Ruth Ezra](tutor) teach
-
-## synonym:film studies 1
-- flim studies 1
+- what courses does [Alison Greer](tutor) teach
+- what does [Clare Crines](tutor) teach
+- what classes does [Ann Laird](tutor) tutor
+- what does [Stephen Mather](tutor) teach
+- what other courses does [Ronnie Scott](tutor) teach
+- what does [Fiona Reid](tutor) teach
+- what other courses does [Sonia Bates](tutor) tutor
