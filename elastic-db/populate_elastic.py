@@ -1,16 +1,21 @@
-# https://stackoverflow.com/questions/42623636/import-list-of-dicts-or-json-file-to-elastic-search-with-python
-
-# don't forget to launch ES
+# don't forget to launch ES if running outside docker
 from elasticsearch import Elasticsearch, helpers
 from load_questions import general_questions, short_questions
-import xlrd, datetime
+import xlrd, datetime, os, time
 
-es = Elasticsearch([{'host': 'localhost', 'port': 9200}])
+if os.environ.get('DOCKER'):
+    # Elastic needs time start up in Docker container
+    time.sleep(20)
+    elasticIP = "elastic"
+else: # LOCAL DEPLOYMENT
+    elasticIP = "localhost"
 
-book1 = xlrd.open_workbook('../../data/short_courses.xlsx')
+es = Elasticsearch([elasticIP], port=9200)
+
+book1 = xlrd.open_workbook('data/short_courses.xlsx')
 wb1 = book1.sheet_by_index(0)
 
-book2 = xlrd.open_workbook('../../data/admissions.xlsx')
+book2 = xlrd.open_workbook('data/admissions.xlsx')
 wb2 = book2.sheet_by_index(0)
 
 def parse_value(cell):
@@ -82,12 +87,11 @@ actions3 = [
 for node in general_questions
 ]
 
-# WIPE INDICES BEFORE RELOADING
-es.indices.delete("_all")
+# the database isn't populated with all our data, repopulate
+if not es.indices.exists(["admissions", "short_courses", "general_questions"]):
+    # WIPE INDICES BEFORE RELOADING -- IN CASE SOMETHING WENT WRONG
+    es.indices.delete("_all")
 
-helpers.bulk(es, actions1)
-helpers.bulk(es, actions2)
-helpers.bulk(es, actions3)
-
-# print(next(question["answer"] for question in general_questions if question["question"] == "FT"))
-# print(general_questions)
+    helpers.bulk(es, actions1)
+    helpers.bulk(es, actions2)
+    helpers.bulk(es, actions3)
