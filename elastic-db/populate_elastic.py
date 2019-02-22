@@ -6,7 +6,7 @@ import xlrd, datetime, os, time
 if os.environ.get('DOCKER'):
     # Elastic needs time start up in Docker container
     # startup time is slow but was tested from the Google Cloud VM
-    time.sleep(45)
+    time.sleep(52)
     elasticIP = "elastic"
 else: # LOCAL DEPLOYMENT
     elasticIP = "localhost"
