@@ -230,6 +230,31 @@ def get_description(query):
     # print("Topic = " + str(topic) + ", and desc = " + str(desc))
     return topic, desc
 
+# returns the tutor's name and a list of classes tbat they teach
+def get_tutor_courses(query):
+    res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
+    # response = "You have picked " + str(tutor)
+    course_list = ""
+    res_len = 0
+    # print(res)
+    if res['hits']['total']:
+        res_len = len(res['hits']['hits'])
+        first_hit = res['hits']['hits'][0]
+        tutor = first_hit['_source']['Tutor']
+    if res_len == 0:
+        return False, False
+    elif res_len == 1:
+        course_list = str(res['hits']['hits'][0]['_source']['Title']).title()
+    elif res_len > 1:
+        for counter in res['hits']['hits']:
+            if counter != res['hits']['hits'][res_len-1]:
+                print(counter['_source']['Title'])
+                course_list += str(counter['_source']['Title']).title() + ", "
+        course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
+
+    # print(course_list)
+    return tutor, course_list
+
 #print(get_sc_field("Botanical painting and illustration", "Course description"))
 #print(get_sc_field("Impressionism 1860-1900", "Course description"))
 #print(get_sc_field("SPANISH STAGE 2", "Course description"))
@@ -250,3 +275,7 @@ def get_description(query):
 # print(get_description("brain science"))
 # print(get_description("FT"))
 # print(get_description("french"))
+
+# print(get_tutor_courses("Ruth Ezra")) # >1 class
+# print(get_tutor_courses("Sarah Wolstencroft")) # 1 class
+# print(get_tutor_courses("Sam Cook")) # 0 classes

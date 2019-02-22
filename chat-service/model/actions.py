@@ -183,3 +183,21 @@ class GetRequirements(Action):
             response = "We do not have any requirements for that course"
 
         return response
+
+class GetTutorCourses(Action):
+    def name(self):
+        return "action_get_tutor_courses"
+
+    def run(self, dispatcher, tracker, domain):
+        elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
+
+        # if not elastic_output:
+        #     elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("course"))
+
+        if elastic_output:
+            response = str(elastic_tutor) + " teaches: " + str(elastic_output)
+        else:
+            response = "Sorry, I could not find any courses with that tutor"
+
+        dispatcher.utter_message(response)
+        return

@@ -56,6 +56,10 @@
 * give_req_type
  - action_get_requirements
 
+## tutor_courses_check
+* tutor_courses_check{"tutor":"Pamela Ross"}
+ - action_get_tutor_courses{"tutor":"Pamela Ross"}
+
 ## Generated Story -2906752824971192833
 * time_check{"course": "brain science"}
     - slot{"course": "brain science"}
@@ -194,3 +198,43 @@
     - slot{"acronym": "plan code"}
     - action_get_description
     - slot{"acronym": null}
+
+## Generated Story 5942406380568682275
+* tutor_courses_check{"tutor": "Ruth Ezra"}
+    - slot{"tutor": "Ruth Ezra"}
+    - action_get_tutor_courses
+
+## Generated Story -4738793752722995132
+* tutor_courses_check{"tutor": "William Manley"}
+    - slot{"tutor": "William Manley"}
+    - action_get_tutor_courses
+
+## Generated Story 693318455824008278
+* tutor_courses_check{"tutor": "alison greer"}
+    - slot{"tutor": "alison greer"}
+    - action_get_tutor_courses
+
+## Generated Story -3564489366415833343
+* tutor_courses_check{"tutor": "Clare Crines"}
+    - slot{"tutor": "Clare Crines"}
+    - action_get_tutor_courses
+
+## Generated Story -4934452183337263033
+* tutor_courses_check{"tutor": "Ann Laird"}
+    - slot{"tutor": "Ann Laird"}
+    - action_get_tutor_courses
+
+## Generated Story -7812749277325169161
+* tutor_courses_check{"tutor": "Stephen Mather"}
+    - slot{"tutor": "Stephen Mather"}
+    - action_get_tutor_courses
+
+## Generated Story -2118669979413158424
+* tutor_courses_check{"tutor": "Ronnie Scott"}
+    - slot{"tutor": "Ronnie Scott"}
+    - action_get_tutor_courses
+    
+## Generated Story 5961721126681444915
+* tutor_courses_check{"tutor": "Fiona Reid"}
+    - slot{"tutor": "Fiona Reid"}
+    - action_get_tutor_courses
