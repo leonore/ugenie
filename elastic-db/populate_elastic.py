@@ -5,12 +5,11 @@ import xlrd, datetime, os, time
 
 if os.environ.get('DOCKER'):
     # Elastic needs time start up in Docker container
-    time.sleep(20)
+    # startup time is slow but was tested from the Google Cloud VM
+    time.sleep(45)
     elasticIP = "elastic"
 else: # LOCAL DEPLOYMENT
     elasticIP = "localhost"
-
-es = Elasticsearch([elasticIP], port=9200)
 
 book1 = xlrd.open_workbook('data/short_courses.xlsx')
 wb1 = book1.sheet_by_index(0)
@@ -86,6 +85,8 @@ actions3 = [
     }
 for node in general_questions
 ]
+
+es = Elasticsearch([elasticIP], port=9200)
 
 # the database isn't populated with all our data, repopulate
 if not es.indices.exists(["admissions", "short_courses", "general_questions"]):
