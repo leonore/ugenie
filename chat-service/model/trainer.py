@@ -1,3 +1,9 @@
+import platform
+# checks if deployment instance is university VM, which does not support RASA training packages
+if platform.platform() == "Linux-4.4.0-142-generic-x86_64-with-Ubuntu-16.04-xenial":
+    print("Instance is " + platform.platform() + ", does not support Tensorflow. Exiting...")
+    exit()
+
 from rasa_core import utils
 from rasa_core.agent import Agent
 from rasa_core.interpreter import RasaNLUInterpreter
@@ -10,7 +16,7 @@ from rasa_nlu.training_data import load_data
 from rasa_nlu import config
 from rasa_nlu.model import Trainer
 
-import os, platform
+import os
 from network_config import actionIP
 
 # Start Interactive Training Mode
@@ -55,7 +61,5 @@ def train_core():
 
 # Train both Rasa-Core Dialogue Model and Rasa-NLU Model
 def train():
-    # checks if deployment instance is university VM, which does not support tensorflow training policies
-    if platform.platform() != "Linux-4.4.0-142-generic-x86_64-with-Ubuntu-16.04-xenial":
-        model_directory = train_nlu()
-        agent = train_core()
+    model_directory = train_nlu()
+    agent = train_core()
