@@ -10,7 +10,7 @@ from rasa_nlu.training_data import load_data
 from rasa_nlu import config
 from rasa_nlu.model import Trainer
 
-import os
+import os, platform
 from network_config import actionIP
 
 # Start Interactive Training Mode
@@ -55,5 +55,7 @@ def train_core():
 
 # Train both Rasa-Core Dialogue Model and Rasa-NLU Model
 def train():
-    model_directory = train_nlu()
-    agent = train_core()
+    # checks if deployment instance is university VM, which does not support tensorflow training policies
+    if platform.platform() != "Linux-4.4.0-142-generic-x86_64-with-Ubuntu-16.04-xenial":
+        model_directory = train_nlu()
+        agent = train_core()
