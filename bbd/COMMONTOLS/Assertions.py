@@ -20,11 +20,12 @@ def only_widget_seen(context):
 
 
 
-def not_expexted_answer():
 
-def chatbot_open(context):
-        if( driver.find_element_by_class_name('close').is_displayed()) ||driver.find_element_by_class_name(('open-button').is_displayed())==False):
+def chatbot_open_assert(context):
+        if( context.driver.find_element_by_class_name('close').is_displayed()  or context.driver.find_element_by_class_name('open-button').is_displayed()==False):
                 return False
-
+        else :
+                return True
 def search_answer_databas(context):
-        context.expected_answer =
+      """  context.expected_answer ="""
+
