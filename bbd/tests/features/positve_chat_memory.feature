@@ -1,7 +1,7 @@
 Feature: interacting with chatbot
-  Scenario: the chatbot remember what the user is talking about
 
-    Given user asked a question about a subject
-    When chatbot respond with details
-    And the user asks for more details without mentioning the subject
-    Then the chatbot should be able to remember the subject
+
+    Scenario: the remember  the user questions_1
+    Given the chatbot have already answerd a qusetion was asked by the user
+    When the user asks for further
+    Then the chatbot should send the requierd information if it dose exist
