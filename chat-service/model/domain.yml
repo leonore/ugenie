@@ -67,10 +67,10 @@ templates:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
   - text: Do you mean general requirements or IELTS requirements?
-  utter_description_check:
-  - text: 'The course description for {course} is: ...'
-  utter_fee_check:
-  - text: The {course} fees for {student} students are ...
+  # utter_description_check:
+  # - text: 'The course description for {course} is: ...'
+  # utter_fee_check:
+  # - text: The {course} fees for {student} students are ...
   utter_goodbye:
   - text: Goodbye!
   utter_greet:
