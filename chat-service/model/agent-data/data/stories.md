@@ -118,6 +118,7 @@
     - action_check_course
 * confirmation
     - action_get_time
+    
 ## Generated Story -8446625055458395372
 * fee_check{"course": "german stage 2"}
     - slot{"course": "german stage 2"}
@@ -233,7 +234,7 @@
 * tutor_courses_check{"tutor": "Ronnie Scott"}
     - slot{"tutor": "Ronnie Scott"}
     - action_get_tutor_courses
-    
+
 ## Generated Story 5961721126681444915
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}

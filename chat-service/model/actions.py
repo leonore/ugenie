@@ -1,10 +1,8 @@
 from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet
-
-
 import elastic
 
-# asks the user to confirm the course
+# Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
         return "action_check_course"
@@ -15,6 +13,8 @@ class CheckCourse(Action):
         dispatcher.utter_message(response)
         return
 
+# Apologises if the chat-bot returns the incorrect courses
+# For now it just says could you please rephrase but possible in the future it could give alternative suggestions
 class CourseDenied(Action):
     def name(self):
         return "action_course_denied"
@@ -24,9 +24,9 @@ class CourseDenied(Action):
         dispatcher.utter_message(response)
         return
 
-
-# IN working
-#  sends the answer to common acronym questions
+## IN WORK ##
+# Sends the answer to common acronym questions
+# e.g. "what does FT stand for"
 class GetAcronym(Action):
     def name(self):
         return "action_get_acronym"
@@ -36,13 +36,15 @@ class GetAcronym(Action):
         dispatcher.utter_message(response)
         return
 
-# utters the cost of a course
+# Utters the cost of a course
 class GetFees(Action):
     def name(self):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-
+        # elastic_title = title of the course from the database
+        # elastic_cat = course category e.g. short course / admissions courses
+        # elastic_score = the score of how relevant the course was to the elastic search (max 1, min 0)
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         if elastic_cat == "SC":
             elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
@@ -51,72 +53,41 @@ class GetFees(Action):
             elastic_output = elastic.get_ad_fees(elastic_title)
             response = str(elastic_output)
 
-
-
         dispatcher.utter_message(response)
         return
 
-        # # elastic_title = get_sc_title(tracker.get_slot("course"))
-        # try:
-        #     elastic_output = elastic.get_sc_field(tracker.get_slot("course"), "Cost")
-        #     response = str(elastic_title) + " costs £" + str(elastic_output) + "."
-        # except:
-        #     response = "Sorry, I couldn't find any course fees for " + str(elastic_title) + "."
-        #
-        # dispatcher.utter_message(response)
-        # return
-
-# utters the description of a course or tells the description of a term used
+# Utters the description of a course or tells the description of a term used
 class GetDescription(Action):
     def name(self):
         return "action_get_description"
 
     def run(self, dispatcher, tracker, domain):
-
+        # If there is a string in the 'acronym' slot, assume the user is asking about terminology
+        # Else assume the user is asking about a course
         if tracker.get_slot("acronym") != None:
             elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
         else:
-         #tracker.get_slot("course") != None:
             elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
-
 
         if elastic_topic:
             response = str(elastic_desc)
         else:
             response = "Sorry, I could not find any details for that"
 
-        dispatcher.utter_message(response)
-
-        # if elastic_cat == "SC":
-        #     elastic_title = elastic.get
-        #     elastic_output = elastic.get_sc_field(elastic_title, "Course description")
-        #     response = "The description for " + str(elastic_title) + " is: " + str(elastic_output) + "."
-        # elif elastic_cat == "AD":
-        #     elastic_output = elastic.get_ad_description(elastic_title)
-        #     response = str(elastic_output)
-        # else:
-        #     response = "Sorry, I couldn't find any description for that course."
-
         # Used to clear the acronym slot in the tracker
+        dispatcher.utter_message(response)
         return [SlotSet("acronym", None)]
 
-# utters time related information to do with a course (e.g. start time, year)
+# Utters time related information to do with a course
+# e.g. start time, year
 class GetTime(Action):
     def name(self):
         return "action_get_time"
 
     def run(self, dispatcher, tracker, domain):
-        # dispatcher.utter_message("Get Time: ")
-        # dispatcher.utter_message("Get Time2: ")
-        #
-        # try:
-        #     dispatcher.utter_message("Try: ")
-        #     elastic_title = get_course_title(tracker.get_slot("course"))
-        # except:
-        #     dispatcher.utter_message("Except: ")
-        #     response = "Sorry :("
-
-        print("A Get Time")
+        # elastic_title = title of the course from the database
+        # elastic_cat = course category e.g. short course / admissions courses
+        # elastic_score = the score of how relevant the course was to the elastic search (max 1, min 0)
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
         if elastic_cat == "SC":
@@ -128,28 +99,23 @@ class GetTime(Action):
         else:
             response = "Sorry, I could not find the information for times for this course"
 
-        # try:
-        #     elastic_output = elastic.get_ad_times(tracker.get_slot("course"))
-        #     response = str(elastic_output)
-        # except:
-        #     response = "Sorry, I could not find any times for " + str(elastic_title) + "."
-        #
-        # dispatcher.utter_message("Time Out: ")
-        # response = "Course Time : "
-
         dispatcher.utter_message(response)
         return
 
-# IN WORK
-# utters the tutor for a course
+## IN WORK ##
+# Utters the tutor for a course
 class GetTutor(Action):
     def name(self):
         return "action_get_tutor"
 
     def run(self, dispatcher, tracker, domain):
-
+        # elastic_title = title of the course from the database
+        # elastic_cat = course category e.g. short course / admissions courses
+        # elastic_score = the score of how relevant the course was to the elastic search (max 1, min 0)
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
+        # The short-courses file tells the tutor for each class taught,
+        # Although we do not know tutor information for the admissions courses so cannot return it
         if elastic_cat == "SC":
             elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
             response = "The tutor for " + str(elastic_title).title() + " is: " + str(elastic_output) + "."
@@ -161,8 +127,8 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
-# IN WORK
-# utters the requirements to get into a course
+## IN WORK ##
+# Utters the requirements to get into a course
 class GetRequirements(Action):
     def name(self):
         return "action_get_requirements"
@@ -172,27 +138,25 @@ class GetRequirements(Action):
             elastic_title = get_admission_requirements(tracker.get_slot("course"))
         except:
             response = "Sorry, I could not find any course with that name."
-
         elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), tracker.get_slot("requirement"))
-
         if elastic_output:
             response = "The admission requirements are " + elastic_output
         elif elastic_output is False:
             response = "Sorry, I did not understand the requirements you meant"
         else:
             response = "We do not have any requirements for that course"
-
         return response
 
+# Utters a list of courses the tutor in question teaches
+# e.g. "what classes does Sam Cook teach"
 class GetTutorCourses(Action):
     def name(self):
         return "action_get_tutor_courses"
 
     def run(self, dispatcher, tracker, domain):
+        # elastic_tutor = the name of the tutor according to the database
+        # elastic_output is the list of courses they teach
         elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
-
-        # if not elastic_output:
-        #     elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("course"))
 
         if elastic_output:
             response = str(elastic_tutor) + " teaches: " + str(elastic_output)
