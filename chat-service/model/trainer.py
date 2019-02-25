@@ -1,3 +1,9 @@
+import platform
+# checks if deployment instance is university VM, which does not support RASA training packages
+if platform.platform() == "Linux-4.4.0-142-generic-x86_64-with-Ubuntu-16.04-xenial":
+    print("Instance is " + platform.platform() + ", does not support Tensorflow. Exiting...")
+    exit()
+
 from rasa_core import utils
 from rasa_core.agent import Agent
 from rasa_core.interpreter import RasaNLUInterpreter
