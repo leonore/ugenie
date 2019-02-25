@@ -12,15 +12,16 @@ RUN python -m spacy download en
 
 COPY ./model/network_config.py /app/network_config.py
 
+# THIS CAN'T WORK --> Uni VM doesn't support tensorflow
 # check if training files have been modified
-COPY ./model/domain.yml /app/domain.yml
-COPY ./model/trainer.py /app/trainer.py
-COPY ./model/nlu-config.yml /app/nlu-config.yml
-COPY ./model/agent-data/data/stories.md /app/agent-data/data/stories.md
-COPY ./model/agent-data/data/nlu.md /app/agent-data/data/nlu.md
+# COPY ./model/domain.yml /app/domain.yml
+# COPY ./model/trainer.py /app/trainer.py
+# COPY ./model/nlu-config.yml /app/nlu-config.yml
+# COPY ./model/agent-data/data/stories.md /app/agent-data/data/stories.md
+# COPY ./model/agent-data/data/nlu.md /app/agent-data/data/nlu.md
 
 # if modified: TRAINING needs to be done
-RUN python -c "import trainer; trainer.train()"
+# RUN python -c "import trainer; trainer.train()"
 
 ADD . /app
 
