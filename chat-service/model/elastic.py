@@ -7,19 +7,18 @@ es = Elasticsearch([elasticIP])
 # --> only one function, returns one field
 # TODO deal with duplicate courses
 
-# get answer to common questions about ADMISSIONS acronyms
+# Get answer to common questions about acronyms
 def get_acronym_answer(query):
     res = es.search(index="general_questions", body={"query": {"match": {"question": query}}})
     first_hit = res['hits']['hits'][0]
     return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
 
-
-# returns the full title of a short course
+# Returns the full title of a short course according to the databaes
 def get_sc_title(query):
     title = get_sc_field(query, 'Title')
     return title
 
-# returns the full title of a admissions course
+# Returns the full title of a admissions course according to the databse
 def get_admissions_title(query):
     title = get_admissions_field(query, 'Lookup Name')
     return title
@@ -27,17 +26,6 @@ def get_admissions_title(query):
 # returns the most relevant course title in both the short courses and the admissions file, and returns the file it was in
 def get_course_title(query):
     print("ES Get course title")
-    # title = get_sc_field(query, 'Title')
-    # res = es.search(index="short_courses, admissions", body={"query":{"dis_max":{"queries":[{"match": {"Title": query}}, {"match":{"Lookup Name": query}}]}}})
-    # res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
-    #
-    # first_hit = res['hits']['hits'][0]
-    # print('HIT = ' + str(res['hits']['hits'][0]))
-    # print('Score 0 = ' + str(res['hits']['hits'][0]['_score']))
-    # print('Score 1 = ' + str(res['hits']['hits'][1]['_score']))
-    # course1 = first_hit['_source']['Lookup Name']
-    # print('Course = ' + course1)
-    # if sc_res['hits']['max_score'] || ad_res['hits']['max_score']:
 
     sc = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
     # print(str(sc))
