@@ -7,7 +7,7 @@ import psutil
 
 def update_virsion(driver):
     try :
-       driver.get("http://34.73.99.181:5000/")
+       driver.get("http://34.73.120.65:5000//")
        return driver
 
     except:

@@ -7,7 +7,7 @@ import psutil
 
 def update_virsion(driver):
     try :
-       driver.get("http://34.73.99.181:5000/")
+       driver.get("http://34.73.120.65:5000//")
        return driver
 
     except:
@@ -52,5 +52,5 @@ def chatbot_message_xpath(context):
         raise Exception("chatbot message did not reach")
 
 def open_chatbot(context):
-    driver.find_element_by_class_name("open-button").click();
+    context.driver.find_element_by_class_name("open-button").click();
     context.driver.implicitly_wait(1)
