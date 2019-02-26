@@ -1,13 +1,3 @@
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
-}
-
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
-}
-
 // Establish the connection and create the session
 // document.domain represents the IP address of the computer you are working on and location.port represents the port
 var socket = io.connect('http://' + document.domain + ':' + location.port);
@@ -30,8 +20,8 @@ socket.on('connect', function() {
 			socket.emit('new_message', {
 				user_name: 'You',
 				message: messageInput.val()
-			})
-			messageInput.val('').focus()
+			});
+			messageInput.val('').focus();
 		}
     });
 })
@@ -52,9 +42,38 @@ socket.on('bot_message', function(msg) {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
 		
 		if(msg.message.endsWith('(yes/no)')){
-			messageArea.append('<div class="message button-area"><button class="message reply-button" type="button">Yes</button> <button class="message reply-button" type="button">No</button></div>');
+			messageArea.append('<div class="message button-area"><button class="message reply-button" type="button" onclick="replyYes()">Yes</button> <button class="message reply-button" type="button" onclick="replyNo()">No</button></div>');
 		}
 		
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
+
+
+// JavaScript functions
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
+}
+
+function replyYes() {
+	$(".message.button-area").remove();
+	socket.emit('new_message', {
+		user_name: 'You',
+		message: 'Yes'
+	});
+}
+
+function replyNo() {
+	$(".message.button-area").remove();
+	socket.emit('new_message', {
+		user_name: 'You',
+		message: 'No'
+	});
+}
