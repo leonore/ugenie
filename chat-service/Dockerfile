@@ -1,6 +1,6 @@
 FROM python:3.6.6-slim
 
-COPY ./requirements.txt /app/requirements.txt
+COPY ./interface-requirements.txt /app/requirements.txt
 
 # install requirements
 RUN apt-get update && apt-get install build-essential -y
