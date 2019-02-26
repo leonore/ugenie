@@ -1,13 +1,3 @@
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
-}
-
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
-}
-
 // Establish the connection and create the session
 // document.domain represents the IP address of the computer you are working on and location.port represents the port
 var socket = io.connect('http://' + document.domain + ':' + location.port);
@@ -30,8 +20,8 @@ socket.on('connect', function() {
 			socket.emit('new_message', {
 				user_name: 'You',
 				message: messageInput.val()
-			})
-			messageInput.val('').focus()
+			});
+			messageInput.val('').focus();
 		}
     });
 })
@@ -41,7 +31,6 @@ var messageArea = $('div.message-area');
 // When the client receives a 'user_message' event, print the message on the chat as a user message
 socket.on('user_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
-		console.log('msg.message: ', msg.message);
         messageArea.append('<div class="message user-message">' + msg.message + '</div>');
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
@@ -51,6 +40,40 @@ socket.on('user_message', function(msg) {
 socket.on('bot_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
+		
+		if(msg.message.endsWith('(yes/no)')){
+			messageArea.append('<div class="message button-area"><button class="message reply-button" type="button" onclick="replyYes()">Yes</button> <button class="message reply-button" type="button" onclick="replyNo()">No</button></div>');
+		}
+		
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
+
+
+// JavaScript functions
+
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
+}
+
+function replyYes() {
+	$(".message.button-area").remove();
+	socket.emit('new_message', {
+		user_name: 'You',
+		message: 'Yes'
+	});
+}
+
+function replyNo() {
+	$(".message.button-area").remove();
+	socket.emit('new_message', {
+		user_name: 'You',
+		message: 'No'
+	});
+}

@@ -130,7 +130,7 @@ button {
 }
 
 
-/* Sent message */
+/* Message area elements */
 
 .message {
 	padding: 10px;
@@ -150,6 +150,25 @@ button {
 	background: #0075B0;
 	max-width: 95%;
 	float: right;
+}
+
+.message.button-area {
+	margin: 0 auto; 
+	padding: 0;
+	width: 100%; 
+	text-align: center;
+}
+
+.message.reply-button {
+	background: #0075B0;
+	border: none;
+	-webkit-transition-duration: 0.4s; 
+	transition-duration: 0.4s;
+}
+
+.message.reply-button:hover {
+	background: #00B5D1; 
+	cursor: pointer;
 }
 
 
