@@ -23,7 +23,7 @@ from network_config import actionIP
 def train_interactive():
     current_directory = os.path.dirname(os.path.realpath(__file__))
     domain_file = 'domain.yml'
-    interpreter = RasaNLUInterpreter(current_directory + '/agent-data/models/nlu/default/current')
+    interpreter = RasaNLUInterpreter(current_directory + 'model/agent-data/models/nlu/default/current')
     action_endpoint = EndpointConfig(url=actionIP)
     training_data_file = current_directory + '/agent-data/data/stories.md'
     agent = Agent(domain_file,

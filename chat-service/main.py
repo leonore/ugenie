@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO
 
-from model import agent
-import model.network_config as network_config
+from model import agent, network_config
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
