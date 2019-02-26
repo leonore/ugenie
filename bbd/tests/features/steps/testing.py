@@ -8,7 +8,7 @@ def this_try():
     display = Display(visible=0, size=(800, 800))
     display.start()
     driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
-    driver.get("http://34.73.99.181:5000/")
+    driver.get("http://34.73.120.65:5000//")
     driver.find_element_by_class_name("open-button").click();
     driver.implicitly_wait(1)
     driver.find_element_by_xpath('//*[@id="myForm"]/div/form/input').click()

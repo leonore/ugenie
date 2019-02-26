@@ -4,7 +4,6 @@ asn1crypto==0.24.0
 astor==0.7.1
 attrs==18.2.0
 Automat==0.7.0
-behave==1.2.6
 boto3==1.9.95
 botocore==1.12.95
 certifi==2018.11.29
@@ -93,7 +92,6 @@ ruamel.yaml==0.15.88
 s3transfer==0.2.0
 scikit-learn==0.20.2
 scipy==1.2.1
-selenium==3.141.0
 simplejson==3.16.0
 six==1.12.0
 sklearn-crfsuite==0.3.6
@@ -113,7 +111,6 @@ typing==3.6.6
 tzlocal==1.5.1
 ujson==1.35
 urllib3==1.24.1
-pyvirtualdisplay==0.2.1
 wcwidth==0.1.7
 webexteamssdk==1.1.1
 websocket-client==0.54.0
