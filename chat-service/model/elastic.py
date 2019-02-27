@@ -265,15 +265,25 @@ def return_ad_list(res):
     course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Lookup Name']).title()
     return course_list
 
+def return_list(set):
+    course_list = ""
+    course_len = len(set)
+    for counter in set:
+        if counter != set[course_len-1]:
+            # print(counter['_source']['Title'])
+            course_list += str(counter).title() + ", "
+    course_list += " and " + str(set[course_len-1]).title()
+    return course_list
+
 def get_sc_type_courses(query):
     res = es.search(index="short_courses",
     body={"query":{
             "bool":{
                 "should":[
-                    {"match_all":{
+                    {"match":{
                     "Title":query
                     }},
-                    {"match_all":{
+                    {"match":{
                     "Subject area":query
                     }}
                 ],
@@ -285,7 +295,16 @@ def get_sc_type_courses(query):
     # print(res)
     # print(return_list(res))
     course_list = return_sc_list(res)
-    return course_list
+
+    course_list = []
+    for course in (res['hits']['hits']):
+        course_list.append(course['_source'].get("Title"))
+
+        course_set = list(set(course_list))
+    # print("Course Set = ", course_set)
+    course_list = return_list(course_set)
+
+    return course_list, res['hits']['total']
 
 
 def get_ad_type_courses(query):
@@ -305,13 +324,23 @@ def get_ad_type_courses(query):
     }
     })
      # {"match": {"Title": query}}})
+    course_list = []
     # print(res)
+    for course in (res['hits']['hits']):
+        # print(course['_source'].get("Lookup Name"))
+        course_list.append(course['_source'].get("Lookup Name"))
+
+    course_set = list(set(course_list))
+    # print("Course Set = ", course_set)
     # print(return_list(res))
-    course_list = return_ad_list(res)
-    return course_list
+    # hits = res[]
+    # print(list(set(classes)))
+    course_list = return_list(course_set)
+    return course_list, res['hits']['total']
 
 
 print(get_sc_type_courses("History"))
 print(get_sc_type_courses("Languages"))
 print(get_ad_type_courses("Medicine"))
 print(get_ad_type_courses("Arts"))
+print(get_sc_type_courses("Spanish"))

@@ -191,7 +191,7 @@ class GetSCClassTypes(Action):
         elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
 
         if elastic_output:
-            response = "I have found " + elastic_length + " classes: " + elastic_output
+            response = "These are some of the classes which I have found : " + elastic_output
         else:
             response = "Sorry, I could not find any courses"
         dispatcher.utter_message(response)
@@ -205,7 +205,7 @@ class GetADClassTypes(Action):
         elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
 
         if elastic_output:
-            response = "I have found " + elastic_length + " classes: " + elastic_output
+            response = "These are some of the classes which I have found : " + elastic_output
         else:
             response = "Sorry, I could not find any courses"
         dispatcher.utter_message(response)
