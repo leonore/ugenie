@@ -4,21 +4,46 @@ image: docker:stable
 
 stages:
   - build
-  # TODO: - tests
+  - tests
   - cleanup
-  - deploy
 
 variables:
   image_tag: latest
 
+# check components build correctly
 build_chat:
   stage: build
   script:
     - docker build -t interface/main:$image_tag ./chat-service
+
+build_actions:
+  stage: build
+  script:
+    - docker build -t action/server:$image_tag .
+
+# check cluster health
+test_elastic:
+  stage: tests
+  script:
+    - docker-compose up -d elastic
+    - python3 elastic-db/testing-elastic.py
+
+# check action backend runs correctly
+test_actions:
+  stage: tests
+  script:
+    - docker-compose up -d action_server
+
+cleanup_tests:
+  stage: cleanup
+  script:
+    - docker-compose down elastic
+    - docker-compose down action_server
 
 # clean up large dangling images from VM
 cleanup_build:
   stage: cleanup
   script:
     - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+    - docker system prune --force
   when: on_failure
