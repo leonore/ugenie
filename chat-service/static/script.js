@@ -4,10 +4,11 @@ var socket = io.connect('http://' + document.domain + ':' + location.port);
 
 // When the user connects, run this function
 socket.on('connect', function() {
-	// Sent an event to the server with details on the newly connected user
-    socket.emit('new_connection', {
-        state: 'User Connected',
-		ip: document.domain
+	console.log(socket.id);
+	
+	// Send an event to the server with details on the newly connected user
+    socket.emit('user_joined', {
+		id: socket.id
     });
 
 	// When the user submits a new message, send a message event to the server
