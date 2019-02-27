@@ -24,12 +24,9 @@ def sendMessage(sessionId, message):
 def handle_join(json):
         print('User connected: ' + str(json))
 
-        join_room(request.sid)
-
         # Get the session ID this event is associated with
         sessionId = request.sid
-        print('sessionId: ' + sessionId)
-
+        
         # Print the welcome message on the chat interface
         sendMessage(sessionId, "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
 
