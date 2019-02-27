@@ -253,3 +253,7 @@
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
+
+## Short Course Type question
+* ask_sc_type_classes
+- action_get_sc_type_classes

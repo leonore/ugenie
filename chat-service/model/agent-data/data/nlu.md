@@ -139,3 +139,7 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
+
+## intent:ask_sc_type_classes
+- what [art](course) short courses are there
+- what short courses in [art](course) can i take

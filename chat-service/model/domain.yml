@@ -22,6 +22,8 @@ actions:
 - utter_terminology_functionality
 - utter_short_courses_functionality
 - utter_admissions_courses_functionality
+- action_get_ad_type_classes
+- action_get_sc_type_classes
 
 entities:
 - requirement
@@ -47,6 +49,8 @@ intents:
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
+- ask_sc_type_classes
+- ask_ad_type_classes
 
 slots:
   course:

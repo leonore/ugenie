@@ -307,6 +307,7 @@ def get_sc_type_courses(query):
         # print("Course Set = ", course_set)
         course_list = return_list(course_set)
 
+    print(couse_set)
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
@@ -348,6 +349,7 @@ def get_ad_type_courses(query):
     # print(return_list(res))
     # hits = res[]
     # print(list(set(classes)))
+    print(course_set)
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
@@ -357,10 +359,10 @@ def get_ad_type_courses(query):
         return False, False
 
 
-print(get_sc_type_courses("History"))
-print(get_sc_type_courses("Languages"))
-print(get_ad_type_courses("Medicine"))
-print(get_ad_type_courses("Arts"))
-print(get_sc_type_courses("Spanish"))
-print(get_sc_type_courses("Chinese"))
-print(get_ad_type_courses("Vietnamese"))
+# print(get_sc_type_courses("History"))
+# print(get_sc_type_courses("Languages"))
+# print(get_ad_type_courses("Medicine"))
+# print(get_ad_type_courses("Arts"))
+# print(get_sc_type_courses("Spanish"))
+# print(get_sc_type_courses("Chinese"))
+# print(get_ad_type_courses("Vietnamese"))
