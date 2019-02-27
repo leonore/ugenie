@@ -24,7 +24,9 @@ build_actions:
 
 # check for the responsive deployed prototype
 test_prototype:
-  script: python tests/test_prototype.py
+  stage: tests
+  script:
+    - python tests/test_prototype.py
 
 
 # clean up successfully built images
