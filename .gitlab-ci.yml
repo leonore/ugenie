@@ -4,7 +4,6 @@ image: docker:stable
 
 stages:
   - build
-  - test_setup
   - tests
   - cleanup
 
@@ -22,33 +21,22 @@ build_actions:
   script:
     - docker build -t action/server:$image_tag .
 
-setup_test_requirements:
-  stage: test_setup
-  script:
-    - pip install --user elasticsearch
-    - pip install --user docker-compose
 
-# check cluster health
-test_elastic:
-  stage: tests
-  script:
-    - docker-compose up -d elastic
-    - python3 elastic-db/testing_elastic.py
+# check for the responsive deployed prototype
+test_prototype:
+  script: python tests/test_prototype.py
 
-# check action backend runs correctly
-test_actions:
-  stage: tests
-  script:
-    - docker-compose up -d action_server
 
-cleanup_tests:
+# clean up successfully built images
+cleanup_successful_build:
   stage: cleanup
   script:
-    - docker-compose down elastic
-    - docker-compose down action_server
+    - docker image rm interface/main:$image_tag
+    - docker image rm action/server:$image_tag
+  when: on_success
 
-# clean up large dangling images from VM
-cleanup_build:
+# clean up large dangling images from VM after failure
+cleanup_failed_build:
   stage: cleanup
   script:
     - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
