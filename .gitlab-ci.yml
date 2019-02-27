@@ -4,6 +4,7 @@ image: docker:stable
 
 stages:
   - build
+  - test_setup
   - tests
   - cleanup
 
@@ -21,8 +22,8 @@ build_actions:
   script:
     - docker build -t action/server:$image_tag .
 
-test_requirements:
-  stage: tests
+setup_test_requirements:
+  stage: test_setup
   script:
     - pip install --user elasticsearch
     - pip install --user docker-compose
