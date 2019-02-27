@@ -9,7 +9,7 @@ socket.on('connect', function() {
         state: 'User Connected',
 		ip: document.domain
     });
-	
+
 	// When the user submits a new message, send a message event to the server
     var form = $('form').on('submit', function(e) {
         e.preventDefault();
@@ -38,13 +38,15 @@ socket.on('user_message', function(msg) {
 
 // When the client receives a 'user_message' event, print the message on the chat as a bot message
 socket.on('bot_message', function(msg) {
+    console.log(msg);
+    console.log(typeof msg);
     if (typeof msg.user_name !== 'undefined') {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
-		
+
 		if(msg.message.endsWith('(yes/no)')){
 			messageArea.append('<div class="message button-area"><button class="message reply-button" type="button" onclick="replyYes()">Yes</button> <button class="message reply-button" type="button" onclick="replyNo()">No</button></div>');
 		}
-		
+
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })

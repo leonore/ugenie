@@ -8,5 +8,3 @@ if os.environ.get('DOCKER'): # DOCKER DEPLOYMENT
 else: # LOCAL DEPLOYMENT
     actionIP = "http://localhost:5055/webhook"
     elasticIP = "http://localhost:9200"
-
-print(actionIP, elasticIP)
