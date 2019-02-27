@@ -297,14 +297,24 @@ def get_sc_type_courses(query):
     course_list = return_sc_list(res)
 
     course_list = []
-    for course in (res['hits']['hits']):
-        course_list.append(course['_source'].get("Title"))
+    course_set = []
 
-        course_set = list(set(course_list))
-    # print("Course Set = ", course_set)
-    course_list = return_list(course_set)
+    if res:
+        for course in (res['hits']['hits']):
+            course_list.append(course['_source'].get("Title"))
 
-    return course_list, res['hits']['total']
+            course_set = list(set(course_list))
+        # print("Course Set = ", course_set)
+        course_list = return_list(course_set)
+
+    if len(course_set) > 1:
+        course_list = return_list(course_set)
+        return course_list, res['hits']['total']
+    elif len(course_set) == 1:
+        return str(course_set[0]).title(), res['hits']['total']
+    else:
+        return False, False
+
 
 
 def get_ad_type_courses(query):
@@ -325,18 +335,26 @@ def get_ad_type_courses(query):
     })
      # {"match": {"Title": query}}})
     course_list = []
+    course_set = []
     # print(res)
-    for course in (res['hits']['hits']):
-        # print(course['_source'].get("Lookup Name"))
-        course_list.append(course['_source'].get("Lookup Name"))
+    if res:
+        for course in (res['hits']['hits']):
+            # print(course['_source'].get("Lookup Name"))
+            course_list.append(course['_source'].get("Lookup Name"))
 
-    course_set = list(set(course_list))
+        course_set = list(set(course_list))
+
     # print("Course Set = ", course_set)
     # print(return_list(res))
     # hits = res[]
     # print(list(set(classes)))
-    course_list = return_list(course_set)
-    return course_list, res['hits']['total']
+    if len(course_set) > 1:
+        course_list = return_list(course_set)
+        return course_list, res['hits']['total']
+    elif len(course_set) == 1:
+        return str(course_set[0]).title(), res['hits']['total']
+    else:
+        return False, False
 
 
 print(get_sc_type_courses("History"))
@@ -344,3 +362,5 @@ print(get_sc_type_courses("Languages"))
 print(get_ad_type_courses("Medicine"))
 print(get_ad_type_courses("Arts"))
 print(get_sc_type_courses("Spanish"))
+print(get_sc_type_courses("Chinese"))
+print(get_ad_type_courses("Vietnamese"))
