@@ -26,7 +26,7 @@ test_elastic:
   stage: tests
   script:
     - docker-compose up -d elastic
-    - python3 elastic-db/testing-elastic.py
+    - python3 elastic-db/testing_elastic.py
 
 # check action backend runs correctly
 test_actions:
