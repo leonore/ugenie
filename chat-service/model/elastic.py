@@ -243,7 +243,7 @@ def get_tutor_courses(query):
 
     return tutor, course_list
 
-def return_list(res):
+def return_sc_list(res):
     course_list = ""
     res_len = len(res['hits']['hits'])
 
@@ -254,15 +254,26 @@ def return_list(res):
     course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
     return course_list
 
+def return_ad_list(res):
+    course_list = ""
+    res_len = len(res['hits']['hits'])
+
+    for counter in res['hits']['hits']:
+        if counter != res['hits']['hits'][res_len-1]:
+            # print(counter['_source']['Title'])
+            course_list += str(counter['_source']['Lookup Name']).title() + ", "
+    course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Lookup Name']).title()
+    return course_list
+
 def get_sc_type_courses(query):
     res = es.search(index="short_courses",
     body={"query":{
             "bool":{
                 "should":[
-                    {"match":{
+                    {"match_all":{
                     "Title":query
                     }},
-                    {"match":{
+                    {"match_all":{
                     "Subject area":query
                     }}
                 ],
@@ -270,13 +281,37 @@ def get_sc_type_courses(query):
             }
     }
     })
-
-
      # {"match": {"Title": query}}})
-    print(res)
-    print(return_list(res))
-    course_list = return_list(res)
+    # print(res)
+    # print(return_list(res))
+    course_list = return_sc_list(res)
+    return course_list
+
+
+def get_ad_type_courses(query):
+    res = es.search(index="admissions",
+    body={"query":{
+            "bool":{
+                "should":[
+                    {"match":{
+                    "Lookup Name":query
+                    }},
+                    {"match":{
+                    "Apply Centre Description":query
+                    }}
+                ],
+                "minimum_should_match":1
+            }
+    }
+    })
+     # {"match": {"Title": query}}})
+    # print(res)
+    # print(return_list(res))
+    course_list = return_ad_list(res)
+    return course_list
 
 
 print(get_sc_type_courses("History"))
 print(get_sc_type_courses("Languages"))
+print(get_ad_type_courses("Medicine"))
+print(get_ad_type_courses("Arts"))

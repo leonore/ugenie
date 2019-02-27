@@ -185,10 +185,24 @@ class GetTutorCourses(Action):
 
 class GetSCClassTypes(Action):
     def name(self):
-        return "action_get_type_classes"
+        return "action_get_sc_type_classes"
 
     def run(self, dispatcher, tracker, domain):
         elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
+
+        if elastic_output:
+            response = "I have found " + elastic_length + " classes: " + elastic_output
+        else:
+            response = "Sorry, I could not find any courses"
+        dispatcher.utter_message(response)
+        return
+
+class GetADClassTypes(Action):
+    def name(self):
+        return "action_get__ad_type_classes"
+
+    def run(self, dispatcher, tracker, domain):
+        elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
 
         if elastic_output:
             response = "I have found " + elastic_length + " classes: " + elastic_output
