@@ -53,25 +53,6 @@ class GetAcronym(Action):
         dispatcher.utter_message(response)
         return
 
-# Utters the cost of a course
-class GetFees(Action):
-    def name(self):
-        return "action_get_fee"
-
-    def run(self, dispatcher, tracker, domain):
-        # elastic_title = title of the course from the database
-        # elastic_cat = course category e.g. short course / admissions courses
-        # elastic_score = the score of how relevant the course was to the elastic search
-        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
-        if elastic_cat == "SC":
-            elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
-            response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
-        elif elastic_cat == "AD":
-            elastic_output = elastic.get_ad_fees(elastic_title)
-            response = str(elastic_output)
-
-        dispatcher.utter_message(response)
-        return
 
 # Utters the description of a course or tells the description of a term used
 class GetDescription(Action):
@@ -126,6 +107,7 @@ class GetTutor(Action):
         return "action_get_tutor"
 
     def run(self, dispatcher, tracker, domain):
+        print("Tutor GET")
         # elastic_title = title of the course from the database
         # elastic_cat = course category e.g. short course / admissions courses
         # elastic_score = the score of how relevant the course was to the elastic search
@@ -171,6 +153,7 @@ class GetTutorCourses(Action):
         return "action_get_tutor_courses"
 
     def run(self, dispatcher, tracker, domain):
+        print("Tutor courses")
         # elastic_tutor = the name of the tutor according to the database
         # elastic_output is the list of courses they teach
         elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
@@ -188,10 +171,10 @@ class GetSCClassTypes(Action):
         return "action_get_sc_type_classes"
 
     def run(self, dispatcher, tracker, domain):
-        dispatcher.utter_message("NONONO")
-        print("set_sc_classes")
+        # print("set_sc_classes")
+        # dispatcher.utter_message("NONONO")
+        print("SC Class Types")
         elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
-
         if elastic_output:
             response = "These are some of the classes which I have found : " + elastic_output
         else:
@@ -212,5 +195,26 @@ class GetADClassTypes(Action):
             response = "These are some of the classes which I have found : " + elastic_output
         else:
             response = "Sorry, I could not find any courses"
+        dispatcher.utter_message(response)
+        return
+
+# Utters the cost of a course
+class GetFees(Action):
+    def name(self):
+        return "action_get_fee"
+
+    def run(self, dispatcher, tracker, domain):
+        print("FEES")
+        # elastic_title = title of the course from the database
+        # elastic_cat = course category e.g. short course / admissions courses
+        # elastic_score = the score of how relevant the course was to the elastic search
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_cat == "SC":
+            elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
+            response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
+        elif elastic_cat == "AD":
+            elastic_output = elastic.get_ad_fees(elastic_title)
+            response = str(elastic_output)
+
         dispatcher.utter_message(response)
         return

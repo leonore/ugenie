@@ -40,7 +40,7 @@ def get_course_title(query):
         ad_res = None
 
     # course = the course title
-    # couse_cat = the type of course file it was found in e.g. short or admissions
+    # course_cat = the type of course file it was found in e.g. short or admissions
     # course_score = score sowing relevancy given by the elastic search
     if sc_res != None and ad_res != None:
         if sc_res['_score'] >= ad_res['_score']:
@@ -217,7 +217,7 @@ def get_description(query):
 
 # Returns the tutor's name and a list of classes that they teach
 def get_tutor_courses(query):
-    # couse_list = list of courses the tutor teaches
+    # course_list = list of courses the tutor teaches
     # res_len = lenght of list of relevant results
     # tutor = name of tutor according to the database
     res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
@@ -307,7 +307,7 @@ def get_sc_type_courses(query):
         # print("Course Set = ", course_set)
         course_list = return_list(course_set)
 
-    print(couse_set)
+    print(course_set)
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
@@ -349,7 +349,7 @@ def get_ad_type_courses(query):
     # print(return_list(res))
     # hits = res[]
     # print(list(set(classes)))
-    print(course_set)
+    # print(course_set)
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
@@ -358,7 +358,6 @@ def get_ad_type_courses(query):
     else:
         return False, False
 
-
 # print(get_sc_type_courses("History"))
 # print(get_sc_type_courses("Languages"))
 # print(get_ad_type_courses("Medicine"))
@@ -366,3 +365,4 @@ def get_ad_type_courses(query):
 # print(get_sc_type_courses("Spanish"))
 # print(get_sc_type_courses("Chinese"))
 # print(get_ad_type_courses("Vietnamese"))
+# print(get_sc_type_courses("art"))

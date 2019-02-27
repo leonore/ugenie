@@ -5,7 +5,7 @@ var socket = io.connect('http://' + document.domain + ':' + location.port);
 // When the user connects, run this function
 socket.on('connect', function() {
 	console.log(socket.id);
-	
+
 	// Send an event to the server with details on the newly connected user
     socket.emit('user_joined', {
 		id: socket.id
@@ -39,8 +39,8 @@ socket.on('user_message', function(msg) {
 
 // When the client receives a 'user_message' event, print the message on the chat as a bot message
 socket.on('bot_message', function(msg) {
-    console.log(msg);
-    console.log(typeof msg);
+    // console.log(msg);
+    // console.log(typeof msg);
     if (typeof msg.user_name !== 'undefined') {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
 
