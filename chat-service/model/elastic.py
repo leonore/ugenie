@@ -242,3 +242,41 @@ def get_tutor_courses(query):
         course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 
     return tutor, course_list
+
+def return_list(res):
+    course_list = ""
+    res_len = len(res['hits']['hits'])
+
+    for counter in res['hits']['hits']:
+        if counter != res['hits']['hits'][res_len-1]:
+            # print(counter['_source']['Title'])
+            course_list += str(counter['_source']['Title']).title() + ", "
+    course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
+    return course_list
+
+def get_sc_type_courses(query):
+    res = es.search(index="short_courses",
+    body={"query":{
+            "bool":{
+                "should":[
+                    {"match":{
+                    "Title":query
+                    }},
+                    {"match":{
+                    "Subject area":query
+                    }}
+                ],
+                "minimum_should_match":1
+            }
+    }
+    })
+
+
+     # {"match": {"Title": query}}})
+    print(res)
+    print(return_list(res))
+    course_list = return_list(res)
+
+
+print(get_sc_type_courses("History"))
+print(get_sc_type_courses("Languages"))
