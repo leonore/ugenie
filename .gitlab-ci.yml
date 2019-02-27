@@ -25,6 +25,7 @@ test_requirements:
   stage: tests
   script:
     - pip install --user elasticsearch
+    - pip install --user docker-compose
 
 # check cluster health
 test_elastic:
