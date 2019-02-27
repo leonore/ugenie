@@ -38,8 +38,8 @@ socket.on('user_message', function(msg) {
 
 // When the client receives a 'user_message' event, print the message on the chat as a bot message
 socket.on('bot_message', function(msg) {
-    console.log(msg);
-    console.log(typeof msg);
+    console.log(msg.message);
+    console.log(typeof msg.message);
     if (typeof msg.user_name !== 'undefined') {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
 

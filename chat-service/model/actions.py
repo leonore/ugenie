@@ -8,14 +8,12 @@ class UtterFunctionality(Action):
 
     def run(self, dispatcher, tracker, domain):
         response = "Here are some things you can ask me about:"
-        buttons = []
-        buttons.append({'title': 'Short courses',
+        buttons = [{'title': 'Short courses',
             'payload': '/ask_short_courses_functionality'},
             {'title': 'Postgraduate courses',
             'payload': '/ask_admissions_courses_functionality'},
             {'title': 'Terminology',
-            'payload': '/ask_terminology_functionality'}
-            )
+            'payload': '/ask_terminology_functionality'}]
         dispatcher.utter_button_message(response, buttons)
         return
 
