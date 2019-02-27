@@ -22,7 +22,9 @@ build_actions:
     - docker build -t action/server:$image_tag .
 
 test_requirements:
-  - pip install --user elasticsearch
+  stage: tests
+  script:
+    - pip install --user elasticsearch
 
 # check cluster health
 test_elastic:
