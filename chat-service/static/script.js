@@ -10,7 +10,7 @@ socket.on('connect', function() {
     socket.emit('user_joined', {
 		id: socket.id
     });
-	
+
 	// When the user submits a new message, send a message event to the server
     var form = $('form').on('submit', function(e) {
         e.preventDefault();
@@ -41,11 +41,11 @@ socket.on('user_message', function(msg) {
 socket.on('bot_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
         messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
-		
+
 		if(msg.message.endsWith('(yes/no)')){
 			messageArea.append('<div class="message button-area"><button class="message reply-button" type="button" onclick="replyYes()">Yes</button> <button class="message reply-button" type="button" onclick="replyNo()">No</button></div>');
 		}
-		
+
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })

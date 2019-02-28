@@ -13,13 +13,10 @@ run-actions:
 
 train:
 	cd chat-service/model; python3 -c "import trainer; trainer.train()"
-	open http://localhost:5000
 
 train-interactive:
 	make run-actions&
 	cd chat-service/model; python3 -c "import trainer; trainer.train_interactive()"
-	open http://localhost:5005/visualization.html
-
 # & makes it run in background
 # to kill it, get its process id
 # $ ps

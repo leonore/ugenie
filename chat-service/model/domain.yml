@@ -18,6 +18,10 @@ actions:
 - action_check_course
 - action_course_denied
 - action_get_tutor_courses
+- action_utter_functionality
+- utter_terminology_functionality
+- utter_short_courses_functionality
+- utter_admissions_courses_functionality
 
 entities:
 - requirement
@@ -40,7 +44,9 @@ intents:
 - confirmation
 - denial
 - tutor_courses_check
-
+- ask_terminology_functionality
+- ask_short_courses_functionality
+- ask_admissions_courses_functionality
 
 slots:
   course:
@@ -75,3 +81,9 @@ templates:
   - text: Goodbye!
   utter_greet:
   - text: Hello! How can I help?
+  utter_short_courses_functionality:
+  - text: You can ask me about course times, tutors, credits, fees, descriptions!
+  utter_admissions_courses_functionality:
+  - text: You can ask me about fees, descriptions, and a brief course descriptions!
+  utter_terminology_functionality:
+  - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...

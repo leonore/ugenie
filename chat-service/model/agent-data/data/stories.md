@@ -1,6 +1,20 @@
-## greet
+## greet:short_courses
 * greet
- - utter_greet
+ - action_utter_functionality
+* ask_short_courses_functionality
+ - utter_short_courses_functionality
+
+## greet:admissions
+* greet
+ - action_utter_functionality
+* ask_admissions_courses_functionality
+ - utter_admissions_courses_functionality
+
+## greet:terminology  
+* greet
+ - action_utter_functionality
+* ask_terminology_functionality
+ - utter_terminology_functionality
 
 ## goodbye
 * goodbye
@@ -118,7 +132,7 @@
     - action_check_course
 * confirmation
     - action_get_time
-    
+
 ## Generated Story -8446625055458395372
 * fee_check{"course": "german stage 2"}
     - slot{"course": "german stage 2"}
