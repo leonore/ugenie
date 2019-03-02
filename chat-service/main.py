@@ -17,12 +17,15 @@ def messageReceived(sessionId, message):
 
 def sendMessage(sessionId, message):
         print('message: ',message)
+
+        # If the message contains button responses, put those in the json to send back to the chat
         if 'buttons' in message:
                 print('Sending message: ',message['text'],' with buttons: ',message['buttons'])
                 json = {'user_name' : 'GUVA', 'message' : message['text'], 'buttons' : message['buttons']}
         else:
                 print('Sending message: ',message['text'])
                 json = {'user_name' : 'GUVA', 'message' : message['text']}
+
         socketio.emit('bot_message', json)
 
 @socketio.on('new_connection')

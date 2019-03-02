@@ -26,4 +26,4 @@ def getResponse(sessionId, message):
         else:
             return {'text': response['text']}
     else:
-        return "Sorry, I didn't understand, could you rephrase that?"
+        return {'text': "Sorry, I didn't understand, could you rephrase that?"}
