@@ -55,7 +55,7 @@ socket.on('bot_message', function(msg) {
 				if(typeof buttonTitleObject.title !== 'undefined'){
 					console.log(buttonTitleObject);
 					console.log(buttonPayloadObject);
-					buttonArea.append('<button class="message reply-button" type="button" onclick="reply(\'' + buttonPayloadObject.payload + '\')">' + buttonTitleObject.title + '</button>');
+					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(\'' + buttonTitleObject.title + '\', \'' + buttonPayloadObject.payload + '\')">' + buttonTitleObject.title + '</button>');
 				}
 				
 			}
@@ -78,10 +78,11 @@ function closeForm() {
     document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
 }
 
-function reply(chosenButton) {
+function buttonReply(chosenButton, chosenPayload) {
 	$(".message.button-area").remove();
 	socket.emit('new_message', {
 		user_name: 'You',
-		message: chosenButton
+		message: chosenButton,
+		payload: chosenPayload
 	});
 }

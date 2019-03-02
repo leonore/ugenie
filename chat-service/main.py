@@ -50,7 +50,10 @@ def handle_message(json):
         messageReceived(sessionId, json['message'])     # On the console
 
         # Get a response from the agent and send it back to the chat interface
-        agentMessage = agent.getResponse(sessionId, json['message'])
+        if 'payload' in json:
+                agentMessage = agent.getResponse(sessionId, json['payload'])
+        else:
+                agentMessage = agent.getResponse(sessionId, json['message'])
         sendMessage(sessionId, agentMessage)
 
 if __name__ == '__main__':
