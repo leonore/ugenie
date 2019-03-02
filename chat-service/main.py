@@ -50,8 +50,10 @@ def handle_message(json):
         messageReceived(sessionId, json['message'])     # On the console
 
         # Get a response from the agent and send it back to the chat interface
+        # If the socket event contained a payload (button response), send that to the agent
         if 'payload' in json:
                 agentMessage = agent.getResponse(sessionId, json['payload'])
+        # Otherwise just send the message
         else:
                 agentMessage = agent.getResponse(sessionId, json['message'])
         sendMessage(sessionId, agentMessage)
