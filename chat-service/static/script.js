@@ -42,17 +42,17 @@ socket.on('bot_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
 		messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
 		
-		messageArea.append('<div class="message button-area">');
 		if(typeof msg.buttons !== 'undefined'){
+			messageArea.append('<div class="message button-area"></div>');
+			var buttonArea = $('div.button-area');
 			for (var buttonIndex in msg.buttons) {
 				var buttonObject = msg.buttons[buttonIndex];
 				if(typeof buttonObject.title !== 'undefined'){
-					messageArea.append('<button class="message reply-button" type="button" onclick="reply(\'' + buttonObject.title + '\')">' + buttonObject.title + '</button>');
+					buttonArea.append('<button class="message reply-button" type="button" onclick="reply(\'' + buttonObject.title + '\')">' + buttonObject.title + '</button>');
 				}
 				
 			}
 		}
-		messageArea.append('</div>');
 
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
