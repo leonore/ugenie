@@ -1,7 +1,5 @@
 import os
 
-print(os.environ.get('DOCKER'))
-
 if os.environ.get('DOCKER'): # DOCKER DEPLOYMENT
     actionIP = "http://action_server:5055/webhook"
     elasticIP = "http://elastic:9200"

@@ -1,24 +1,22 @@
-## greet:short_courses
+## greet
 * greet
- - action_utter_functionality
-* ask_short_courses_functionality
- - utter_short_courses_functionality
-
-## greet:admissions
-* greet
- - action_utter_functionality
-* ask_admissions_courses_functionality
- - utter_admissions_courses_functionality
-
-## greet:terminology  
-* greet
- - action_utter_functionality
-* ask_terminology_functionality
- - utter_terminology_functionality
+ - utter_greet
 
 ## goodbye
 * goodbye
  - utter_goodbye
+
+## give_sc_functionality
+* ask_short_courses_functionality
+ - utter_short_courses_functionality
+
+## give_admissions_functionality
+* ask_admissions_courses_functionality
+ - utter_admissions_courses_functionality
+
+## give_terminology_functionality
+* ask_terminology_functionality
+ - utter_terminology_functionality
 
 ## fee_check_confirm
 * fee_check
