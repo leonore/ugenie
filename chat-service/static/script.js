@@ -47,12 +47,10 @@ socket.on('bot_message', function(msg) {
 			for (var buttonIndex in msg.buttons) {
 				var buttonObject = msg.buttons[buttonIndex];
 				if(typeof buttonObject.title !== 'undefined'){
-					console.log(buttonObject.title);
-					messageArea.append('<button class="message reply-button" type="button" onclick="replyYes()">' + buttonObject.title + '</button>');
+					messageArea.append('<button class="message reply-button" type="button" onclick="reply(\'' + buttonObject.title + '\')">' + buttonObject.title + '</button>');
 				}
 				
 			}
-			//messageArea.append('<div class="message button-area"><button class="message reply-button" type="button" onclick="replyYes()">Yes</button> <button class="message reply-button" type="button" onclick="replyNo()">No</button></div>');
 		}
 		messageArea.append('</div>');
 
@@ -73,18 +71,10 @@ function closeForm() {
     document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
 }
 
-function replyYes() {
+function reply(chosenButton) {
 	$(".message.button-area").remove();
 	socket.emit('new_message', {
 		user_name: 'You',
-		message: 'Yes'
-	});
-}
-
-function replyNo() {
-	$(".message.button-area").remove();
-	socket.emit('new_message', {
-		user_name: 'You',
-		message: 'No'
+		message: chosenButton
 	});
 }
