@@ -22,8 +22,8 @@ def getResponse(sessionId, message):
     if(len(responses) > 0):
         response = responses[0]
         if 'buttons' in response:
-            return response['text'], response['buttons']
+            return {'text': response['text'], 'buttons': response['buttons']}
         else:
-            return response['text']
+            return {'text': response['text']}
     else:
-        return "Sorry, I didn't understand, could you rephrase that?"
+        return {'text': "Sorry, I didn't understand, could you rephrase that?"}

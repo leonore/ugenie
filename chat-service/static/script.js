@@ -39,11 +39,27 @@ socket.on('user_message', function(msg) {
 
 // When the client receives a 'user_message' event, print the message on the chat as a bot message
 socket.on('bot_message', function(msg) {
+    console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
-        messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
-
-		if(msg.message.endsWith('(yes/no)')){
-			messageArea.append('<div class="message button-area"><button class="message reply-button" type="button" onclick="replyYes()">Yes</button> <button class="message reply-button" type="button" onclick="replyNo()">No</button></div>');
+		messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
+		
+		// If this message also contains button responses, render them
+		if(typeof msg.buttons !== 'undefined'){
+			messageArea.append('<div class="message button-area"></div>');
+			var buttonArea = $('div.button-area');
+			console.log(msg.buttons);
+			for (var buttonIndex in msg.buttons) {
+				var buttonTitleObject = msg.buttons[buttonIndex];
+				var buttonPayloadObject = msg.buttons[parseInt(buttonIndex)+1];
+				
+				// If this button object is a title and not a payload, add it as a button
+				if(typeof buttonTitleObject.title !== 'undefined'){
+					console.log(buttonTitleObject);
+					console.log(buttonPayloadObject);
+					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(\'' + buttonTitleObject.title + '\', \'' + buttonPayloadObject.payload + '\')">' + buttonTitleObject.title + '</button>');
+				}
+				
+			}
 		}
 
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
@@ -63,18 +79,11 @@ function closeForm() {
     document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
 }
 
-function replyYes() {
+function buttonReply(chosenButton, chosenPayload) {
 	$(".message.button-area").remove();
 	socket.emit('new_message', {
 		user_name: 'You',
-		message: 'Yes'
-	});
-}
-
-function replyNo() {
-	$(".message.button-area").remove();
-	socket.emit('new_message', {
-		user_name: 'You',
-		message: 'No'
+		message: chosenButton,
+		payload: chosenPayload
 	});
 }

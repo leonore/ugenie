@@ -2,6 +2,10 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet
 import elastic
 
+## DISCLAIMER: at the moment this isn't what's used for actions 
+# I'm not sure we will have to use it this way, as it works from templates
+# and it makes more sense for me this way
+# - Leo
 class UtterFunctionality(Action):
     def name(self):
         return "action_utter_functionality"
