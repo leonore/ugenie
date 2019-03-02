@@ -13,26 +13,31 @@ def sessions():
         return render_template('session.html') # Helps render the HTML page, called a 'template'
 
 def messageReceived(sessionId, message):
-        print('Message received from', sessionId,': ', message)
+        print('Message received from',sessionId,': ',message)
 
 def sendMessage(sessionId, message):
-        print('Sending message!')
-        json = {'user_name' : 'GUVA', 'message' : message}
+        print('message: ',message)
+        if 'buttons' in message:
+                print('Sending message: ',message['text'],' with buttons: ',message['buttons'])
+                json = {'user_name' : 'GUVA', 'message' : message['text'], 'buttons' : message['buttons']}
+        else:
+                print('Sending message: ',message['text'])
+                json = {'user_name' : 'GUVA', 'message' : message['text']}
         socketio.emit('bot_message', json)
 
 @socketio.on('new_connection')
 def handle_connection(json):
-        print('User connected: ' + str(json))
+        print('User connected: ',json)
 
         # Get the session ID this event is associated with
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
+        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
 
 @socketio.on('new_message')
 def handle_message(json):
-        print('Received event: ' + str(json))
+        print('Received event: ',json)
 
         # Get the session ID this event is associated with
         sessionId = request.sid
@@ -41,7 +46,7 @@ def handle_message(json):
         socketio.emit('user_message', json)             # On the chat interface
         messageReceived(sessionId, json['message'])     # On the console
 
-        # Get and sent back a response to the chat interface
+        # Get a response from the agent and send it back to the chat interface
         agentMessage = agent.getResponse(sessionId, json['message'])
         sendMessage(sessionId, agentMessage)
 
