@@ -42,11 +42,13 @@ socket.on('bot_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
 		messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
 		
+		// If this message also contains button responses, render them
 		if(typeof msg.buttons !== 'undefined'){
 			messageArea.append('<div class="message button-area"></div>');
 			var buttonArea = $('div.button-area');
 			for (var buttonIndex in msg.buttons) {
 				var buttonObject = msg.buttons[buttonIndex];
+				// If this button object is a title and not a payload, add it as a button
 				if(typeof buttonObject.title !== 'undefined'){
 					buttonArea.append('<button class="message reply-button" type="button" onclick="reply(\'' + buttonObject.title + '\')">' + buttonObject.title + '</button>');
 				}
