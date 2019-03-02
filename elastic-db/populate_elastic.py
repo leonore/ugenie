@@ -9,6 +9,7 @@ if os.environ.get('DOCKER'):
     time.sleep(52)
     elasticIP = "elastic"
 else: # LOCAL DEPLOYMENT
+    time.sleep(12)
     elasticIP = "localhost"
 
 book1 = xlrd.open_workbook('data/short_courses.xlsx')

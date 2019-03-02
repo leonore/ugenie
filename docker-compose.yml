@@ -13,8 +13,6 @@ services:
 
   action_server:
     build: .
-    volumes:
-      - ./chat-service/model:/app/actions
     ports:
       - 5055 # hide action server to exterior
     depends_on:

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, join_room
 
 from model import agent, network_config
 
@@ -34,7 +34,7 @@ def handle_connection(json):
 
         # Get the session ID this event is associated with
         sessionId = request.sid
-
+        
         # Print the welcome message on the chat interface
         sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
 
@@ -46,8 +46,8 @@ def handle_message(json):
         sessionId = request.sid
 
         # Print the message that was sent
-        socketio.emit('user_message', json)             # On the chat interface
-        messageReceived(sessionId, json['message'])     # On the console
+        socketio.emit('user_message', json, room=sessionId)     # On the chat interface
+        messageReceived(sessionId, json['message'])             # On the console
 
         # Get a response from the agent and send it back to the chat interface
         # If the socket event contained a payload (button response), send that to the agent

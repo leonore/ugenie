@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from pyvirtualdisplay import Display
-import psutil
+
 
 def update_virsion(driver):
     try :
@@ -18,17 +18,18 @@ def update_virsion(driver):
 
 
 def write_into_felid(driver,chatbot_message,text):
-    driver.find_element_by_xpath('//*[@id="myForm"]/div/form/input').clear()
-    driver.find_element_by_xpath('//*[@id="myForm"]/div/form/input').send_keys(text)
-    driver.find_element_by_xpath('//*[@id="myForm"]/div/form').submit()
+    elem = driver.find_element_by_xpath('//*[@id="myForm"]/div/form/input')
+    elem.click()
+    elem.clear()
+    elem.send_keys(text)
+    elem.submit()
     chatbot_message +=2
     driver.implicitly_wait(1)
     return driver,chatbot_message
 
 
 
-def run_browser(driver,chatbot_message =0):
-
+def run_browser():
         driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
         chatbot_message = 1
         driver = update_virsion(driver)
@@ -38,19 +39,25 @@ def run_browser(driver,chatbot_message =0):
 
 
 
-def run_display(context):
-    context.display = Display(visible=0, size=(800, 800))
-    context.display.start()
+def run_display():
+    display = Display(visible=0, size=(800, 800))
+    display.start()
+    return display
 
 
 
 
-def chatbot_message_xpath(context):
+def chatbot_xpath(driver,chatbot_message_num):
     try:
-     context.chatbot_message =contect.driver.find_element_by_xpath(('//*[@id="myForm"]/div/div[2]/div[{}]').format(context.chatbot_message_num))
+     chatbot_message =driver.find_element_by_xpath(('//*[@id="myForm"]/div/div[2]/div[{}]').format(chatbot_message_num))
+     return chatbot_message
     except:
         raise Exception("chatbot message did not reach")
 
-def open_chatbot(context):
-    context.driver.find_element_by_class_name("open-button").click();
-    context.driver.implicitly_wait(1)
+
+
+
+def open_chatbot(driver):
+    driver.find_element_by_class_name("open-button").click();
+    driver.implicitly_wait(1)
+    return driver
