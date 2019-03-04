@@ -15,15 +15,11 @@ build_chat:
   stage: build
   script:
     - docker build -t interface/main:$image_tag ./chat-service
-  tags:
-    - docker
 
 build_actions:
   stage: build
   script:
     - docker build -t action/server:$image_tag .
-  tags:
-    - docker
 
 # check for the responsive deployed prototype
 test_prototype:
