@@ -147,3 +147,16 @@
 - what are [IELTS requirements](acronym)
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
+
+## synonym:PT
+- part time
+- part-time  
+
+## synonym:FT
+- full time
+- full-time
+
+## intent:acronym_check+course_check
+- what are the [IELTS requirements](acronym) for [Computing Systems](course)
+- what is the [Plan Code](acronym) for [Medical Physics](course)
+- is [Medical Physics](course) a [PT](acronym) course
