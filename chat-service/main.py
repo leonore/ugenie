@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, escape
 from flask_socketio import SocketIO, join_room
 
 from model import agent, network_config
@@ -30,6 +30,7 @@ def sendMessage(sessionId, message):
 
 @socketio.on('user_joined')
 def handle_connection(json):
+        # Print the event data about this new connection on the console
         print('User connected: ',json)
 
         # Get the session ID this event is associated with
@@ -40,14 +41,13 @@ def handle_connection(json):
 
 @socketio.on('new_message')
 def handle_message(json):
-        print('Received event: ',json)
-
         # Get the session ID this event is associated with
         sessionId = request.sid
-
-        # Print the message that was sent
-        socketio.emit('user_message', json, room=sessionId)     # On the chat interface
-        messageReceived(sessionId, json['message'])             # On the console
+        
+        # Print the message that was sent on the chat interface, after escaping potential XSS or HTML injections
+        socketio.emit('user_message', {'user_name':'You', 'message':escape(json['message'])}, room=sessionId)   
+        # Print the message that was sent on the server console
+        messageReceived(sessionId, json['message'])                                                             
 
         # Get a response from the agent and send it back to the chat interface
         # If the socket event contained a payload (button response), send that to the agent
