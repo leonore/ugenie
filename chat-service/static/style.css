@@ -164,6 +164,7 @@ button {
 	border: none;
 	-webkit-transition-duration: 0.4s; 
 	transition-duration: 0.4s;
+	margin:3px 3px;
 }
 
 .message.reply-button:hover {

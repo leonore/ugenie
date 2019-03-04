@@ -2,20 +2,22 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet
 import elastic
 
+## DISCLAIMER: at the moment this isn't what's used for actions
+# I'm not sure we will have to use it this way, as it works from templates
+# and it makes more sense for me this way
+# - Leo
 class UtterFunctionality(Action):
     def name(self):
         return "action_utter_functionality"
 
     def run(self, dispatcher, tracker, domain):
         response = "Here are some things you can ask me about:"
-        buttons = []
-        buttons.append({'title': 'Short courses',
+        buttons = [{'title': 'Short courses',
             'payload': '/ask_short_courses_functionality'},
             {'title': 'Postgraduate courses',
             'payload': '/ask_admissions_courses_functionality'},
             {'title': 'Terminology',
-            'payload': '/ask_terminology_functionality'}
-            )
+            'payload': '/ask_terminology_functionality'}]
         dispatcher.utter_button_message(response, buttons)
         return
 
@@ -41,7 +43,6 @@ class CourseDenied(Action):
         dispatcher.utter_message(response)
         return
 
-## IN WORK ##
 # Sends the answer to common acronym questions
 # e.g. "what does FT stand for"
 class GetAcronym(Action):
@@ -49,8 +50,9 @@ class GetAcronym(Action):
         return "action_get_acronym"
 
     def run(self, dispatcher, tracker, domain):
-        response = elastic.get_description(tracker.get_slot("course"))
-        dispatcher.utter_message(response)
+        response = elastic.get_description(tracker.get_slot("acronym"))
+        # response format: (acronym, answer)
+        dispatcher.utter_message(response[1])
         return
 
 
@@ -63,7 +65,7 @@ class GetDescription(Action):
         # If there is a string in the 'acronym' slot, assume the user is asking about terminology
         # Else assume the user is asking about a course
         if tracker.get_slot("acronym") != None:
-            elastic_topic, elastic_desc = elastic.get_description( tracker.get_slot("acronym"))
+            elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("acronym"))
         else:
             elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
 

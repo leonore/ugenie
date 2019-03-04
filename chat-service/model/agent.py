@@ -25,6 +25,10 @@ def getResponse(sessionId, message):
     responses = agent.handle_text(message, sender_id=sessionId)
     print('Rasa-Core responses: ', responses)
     if(len(responses) > 0):
-        return responses[0]['text']
+        response = responses[0]
+        if 'buttons' in response:
+            return {'text': response['text'], 'buttons': response['buttons']}
+        else:
+            return {'text': response['text']}
     else:
-        return "Sorry, I didn't understand, could you rephrase that?"
+        return {'text': "Sorry, I didn't understand, could you rephrase that?"}
