@@ -27,6 +27,8 @@ test_prototype:
   stage: tests
   script:
     - python tests/test_prototype.py
+  tag:
+    - shell
 
 
 # clean up successfully built images
