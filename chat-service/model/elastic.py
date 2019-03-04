@@ -152,7 +152,14 @@ def get_ad_description(query):
 
 # Returns the meaning of the acronym given
 def get_acronym_desc(query):
-    res = es.search(index="general_questions", body={"query": {"match": {"answer":query}}})
+    res = es.search(index="general_questions",
+                    body={"query": {
+                            "multi_match" : {
+                              "query":    query,
+                              "fields": [ "question", "answer" ]
+                            }
+                          }
+                         })
     if res['hits']['hits']:
         # acro = acronym given e.g. FT
         # response = meaning of acronym

@@ -52,7 +52,8 @@ class GetAcronym(Action):
 
     def run(self, dispatcher, tracker, domain):
         response = elastic.get_description(tracker.get_slot("acronym"))
-        dispatcher.utter_message(response)
+        print(response, "is the response")
+        dispatcher.utter_message(response[1])
         return
 
 # Utters the cost of a course
