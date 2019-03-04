@@ -87,12 +87,6 @@
  - slot{"acronym": "PT"}
  - action_get_acronym
 
-## acronym_and_course_check
-* acronym_check+course_check
- - slot{"acronym": "Mario Decision"}
- - slot{"course": "Medical Physics"}
- - utter_lambda
-
 ## Generated Story -2906752824971192833
 * time_check{"course": "brain science"}
     - slot{"course": "brain science"}

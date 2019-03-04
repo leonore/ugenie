@@ -43,7 +43,6 @@ class CourseDenied(Action):
         dispatcher.utter_message(response)
         return
 
-## IN WORK ##
 # Sends the answer to common acronym questions
 # e.g. "what does FT stand for"
 class GetAcronym(Action):
@@ -52,7 +51,7 @@ class GetAcronym(Action):
 
     def run(self, dispatcher, tracker, domain):
         response = elastic.get_description(tracker.get_slot("acronym"))
-        print(response, "is the response")
+        # response format: (acronym, answer)
         dispatcher.utter_message(response[1])
         return
 

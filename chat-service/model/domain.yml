@@ -22,7 +22,7 @@ actions:
 - utter_terminology_functionality
 - utter_short_courses_functionality
 - utter_admissions_courses_functionality
-- utter_lambda
+# - utter_lambda
 
 entities:
 - requirement
@@ -48,7 +48,8 @@ intents:
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
-- acronym_check+course_check
+# example of multi-intent
+#- acronym_check+course_check
 
 slots:
   context:
@@ -77,8 +78,8 @@ slots:
     type: text
 
 templates:
-  utter_lambda:
-  - text: "This is a developer debugging. Hello!"
+#  utter_lambda:
+#  - text: "This is a developer debugging. Hello!"
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
