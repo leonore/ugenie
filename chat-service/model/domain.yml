@@ -22,6 +22,7 @@ actions:
 - utter_terminology_functionality
 - utter_short_courses_functionality
 - utter_admissions_courses_functionality
+# - utter_lambda
 
 entities:
 - requirement
@@ -47,8 +48,16 @@ intents:
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
+# example of multi-intent
+#- acronym_check+course_check
 
 slots:
+  context:
+    type: categorical
+    values:
+      - admissions
+      - short
+      - terminology
   course:
     type: text
   requirement:
@@ -69,6 +78,8 @@ slots:
     type: text
 
 templates:
+#  utter_lambda:
+#  - text: "This is a developer debugging. Hello!"
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
@@ -91,6 +102,6 @@ templates:
   utter_short_courses_functionality:
   - text: You can ask me about course times, tutors, credits, fees, descriptions!
   utter_admissions_courses_functionality:
-  - text: You can ask me about fees, descriptions, and a brief course descriptions!
+  - text: You can ask me about fees, descriptions, and a brief course description!
   utter_terminology_functionality:
   - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
