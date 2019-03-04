@@ -72,6 +72,21 @@
 * tutor_courses_check{"tutor":"Pamela Ross"}
  - action_get_tutor_courses{"tutor":"Pamela Ross"}
 
+## acronym_check_ATAS
+* acronym_check{"acronym":"ATAS"}
+ - slot{"acronym": "ATAS"}
+ - action_get_acronym
+
+## acronym_check_mario
+* acronym_check{"acronym":"MaRio"}
+ - slot{"acronym": "Mario"}
+ - action_get_acronym
+
+## acronym_check_PT
+* acronym_check{"acronym":"PT"}
+ - slot{"acronym": "PT"}
+ - action_get_acronym 
+
 ## Generated Story -2906752824971192833
 * time_check{"course": "brain science"}
     - slot{"course": "brain science"}

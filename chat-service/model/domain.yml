@@ -49,6 +49,12 @@ intents:
 - ask_admissions_courses_functionality
 
 slots:
+  context:
+    type: categorical
+    values:
+      - admissions
+      - short
+      - terminology
   course:
     type: text
   requirement:
@@ -91,6 +97,6 @@ templates:
   utter_short_courses_functionality:
   - text: You can ask me about course times, tutors, credits, fees, descriptions!
   utter_admissions_courses_functionality:
-  - text: You can ask me about fees, descriptions, and a brief course descriptions!
+  - text: You can ask me about fees, descriptions, and a brief course description!
   utter_terminology_functionality:
   - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...

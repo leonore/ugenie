@@ -3,15 +3,12 @@ from network_config import elasticIP
 
 es = Elasticsearch([elasticIP])
 
-# TODO tokenize?, e.g. for questions such as "who teaches X", how much is "X"
-# --> only one function, returns one field
-# TODO deal with duplicate courses
-
+# DEPRECATED?
 # Get answer to common questions about acronyms
-def get_acronym_answer(query):
-    res = es.search(index="general_questions", body={"query": {"match": {"question": query}}})
-    first_hit = res['hits']['hits'][0]
-    return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
+# def get_acronym_answer(query):
+#    res = es.search(index="general_questions", body={"query": {"match": {"question": query}}})
+#    first_hit = res['hits']['hits'][0]
+#    return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
 
 # Returns the full title of a short course according to the database
 def get_sc_title(query):

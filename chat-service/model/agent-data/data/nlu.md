@@ -139,3 +139,11 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
+
+## intent:acronym_check
+- I don't understand what [ATAS](acronym) means
+- what does [MaRio decision](acronym) mean
+- what does [Mario](acronym) mean
+- what are [IELTS requirements](acronym)
+- what is the [JACS code](acronym) of a course
+- what is the term [Plan Code](acronym)
