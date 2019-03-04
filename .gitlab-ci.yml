@@ -15,19 +15,23 @@ build_chat:
   stage: build
   script:
     - docker build -t interface/main:$image_tag ./chat-service
+  tags:
+    - docker
 
 build_actions:
   stage: build
   script:
     - docker build -t action/server:$image_tag .
-
+  tags:
+    - docker
 
 # check for the responsive deployed prototype
 test_prototype:
   stage: tests
   script:
     - python tests/test_prototype.py
-
+  tags:
+    - shell
 
 # clean up successfully built images
 cleanup_successful_build:
@@ -36,7 +40,8 @@ cleanup_successful_build:
     - docker image rm interface/main:$image_tag
     - docker image rm action/server:$image_tag
   when: on_success
-
+  tags:
+    - shell
 # clean up large dangling images from VM after failure
 cleanup_failed_build:
   stage: cleanup
@@ -44,3 +49,5 @@ cleanup_failed_build:
     - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
     - docker system prune --force
   when: on_failure
+  tags:
+    - shell
