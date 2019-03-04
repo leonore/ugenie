@@ -6,14 +6,44 @@
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
 
+## intent:ask_ad_type_classes
+- what [education](course) postgraduate courses do you have
+- what [engineering](course) courses are there
+- what [physics](course) courses can i do
+- what postgraduate courses on [russian](course) are there
+- what [sport](course) courses are there
+- what [urban](course) courses do you have
+
+## intent:ask_admissions_courses_functionality
+- admissions
+- admissions
+- admissions
+- admissions
+- admissions
+- admissions
+- admissions
+- admissions
+- admissions
+
 ## intent:ask_sc_type_classes
 - what [art](course) short courses are there
 - what short courses in [language](course) can i take
 - what [writing](course) courses are there
 - what [history](course) courses can i do
 - what [spanish](course) short courses are there
+- what [psychology](course) courses can i take
+- what [science](course) courses are there
+- what [music](course) courses are there
 
 ## intent:ask_short_courses_functionality
+- short courses
+- short courses
+- short courses
+- short courses
+- short courses
+- short courses
+- short courses
+- short courses
 - short courses
 - short courses
 
@@ -104,6 +134,13 @@
 - hi
 - hi
 - hi
+- hi
+- hi
+- hi
+- hi
+- hi
+- hi
+- hey
 - hi
 
 ## intent:inform_student
