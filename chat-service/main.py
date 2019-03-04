@@ -26,7 +26,7 @@ def sendMessage(sessionId, message):
                 print('Sending message: ',message['text'])
                 json = {'user_name' : 'GUVA', 'message' : message['text']}
 
-        socketio.emit('bot_message', json)
+        socketio.emit('bot_message', json, room=sessionId)
 
 @socketio.on('user_joined')
 def handle_connection(json):
