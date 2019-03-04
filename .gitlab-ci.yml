@@ -36,8 +36,7 @@ cleanup_successful_build:
     - docker image rm interface/main:$image_tag
     - docker image rm action/server:$image_tag
   when: on_success
-  tags:
-    - shell
+
 # clean up large dangling images from VM after failure
 cleanup_failed_build:
   stage: cleanup
