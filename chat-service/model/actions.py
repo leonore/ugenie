@@ -109,7 +109,6 @@ class GetTutor(Action):
         return "action_get_tutor"
 
     def run(self, dispatcher, tracker, domain):
-        print("Tutor GET")
         # elastic_title = title of the course from the database
         # elastic_cat = course category e.g. short course / admissions courses
         # elastic_score = the score of how relevant the course was to the elastic search
@@ -155,7 +154,6 @@ class GetTutorCourses(Action):
         return "action_get_tutor_courses"
 
     def run(self, dispatcher, tracker, domain):
-        print("Tutor courses")
         # elastic_tutor = the name of the tutor according to the database
         # elastic_output is the list of courses they teach
         elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
@@ -173,14 +171,12 @@ class GetSCClassTypes(Action):
         return "action_get_sc_type_classes"
 
     def run(self, dispatcher, tracker, domain):
-        # print("set_sc_classes")
         # dispatcher.utter_message("NONONO")
-        print("SC Class Types")
         elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
         if elastic_output:
-            response = "These are some of the classes which I have found : " + elastic_output
+            response = "These are some of the short course classes which I have found : " + elastic_output
         else:
-            response = "Sorry, I could not find any courses"
+            response = "Sorry, I could not find any short courses in that area"
 
         dispatcher.utter_message(response)
         return
@@ -190,13 +186,12 @@ class GetADClassTypes(Action):
         return "action_get_ad_type_classes"
 
     def run(self, dispatcher, tracker, domain):
-        print("set_ad_classes")
         elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
 
         if elastic_output:
-            response = "These are some of the classes which I have found : " + elastic_output
+            response = "These are some of the postgraduate classes which I have found : " + elastic_output
         else:
-            response = "Sorry, I could not find any courses"
+            response = "Sorry, I could not find any postgraduate courses in that area"
         dispatcher.utter_message(response)
         return
 
@@ -206,7 +201,6 @@ class GetFees(Action):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        print("FEES")
         # elastic_title = title of the course from the database
         # elastic_cat = course category e.g. short course / admissions courses
         # elastic_score = the score of how relevant the course was to the elastic search

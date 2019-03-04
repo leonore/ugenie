@@ -1,0 +1,99 @@
+%YAML 1.1
+---
+actions:
+- action_get_description
+- utter_ask_student
+- action_utter_functionality
+- action_get_requirements
+- action_get_sc_type_classes
+- action_get_ad_type_classes
+- utter_give_requirements
+- action_get_tutor
+- utter_terminology_functionality
+- action_course_denied
+- utter_short_courses_functionality
+- action_course_validate
+- utter_confirm_requirement_type
+- action_get_time
+- action_check_course
+- action_get_tutor_courses
+- utter_greet
+- utter_goodbye
+- action_get_acronym
+- utter_fee_check
+- utter_description_check
+- action_get_fee
+- utter_admissions_courses_functionality
+entities:
+- requirement
+- course
+- acroynm
+- tutor
+- student
+intents:
+- ask_sc_type_classes
+- requirements_check
+- goodbye
+- give_req_type
+- greet
+- fee_check
+- description_check
+- inform_student
+- time_check
+- tutor_check
+- acronym_check
+- confirmation
+- denial
+- tutor_courses_check
+- ask_terminology_functionality
+- ask_short_courses_functionality
+- ask_admissions_courses_functionality
+- ask_ad_type_classes
+slots:
+  acronym:
+    type: text
+  context:
+    type: categorical
+    values:
+    - admissions
+    - short
+    - terminology
+  course:
+    type: text
+  requirement:
+    type: categorical
+    values:
+    - general
+    - ielts
+  student:
+    type: categorical
+    values:
+    - scottish
+    - eu
+    - international
+    - other-uk
+  tutor:
+    type: text
+templates:
+  utter_admissions_courses_functionality:
+  - text: You can ask me about fees, descriptions, and a brief course description!
+  utter_ask_student:
+  - text: And are you a Scottish, EU, International, or Other-UK student?
+  utter_confirm_requirement_type:
+  - text: Do you mean general requirements or IELTS requirements?
+  utter_goodbye:
+  - text: Goodbye!
+  utter_greet:
+  - buttons:
+    - title: Short courses
+    - payload: /ask_short_courses_functionality
+    - title: Admissions
+    - payload: /ask_admissions_courses_functionality
+    - title: Terminology
+    - payload: /ask_terminology_functionality
+    text: Hello! I am here to help with...
+  utter_short_courses_functionality:
+  - text: You can ask me about course times, tutors, credits, fees, descriptions!
+  utter_terminology_functionality:
+  - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT,
+      ATAS...

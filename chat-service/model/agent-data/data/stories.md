@@ -270,3 +270,26 @@
 ## Short Course Type question
 * ask_sc_type_classes
 - action_get_sc_type_classes
+
+## Generated Story -5509032080246926965
+* greet
+    - utter_greet
+* ask_short_courses_functionality
+    - utter_short_courses_functionality
+* ask_sc_type_classes{"course": "writing"}
+    - slot{"course": "writing"}
+    - action_get_sc_type_classes
+    
+## Generated Story 1962544994882331779
+* greet
+    - utter_greet
+* ask_short_courses_functionality
+    - utter_short_courses_functionality
+* ask_sc_type_classes{"course": "history"}
+    - slot{"course": "history"}
+    - action_get_sc_type_classes
+
+## Generated Story -679097829603909206
+* ask_sc_type_classes{"course": "spanish"}
+    - slot{"course": "spanish"}
+    - action_get_sc_type_classes
