@@ -5,7 +5,7 @@ var socket = io.connect('http://' + document.domain + ':' + location.port);
 // When the user connects, run this function
 socket.on('connect', function() {
 	console.log(socket.id);
-	
+
 	// Send an event to the server with details on the newly connected user
     socket.emit('user_joined', {
 		id: socket.id
@@ -37,12 +37,12 @@ socket.on('user_message', function(msg) {
     }
 })
 
-// When the client receives a 'user_message' event, print the message on the chat as a bot message
+// When the client receives a 'bot_message' event, print the message on the chat as a bot message
 socket.on('bot_message', function(msg) {
     console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
 		messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
-		
+
 		// If this message also contains button responses, render them
 		if(typeof msg.buttons !== 'undefined'){
 			messageArea.append('<div class="message button-area"></div>');
@@ -51,14 +51,14 @@ socket.on('bot_message', function(msg) {
 			for (var buttonIndex in msg.buttons) {
 				var buttonTitleObject = msg.buttons[buttonIndex];
 				var buttonPayloadObject = msg.buttons[parseInt(buttonIndex)+1];
-				
+
 				// If this button object is a title and not a payload, add it as a button
 				if(typeof buttonTitleObject.title !== 'undefined'){
 					console.log(buttonTitleObject);
 					console.log(buttonPayloadObject);
 					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(\'' + buttonTitleObject.title + '\', \'' + buttonPayloadObject.payload + '\')">' + buttonTitleObject.title + '</button>');
 				}
-				
+
 			}
 		}
 
