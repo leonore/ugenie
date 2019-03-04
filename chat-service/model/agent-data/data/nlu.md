@@ -13,6 +13,8 @@
 - what postgraduate courses on [russian](course) are there
 - what [sport](course) courses are there
 - what [urban](course) courses do you have
+- what [media](course) courses are there
+- what [law](course) postgraduate courses are there
 
 ## intent:ask_admissions_courses_functionality
 - admissions
@@ -36,7 +38,6 @@
 - what [music](course) courses are there
 
 ## intent:ask_short_courses_functionality
-- short courses
 - short courses
 - short courses
 - short courses
@@ -134,14 +135,9 @@
 - hi
 - hi
 - hi
-- hi
-- hi
-- hi
-- hi
-- hi
-- hi
 - hey
 - hi
+- hello
 
 ## intent:inform_student
 - i'm an [eu](student) student

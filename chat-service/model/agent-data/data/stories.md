@@ -271,6 +271,10 @@
 * ask_sc_type_classes
 - action_get_sc_type_classes
 
+## Post Graduate Course Type question
+* ask_ad_type_classes
+- action_get_ad_type_classes
+
 ## Generated Story -5509032080246926965
 * greet
     - utter_greet
@@ -298,7 +302,7 @@
 * ask_ad_type_classes{"course": "education"}
     - slot{"course": "education"}
     - action_get_ad_type_classes
-    
+
 ## Generated Story 4386387057852718816
 * greet
     - utter_greet
@@ -366,3 +370,16 @@
     - slot{"course": "urban"}
     - action_get_ad_type_classes
 
+## Generated Story 996290071412567687
+* greet
+    - utter_greet
+* ask_admissions_courses_functionality
+    - utter_admissions_courses_functionality
+* ask_ad_type_classes{"course": "media"}
+    - slot{"course": "media"}
+    - action_get_ad_type_classes
+
+## Generated Story -2757736751059362259
+* ask_ad_type_classes{"course": "law"}
+    - slot{"course": "law"}
+    - action_get_ad_type_classes
