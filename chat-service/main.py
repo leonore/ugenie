@@ -28,13 +28,13 @@ def sendMessage(sessionId, message):
 
         socketio.emit('bot_message', json)
 
-@socketio.on('new_connection')
+@socketio.on('user_joined')
 def handle_connection(json):
         print('User connected: ',json)
 
         # Get the session ID this event is associated with
         sessionId = request.sid
-        
+
         # Print the welcome message on the chat interface
         sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
 
