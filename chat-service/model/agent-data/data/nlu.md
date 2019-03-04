@@ -142,4 +142,4 @@
 
 ## intent:ask_sc_type_classes
 - what [art](course) short courses are there
-- what short courses in [art](course) can i take
+- what short courses in [language](course) can i take
