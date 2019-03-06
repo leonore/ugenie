@@ -299,7 +299,6 @@ def get_sc_type_courses(query):
     # print(res)
     # print(return_list(res))
     course_list = return_sc_list(res)
-
     course_list = []
     course_set = []
 
@@ -319,8 +318,6 @@ def get_sc_type_courses(query):
         return str(course_set[0]).title(), res['hits']['total']
     else:
         return False, False
-
-
 
 def get_ad_type_courses(query):
     res = es.search(index="admissions",

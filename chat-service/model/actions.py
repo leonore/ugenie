@@ -195,6 +195,30 @@ class GetADClassTypes(Action):
         dispatcher.utter_message(response)
         return
 
+
+class GetClassTypes(Action):
+    def name(self):
+        return "action_get_type_classes"
+
+    def run(self, dispatcherm tracker, domain):
+        if tracker.get_slot("course_type") == "short":
+            elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
+            if elastic_output:
+                response = "These are some of the short classes which I have found : " + elastic_output
+            else:
+                response = "Sorry, I could not find any short courses in that area"
+        elif tracker.get_slot("course_type") == "admissions":
+            elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
+            if elastic_output:
+                response = "These are some of the short classes which I have found : " + elastic_output
+            else:
+                response = "Sorry, I could not find any short courses in that area"
+        else:
+            response = "Did you mean short courses or postgraduate courses"
+
+        dispatcher.utter_mesage(response)
+
+
 # Utters the cost of a course
 class GetFees(Action):
     def name(self):

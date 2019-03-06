@@ -361,6 +361,7 @@
 * ask_sc_type_classes{"course": "music"}
     - slot{"course": "music"}
     - action_get_sc_type_classes
+
 ## Generated Story -3071205715805701429
 * greet
     - utter_greet
@@ -383,3 +384,22 @@
 * ask_ad_type_classes{"course": "law"}
     - slot{"course": "law"}
     - action_get_ad_type_classes
+    
+## Generated Story -6345524894633091155
+* fee_check{"course": "brain sciences"}
+    - slot{"course": "brain sciences"}
+    - action_check_course
+* confirmation
+    - action_get_fee
+* time_check{"course": "brain sciences"}
+    - slot{"course": "brain sciences"}
+    - action_check_course
+* confirmation
+    - action_get_time
+
+## Generated Story 7388197569105713968
+* time_check{"course": "brain sciences"}
+    - slot{"course": "brain sciences"}
+    - action_check_course
+* confirmation
+    - action_get_time

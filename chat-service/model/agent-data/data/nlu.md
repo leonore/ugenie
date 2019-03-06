@@ -60,6 +60,9 @@
 - yes
 - yes
 - yes
+- yes
+- yes
+- yes
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -100,6 +103,7 @@
 - how many pounds is [west end lectures](course)
 - how much is [german stage 2](course)
 - what is [the price of fancy florence](course)
+- how much money is [brain sciences](course)
 
 ## intent:full_part_time_check
 - is [brain sciences](course) full time
@@ -173,6 +177,8 @@
 - what time is [brain science](course)
 - what time is [french stage 1](course)
 - when is [fancy florence](course)
+- when is [brain sciences](course)
+- what time is [brain sciences](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
@@ -193,6 +199,3 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
-
-## synonym:film studies 1
-- flim studies 1

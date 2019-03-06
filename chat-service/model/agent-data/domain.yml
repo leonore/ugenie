@@ -1,57 +1,66 @@
 %YAML 1.1
 ---
 actions:
-- utter_goodbye
-- utter_give_requirements
-- utter_terminology_functionality
-- utter_fee_check
-- action_utter_functionality
+- utter_confirm_requirement_type
+- action_get_description
+- action_get_tutor
 - utter_short_courses_functionality
 - action_get_fee
-- action_get_tutor_courses
-- action_get_time
-- action_get_tutor
-- action_course_denied
-- action_get_ad_type_classes
 - action_get_requirements
-- utter_confirm_requirement_type
-- utter_description_check
-- action_get_description
 - action_get_sc_type_classes
 - utter_greet
+- action_utter_functionality
+- utter_fee_check
 - action_course_validate
+- action_get_time
+- utter_terminology_functionality
 - action_get_acronym
+- action_get_ad_type_classes
+- action_get_tutor_courses
 - utter_admissions_courses_functionality
+- utter_give_requirements
 - action_check_course
 - utter_ask_student
+- utter_goodbye
+- utter_description_check
+- action_course_denied
+
 entities:
-- tutor
-- course
-- requirement
 - student
+- course
+- tutor
 - acroynm
+- requirement
+- course_type
+
 intents:
-- ask_ad_type_classes
+- fee_check
+- confirmation
+- time_check
 - requirements_check
 - goodbye
 - give_req_type
 - greet
-- fee_check
 - description_check
 - inform_student
-- time_check
 - tutor_check
 - acronym_check
-- confirmation
 - denial
 - tutor_courses_check
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
 - ask_sc_type_classes
+- ask_ad_type_classes
+
 slots:
   acronym:
     type: text
+  course_type:
+    type: categorical
+    values:
+      - admissions
+      - short
   context:
     type: categorical
     values:
@@ -74,6 +83,7 @@ slots:
     - other-uk
   tutor:
     type: text
+
 templates:
   utter_admissions_courses_functionality:
   - text: You can ask me about fees, descriptions, and a brief course description!
@@ -86,9 +96,9 @@ templates:
   utter_greet:
   - buttons:
     - title: Short courses
-    - payload: /ask_short_courses_functionality
+    - payload: /ask_short_courses_functionality{"course_type": short}
     - title: Admissions
-    - payload: /ask_admissions_courses_functionality
+    - payload: /ask_admissions_courses_functionality{"course_type": admissions}
     - title: Terminology
     - payload: /ask_terminology_functionality
     text: Hello! I am here to help with...
