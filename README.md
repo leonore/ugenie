@@ -1,7 +1,7 @@
 # CS01 - Virtual Assistant for UofG's External Relations
-____________
 
-[![build status](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/badges/master/pipeline.svg)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/commits/master)
+[![build status](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/badges/master/pipeline.svg)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/commits/master)             
+
 This software engineering project is to create a **virtual assistant / chatbot** that will help answer the increasing volume of application and course enquiries at the University of Glasgow's External Relations Directorate.     
 
 Our application consists of:
@@ -9,13 +9,19 @@ Our application consists of:
 * connected to a Natural Language Understanding unit (`RASA`)
 * which makes queries to a free-text search engine (`Elasticsearch`)
 
-An online prototype of the bot is available [here :robot:](bit.do/uofg-bot)!
+An online prototype of the bot is available [here :robot:](bit.do/uofg-bot)
 ______________
 
 Cloning this repository from 15th of March 2019 should include a trained version of the bot.
+- [Set up dependencies manually](Manuel dependency setup) 
+    - [Launching from manual set-up](Launching after setup)
+- [Launching from Docker](Launching from Docker)
+- [Sample questions to ask the bot](Interacting with the bot)
+- [Extra documentation on different app components](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tree/master/docs)
 
+--------
 
-#### Manuel dependency set-up
+#### Manuel dependency setup
 How to get yourself set up with dependencies manually, for development:
 
 ```bash
@@ -35,8 +41,6 @@ make run
 ```
 
 The bot should then be running at [localhost:5000](localhost:5000)
-
-You can visit [docs](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tree/master/docs) for more specific information on the different components in the project.
 
 #### Launching from Docker
 This is easier for direct interaction with the bot.
