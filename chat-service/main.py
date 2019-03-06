@@ -5,7 +5,7 @@ from model import agent, network_config
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
-socketio = SocketIO(app) # Apply SocketIO to 'app' to use it instead of app for running the application
+socketio = SocketIO(app) # Apply SocketIO to 'app' to use it 
 
 # When the user enters the homepage ('/') it triggers the sessions view
 @app.route('/')
@@ -60,4 +60,4 @@ def handle_message(json):
 
 if __name__ == '__main__':
         # Takes optional host and port arguments but by default will listen on localhost:5000
-        socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+        socketio.run(app, host='0.0.0.0', port=5000, debug=True, ping_timeout=180)
