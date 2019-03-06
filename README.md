@@ -1,14 +1,23 @@
 # CS01 - Virtual Assistant for UofG's External Relations
+____________
 
-The External Relations Project is to create a **virtual assistant / chatbot** that will help answer the increasing volume of application and course enquiries at the 
-University of Glasgow's External Relations Directorate.     
+[![build status](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/badges/master/pipeline.svg)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/commits/master)
+This software engineering project is to create a **virtual assistant / chatbot** that will help answer the increasing volume of application and course enquiries at the University of Glasgow's External Relations Directorate.     
 
-Our system consists of:
-* an interface for users to interact with the chatbot, 
-* connected to a Natural Language Understanding unit (RASA)
-* which makes queries to a free-text search engine, the Elastic database
+Our application consists of:
+* an interface for users to interact with the chatbot (`Flask + socketio`)
+* connected to a Natural Language Understanding unit (`RASA`)
+* which makes queries to a free-text search engine (`Elasticsearch`)
 
-Get yourself set up with dependencies:
+An online prototype of the bot is available [here :robot:](bit.do/uofg-bot)!
+______________
+
+Cloning this repository from 15th of March 2019 should include a trained version of the bot.
+
+
+#### Manuel dependency set-up
+How to get yourself set up with dependencies manually, for development:
+
 ```bash
 pip install rasa_core
 pip install rasa_nlu[spacy]
@@ -16,7 +25,36 @@ python -m spacy download en
 pip install flask-socketio
 pip install elasticsearch
 pip install xlrd
-```
-Provided your python is python 3.
+````
+*N.B. Python should be `3.6+`*
 
-Visit [docs](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tree/master/docs) for more specific information on the different components in the project.
+##### Launching after setup
+```bash
+make train
+make run
+```
+
+The bot should then be running at [localhost:5000](localhost:5000)
+
+You can visit [docs](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tree/master/docs) for more specific information on the different components in the project.
+
+#### Launching from Docker
+This is easier for direct interaction with the bot.
+*NB: Need to figure out how to train the bot from Docker containers because it doesn't work from VM so our build would fail*
+
+```bash
+docker-compose up --build
+```
+The bot should then be running at [localhost:5000](localhost:5000)
+
+_____
+#### Interacting with the bot
+
+Here are some questions you can ask GUVA:
+- What is [course]?
+- How much is [course/short course]?
+- When is [short course]?
+- Who teaches [short course]?
+- What other courses does [tutor] teach?
+- What does [acronym] mean?
+- What does [acronym] of a course mean?
