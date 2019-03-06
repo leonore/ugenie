@@ -60,4 +60,4 @@ def handle_message(json):
 
 if __name__ == '__main__':
         # Takes optional host and port arguments but by default will listen on localhost:5000
-        socketio.run(app, host='0.0.0.0', port=5000, debug=True, ping_timeout=180)
+        socketio.run(app, host='0.0.0.0', port=5000, debug=True, pingTimeout=180)
