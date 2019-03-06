@@ -6,18 +6,6 @@
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
 
-## intent:ask_admissions_courses_functionality
-- admissions
-- admissions
-- admissions
-- admissions
-
-## intent:ask_short_courses_functionality
-- short courses
-- short courses
-- short courses
-- short courses
-
 ## intent:confirmation
 - yes
 - yeah

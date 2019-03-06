@@ -241,7 +241,7 @@ def get_tutor_courses(query):
         # e.g. "one, two, three, and four"
         for counter in res['hits']['hits']:
             if counter != res['hits']['hits'][res_len-1]:
-                print(counter['_source']['Title'])
+                # print(counter['_source']['Title'])
                 course_list += str(counter['_source']['Title']).title() + ", "
         course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 

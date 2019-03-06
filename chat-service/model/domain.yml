@@ -102,11 +102,11 @@ templates:
   - text: "Hello! I am here to help with..."
     buttons:
       - title: "Short courses"
-      - payload: '/ask_short_courses_functionality{"course_type":"short"}'
+        payload: '/ask_short_courses_functionality'
       - title: "Admissions"
-      - payload: '/ask_admissions_courses_functionality{"course_type":"admissions"}'
+        payload: '/ask_admissions_courses_functionality'
       - title: "Terminology"
-      - payload: '/ask_terminology_functionality'
+        payload: '/ask_terminology_functionality'
   utter_short_courses_functionality:
   - text: You can ask me about course times, tutors, credits, fees, descriptions!
   utter_admissions_courses_functionality:
