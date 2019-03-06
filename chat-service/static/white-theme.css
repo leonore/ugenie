@@ -1,0 +1,197 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto%20Slab);
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'nimbus-sans', sans-serif;
+	color: #343536;
+}
+
+
+/* User Agent Stylesheet overwriting */
+
+input,
+textarea,
+select,
+button {
+	font-family: 'nimbus-sans', sans-serif;
+	vertical-align: middle;
+	font-size: 15px;
+}
+
+
+/* Button used to open the chat form */
+
+.open-button {
+	background-color: #fff;
+	color: #005398;
+	padding: 16px 20px;
+	border: 1px solid #005398;
+	cursor: pointer;
+	opacity: 0.8;
+	position: fixed;
+	bottom: 23px;
+	right: 28px;
+	width: 280px;
+	border-radius: 50px 6px 6px 6px;
+}
+
+.open-button:hover {
+	background-color: #005398;
+	border: 1px solid #005398;
+	color: #fff;
+}
+
+
+/* The popup chat */
+
+.chat-popup {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 15px;
+	z-index: 9;
+}
+
+
+/* Chat container inside the popup */
+
+.chat-container {
+	max-width: 280px;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #005398;
+	border-radius: 50px 6px 6px 6px;
+}
+
+
+/* Chat container's header */
+
+.chat-header {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 5px;
+	width: 100%;
+	text-align: center;
+	display: inline-block;
+	color: #005398;
+	font-size: 20px;
+	flex-shrink: 1;
+}
+
+
+/* Chat close button */
+
+.chat-header .close {
+	color: #005398;
+	font: 25px/100% arial, sans-serif;
+	float: right;
+	text-decoration: none;
+}
+
+.chat-header .close:after {
+	content: '✖';
+	/* UTF-8 symbol */
+}
+
+
+/* Chat container's header title */
+
+.chat-header .title {
+	float: center;
+}
+
+
+/* Sent message text area */
+
+.message-area {
+	background-color: #fff;
+	border-radius: 10px;
+	border: 1px solid #005398;
+	padding: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	height: 350px;
+	flex-shrink: 1;
+	overflow: auto;
+}
+
+.message-area::-webkit-scrollbar {
+	width: 12.5px;
+}
+
+.message-area::-webkit-scrollbar-track {
+	border-radius: 15px;
+	background: #fefefe;
+}
+
+.message-area::-webkit-scrollbar-thumb {
+	border-radius: 15px;
+	background: #bfbfbf;
+}
+
+.message-area::-webkit-scrollbar-thumb:hover {
+	background: #a0a0a0;
+}
+
+
+/* Message area elements */
+
+.message {
+	padding: 10px;
+	border-radius: .4em;
+	margin-bottom: 5px;
+	color: #fff;
+	clear: both;
+}
+
+.message.bot-message {
+	background: #00B5D1;
+	max-width: 95%;
+	float: left;
+}
+
+.message.user-message {
+	background: #0075B0;
+	max-width: 95%;
+	float: right;
+}
+
+.message.button-area {
+	margin: 0 auto; 
+	padding: 0;
+	width: 100%; 
+	text-align: center;
+}
+
+.message.reply-button {
+	background: #0075B0;
+	border: none;
+	-webkit-transition-duration: 0.4s; 
+	transition-duration: 0.4s;
+	margin:3px 3px;
+}
+
+.message.reply-button:hover {
+	background: #00B5D1; 
+	cursor: pointer;
+}
+
+
+/* Message input area */
+
+.message-form {
+	display: flex;
+	flex-shrink: 0;
+}
+
+
+/* Message input box */
+
+.message-form-input {
+	width: 100%;
+	border: 1px solid #dfdfdf;
+	border-radius: 10px;
+	padding: 10px;
+}
