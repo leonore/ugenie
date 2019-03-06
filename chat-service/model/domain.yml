@@ -22,8 +22,7 @@ actions:
 - utter_terminology_functionality
 - utter_short_courses_functionality
 - utter_admissions_courses_functionality
-- action_get_ad_type_classes
-- action_get_sc_type_classes
+- action_get_type_classes
 # - utter_lambda
 
 entities:
@@ -32,6 +31,7 @@ entities:
 - student
 - acroynm
 - tutor
+- course_type
 
 intents:
 - requirements_check
@@ -50,12 +50,16 @@ intents:
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
-- ask_sc_type_classes
-- ask_ad_type_classes
+- ask_type_classes
 # example of multi-intent
 #- acronym_check+course_check
 
 slots:
+  course_type:
+    type: categorical
+    values:
+      - admissions
+      - short
   context:
     type: categorical
     values:
@@ -98,11 +102,11 @@ templates:
   - text: "Hello! I am here to help with..."
     buttons:
       - title: "Short courses"
-      - payload: "/ask_short_courses_functionality"
+      - payload: '/ask_short_courses_functionality{"course_type":"short"}'
       - title: "Admissions"
-      - payload: "/ask_admissions_courses_functionality"
+      - payload: '/ask_admissions_courses_functionality{"course_type":"admissions"}'
       - title: "Terminology"
-      - payload: "/ask_terminology_functionality"
+      - payload: '/ask_terminology_functionality'
   utter_short_courses_functionality:
   - text: You can ask me about course times, tutors, credits, fees, descriptions!
   utter_admissions_courses_functionality:

@@ -166,41 +166,41 @@ class GetTutorCourses(Action):
         dispatcher.utter_message(response)
         return
 
-class GetSCClassTypes(Action):
-    def name(self):
-        return "action_get_sc_type_classes"
-
-    def run(self, dispatcher, tracker, domain):
-        # dispatcher.utter_message("NONONO")
-        elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
-        if elastic_output:
-            response = "These are some of the short course classes which I have found : " + elastic_output
-        else:
-            response = "Sorry, I could not find any short courses in that area"
-
-        dispatcher.utter_message(response)
-        return
-
-class GetADClassTypes(Action):
-    def name(self):
-        return "action_get_ad_type_classes"
-
-    def run(self, dispatcher, tracker, domain):
-        elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
-
-        if elastic_output:
-            response = "These are some of the postgraduate classes which I have found : " + elastic_output
-        else:
-            response = "Sorry, I could not find any postgraduate courses in that area"
-        dispatcher.utter_message(response)
-        return
+# class GetSCClassTypes(Action):
+#     def name(self):
+#         return "action_get_sc_type_classes"
+#
+#     def run(self, dispatcher, tracker, domain):
+#         # dispatcher.utter_message("NONONO")
+#         elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
+#         if elastic_output:
+#             response = "These are some of the short course classes which I have found : " + elastic_output
+#         else:
+#             response = "Sorry, I could not find any short courses in that area"
+#
+#         dispatcher.utter_message(response)
+#         return
+#
+# class GetADClassTypes(Action):
+#     def name(self):
+#         return "action_get_ad_type_classes"
+#
+#     def run(self, dispatcher, tracker, domain):
+#         elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
+#
+#         if elastic_output:
+#             response = "These are some of the postgraduate classes which I have found : " + elastic_output
+#         else:
+#             response = "Sorry, I could not find any postgraduate courses in that area"
+#         dispatcher.utter_message(response)
+#         return
 
 
 class GetClassTypes(Action):
     def name(self):
         return "action_get_type_classes"
 
-    def run(self, dispatcherm tracker, domain):
+    def run(self, dispatcher, tracker, domain):
         if tracker.get_slot("course_type") == "short":
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:

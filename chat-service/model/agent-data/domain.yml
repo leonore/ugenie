@@ -1,61 +1,60 @@
 %YAML 1.1
 ---
 actions:
-- utter_confirm_requirement_type
-- action_get_description
-- action_get_tutor
-- utter_short_courses_functionality
 - action_get_fee
 - action_get_requirements
-- action_get_sc_type_classes
 - utter_greet
-- action_utter_functionality
-- utter_fee_check
-- action_course_validate
-- action_get_time
-- utter_terminology_functionality
-- action_get_acronym
-- action_get_ad_type_classes
-- action_get_tutor_courses
-- utter_admissions_courses_functionality
-- utter_give_requirements
-- action_check_course
-- utter_ask_student
 - utter_goodbye
+- action_get_description
+- action_get_time
+- action_get_acronym
+- action_get_tutor
+- action_course_validate
+- utter_give_requirements
+- utter_confirm_requirement_type
+- utter_fee_check
 - utter_description_check
+- utter_ask_student
+- action_check_course
 - action_course_denied
+- action_get_tutor_courses
+- action_utter_functionality
+- utter_terminology_functionality
+- utter_short_courses_functionality
+- utter_admissions_courses_functionality
+- action_get_type_classes
+# - utter_lambda
 
 entities:
-- student
-- course
-- tutor
-- acroynm
 - requirement
+- course
+- student
+- acroynm
+- tutor
 - course_type
 
 intents:
-- fee_check
-- confirmation
-- time_check
 - requirements_check
 - goodbye
 - give_req_type
 - greet
+- fee_check
 - description_check
 - inform_student
+- time_check
 - tutor_check
 - acronym_check
+- confirmation
 - denial
 - tutor_courses_check
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
-- ask_sc_type_classes
-- ask_ad_type_classes
+- ask_type_classes
+# example of multi-intent
+#- acronym_check+course_check
 
 slots:
-  acronym:
-    type: text
   course_type:
     type: categorical
     values:
@@ -64,9 +63,9 @@ slots:
   context:
     type: categorical
     values:
-    - admissions
-    - short
-    - terminology
+      - admissions
+      - short
+      - terminology
   course:
     type: text
   requirement:
@@ -81,29 +80,36 @@ slots:
     - eu
     - international
     - other-uk
+  acronym:
+    type: text
   tutor:
     type: text
 
 templates:
-  utter_admissions_courses_functionality:
-  - text: You can ask me about fees, descriptions, and a brief course description!
+#  utter_lambda:
+#  - text: "This is a developer debugging. Hello!"
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
   - text: Do you mean general requirements or IELTS requirements?
+  # utter_description_check:
+  # - text: 'The course description for {course} is: ...'
+  # utter_fee_check:
+  # - text: The {course} fees for {student} students are ...
   utter_goodbye:
   - text: Goodbye!
   utter_greet:
-  - buttons:
-    - title: Short courses
-    - payload: /ask_short_courses_functionality{"course_type": short}
-    - title: Admissions
-    - payload: /ask_admissions_courses_functionality{"course_type": admissions}
-    - title: Terminology
-    - payload: /ask_terminology_functionality
-    text: Hello! I am here to help with...
+  - text: "Hello! I am here to help with..."
+    buttons:
+      - title: "Short courses"
+      - payload: "/ask_short_courses_functionality{"course_type":short}"
+      - title: "Admissions"
+      - payload: "/ask_admissions_courses_functionality{"course_type":admissions}"
+      - title: "Terminology"
+      - payload: "/ask_terminology_functionality"
   utter_short_courses_functionality:
   - text: You can ask me about course times, tutors, credits, fees, descriptions!
+  utter_admissions_courses_functionality:
+  - text: You can ask me about fees, descriptions, and a brief course description!
   utter_terminology_functionality:
-  - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT,
-      ATAS...
+  - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
