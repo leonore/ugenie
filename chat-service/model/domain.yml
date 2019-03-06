@@ -102,7 +102,7 @@ templates:
   - text: "Hello! I am here to help with..."
     buttons:
       - title: "Short courses"
-        payload: '/ask_short_courses_functionality'
+        payload: "/ask_short_courses_functionality{'course': 'art and anatomy'}"
       - title: "Admissions"
         payload: '/ask_admissions_courses_functionality'
       - title: "Terminology"
