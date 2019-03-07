@@ -294,22 +294,15 @@ def get_sc_type_courses(query):
             }
     }
     })
-     # {"match": {"Title": query}}})
-    # print(res)
-    # print(return_list(res))
-    course_list = return_sc_list(res)
+    # course_list = return_sc_list(res)
     course_list = []
     course_set = []
-
     if res:
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get("Title"))
+        course_set = list(set(course_list))
+        # course_list = return_list(course_set)
 
-            course_set = list(set(course_list))
-        # print("Course Set = ", course_set)
-        course_list = return_list(course_set)
-
-    # print(course_set)
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
@@ -333,22 +326,13 @@ def get_ad_type_courses(query):
             }
     }
     })
-     # {"match": {"Title": query}}})
     course_list = []
     course_set = []
-    # print(res)
     if res:
         for course in (res['hits']['hits']):
-            # print(course['_source'].get("Lookup Name"))
             course_list.append(course['_source'].get("Lookup Name"))
-
         course_set = list(set(course_list))
 
-    # print("Course Set = ", course_set)
-    # print(return_list(res))
-    # hits = res[]
-    # print(list(set(classes)))
-    # print(course_set)
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
@@ -357,15 +341,4 @@ def get_ad_type_courses(query):
     else:
         return False, False
 
-# print(get_sc_type_courses("History"))
-# print(get_sc_type_courses("Languages"))
-# print(get_sc_type_courses("spanish"))
-# print(get_ad_type_courses("Medicine"))
-# print(get_ad_type_courses("Arts"))
-# print(get_sc_type_courses("Spanish"))
-# print(get_sc_type_courses("Chinese"))
-# print(get_ad_type_courses("Vietnamese"))
-# print(get_sc_type_courses("art"))
-# tracker = 'short'
-# print(tracker == "short")
-print(get_sc_type_courses("law"))
+print(get_sc_type_courses("spanish"))

@@ -232,12 +232,21 @@ class GetClassTypes(Action):
         # dispatcher.utter_mesage(response)
         return
 
+# class SetSCCourseType(Action):
+#     def name(self):
+#         return "action_set_sc_course_type"
+#
+#     def run(self, dispatcher, tracker, domain):
+#         return [SlotSet("course_type", "short")]
+
+
 class SetSCCourseType(Action):
     def name(self):
         return "action_set_sc_course_type"
 
     def run(self, dispatcher, tracker, domain):
         return [SlotSet("course_type", "short")]
+
 
 class SetADCourseType(Action):
     def name(self):

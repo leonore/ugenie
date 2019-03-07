@@ -280,11 +280,8 @@
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
-
-## Generated Story -5517859883965774275
-* ask_type_classes{"course": "art"}
-    - slot{"course": "art"}
+    
+## Generated Story -4144376465316336708
+* ask_type_classes{"course": "spanish"}
+    - slot{"course": "spanish"}
     - action_get_type_classes
-* ask_set_sc_course_type{"course":"art"}
-  - slot{"course":"art", "course_type":"short"}
-  - action_set_sc_course_type{"course":"art", "course_type":"short"}

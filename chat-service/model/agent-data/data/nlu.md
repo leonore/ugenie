@@ -16,6 +16,7 @@
 - what [media](course) courses are there
 - what [law](course) courses are there
 - what [art](course) courses are there
+- what [spanish](course) courses are there
 
 ## intent:confirmation
 - yes

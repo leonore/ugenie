@@ -1,36 +1,36 @@
 %YAML 1.1
 ---
 actions:
-- action_check_course
-- utter_ask_student
-- utter_goodbye
-- action_course_validate
-- action_utter_short_courses_functionality
-- action_get_tutor
-- action_utter_admissions_courses_functionality
-- action_course_denied
+- action_get_type_classes
 - action_utter_functionality
-- utter_give_requirements
 - utter_description_check
-- action_set_sc_course_type
-- action_get_fee
+- action_check_course
 - action_set_ad_course_type
-- utter_fee_check
 - utter_confirm_requirement_type
-- utter_terminology_functionality
-- utter_greet
+- utter_give_requirements
+- action_get_time
+- action_get_fee
+- utter_ask_student
+- action_get_tutor
 - action_get_description
+- action_utter_admissions_courses_functionality
+- utter_greet
+- utter_fee_check
+- action_course_denied
+- action_utter_short_courses_functionality
 - action_get_acronym
 - action_get_requirements
-- action_get_time
+- action_course_validate
 - action_get_tutor_courses
-- action_get_type_classes
+- action_set_sc_course_type
+- utter_terminology_functionality
+- utter_goodbye
 entities:
-- course
 - acroynm
+- student
 - course_type
 - tutor
-- student
+- course
 - requirement
 intents:
 - ask_type_classes
