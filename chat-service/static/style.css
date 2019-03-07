@@ -34,6 +34,7 @@ button {
 	bottom: 23px;
 	right: 28px;
 	width: 280px;
+	border-radius: 20px;
 }
 
 .open-button:hover {
@@ -137,8 +138,8 @@ button {
 	padding: 10px;
 	border-radius: .4em;
 	margin-bottom: 5px;
-	color: #fefefe;
 	clear: both;
+	color: #fefefe;
 }
 
 .message.bot-message {
