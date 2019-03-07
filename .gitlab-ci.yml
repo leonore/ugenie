@@ -30,12 +30,12 @@ test_prototype:
     - shell
 
 # clean up successfully built images
-cleanup_successful_build:
-  stage: cleanup
-  script:
-    - docker image rm interface/main:$image_tag
-    - docker image rm action/server:$image_tag
-  when: on_success
+# cleanup_successful_build:
+#  stage: cleanup
+#  script:
+#    - docker image rm interface/main:$image_tag
+#    - docker image rm action/server:$image_tag
+#  when: on_success
 
 # clean up large dangling images from VM after failure
 cleanup_failed_build:
