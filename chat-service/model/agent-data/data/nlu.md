@@ -153,3 +153,13 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
+
+## intent:ask_type_classes
+- what [education](course) courses do you have
+- what [engineering](course) courses are there
+- what [physics](course) courses can i do
+- what courses on [russian](course) are there
+- what [sport](course) courses are there
+- what [urban](course) courses do you have
+- what [media](course) courses are there
+- what [law](course) courses are there

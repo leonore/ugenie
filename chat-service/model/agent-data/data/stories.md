@@ -87,6 +87,18 @@
  - slot{"acronym": "PT"}
  - action_get_acronym
 
+## ask course type with none
+- ask_type_classes
+* action_get_type_classes
+
+## setting course type to SC
+* ask_set_sc_course_type
+ - action_set_sc_course_type
+
+## setting course type to AD
+* ask_set_ad_course_type
+ - action_set_ad_course_type
+
 ## Generated Story -2906752824971192833
 * time_check{"course": "brain science"}
     - slot{"course": "brain science"}

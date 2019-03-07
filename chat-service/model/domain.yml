@@ -23,6 +23,8 @@ actions:
 - action_utter_short_courses_functionality
 - action_utter_admissions_courses_functionality
 - action_get_type_classes
+- action_set_sc_course_type
+- action_set_ad_course_type
 # - utter_lambda
 
 entities:
