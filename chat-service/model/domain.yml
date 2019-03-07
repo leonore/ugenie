@@ -53,6 +53,8 @@ intents:
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
 - ask_type_classes
+- ask_set_sc_course_type
+- ask_set_ad_course_type
 # example of multi-intent
 #- acronym_check+course_check
 

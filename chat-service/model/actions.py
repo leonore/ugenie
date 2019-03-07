@@ -212,7 +212,7 @@ class GetClassTypes(Action):
                 response = "These are some of the short classes which I have found : " + elastic_output
             else:
                 response = "Sorry, I could not find any short courses in that area"
-            dispatcher.utter_mesage(response)
+            dispatcher.utter_message(response)
 
         elif tracker.get_slot("course_type") == "admissions":
             elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
@@ -220,14 +220,15 @@ class GetClassTypes(Action):
                 response = "These are some of the short classes which I have found : " + elastic_output
             else:
                 response = "Sorry, I could not find any short courses in that area"
-            dispatcher.utter_mesage(response)
+            dispatcher.utter_message(response)
 
-        else:
+        elif not (tracker.get_slot("course_type")):
             response = "Did you want..."
             buttons = [{"title":"Short Courses", "payload":"/ask_set_sc_course_type"},
                         {"title":"Admissions", "payload":"/ask_set_ad_course_type"}]
             dispatcher.utter_button_message(response, buttons)
-
+        else:
+            dispatcher.utter_message("QWERTY")
         # dispatcher.utter_mesage(response)
         return
 

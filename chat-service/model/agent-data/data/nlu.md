@@ -6,6 +6,17 @@
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
 
+## intent:ask_type_classes
+- what [education](course) courses do you have
+- what [engineering](course) courses are there
+- what [physics](course) courses can i do
+- what courses on [russian](course) are there
+- what [sport](course) courses are there
+- what [urban](course) courses do you have
+- what [media](course) courses are there
+- what [law](course) courses are there
+- what [art](course) courses are there
+
 ## intent:confirmation
 - yes
 - yeah
@@ -154,12 +165,5 @@
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
 
-## intent:ask_type_classes
-- what [education](course) courses do you have
-- what [engineering](course) courses are there
-- what [physics](course) courses can i do
-- what courses on [russian](course) are there
-- what [sport](course) courses are there
-- what [urban](course) courses do you have
-- what [media](course) courses are there
-- what [law](course) courses are there
+## synonym:film studies 1
+- flim studies 1

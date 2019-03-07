@@ -368,3 +368,5 @@ def get_ad_type_courses(query):
 # print(get_sc_type_courses("Chinese"))
 # print(get_ad_type_courses("Vietnamese"))
 # print(get_sc_type_courses("art"))
+tracker = 'short'
+print(tracker == "short")

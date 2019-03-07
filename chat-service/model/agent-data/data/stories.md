@@ -94,10 +94,12 @@
 ## setting course type to SC
 * ask_set_sc_course_type
  - action_set_sc_course_type
+ - action_get_type_classes
 
 ## setting course type to AD
 * ask_set_ad_course_type
  - action_set_ad_course_type
+ - action_get_type_classes
 
 ## Generated Story -2906752824971192833
 * time_check{"course": "brain science"}
@@ -278,3 +280,11 @@
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
+
+## Generated Story -5517859883965774275
+* ask_type_classes{"course": "art"}
+    - slot{"course": "art"}
+    - action_get_type_classes
+* ask_set_sc_course_type{"course":"art"}
+  - slot{"course":"art", "course_type":"short"}
+  - action_set_sc_course_type{"course":"art", "course_type":"short"}
