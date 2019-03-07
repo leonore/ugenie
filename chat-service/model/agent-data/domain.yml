@@ -13,7 +13,7 @@ actions:
 - action_get_tutor
 - action_course_denied
 - action_get_ad_type_classes
-- action_get_requirements
+- action_get_ieltsrequirements
 - utter_confirm_requirement_type
 - utter_description_check
 - action_get_description

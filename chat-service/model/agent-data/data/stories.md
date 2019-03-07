@@ -62,12 +62,6 @@
 * denial
  - action_course_denied
 
-## ielts_requirements_check_yes
-* requirements_check
- - utter_confirm_requirement_type
-* confirmation
- - action_get_requirements
-
 ## ielts_requirements_check_no
 * requirements_check
 - utter_confirm_requirement_type
