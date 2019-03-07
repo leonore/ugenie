@@ -3,6 +3,8 @@ from flask_socketio import SocketIO, join_room
 
 from model import agent, network_config
 
+import re
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
 socketio = SocketIO(app) # Apply SocketIO to 'app' to use it 
@@ -12,6 +14,11 @@ socketio = SocketIO(app) # Apply SocketIO to 'app' to use it
 def sessions():
         return render_template('session.html') # Helps render the HTML page, called a 'template'
 
+# Turn any links in the outgoing message into clickable hrefs
+def linkifyMessage(message):
+        message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', message['text'])
+        return message
+        
 def messageReceived(sessionId, message):
         print('Message received from',sessionId,': ',message)
 
@@ -56,7 +63,7 @@ def handle_message(json):
         # Otherwise just send the message
         else:
                 agentMessage = agent.getResponse(sessionId, json['message'])
-        sendMessage(sessionId, agentMessage)
+        sendMessage(sessionId, linkifyMessage(agentMessage))
 
 if __name__ == '__main__':
         # Takes optional host and port arguments but by default will listen on localhost:5000
