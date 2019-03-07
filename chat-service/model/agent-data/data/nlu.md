@@ -109,11 +109,6 @@
 - is [food security](course) available full time
 - can i do [gender history](course) full time
 
-## intent:give_req_type
-- I meant [general](requirement) requirements
-- [general](requirement) requirements
-- [IELTS](requirement)
-
 ## intent:goodbye
 - bye
 - goodbye

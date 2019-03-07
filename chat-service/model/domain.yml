@@ -2,7 +2,7 @@
 ---
 actions:
 - action_get_fee
-- action_get_requirements
+- action_get_ielts_requirements
 - utter_greet
 - utter_goodbye
 - action_get_description
@@ -10,7 +10,6 @@ actions:
 - action_get_acronym
 - action_get_tutor
 - action_course_validate
-- utter_give_requirements
 - utter_confirm_requirement_type
 - utter_fee_check
 - utter_description_check
@@ -29,7 +28,6 @@ actions:
 - utter_lambda
 
 entities:
-- requirement
 - course
 - student
 - acroynm
@@ -38,7 +36,6 @@ entities:
 intents:
 - requirements_check
 - goodbye
-- give_req_type
 - greet
 - fee_check
 - description_check
@@ -66,11 +63,6 @@ slots:
       - terminology
   course:
     type: text
-  requirement:
-    type: categorical
-    values:
-    - general
-    - ielts
   student:
     type: categorical
     values:

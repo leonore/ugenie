@@ -129,16 +129,16 @@ class GetTutor(Action):
 
 ## IN WORK ##
 # Utters the requirements to get into a course
-class GetRequirements(Action):
+class GetIELTSRequirements(Action):
     def name(self):
-        return "action_get_requirements"
+        return "action_get_ielts_requirements"
 
     def run(self, dispatcher, tracker, domain):
         try:
             elastic_title = get_admission_requirements(tracker.get_slot("course"))
         except:
             response = "Sorry, I could not find any course with that name."
-        elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), tracker.get_slot("requirement"))
+        elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), "ielts")
         if elastic_output:
             response = "The admission requirements are " + elastic_output
         elif elastic_output is False:
