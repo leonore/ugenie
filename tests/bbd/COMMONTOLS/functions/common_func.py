@@ -30,7 +30,7 @@ def write_into_felid(driver,chatbot_message,text):
 
 
 def run_browser():
-        driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+        driver = webdriver.Firefox()
         chatbot_message = 1
         driver = update_virsion(driver)
         return driver,chatbot_message
