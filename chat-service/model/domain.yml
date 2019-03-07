@@ -25,6 +25,8 @@ actions:
 - action_get_sc_type_classes
 - utter_redirect
 - utter_contact
+- utter_help
+- utter_functionality
 - utter_lambda
 
 entities:
@@ -95,13 +97,15 @@ templates:
       - title: "No"
       - payload: "/denial"
   utter_help:
-  - text: "If there is anything help I can try and help with, "
+  - text: "Is there anything else I can help you with?"
   utter_contact:
   - text: "You can contact someone from university here: fix@me.com"
+  utter_greet:
+  - text: "Hello!"
   utter_goodbye:
   - text: Goodbye!
-  utter_greet:
-  - text: "Hello! I am here to help with..."
+  utter_functionality:
+  - text: "Here are some things you can ask me about..."
     buttons:
       - title: "Short courses"
       - payload: "/ask_short_courses_functionality"

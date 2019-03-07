@@ -1,6 +1,7 @@
 ## greet
 * greet
  - utter_greet
+ - utter_functionality
 
 ## goodbye
 * goodbye
@@ -76,7 +77,8 @@
 * denial
   - utter_redirect
 * denial
-  - utter_lambda
+  - utter_help
+  - utter_functionality
 
 ## ielts_requirements_check_no_redirect
 * requirements_check{"course":"mechatronics"}
