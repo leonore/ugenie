@@ -166,46 +166,14 @@ class GetTutorCourses(Action):
         dispatcher.utter_message(response)
         return
 
-# class GetSCClassTypes(Action):
-#     def name(self):
-#         return "action_get_sc_type_classes"
-#
-#     def run(self, dispatcher, tracker, domain):
-#         # dispatcher.utter_message("NONONO")
-#         elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
-#         if elastic_output:
-#             response = "These are some of the short course classes which I have found : " + elastic_output
-#         else:
-#             response = "Sorry, I could not find any short courses in that area"
-#
-#         dispatcher.utter_message(response)
-#         return
-#
-# class GetADClassTypes(Action):
-#     def name(self):
-#         return "action_get_ad_type_classes"
-#
-#     def run(self, dispatcher, tracker, domain):
-#         elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
-#
-#         if elastic_output:
-#             response = "These are some of the postgraduate classes which I have found : " + elastic_output
-#         else:
-#             response = "Sorry, I could not find any postgraduate courses in that area"
-#         dispatcher.utter_message(response)
-#         return
-
-
-# title: "Short courses"
-# payload: "/ask_short_courses_functionality"
-# - title: "Admissions"
-# payload: '/ask_admissions_courses_functionality'
-
+# Returns a list of up to 10 courses that match the user's choice of relevnacy
+# e.g. what art courses are there / what spanish courses are there
 class GetClassTypes(Action):
     def name(self):
         return "action_get_type_classes"
 
     def run(self, dispatcher, tracker, domain):
+        # If the user is currently asking about short courses, we will only look for relevant short courses
         if tracker.get_slot("course_type") == "short":
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:
@@ -214,6 +182,7 @@ class GetClassTypes(Action):
                 response = "Sorry, I could not find any short courses in that area"
             dispatcher.utter_message(response)
 
+        # If the user is currently asking about post graduate courses, we will only look for relevant post graduate courses
         elif tracker.get_slot("course_type") == "admissions":
             elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
             if elastic_output:
@@ -222,24 +191,18 @@ class GetClassTypes(Action):
                 response = "Sorry, I could not find any post-graduate courses in that area"
             dispatcher.utter_message(response)
 
+        # If the user has not specified already which course type they want we ask them to clarify with the use of buttons
         elif not (tracker.get_slot("course_type")):
             response = "Did you want..."
             buttons = [{"title":"Short Courses", "payload":"/ask_set_sc_course_type"},
                         {"title":"Post Graduate", "payload":"/ask_set_ad_course_type"}]
             dispatcher.utter_button_message(response, buttons)
         else:
-            dispatcher.utter_message("QWERTY")
-        # dispatcher.utter_mesage(response)
+            response = "Sorry, I did not understand"
+            dispatcher.utter_message(response)
         return
 
-# class SetSCCourseType(Action):
-#     def name(self):
-#         return "action_set_sc_course_type"
-#
-#     def run(self, dispatcher, tracker, domain):
-#         return [SlotSet("course_type", "short")]
-
-
+# Sets the slot for coure_type to short
 class SetSCCourseType(Action):
     def name(self):
         return "action_set_sc_course_type"
@@ -247,7 +210,7 @@ class SetSCCourseType(Action):
     def run(self, dispatcher, tracker, domain):
         return [SlotSet("course_type", "short")]
 
-
+# Sets the slot for coure_type to admissions
 class SetADCourseType(Action):
     def name(self):
         return "action_set_ad_course_type"
