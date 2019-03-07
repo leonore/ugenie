@@ -16,7 +16,7 @@ def sessions():
 
 # Turn any links in the outgoing message into clickable hrefs
 def linkifyMessage(message):
-        message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', text)
+        message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', message['text'])
         return message
         
 def messageReceived(sessionId, message):
@@ -44,7 +44,7 @@ def handle_connection(json):
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, linkifyMessage({'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. https://www.w3resource.com/ How can I help you?"}))
+        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
 
 @socketio.on('new_message')
 def handle_message(json):
