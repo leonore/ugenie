@@ -33,6 +33,8 @@ testBehave:
   stage:  tests
   only :
     - FireFox_update
+  before_script:
+    -PATH=$PATH:/home/ubuntu/Mohammed
   script:
     - cd tests
     - cd bbd
