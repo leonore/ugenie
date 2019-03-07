@@ -20,8 +20,8 @@ actions:
 - action_get_tutor_courses
 - action_utter_functionality
 - utter_terminology_functionality
-- utter_short_courses_functionality
-- utter_admissions_courses_functionality
+- action_utter_short_courses_functionality
+- action_utter_admissions_courses_functionality
 - action_get_type_classes
 # - utter_lambda
 
@@ -102,14 +102,10 @@ templates:
   - text: "Hello! I am here to help with..."
     buttons:
       - title: "Short courses"
-        payload: "/ask_short_courses_functionality{'course': 'art and anatomy'}"
+        payload: "/ask_short_courses_functionality"
       - title: "Admissions"
         payload: '/ask_admissions_courses_functionality'
       - title: "Terminology"
         payload: '/ask_terminology_functionality'
-  utter_short_courses_functionality:
-  - text: You can ask me about course times, tutors, credits, fees, descriptions!
-  utter_admissions_courses_functionality:
-  - text: You can ask me about fees, descriptions, and a brief course description!
   utter_terminology_functionality:
   - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...

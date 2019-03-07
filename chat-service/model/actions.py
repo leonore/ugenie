@@ -238,3 +238,37 @@ class GetFees(Action):
 
         dispatcher.utter_message(response)
         return
+
+  # utter_greet:
+  # - text: "Hello! I am here to help with..."
+  #   buttons:
+  #     - title: "Short courses"
+  #       payload: "/ask_short_courses_functionality"
+  #     - title: "Admissions"
+  #       payload: '/ask_admissions_courses_functionality'
+  #     - title: "Terminology"
+  #       payload: '/ask_terminology_functionality'
+  # utter_short_courses_functionality:
+  # - text: You can ask me about course times, tutors, credits, fees, descriptions!
+  # utter_admissions_courses_functionality:
+  # - text: You can ask me about fees, descriptions, and a brief course description!
+  # utter_terminology_functionality:
+  # - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
+
+class UtterSCFuctioality(Action):
+    def name(self):
+        return "action_utter_short_courses_functionality"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "You can ask me about course times, tutors, credits, fees, descriptions!"
+        dispatcher.utter_message(response)
+        return [SlotSet("course", "art and anatomy")]
+
+class UtterADFuctioality(Action):
+    def name(self):
+        return "action_utter_admissions_courses_functionality"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "You can ask me about fees, descriptions, and a brief course description!"
+        dispatcher.utter_message(response)
+        return [SlotSet("course", "art and anatomy")]

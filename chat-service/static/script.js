@@ -54,13 +54,14 @@ socket.on('bot_message', function(msg) {
 				// If this button object is a title and not a payload, add it as a button
 				if(typeof buttonObject.title !== 'undefined'){
 					console.log(buttonObject);
-					titleinquotes = "\'" + buttonObject.title + "\'"
-					payloadinquotes = "\'" + buttonObject.payload + "\'"
-					payloadinquotes = "\"" + buttonObject.payload + "\""
+					// titleinquotes = "\'" + buttonObject.title + "\'"
+					// payloadinquotes = "\'" + buttonObject.payload + "\'"
+					// payloadinquotes = "\"" + buttonObject.payload + "\""
 
-					console.log(titleinquotes)
+					// console.log(titleinquotes)
+					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(\'' + buttonObject.title + '\', \'' + buttonObject.payload + '\')">' + buttonObject.title + '</button>');
 					// buttonArea.append("<button class='message reply-button' type='button' onclick='buttonReply(\" + buttonObject.title + '\", \' + buttonObject.payload + '\")">' + buttonObject.title + '</button>');
-					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(' + titleinquotes + ', ' + payloadinquotes.toString() + ')">' + buttonObject.title + '</button>');
+					// buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(' + titleinquotes + ', ' + payloadinquotes.toString() + ')">' + buttonObject.title + '</button>');
 				}
 
 			}
