@@ -28,7 +28,18 @@ test_prototype:
     - python tests/test_prototype.py
   tags:
     - shell
-
+# Testing the interface Features
+testBehave:
+  stage:  tests
+  only :
+    - FireFox_update
+  script:
+    - cd tests
+    - cd bbd
+    - pip install -r bbd_requiremnts.txt
+    - behave
+  tags:
+    - shell
 # clean up successfully built images
 cleanup_successful_build:
   stage: cleanup
