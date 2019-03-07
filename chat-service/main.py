@@ -4,6 +4,7 @@ from flask_socketio import SocketIO, join_room
 from model import agent, network_config
 
 import re
+import time
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
@@ -48,6 +49,8 @@ def handle_connection(json):
 
 @socketio.on('new_message')
 def handle_message(json):
+        start = time.time()
+        
         # Get the session ID this event is associated with
         sessionId = request.sid
         
@@ -63,6 +66,13 @@ def handle_message(json):
         # Otherwise just send the message
         else:
                 agentMessage = agent.getResponse(sessionId, json['message'])
+
+        # If the agent took less than a second to respond then wait a second to prevent unpleasant immediate response
+        end = time.time() - start
+        secondsElapsed = end % 60
+        if(secondsElapsed < 1):
+                time.sleep(1-secondsElapsed)
+                
         sendMessage(sessionId, linkifyMessage(agentMessage))
 
 if __name__ == '__main__':
