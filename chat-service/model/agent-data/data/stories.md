@@ -62,20 +62,30 @@
 * denial
  - action_course_denied
 
+## ielts_requirements_check_yes
+* requirements_check{"course": "Advanced Nursing Science"}
+   - slot{"course": "Advanced Nursing Science"}
+   - utter_confirm_requirement_type
+* confirmation
+   - action_get_ielts_requirements
+
 ## ielts_requirements_check_no
-* requirements_check
-- utter_confirm_requirement_type
+* requirements_check{"course":"American studies"}
+  - slot{"course":"American studies"}
+  - utter_confirm_requirement_type
 * denial
-- utter_redirect
+  - utter_redirect
 * denial
+  - utter_lambda
 
 ## ielts_requirements_check_no_redirect
-* requirements_check
-- utter_confirm_requirement_type
+* requirements_check{"course":"mechatronics"}
+  - slot{"course":"mechatronics"}
+  - utter_confirm_requirement_type
 * denial
-- utter_redirect
+  - utter_redirect
 * confirmation
-- utter_contact
+  - utter_contact
 
 ## tutor_courses_check
 * tutor_courses_check{"tutor":"Pamela Ross"}
