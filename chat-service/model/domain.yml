@@ -24,7 +24,9 @@ actions:
 - utter_admissions_courses_functionality
 - action_get_ad_type_classes
 - action_get_sc_type_classes
-# - utter_lambda
+- utter_redirect
+- utter_contact
+- utter_lambda
 
 entities:
 - requirement
@@ -82,16 +84,18 @@ slots:
     type: text
 
 templates:
-#  utter_lambda:
-#  - text: "This is a developer debugging. Hello!"
+  utter_lambda:
+  - text: "This is placeholder text for development."
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
-  - text: Do you mean general requirements or IELTS requirements?
-  # utter_description_check:
-  # - text: 'The course description for {course} is: ...'
-  # utter_fee_check:
-  # - text: The {course} fees for {student} students are ...
+  - text: I can only provide immediate information on IELTS requirements for courses. Is this what you're looking for?
+  utter_redirect:
+  - text: "Sorry I couldn't be of help. Can I redirect you to someone who might?"
+  utter_help:
+  - text: "If there is anything help I can try and help with, "
+  utter_contact:
+  - text: "You can contact someone from university here: fix@me.com"
   utter_goodbye:
   - text: Goodbye!
   utter_greet:

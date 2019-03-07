@@ -62,11 +62,26 @@
 * denial
  - action_course_denied
 
-## requirements_check
+## ielts_requirements_check_yes
 * requirements_check
  - utter_confirm_requirement_type
-* give_req_type
+* confirmation
  - action_get_requirements
+
+## ielts_requirements_check_no
+* requirements_check
+- utter_confirm_requirement_type
+* denial
+- utter_redirect
+* denial
+
+## ielts_requirements_check_no_redirect
+* requirements_check
+- utter_confirm_requirement_type
+* denial
+- utter_redirect
+* confirmation
+- utter_contact
 
 ## tutor_courses_check
 * tutor_courses_check{"tutor":"Pamela Ross"}
