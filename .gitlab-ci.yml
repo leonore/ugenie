@@ -33,9 +33,10 @@ testBehave:
   stage:  tests
   only :
     - FireFox_update
-  before_script:
-    -PATH=$PATH:/home/ubuntu/Mohammed
+
+  
   script:
+    - PATH=$PATH:/home/ubuntu/Mohammed
     - cd tests
     - cd bbd
     - pip install -r bbd_requirements.txt
