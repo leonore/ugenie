@@ -291,7 +291,6 @@ def get_sc_type_courses(query):
                     "Subject area":query
                     }}
                 ],
-                "minimum_should_match":1
             }
     }
     })
@@ -331,7 +330,6 @@ def get_ad_type_courses(query):
                     "Apply Centre Description":query
                     }}
                 ],
-                "minimum_should_match":1
             }
     }
     })
@@ -368,5 +366,6 @@ def get_ad_type_courses(query):
 # print(get_sc_type_courses("Chinese"))
 # print(get_ad_type_courses("Vietnamese"))
 # print(get_sc_type_courses("art"))
-tracker = 'short'
-print(tracker == "short")
+# tracker = 'short'
+# print(tracker == "short")
+print(get_sc_type_courses("law"))
