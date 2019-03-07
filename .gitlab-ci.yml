@@ -36,7 +36,7 @@ testBehave:
   script:
     - cd tests
     - cd bbd
-    - pip install -r bbd_requiremnts.txt
+    - pip install -r bbd_requirements.txt
     - cd tests
     - behave
   tags:
