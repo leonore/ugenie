@@ -70,7 +70,6 @@ def handle_message(json):
         # If the agent took less than a second to respond then wait a second to prevent unpleasant immediate response
         end = time.time() - start
         secondsElapsed = end % 60
-        print('secondsElapsed: ',secondsElapsed)
         if(secondsElapsed < 1):
                 time.sleep(1-secondsElapsed)
                 
