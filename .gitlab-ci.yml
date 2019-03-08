@@ -21,6 +21,8 @@ build_actions:
   script:
     - docker build -t action/server:$image_tag .
 
+
+
 # check for the responsive deployed prototype
 test_prototype:
   stage: tests
@@ -31,8 +33,6 @@ test_prototype:
 # Testing the interface Features
 testBehave:
   stage:  tests
-  only :
-    - FireFox_update
   script:
     - PATH=$PATH:/home/ubuntu/Mohammed
     - cd tests
