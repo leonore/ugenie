@@ -19,21 +19,25 @@ actions:
 - action_get_tutor_courses
 - action_utter_functionality
 - utter_terminology_functionality
-- utter_short_courses_functionality
-- utter_admissions_courses_functionality
-- action_get_ad_type_classes
-- action_get_sc_type_classes
+# - utter_short_courses_functionality
+# - utter_admissions_courses_functionality
 - utter_redirect
 - utter_contact
 - utter_help
 - utter_functionality
 - utter_lambda
+- action_utter_short_courses_functionality
+- action_utter_admissions_courses_functionality
+- action_get_type_classes
+- action_set_sc_course_type
+- action_set_ad_course_type
 
 entities:
 - course
 - student
 - acroynm
 - tutor
+- course_type
 
 intents:
 - requirements_check
@@ -51,12 +55,18 @@ intents:
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
-- ask_sc_type_classes
-- ask_ad_type_classes
+- ask_type_classes
+- ask_set_sc_course_type
+- ask_set_ad_course_type
 # example of multi-intent
 #- acronym_check+course_check
 
 slots:
+  course_type:
+    type: categorical
+    values:
+      - admissions
+      - short
   context:
     type: categorical
     values:
@@ -108,14 +118,10 @@ templates:
   - text: "Here are some things you can ask me about..."
     buttons:
       - title: "Short courses"
-      - payload: "/ask_short_courses_functionality"
+        payload: "/ask_short_courses_functionality"
       - title: "Admissions"
-      - payload: "/ask_admissions_courses_functionality"
+        payload: '/ask_admissions_courses_functionality'
       - title: "Terminology"
-      - payload: "/ask_terminology_functionality"
-  utter_short_courses_functionality:
-  - text: You could ask me about course times, tutors, credits, fees, descriptions!
-  utter_admissions_courses_functionality:
-  - text: You could ask me about fees, IELTS requirements, and a brief course description!
+        payload: '/ask_terminology_functionality'
   utter_terminology_functionality:
   - text: You could ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
