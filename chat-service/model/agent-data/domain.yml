@@ -1,37 +1,39 @@
 %YAML 1.1
 ---
 actions:
-- utter_goodbye
-- utter_give_requirements
-- utter_terminology_functionality
-- utter_fee_check
+- action_get_type_classes
 - action_utter_functionality
-- utter_short_courses_functionality
-- action_get_fee
-- action_get_tutor_courses
-- action_get_time
-- action_get_tutor
-- action_course_denied
-- action_get_ad_type_classes
-- action_get_requirements
-- utter_confirm_requirement_type
 - utter_description_check
-- action_get_description
-- action_get_sc_type_classes
-- utter_greet
-- action_course_validate
-- action_get_acronym
-- utter_admissions_courses_functionality
 - action_check_course
+- action_set_ad_course_type
+- utter_confirm_requirement_type
+- utter_give_requirements
+- action_get_time
+- action_get_fee
 - utter_ask_student
+- action_get_tutor
+- action_get_description
+- action_utter_admissions_courses_functionality
+- utter_greet
+- utter_fee_check
+- action_course_denied
+- action_utter_short_courses_functionality
+- action_get_acronym
+- action_get_requirements
+- action_course_validate
+- action_get_tutor_courses
+- action_set_sc_course_type
+- utter_terminology_functionality
+- utter_goodbye
 entities:
+- acroynm
+- student
+- course_type
 - tutor
 - course
 - requirement
-- student
-- acroynm
 intents:
-- ask_ad_type_classes
+- ask_type_classes
 - requirements_check
 - goodbye
 - give_req_type
@@ -48,7 +50,8 @@ intents:
 - ask_terminology_functionality
 - ask_short_courses_functionality
 - ask_admissions_courses_functionality
-- ask_sc_type_classes
+- ask_set_sc_course_type
+- ask_set_ad_course_type
 slots:
   acronym:
     type: text
@@ -60,6 +63,11 @@ slots:
     - terminology
   course:
     type: text
+  course_type:
+    type: categorical
+    values:
+    - admissions
+    - short
   requirement:
     type: categorical
     values:
@@ -75,8 +83,6 @@ slots:
   tutor:
     type: text
 templates:
-  utter_admissions_courses_functionality:
-  - text: You can ask me about fees, descriptions, and a brief course description!
   utter_ask_student:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
@@ -85,15 +91,13 @@ templates:
   - text: Goodbye!
   utter_greet:
   - buttons:
-    - title: Short courses
     - payload: /ask_short_courses_functionality
-    - title: Admissions
+      title: Short courses
     - payload: /ask_admissions_courses_functionality
-    - title: Terminology
+      title: Admissions
     - payload: /ask_terminology_functionality
+      title: Terminology
     text: Hello! I am here to help with...
-  utter_short_courses_functionality:
-  - text: You can ask me about course times, tutors, credits, fees, descriptions!
   utter_terminology_functionality:
   - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT,
       ATAS...

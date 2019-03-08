@@ -6,53 +6,22 @@
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
 
-## intent:ask_ad_type_classes
-- what [education](course) postgraduate courses do you have
+## intent:ask_type_classes
+- what [education](course) courses do you have
 - what [engineering](course) courses are there
 - what [physics](course) courses can i do
-- what postgraduate courses on [russian](course) are there
+- what courses on [russian](course) are there
 - what [sport](course) courses are there
 - what [urban](course) courses do you have
 - what [media](course) courses are there
-- what [law](course) postgraduate courses are there
-
-## intent:ask_admissions_courses_functionality
-- admissions
-- admissions
-- admissions
-- admissions
-- admissions
-- admissions
-- admissions
-- admissions
-- admissions
-
-## intent:ask_sc_type_classes
-- what [art](course) short courses are there
-- what short courses in [language](course) can i take
-- what [writing](course) courses are there
-- what [history](course) courses can i do
-- what [spanish](course) short courses are there
-- what [psychology](course) courses can i take
-- what [science](course) courses are there
-- what [music](course) courses are there
-
-## intent:ask_short_courses_functionality
-- short courses
-- short courses
-- short courses
-- short courses
-- short courses
-- short courses
-- short courses
-- short courses
-- short courses
+- what [law](course) courses are there
+- what [art](course) courses are there
+- what [spanish](course) courses are there
 
 ## intent:confirmation
 - yes
 - yeah
 - y
-- yes
 - yes
 - yes
 - yes
@@ -100,6 +69,7 @@
 - how many pounds is [west end lectures](course)
 - how much is [german stage 2](course)
 - what is [the price of fancy florence](course)
+- how much money is [brain sciences](course)
 
 ## intent:full_part_time_check
 - is [brain sciences](course) full time
@@ -173,6 +143,8 @@
 - what time is [brain science](course)
 - what time is [french stage 1](course)
 - when is [fancy florence](course)
+- when is [brain sciences](course)
+- what time is [brain sciences](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)

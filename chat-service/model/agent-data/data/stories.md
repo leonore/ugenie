@@ -8,11 +8,11 @@
 
 ## give_sc_functionality
 * ask_short_courses_functionality
- - utter_short_courses_functionality
+ - action_utter_short_courses_functionality
 
 ## give_admissions_functionality
 * ask_admissions_courses_functionality
- - utter_admissions_courses_functionality
+ - action_utter_admissions_courses_functionality
 
 ## give_terminology_functionality
 * ask_terminology_functionality
@@ -86,6 +86,20 @@
 * acronym_check{"acronym":"PT"}
  - slot{"acronym": "PT"}
  - action_get_acronym
+
+## ask course type with none
+- ask_type_classes
+* action_get_type_classes
+
+## setting course type to SC
+* ask_set_sc_course_type
+ - action_set_sc_course_type
+ - action_get_type_classes
+
+## setting course type to AD
+* ask_set_ad_course_type
+ - action_set_ad_course_type
+ - action_get_type_classes
 
 ## Generated Story -2906752824971192833
 * time_check{"course": "brain science"}
@@ -266,120 +280,8 @@
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
-
-## Short Course Type question
-* ask_sc_type_classes
-- action_get_sc_type_classes
-
-## Post Graduate Course Type question
-* ask_ad_type_classes
-- action_get_ad_type_classes
-
-## Generated Story -5509032080246926965
-* greet
-    - utter_greet
-* ask_short_courses_functionality
-    - utter_short_courses_functionality
-* ask_sc_type_classes{"course": "writing"}
-    - slot{"course": "writing"}
-    - action_get_sc_type_classes
-
-## Generated Story 1962544994882331779
-* greet
-    - utter_greet
-* ask_short_courses_functionality
-    - utter_short_courses_functionality
-* ask_sc_type_classes{"course": "history"}
-    - slot{"course": "history"}
-    - action_get_sc_type_classes
-
-## Generated Story -679097829603909206
-* ask_sc_type_classes{"course": "spanish"}
+    
+## Generated Story -4144376465316336708
+* ask_type_classes{"course": "spanish"}
     - slot{"course": "spanish"}
-    - action_get_sc_type_classes
-
-## Generated Story 9197496254116985007
-* ask_ad_type_classes{"course": "education"}
-    - slot{"course": "education"}
-    - action_get_ad_type_classes
-
-## Generated Story 4386387057852718816
-* greet
-    - utter_greet
-* ask_admissions_courses_functionality
-    - utter_admissions_courses_functionality
-* ask_ad_type_classes{"course": "engineering"}
-    - slot{"course": "engineering"}
-    - action_get_ad_type_classes
-
-## Generated Story -7459482735023145453
-* greet
-    - utter_greet
-* ask_admissions_courses_functionality
-    - utter_admissions_courses_functionality
-* ask_ad_type_classes{"course": "physics"}
-    - slot{"course": "physics"}
-    - action_get_ad_type_classes
-
-## Generated Story -7701771790884704278
-* ask_ad_type_classes{"course": "russian"}
-    - slot{"course": "russian"}
-    - action_get_ad_type_classes
-
-## Generated Story -3547260180970667061
-* greet
-    - utter_greet
-* ask_short_courses_functionality
-    - utter_short_courses_functionality
-* ask_sc_type_classes{"course": "psychology"}
-    - slot{"course": "psychology"}
-    - action_get_sc_type_classes
-
-## Generated Story 1622595172970137974
-* greet
-    - utter_greet
-* ask_admissions_courses_functionality
-    - utter_admissions_courses_functionality
-* ask_ad_type_classes{"course": "sport"}
-    - slot{"course": "sport"}
-    - action_get_ad_type_classes
-
-## Generated Story -2750606043582181831
-* greet
-    - utter_greet
-* ask_short_courses_functionality
-    - utter_short_courses_functionality
-* ask_sc_type_classes{"course": "science"}
-    - slot{"course": "science"}
-    - action_get_sc_type_classes
-
-## Generated Story -9157648934427937927
-* greet
-    - utter_greet
-* ask_short_courses_functionality
-    - utter_short_courses_functionality
-* ask_sc_type_classes{"course": "music"}
-    - slot{"course": "music"}
-    - action_get_sc_type_classes
-## Generated Story -3071205715805701429
-* greet
-    - utter_greet
-* ask_admissions_courses_functionality
-    - utter_admissions_courses_functionality
-* ask_ad_type_classes{"course": "urban"}
-    - slot{"course": "urban"}
-    - action_get_ad_type_classes
-
-## Generated Story 996290071412567687
-* greet
-    - utter_greet
-* ask_admissions_courses_functionality
-    - utter_admissions_courses_functionality
-* ask_ad_type_classes{"course": "media"}
-    - slot{"course": "media"}
-    - action_get_ad_type_classes
-
-## Generated Story -2757736751059362259
-* ask_ad_type_classes{"course": "law"}
-    - slot{"course": "law"}
-    - action_get_ad_type_classes
+    - action_get_type_classes

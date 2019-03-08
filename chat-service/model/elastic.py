@@ -241,34 +241,15 @@ def get_tutor_courses(query):
         # e.g. "one, two, three, and four"
         for counter in res['hits']['hits']:
             if counter != res['hits']['hits'][res_len-1]:
-                print(counter['_source']['Title'])
+                # print(counter['_source']['Title'])
                 course_list += str(counter['_source']['Title']).title() + ", "
         course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 
     return tutor, course_list
 
-def return_sc_list(res):
-    course_list = ""
-    res_len = len(res['hits']['hits'])
 
-    for counter in res['hits']['hits']:
-        if counter != res['hits']['hits'][res_len-1]:
-            # print(counter['_source']['Title'])
-            course_list += str(counter['_source']['Title']).title() + ", "
-    course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
-    return course_list
-
-def return_ad_list(res):
-    course_list = ""
-    res_len = len(res['hits']['hits'])
-
-    for counter in res['hits']['hits']:
-        if counter != res['hits']['hits'][res_len-1]:
-            # print(counter['_source']['Title'])
-            course_list += str(counter['_source']['Lookup Name']).title() + ", "
-    course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Lookup Name']).title()
-    return course_list
-
+# Returns a list formatted user-friendly
+# e.g. [1,2,3,4] -> "1, 2, 3, and 4"
 def return_list(set):
     course_list = ""
     course_len = len(set)
@@ -279,7 +260,9 @@ def return_list(set):
     course_list += " and " + str(set[course_len-1]).title()
     return course_list
 
+# Returns a list of relevant courses from the short courses file
 def get_sc_type_courses(query):
+    # Elasticsearch to match both the title of the course and subject area for relevancy
     res = es.search(index="short_courses",
     body={"query":{
             "bool":{
@@ -291,38 +274,32 @@ def get_sc_type_courses(query):
                     "Subject area":query
                     }}
                 ],
-                "minimum_should_match":1
             }
     }
     })
-     # {"match": {"Title": query}}})
-    # print(res)
-    # print(return_list(res))
-    course_list = return_sc_list(res)
-
     course_list = []
     course_set = []
 
+    # Creates a list of the top 10 matched courses then turns it into a list to remove duplicates
     if res:
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get("Title"))
+        course_set = list(set(course_list))
 
-            course_set = list(set(course_list))
-        # print("Course Set = ", course_set)
-        course_list = return_list(course_set)
-
-    # print(course_set)
+    # If len > 1 we return a formatted list
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
+    # If len = 1 we return the single course
     elif len(course_set) == 1:
         return str(course_set[0]).title(), res['hits']['total']
+    # If len < 1 if means we matched no courses so we return false
     else:
         return False, False
 
-
-
+# Returns a list of relevant courses from the admissions courses file
 def get_ad_type_courses(query):
+    # Elasticsearch to match both the title of the course and subject area for relevancy
     res = es.search(index="admissions",
     body={"query":{
             "bool":{
@@ -334,40 +311,25 @@ def get_ad_type_courses(query):
                     "Apply Centre Description":query
                     }}
                 ],
-                "minimum_should_match":1
             }
     }
     })
-     # {"match": {"Title": query}}})
     course_list = []
     course_set = []
-    # print(res)
+
+    # Creates a list of the top 10 matched courses then turns it into a list to remove duplicates
     if res:
         for course in (res['hits']['hits']):
-            # print(course['_source'].get("Lookup Name"))
             course_list.append(course['_source'].get("Lookup Name"))
-
         course_set = list(set(course_list))
 
-    # print("Course Set = ", course_set)
-    # print(return_list(res))
-    # hits = res[]
-    # print(list(set(classes)))
-    # print(course_set)
+    # If len > 1 we return a formatted list
     if len(course_set) > 1:
         course_list = return_list(course_set)
         return course_list, res['hits']['total']
+    # If len = 1 we return the single course
     elif len(course_set) == 1:
         return str(course_set[0]).title(), res['hits']['total']
+    # If len < 1 if means we matched no courses so we return false
     else:
         return False, False
-
-# print(get_sc_type_courses("History"))
-# print(get_sc_type_courses("Languages"))
-# print(get_sc_type_courses("spanish"))
-# print(get_ad_type_courses("Medicine"))
-# print(get_ad_type_courses("Arts"))
-# print(get_sc_type_courses("Spanish"))
-# print(get_sc_type_courses("Chinese"))
-# print(get_ad_type_courses("Vietnamese"))
-# print(get_sc_type_courses("art"))
