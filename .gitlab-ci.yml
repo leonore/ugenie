@@ -33,8 +33,6 @@ testBehave:
   stage:  tests
   only :
     - FireFox_update
-
-  
   script:
     - PATH=$PATH:/home/ubuntu/Mohammed
     - cd tests
