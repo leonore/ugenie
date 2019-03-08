@@ -13,7 +13,7 @@ An online prototype of the bot, nicknamed **GUVA** during development, is availa
 ______________
 
 Cloning this repository from 15th of March 2019 should include a trained version of the bot.
-- [Set up dependencies manually](Manuel dependency setup) 
+- [Set up dependencies manually](Manuel dependency setup)
     - [Launching from manual set-up](Launching after setup)
 - [Launching from Docker](Launching from Docker)
 - [Sample questions to ask the bot](Interacting with the bot)
@@ -62,3 +62,4 @@ Here are some questions you can ask GUVA:
 - What other courses does [tutor] teach?
 - What does [acronym] mean?
 - What does [acronym] of a course mean?
+- what grades do I need to get into [course]?

@@ -114,8 +114,8 @@ templates:
       - title: "Terminology"
       - payload: "/ask_terminology_functionality"
   utter_short_courses_functionality:
-  - text: You can ask me about course times, tutors, credits, fees, descriptions!
+  - text: You could ask me about course times, tutors, credits, fees, descriptions!
   utter_admissions_courses_functionality:
-  - text: You can ask me about fees, descriptions, and a brief course description!
+  - text: You could ask me about fees, IELTS requirements, and a brief course description!
   utter_terminology_functionality:
-  - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
+  - text: You could ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
