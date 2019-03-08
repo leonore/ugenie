@@ -179,7 +179,7 @@ class GetClassTypes(Action):
             if elastic_output:
                 response = "These are some of the short classes which I have found : " + elastic_output
             else:
-                response = "Sorry, I could not find any short courses in that area"
+                response = "Sorry, I could not find any short courses in that subject area"
             dispatcher.utter_message(response)
 
         # If the user is currently asking about post graduate courses, we will only look for relevant post graduate courses
@@ -188,7 +188,7 @@ class GetClassTypes(Action):
             if elastic_output:
                 response = "These are some of the post-graduate classes which I have found : " + elastic_output
             else:
-                response = "Sorry, I could not find any post-graduate courses in that area"
+                response = "Sorry, I could not find any post-graduate courses in that subject area"
             dispatcher.utter_message(response)
 
         # If the user has not specified already which course type they want we ask them to clarify with the use of buttons
@@ -238,7 +238,7 @@ class GetFees(Action):
         dispatcher.utter_message(response)
         return
 
-class UtterSCFuctioality(Action):
+class UtterSCFuctionality(Action):
     def name(self):
         return "action_utter_short_courses_functionality"
 
@@ -247,7 +247,7 @@ class UtterSCFuctioality(Action):
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "short")]
 
-class UtterADFuctioality(Action):
+class UtterADFuctionality(Action):
     def name(self):
         return "action_utter_admissions_courses_functionality"
 
