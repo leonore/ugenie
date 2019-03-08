@@ -127,25 +127,22 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
-## IN WORK ##
-# Utters the requirements to get into a course
-class GetRequirements(Action):
+# Utters the IELTS requirements to get into a course
+class GetIELTSRequirements(Action):
     def name(self):
-        return "action_get_requirements"
+        return "action_get_ielts_requirements"
 
     def run(self, dispatcher, tracker, domain):
-        try:
-            elastic_title = get_admission_requirements(tracker.get_slot("course"))
-        except:
-            response = "Sorry, I could not find any course with that name."
-        elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), tracker.get_slot("requirement"))
-        if elastic_output:
+        elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), "IELTS Requirements")
+        if elastic_output == "course_not_found":
+            response = "Sorry, I could not find a course with that name."
+        elif elastic_output:
             response = "The admission requirements are " + elastic_output
-        elif elastic_output is False:
-            response = "Sorry, I did not understand the requirements you meant"
         else:
-            response = "We do not have any requirements for that course"
-        return response
+            response = "This course does not seem to have any IELTS requirement specified."
+
+        dispatcher.utter_message(response)
+        return
 
 # Utters a list of courses the tutor in question teaches
 # e.g. "what classes does Sam Cook teach"
@@ -238,7 +235,7 @@ class GetFees(Action):
         dispatcher.utter_message(response)
         return
 
-class UtterSCFuctionality(Action):
+class UtterSCFunctionality(Action):
     def name(self):
         return "action_utter_short_courses_functionality"
 
@@ -247,11 +244,11 @@ class UtterSCFuctionality(Action):
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "short")]
 
-class UtterADFuctionality(Action):
+class UtterADFunctionality(Action):
     def name(self):
         return "action_utter_admissions_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about fees, descriptions, and a brief course description!"
+        response = "You can ask me about fees, requirements, and a brief course description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "admissions")]

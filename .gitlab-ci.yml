@@ -51,11 +51,10 @@ testBehave:
 #  when: on_success
 
 # clean up large dangling images from VM after failure
-cleanup_failed_build:
+cleanup_build:
   stage: cleanup
   script:
     - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
     - docker system prune --force
-  when: on_failure
   tags:
     - shell

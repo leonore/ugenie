@@ -20,15 +20,17 @@ interpreter = RasaNLUInterpreter('model/agent-data/models/nlu/default/current')
 action_endpoint = EndpointConfig(url=actionIP)
 agent = Agent.load('model/agent-data/models/dialogue', interpreter=interpreter, action_endpoint=action_endpoint)
 
-# Handle user message and return response from training data
+# Handle user message and return responses from training data
 def getResponse(sessionId, message):
     responses = agent.handle_text(message, sender_id=sessionId)
     print('Rasa-Core responses: ', responses)
     if(len(responses) > 0):
-        response = responses[0]
-        if 'buttons' in response:
-            return {'text': response['text'], 'buttons': response['buttons']}
-        else:
-            return {'text': response['text']}
+        returnResponses = []
+        for response in responses:
+            if 'buttons' in response:
+                returnResponses.append({'text': response['text'], 'buttons': response['buttons']}) 
+            else:
+                returnResponses.append({'text': response['text']})
+        return returnResponses
     else:
         return {'text': "Sorry, I didn't understand, could you rephrase that?"}

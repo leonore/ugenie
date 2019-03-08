@@ -117,16 +117,26 @@ def get_ad_times(query):
 
 ## IN WORK ##
 # Returns the requirements for an admissions course
-def get_admission_requirements(query, requirement_type):
-    if requirement_type is "ielts":
-        field = "IELTS requirements"
-    elif requirement_type is "general":
-        field = "Ent Req"
-    else:
-        return False
-    res = es.search(index="admissions", body={"query": {"match": {"Title": query}}})
-    first_hit = res['hits']['hits'][0]
-    return first_hit['_source'][field]
+def get_admission_requirements(course, requirement_type):
+    #if requirement_type is "ielts":
+    #    field = "IELTS requirements"
+    #elif requirement_type is "general":
+    #    field = "Ent Req"
+    #    return False
+    field = requirement_type
+    try:
+        res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
+        print(res)
+    except:
+        return "course_not_found"
+
+    try:
+        first_hit = res['hits']['hits'][0]
+    except:
+        return "course_not_found"
+
+    requirements = first_hit['_source'][field]
+    return requirements
 
 # Returns the home fee and internaitonal fee of an admissions course
 # For now we return all the fee information we have for the admissions courwse, whether the user is international or not

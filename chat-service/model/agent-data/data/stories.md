@@ -1,6 +1,7 @@
 ## greet
 * greet
  - utter_greet
+ - utter_functionality
 
 ## goodbye
 * goodbye
@@ -62,11 +63,31 @@
 * denial
  - action_course_denied
 
-## requirements_check
-* requirements_check
- - utter_confirm_requirement_type
-* give_req_type
- - action_get_requirements
+## ielts_requirements_check_yes
+* requirements_check{"course": "Advanced Nursing Science"}
+   - slot{"course": "Advanced Nursing Science"}
+   - utter_confirm_requirement_type
+* confirmation
+   - action_get_ielts_requirements
+
+## ielts_requirements_check_no
+* requirements_check{"course":"American studies"}
+  - slot{"course":"American studies"}
+  - utter_confirm_requirement_type
+* denial
+  - utter_redirect
+* denial
+  - utter_help
+  - utter_functionality
+
+## ielts_requirements_check_no_redirect
+* requirements_check{"course":"mechatronics"}
+  - slot{"course":"mechatronics"}
+  - utter_confirm_requirement_type
+* denial
+  - utter_redirect
+* confirmation
+  - utter_contact
 
 ## tutor_courses_check
 * tutor_courses_check{"tutor":"Pamela Ross"}

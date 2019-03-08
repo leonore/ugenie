@@ -29,6 +29,7 @@
 - yes
 - yes
 - yes
+- Yes
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -42,6 +43,7 @@
 - no
 - wrong
 - n
+- No
 
 ## intent:description_check
 - tell me about [biology](course)
@@ -78,11 +80,6 @@
 - is [endodontics](course) part time
 - is [food security](course) available full time
 - can i do [gender history](course) full time
-
-## intent:give_req_type
-- I meant [general](requirement) requirements
-- [general](requirement) requirements
-- [IELTS](requirement)
 
 ## intent:goodbye
 - bye
@@ -121,6 +118,10 @@
 ## intent:requirements_check
 - what are the requirements for [mechatronics](course)
 - what do I need to get into [genetic and genomic counselling](course)
+- how do I get into [medical physics](course)
+- what are the IELTS requirements for [computer systems engineering](course)
+- what grades do I require for [antiquities trafficking and art crime](course)
+- what grades do I need for [applied mathematics](course)
 
 ## intent:term_check
 - what term does [housing studies](course) start

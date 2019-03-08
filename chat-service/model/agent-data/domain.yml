@@ -12,6 +12,11 @@ actions:
 - action_get_fee
 - utter_ask_student
 - action_get_tutor
+- action_course_denied
+- action_get_ad_type_classes
+- action_get_ielts_requirements
+- utter_confirm_requirement_type
+- utter_description_check
 - action_get_description
 - action_utter_admissions_courses_functionality
 - utter_greet
