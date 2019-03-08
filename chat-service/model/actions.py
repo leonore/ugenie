@@ -127,8 +127,7 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
-## IN WORK ##
-# Utters the requirements to get into a course
+# Utters the IELTS requirements to get into a course
 class GetIELTSRequirements(Action):
     def name(self):
         return "action_get_ielts_requirements"
@@ -236,7 +235,7 @@ class GetFees(Action):
         dispatcher.utter_message(response)
         return
 
-class UtterSCFuctionality(Action):
+class UtterSCFunctionality(Action):
     def name(self):
         return "action_utter_short_courses_functionality"
 
@@ -245,11 +244,11 @@ class UtterSCFuctionality(Action):
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "short")]
 
-class UtterADFuctionality(Action):
+class UtterADFunctionality(Action):
     def name(self):
         return "action_utter_admissions_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about fees, descriptions, and a brief course description!"
+        response = "You can ask me about fees, requirements, and a brief course description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "admissions")]

@@ -29,6 +29,7 @@
 - yes
 - yes
 - yes
+- Yes
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -42,6 +43,7 @@
 - no
 - wrong
 - n
+- No
 
 ## intent:description_check
 - tell me about [biology](course)
