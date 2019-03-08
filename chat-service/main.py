@@ -17,15 +17,14 @@ def sessions():
 
 # Turn any links in the outgoing message into clickable hrefs
 def linkifyMessage(message):
-        message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', message['text'])
+        if('text' in message):
+                message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', message['text'])
         return message
 
 def messageReceived(sessionId, message):
         print('Message received from',sessionId,': ',message)
 
 def sendMessage(sessionId, message):
-        print('message: ',message)
-
         # If the message contains button responses, put those in the json to send back to the chat
         if 'buttons' in message:
                 print('Sending message: ',message['text'],' with buttons: ',message['buttons'])
@@ -73,9 +72,12 @@ def handle_message(json):
         if(secondsElapsed < 1):
                 time.sleep(1-secondsElapsed)
 
-        # Iterate through Rasa's responses and return each one
-        for agentMessage in agentMessages:
-                sendMessage(sessionId, linkifyMessage(agentMessage))
+        # Return Rasa's response / responses
+        if(type(agentMessages) is dict):
+                sendMessage(sessionId, linkifyMessage(agentMessages))
+        else:
+                for agentMessage in agentMessages:
+                        sendMessage(sessionId, linkifyMessage(agentMessage))
 
 if __name__ == '__main__':
         # Takes optional host and port arguments but by default will listen on localhost:5000
