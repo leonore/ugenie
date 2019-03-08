@@ -34,7 +34,8 @@ def before_step(context,step):
 
 
 def before_scenario(context,scenario):
-
+    context.driver.get("http://34.73.120.65:5000//")
+    context.chatbot_message_num = 1
     # -- not sending a message scenarios
 
     pass
