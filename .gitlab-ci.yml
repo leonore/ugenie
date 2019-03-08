@@ -30,7 +30,7 @@ test_prototype:
     - python tests/test_prototype.py
   tags:
     - shell
-# Testing the interface Features
+# Testing the interface Features ,make sure  all chatbot's features are stable in the deployed version
 testBehave:
   stage:  tests
   script:
