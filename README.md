@@ -56,6 +56,7 @@ _____
 
 Here are some questions you can ask GUVA:
 - What is [course]?
+- What [category] courses are there?
 - How much is [course/short course]?
 - When is [short course]?
 - Who teaches [short course]?
