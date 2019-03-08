@@ -44,7 +44,7 @@ def handle_connection(json):
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, linkifyMessage({'text': "Hello, I'm GUVA, https://www.facebook.com the Glasgow University Virtual Assistant. How can I help you?"}))
+        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
 
 @socketio.on('new_message')
 def handle_message(json):
