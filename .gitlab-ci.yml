@@ -10,6 +10,7 @@ stages:
 variables:
   image_tag: latest
 
+
 # check components build correctly
 build_chat:
   stage: build
@@ -22,7 +23,6 @@ build_actions:
     - docker build -t action/server:$image_tag .
 
 
-
 # check for the responsive deployed prototype
 test_prototype:
   stage: tests
@@ -30,6 +30,7 @@ test_prototype:
     - python tests/test_prototype.py
   tags:
     - shell
+    
 # Testing the interface Features ,make sure  all chatbot's features are stable in the deployed version
 testBehave:
   stage:  tests
@@ -42,19 +43,12 @@ testBehave:
     - behave
   tags:
     - shell
-# clean up successfully built images
-# cleanup_successful_build:
-#  stage: cleanup
-#  script:
-#    - docker image rm interface/main:$image_tag
-#    - docker image rm action/server:$image_tag
-#  when: on_success
-
-# clean up large dangling images from VM after failure
+    
+# clean up large dangling images from VM, if they exist
 cleanup_build:
   stage: cleanup
   script:
-    - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+    - docker images --no-trunc --all --quiet --filter="dangling=true" | xargs --no-run-if-empty docker rmi
     - docker system prune --force
   tags:
     - shell
