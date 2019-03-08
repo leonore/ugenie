@@ -29,11 +29,7 @@ def step_impl(context):
             onne_button =context.driver.find_element_by_class_name("open-button")
             onne_button.click()
             context.driver.implicitly_wait(1)
-        elem.click()
-        elem.clear()
-        elem.send_keys("what is biology")
-        elem.submit()
-        context.chatbot_message_num += 2
+        context.driver, context.chatbot_message_num = write_into_felid(context.driver, context.chatbot_message_num,"what is biology ")
         context.user_message= chatbot_xpath(context.driver, 2)
 
         print(context.user_message.text)

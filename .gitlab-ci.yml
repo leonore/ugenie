@@ -21,6 +21,8 @@ build_actions:
   script:
     - docker build -t action/server:$image_tag .
 
+
+
 # check for the responsive deployed prototype
 test_prototype:
   stage: tests
@@ -28,7 +30,18 @@ test_prototype:
     - python tests/test_prototype.py
   tags:
     - shell
-
+# Testing the interface Features ,make sure  all chatbot's features are stable in the deployed version
+testBehave:
+  stage:  tests
+  script:
+    - PATH=$PATH:/home/ubuntu/Mohammed
+    - cd tests
+    - cd bbd
+    - pip install -r bbd_requirements.txt
+    - cd tests
+    - behave
+  tags:
+    - shell
 # clean up successfully built images
 # cleanup_successful_build:
 #  stage: cleanup

@@ -1,10 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from pyvirtualdisplay import Display
 
 
+# refreshing the page
 def update_virsion(driver):
     try :
        driver.get("http://34.73.120.65:5000//")
@@ -16,7 +16,7 @@ def update_virsion(driver):
 
 
 
-
+# sending a message to the chatbot as  user
 def write_into_felid(driver,chatbot_message,text):
     elem = driver.find_element_by_xpath('//*[@id="myForm"]/div/form/input')
     elem.click()
@@ -28,7 +28,7 @@ def write_into_felid(driver,chatbot_message,text):
     return driver,chatbot_message
 
 
-
+# run Firfox browser in the Display
 def run_browser():
         driver = webdriver.Firefox()
         chatbot_message = 1
