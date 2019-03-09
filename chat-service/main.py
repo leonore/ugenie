@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, escape
 from flask_socketio import SocketIO, join_room
 
-from model import agent, network_config, logging
+from model import agent, network_config, chat_logger
 
 import re
 import time
@@ -23,19 +23,19 @@ def linkifyMessage(message):
 
 def messageReceived(sessionId, message):
         print('Message received from ',sessionId,': ',message)
-        logging.logUser(sessionId, message['text'])
+        chat_logger.logUser(sessionId, message['text'])
 
 def sendMessage(sessionId, message):
         # If the message contains button responses, put those in the json to send back to the chat
         if 'buttons' in message:
                 print('Sending message: ',message['text'],' with buttons: ',message['buttons'])
                 json = {'user_name' : 'GUVA', 'message' : message['text'], 'buttons' : message['buttons']}
-                logging.logAgent(sessionId, message['text'])
-                logging.logAgent(sessionId, message['buttons'])
+                chat_logger.logAgent(sessionId, message['text'])
+                chat_logger.logAgent(sessionId, message['buttons'])
         else:
                 print('Sending message: ',message['text'])
                 json = {'user_name' : 'GUVA', 'message' : message['text']}
-                logging.logAgent(sessionId, message['text'])
+                chat_logger.logAgent(sessionId, message['text'])
         
         socketio.emit('bot_message', json, room=sessionId)
 
