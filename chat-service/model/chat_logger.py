@@ -15,8 +15,8 @@ def logAgent(sessionId, message):
         buttonString = ''
         for button in message:
             buttonString += '(Button): ' + button['title'] + ' '
-            with open('model/chat-logs/' + str(sessionId) + '.txt', 'a') as out:
-                out.write(time + ' ChatBot: ' + str(buttonString) + '\r\n') 
+        with open('model/chat-logs/' + str(sessionId) + '.txt', 'a') as out:
+            out.write(time + ' ChatBot: ' + str(buttonString) + '\r\n') 
     # Otherwise log the message as normal
     else:
         with open('model/chat-logs/' + str(sessionId) + '.txt', 'a') as out:
