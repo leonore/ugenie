@@ -22,17 +22,21 @@ def linkifyMessage(message):
         return message
 
 def messageReceived(sessionId, message):
-        print('Message received from',sessionId,': ',message)
+        print('Message received from ',sessionId,': ',message)
+        logging.logUser(sessionId, message['text'])
 
 def sendMessage(sessionId, message):
         # If the message contains button responses, put those in the json to send back to the chat
         if 'buttons' in message:
                 print('Sending message: ',message['text'],' with buttons: ',message['buttons'])
                 json = {'user_name' : 'GUVA', 'message' : message['text'], 'buttons' : message['buttons']}
+                logging.logAgent(sessionId, message['text'])
+                logging.logAgent(sessionId, message['buttons'])
         else:
                 print('Sending message: ',message['text'])
                 json = {'user_name' : 'GUVA', 'message' : message['text']}
-
+                logging.logAgent(sessionId, message['text'])
+        
         socketio.emit('bot_message', json, room=sessionId)
 
 @socketio.on('user_joined')
@@ -55,7 +59,7 @@ def handle_message(json):
 
         # Print the message that was sent on the chat interface, after escaping potential XSS or HTML injections
         socketio.emit('user_message', {'user_name':'You', 'message':escape(json['message'])}, room=sessionId)
-        # Print the message that was sent on the server console
+        # Print the message that was sent on the server console and in the chat log
         messageReceived(sessionId, json['message'])
 
         # Get a response from the agent and send it back to the chat interface
