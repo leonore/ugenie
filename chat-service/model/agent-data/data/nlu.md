@@ -71,13 +71,8 @@
 - what's the description for [biology](course)?
 - what is [a history of the fbi](course)
 - what happens in [arabic stage 1](course)
-- what does [ATAS](acronym) mean
-- what does [FT](acronym) stand for
-- what does [IELTS](acronym) requirements mean
-- what does [PT](acronym) mean
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
-- what is [plan code](acronym)
 
 ## intent:fee_check
 - how much is [biology](course)?

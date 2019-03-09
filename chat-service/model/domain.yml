@@ -93,7 +93,9 @@ templates:
   utter_greet:
   - text: Hello!
   utter_goodbye:
-  - text: Goodbye!
+  - "Goodbye!"
+  - "Until next time!"
+  - "Bye!"
   utter_help:
   - text: "Is there anything else I can help you with?"
   utter_contact:

@@ -12,6 +12,20 @@
  - utter_help
  - utter_functionality
 
+## extended functionality story
+* greet
+ - utter_greet
+ - utter_functionality
+* ask_short_courses_functionality
+ - action_utter_short_courses_functionality
+* tutor_check
+ - action_get_tutor
+* tutor_courses_check
+ - action_get_tutor_courses
+* thank_you
+ - utter_help
+ - utter_functionality
+
 ## give_sc_functionality
 * help
  - utter_functionality
