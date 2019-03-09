@@ -31,21 +31,22 @@ test_prototype:
   tags:
     - shell
 
-# Commented out while new behaviour is assessed    
 # Testing the interface Features ,make sure  all chatbot's features are stable in the deployed version
 # testBehave:
-#  stage:  tests
-#  script:
-#    - PATH=$PATH:/home/ubuntu/Mohammed
-#    - cd tests
-#    - cd bbd
-#    - pip install -r bbd_requirements.txt
-#    - cd tests
-#    - behave
-#  tags:
-#    - shell
-    
+ stage:  tests
+ script:
+   - PATH=$PATH:/home/ubuntu/Mohammed
+   - cd tests
+   - cd bbd
+   - pip install -r bbd_requirements.txt
+   - cd tests
+   - behave
+ tags:
+   - shell
+
 # clean up large dangling images from VM, if they exist
+# adding on_failure tag again because doing this too much seems to impact caching
+# which is not good for build speeds
 cleanup_build:
   stage: cleanup
   script:
@@ -53,3 +54,4 @@ cleanup_build:
     - docker system prune --force
   tags:
     - shell
+  when: on_failure
