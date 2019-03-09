@@ -10,7 +10,7 @@ Leonore Papaloizos - 2264897v@student.gla.ac.uk
 #### Informal roles (issue label "manager")
 
 `Quality Assurance`: Mohammad Alnakhli   
-`Interface`: James Conway
+`Interface`: James Conway     
 `NLP`: Sam Cook       
 `Deployment`: Leonore Papaloizos     
 
@@ -57,6 +57,7 @@ git push origin 85-build-tests
 #### Making a merge request
 
 - On GitLab, ask for a merge request (the link will also be available every time you push to the branch)
+- Only make a merge request if your commit passes the pipeline
 - Assign it to a member who you think would benefit from reviewing it/who might catch on some error you made
 
 #### Making a code review
