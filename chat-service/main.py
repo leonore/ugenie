@@ -80,7 +80,7 @@ def handle_message(json):
                         start = time.time()
                         sendMessage(sessionId, linkifyMessage(agentMessage))
                         # elapse some time for multiple bot messages to give user time to process both messages
-                        time.sleep(1)
+                        time.sleep(0.8)
 
 if __name__ == '__main__':
         # Takes optional host and port arguments but by default will listen on localhost:5000

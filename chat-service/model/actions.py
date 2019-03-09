@@ -22,7 +22,7 @@ class CourseDenied(Action):
         return "action_course_denied"
 
     def run(self, dispatcher, tracker, domain):
-        response = "Sorry I did not understand, could you please rephrase the question."
+        response = "Sorry I did not understand which course you meant, could you please rephrase your question?"
         dispatcher.utter_message(response)
         return
 
@@ -221,12 +221,16 @@ class GetFees(Action):
         dispatcher.utter_message(response)
         return
 
+## TODO: possibly change these messages 
+# making a user test the bot made them prompt:
+# "tutors" or "fees"
+# which does not trigger a useful answer from the bot
 class UtterSCFunctionality(Action):
     def name(self):
         return "action_utter_short_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about course times, tutors, credits, fees, descriptions!"
+        response = "You can ask me about course times, course tutors, credits, fees, or a description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "short")]
 
@@ -235,6 +239,6 @@ class UtterADFunctionality(Action):
         return "action_utter_admissions_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about fees, requirements, and a brief course description!"
+        response = "You can ask me about course fees, course requirements, and a brief course description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "admissions")]
