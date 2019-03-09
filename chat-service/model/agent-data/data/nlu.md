@@ -45,6 +45,27 @@
 - n
 - No
 
+## intent:help
+- who are you
+- how can you help me
+- i need help
+- what can you help me with?
+- are you able to help me?
+- what can you do
+- what can you give me information about
+- give me information
+- give me help
+
+## intent:thank_you
+- thanks
+- thank you
+- thanks!
+- thank you very much
+- sweet, thanks
+- amazing thank you
+- thanks for helping
+- cheers
+
 ## intent:description_check
 - tell me about [biology](course)
 - what's the description for [biology](course)?
