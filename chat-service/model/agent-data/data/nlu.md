@@ -46,6 +46,7 @@
 - No
 
 ## intent:help
+- help
 - who are you
 - how can you help me
 - i need help
