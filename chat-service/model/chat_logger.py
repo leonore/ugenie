@@ -10,7 +10,6 @@ def logUser(sessionId, message):
 # Log a message from the user along with date and time
 def logAgent(sessionId, message):
     time = datetime.datetime.now().strftime('%y-%m-%d %H:%M:%S')
-    print('agent message: ', message)
     # If the bot returned a list of buttons, follow this procedure to log them
     if type(message) is list:
         buttonString = ''
