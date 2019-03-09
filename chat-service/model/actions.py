@@ -2,25 +2,6 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet
 import elastic
 
-## DISCLAIMER: at the moment this isn't what's used for actions
-# I'm not sure we will have to use it this way, as it works from templates
-# and it makes more sense for me this way
-# - Leo
-class UtterFunctionality(Action):
-    def name(self):
-        return "action_utter_functionality"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "Here are some things you can ask me about:"
-        buttons = [{'title': 'Short courses',
-            'payload': '/ask_short_courses_functionality'},
-            {'title': 'Postgraduate courses',
-            'payload': '/ask_admissions_courses_functionality'},
-            {'title': 'Terminology',
-            'payload': '/ask_terminology_functionality'}]
-        dispatcher.utter_button_message(response, buttons)
-        return
-
 # Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
@@ -128,6 +109,7 @@ class GetTutor(Action):
         return
 
 # Utters the IELTS requirements to get into a course
+# TO-DO: check for correct course type
 class GetIELTSRequirements(Action):
     def name(self):
         return "action_get_ielts_requirements"
@@ -252,3 +234,19 @@ class UtterADFunctionality(Action):
         response = "You can ask me about fees, requirements, and a brief course description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "admissions")]
+
+## DEPRECATED
+# class UtterFunctionality(Action):
+#     def name(self):
+#         return "action_utter_functionality"
+#
+#     def run(self, dispatcher, tracker, domain):
+#         response = "Here are some things you can ask me about:"
+#         buttons = [{'title': 'Short courses',
+#             'payload': '/ask_short_courses_functionality'},
+#             {'title': 'Postgraduate courses',
+#             'payload': '/ask_admissions_courses_functionality'},
+#             {'title': 'Terminology',
+#             'payload': '/ask_terminology_functionality'}]
+#         dispatcher.utter_button_message(response, buttons)
+#         return
