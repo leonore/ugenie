@@ -23,3 +23,6 @@ story_graph.dot
 
 # ER data
 *.xlsx
+
+# Chat logs
+chat-service/model/chat-logs/
