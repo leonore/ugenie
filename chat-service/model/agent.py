@@ -8,11 +8,6 @@ from rasa_core.trackers import DialogueStateTracker
 from rasa_core.slots import TextSlot
 from rasa_core.events import SlotSet
 
-# import os
-# current_directory = os.path.dirname(os.path.realpath(__file__))
-
-# from network_config import actionIP
-
 from model.network_config import actionIP
 
 # Start Rasa-Core Agent
