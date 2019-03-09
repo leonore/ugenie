@@ -13,10 +13,10 @@ An online prototype of the bot, nicknamed **GUVA** during development, is availa
 ______________
 
 Cloning this repository from 15th of March 2019 should include a trained version of the bot.
-- [Set up dependencies manually](Manuel dependency setup)
-    - [Launching from manual set-up](Launching after setup)
-- [Launching from Docker](Launching from Docker)
-- [Sample questions to ask the bot](Interacting with the bot)
+- [Set up dependencies manually](#manual-dependency-setup)
+    - [Launching from manual set-up](#launching-after-setup)
+- [Launching from Docker](#launching-from-docker)
+- [Sample questions to ask the bot](#interacting-with-the-bot)
 - [Extra documentation on different app components](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tree/master/docs)
 
 --------
