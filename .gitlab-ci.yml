@@ -39,7 +39,7 @@ testBehave:
    - PATH=$PATH:/home/ubuntu/Mohammed
    - cd tests
    - cd bdd
-   - pip install -r bbd_requirements.txt
+   - pip install -r bdd_requirements.txt
    - cd tests
    - behave
  tags:
