@@ -31,8 +31,8 @@ test_prototype:
   tags:
     - shell
 
-# Testing the interface Features ,make sure  all chatbot's features are stable in the deployed version
-# testBehave:
+# Testing the interface Features, make sure  all chatbot's features are stable in the deployed version
+testBehave:
  stage:  tests
  script:
    - PATH=$PATH:/home/ubuntu/Mohammed
