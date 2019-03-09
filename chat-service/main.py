@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, escape
 from flask_socketio import SocketIO, join_room
 
-from model import agent, network_config
+from model import agent, network_config, logging
 
 import re
 import time
