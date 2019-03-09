@@ -18,6 +18,7 @@
 
 # Trained models
 chat-service/model/agent-data/models/
+chat-service/model/agent-data/domain.yml
 story_graph.dot
 
 # ER data
