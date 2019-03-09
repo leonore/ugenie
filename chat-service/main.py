@@ -22,8 +22,8 @@ def linkifyMessage(message):
         return message
 
 def messageReceived(sessionId, message):
-        print('Message received from ',sessionId,': ',message)
-        chat_logger.logUser(sessionId, message['text'])
+        print('Message received from',sessionId,':',message)
+        chat_logger.logUser(sessionId, message)
 
 def sendMessage(sessionId, message):
         # If the message contains button responses, put those in the json to send back to the chat
