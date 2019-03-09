@@ -55,6 +55,7 @@ _____
 #### Interacting with the bot
 
 Here are some questions you can ask GUVA:
+- how can you help me?
 - What is [course]?
 - What [category] courses are there?
 - How much is [course/short course]?
