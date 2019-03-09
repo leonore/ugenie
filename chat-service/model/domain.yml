@@ -49,6 +49,8 @@ intents:
 - acronym_check
 - confirmation
 - denial
+- thank_you
+- help
 - tutor_courses_check
 - ask_terminology_functionality
 - ask_short_courses_functionality
@@ -91,7 +93,9 @@ templates:
   utter_greet:
   - text: Hello!
   utter_goodbye:
-  - text: Goodbye!
+  - "Goodbye!"
+  - "Until next time!"
+  - "Bye!"
   utter_help:
   - text: "Is there anything else I can help you with?"
   utter_contact:

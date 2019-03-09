@@ -9,8 +9,10 @@ class CheckCourse(Action):
 
     def run(self, dispatcher, tracker, domain):
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
-        response = "Did you want the course: " + str(elastic_title).title() + "? (yes/no)"
-        dispatcher.utter_message(response)
+        response = "Did you want the course: " + str(elastic_title).title() + "?"
+        buttons = [{"title":"Yes", "payload":"/confirmation"},
+                    {"title":"No", "payload":"/denial"}]
+        dispatcher.utter_button_message(response, buttons)
         return
 
 # Apologises if the chat-bot returns the incorrect courses
@@ -20,7 +22,7 @@ class CourseDenied(Action):
         return "action_course_denied"
 
     def run(self, dispatcher, tracker, domain):
-        response = "Sorry I did not understand, could you please rephrase the question."
+        response = "Sorry I did not understand which course you meant, could you please rephrase your question?"
         dispatcher.utter_message(response)
         return
 
@@ -36,7 +38,9 @@ class GetAcronym(Action):
         dispatcher.utter_message(response[1])
         return
 
-
+# TODO: duplicate GetAcronym functionality here
+# I deprecated acronym training data from description_check in nlu.md
+# because there was training data for it in acronym_check which made it ambiguous
 # Utters the description of a course or tells the description of a term used
 class GetDescription(Action):
     def name(self):
@@ -217,12 +221,16 @@ class GetFees(Action):
         dispatcher.utter_message(response)
         return
 
+## TODO: possibly change these messages 
+# making a user test the bot made them prompt:
+# "tutors" or "fees"
+# which does not trigger a useful answer from the bot
 class UtterSCFunctionality(Action):
     def name(self):
         return "action_utter_short_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about course times, tutors, credits, fees, descriptions!"
+        response = "You can ask me about course times, course tutors, credits, fees, or a description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "short")]
 
@@ -231,22 +239,6 @@ class UtterADFunctionality(Action):
         return "action_utter_admissions_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about fees, requirements, and a brief course description!"
+        response = "You can ask me about course fees, course requirements, and a brief course description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "admissions")]
-
-## DEPRECATED
-# class UtterFunctionality(Action):
-#     def name(self):
-#         return "action_utter_functionality"
-#
-#     def run(self, dispatcher, tracker, domain):
-#         response = "Here are some things you can ask me about:"
-#         buttons = [{'title': 'Short courses',
-#             'payload': '/ask_short_courses_functionality'},
-#             {'title': 'Postgraduate courses',
-#             'payload': '/ask_admissions_courses_functionality'},
-#             {'title': 'Terminology',
-#             'payload': '/ask_terminology_functionality'}]
-#         dispatcher.utter_button_message(response, buttons)
-#         return

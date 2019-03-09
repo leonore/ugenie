@@ -7,6 +7,29 @@
 * goodbye
  - utter_goodbye
 
+## thank you
+* thank_you
+ - utter_help
+ - utter_functionality
+
+## extended functionality story
+* greet
+ - utter_greet
+ - utter_functionality
+* ask_short_courses_functionality
+ - action_utter_short_courses_functionality
+* tutor_check
+ - action_get_tutor
+* tutor_courses_check
+ - action_get_tutor_courses
+* thank_you
+ - utter_help
+ - utter_functionality
+
+## give_sc_functionality
+* help
+ - utter_functionality
+
 ## give_sc_functionality
 * ask_short_courses_functionality
  - action_utter_short_courses_functionality
@@ -301,7 +324,7 @@
 * tutor_courses_check{"tutor": "Fiona Reid"}
     - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
-    
+
 ## Generated Story -4144376465316336708
 * ask_type_classes{"course": "spanish"}
     - slot{"course": "spanish"}
