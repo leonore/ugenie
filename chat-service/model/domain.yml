@@ -113,7 +113,7 @@ templates:
   utter_contact:
   - text: "You can contact someone from university here: placeholder@glasgow.ac.uk"
   utter_redirect:
-  - text: "Sorry I couldn't be of help. Can I redirect you to someone who might?"
+  - text: "Can I redirect you to a human who might be more helpful?"
     buttons:
       - title: "Yes"
         payload: "/confirmation"

@@ -77,7 +77,8 @@ def get_sc_course_link(course):
     first_hit = res['hits']['hits'][0]
     # specifiation is a typo within the given dataset
     link = first_hit['_source']["Link to Course specifiation"]
-    if link is "N/A":
+    print(link)
+    if link == "N/A":
         return False
     else:
         return link
