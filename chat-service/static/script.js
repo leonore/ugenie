@@ -55,10 +55,13 @@ socket.on('bot_message', function(msg) {
 				if(typeof buttonObject.title !== 'undefined'){
 					console.log(buttonObject);
 					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(\'' + buttonObject.title + '\', \'' + buttonObject.payload + '\')">' + buttonObject.title + '</button>');
-					}
+				}
 			}
+			
+			// Disable the message field to prevent the user from inputting a message when they should be pressing a button
+			$('input.message-form-input').prop('disabled', true).attr('placeholder', 'Press a button above');
 		}
-
+		
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
@@ -67,17 +70,18 @@ socket.on('bot_message', function(msg) {
 // JavaScript functions
 
 function openForm() {
-    document.getElementById("myForm").style.display = "block";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
+    document.getElementById('myForm').style.display = 'block';
+    document.getElementsByClassName('open-button')[0].style.visibility = 'hidden';
 }
 
 function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
+    document.getElementById('myForm').style.display = 'none';
+    document.getElementsByClassName('open-button')[0].style.visibility = 'visible';
 }
 
 function buttonReply(chosenButton, chosenPayload) {
-	$(".message.button-area").remove();
+	$('input.message-form-input').prop('disabled', false).attr('placeholder', 'Type a message...');
+	$('.message.button-area').remove();
 	socket.emit('new_message', {
 		user_name: 'You',
 		message: chosenButton,

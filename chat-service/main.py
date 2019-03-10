@@ -77,7 +77,7 @@ def handle_message(json):
                 for agentMessage in agentMessages:
                         start = time.time()
                         sendMessage(sessionId, agentMessage)
-                        # elapse some time for multiple bot messages to give user time to process both messages
+                        # Wait a while before sending each message to give user time to process
                         time.sleep(0.8)
 
 if __name__ == '__main__':
