@@ -7,6 +7,7 @@ actions:
 - utter_contact
 - utter_help
 - utter_functionality
+- utter_sorry
 - action_utter_short_courses_functionality
 - action_utter_admissions_courses_functionality
 - utter_terminology_functionality
