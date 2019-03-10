@@ -55,10 +55,13 @@ socket.on('bot_message', function(msg) {
 				if(typeof buttonObject.title !== 'undefined'){
 					console.log(buttonObject);
 					buttonArea.append('<button class="message reply-button" type="button" onclick="buttonReply(\'' + buttonObject.title + '\', \'' + buttonObject.payload + '\')">' + buttonObject.title + '</button>');
-					}
+				}
 			}
+			
+			// Disable the message field to prevent the user from inputting a message when they should be pressing a button
+			$('input.message-form-input').prop('disabled', true).attr("placeholder", "Press a button");
 		}
-
+		
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
