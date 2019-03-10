@@ -70,18 +70,18 @@ socket.on('bot_message', function(msg) {
 // JavaScript functions
 
 function openForm() {
-    document.getElementById("myForm").style.display = "block";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'hidden';
+    document.getElementById('myForm').style.display = 'block';
+    document.getElementsByClassName('open-button')[0].style.visibility = 'hidden';
 }
 
 function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-    document.getElementsByClassName("open-button")[0].style.visibility = 'visible';
+    document.getElementById('myForm').style.display = 'none';
+    document.getElementsByClassName('open-button')[0].style.visibility = 'visible';
 }
 
 function buttonReply(chosenButton, chosenPayload) {
 	$('input.message-form-input').prop('disabled', false).attr("placeholder", "Type a message...");
-	$(".message.button-area").remove();
+	$('.message.button-area').remove();
 	socket.emit('new_message', {
 		user_name: 'You',
 		message: chosenButton,
