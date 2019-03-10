@@ -54,6 +54,7 @@
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
 - what is [geology in the field](course) about
+- I'm looking for information on [medical phyics](course)
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -67,7 +68,7 @@
 - how much does[ the kennedy brothers](course) course charge
 - how many pounds is [west end lectures](course)
 - how much is [german stage 2](course)
-- what is [the price of fancy florence](course)
+- what is the price of [fancy florence](course)
 - how much money is [brain sciences](course)
 
 ## intent:full_part_time_check
@@ -104,6 +105,7 @@
 - hi
 - hello
 - hi
+- hello
 
 ## intent:help
 - help

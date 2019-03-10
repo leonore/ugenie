@@ -10,7 +10,6 @@
 ## thank you
 * thank_you
  - utter_help
- - utter_functionality
 
 ## extended functionality story
 * greet
@@ -330,3 +329,11 @@
     - utter_help
 * denial
     - utter_goodbye
+
+## Getting greet + functionality to work
+* greet
+    - utter_greet
+    - utter_functionality
+* ask_admissions_courses_functionality
+    - action_utter_admissions_courses_functionality
+    - slot{"course_type": "admissions"}
