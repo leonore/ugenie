@@ -59,7 +59,7 @@ socket.on('bot_message', function(msg) {
 			}
 			
 			// Disable the message field to prevent the user from inputting a message when they should be pressing a button
-			$('input.message-form-input').prop('disabled', true).attr("placeholder", "Press a button");
+			$('input.message-form-input').prop('disabled', true).attr('placeholder', 'Press a button above');
 		}
 		
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
@@ -80,7 +80,7 @@ function closeForm() {
 }
 
 function buttonReply(chosenButton, chosenPayload) {
-	$('input.message-form-input').prop('disabled', false).attr("placeholder", "Type a message...");
+	$('input.message-form-input').prop('disabled', false).attr('placeholder', 'Type a message...');
 	$('.message.button-area').remove();
 	socket.emit('new_message', {
 		user_name: 'You',
