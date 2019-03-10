@@ -138,6 +138,8 @@
 
 ## intent:requirements_check
 - what are the requirements for [mechatronics](course)
+- what are the english requirements for [academic practice](course)
+- what english level is required for [clinical nutrition](course)
 - what do I need to get into [genetic and genomic counselling](course)
 - how do I get into [medical physics](course)
 - what are the IELTS requirements for [computer systems engineering](course)
