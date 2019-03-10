@@ -28,8 +28,13 @@ def step_impl(context):
         if(elem.is_displayed()==False):
             onne_button =context.driver.find_element_by_class_name("open-button")
             onne_button.click()
-            context.driver.implicitly_wait(1)
-        context.driver, context.chatbot_message_num = write_into_felid(context.driver, context.chatbot_message_num,"what is biology ")
+            context.driver.implicitly_wait(2)
+        elem.click()
+        elem.clear()
+        elem.send_keys("what is biology")
+        elem.submit()
+        context.chatbot_message_num += 2
+        context.driver.implicitly_wait(2)
         context.user_message= chatbot_xpath(context.driver, 2)
 
         print(context.user_message.text)
@@ -124,13 +129,13 @@ def step_impl(context):
     if (elem.is_displayed() == False):
         onne_button = context.driver.find_element_by_class_name("open-button")
         onne_button.click()
-        context.driver.implicitly_wait(1)
+        context.driver.implicitly_wait(2)
     elem.click()
     elem.clear()
-    elem.send_keys("how much it is")
+    elem.send_keys("how much is it")
     elem.submit()
     context.chatbot_message_num  +=2
-    context.driver.implicitly_wait(1)
+    context.driver.implicitly_wait(2)
     context.user_message =  chatbot_xpath(context.driver,4)
     print(context.user_message.text)
 
@@ -148,7 +153,7 @@ def step_impl(context):
 
     context.chatbot_message = chatbot_xpath(context.driver,5)
     print(context.chatbot_message.text)
-    assert ("Did you want the course: Ecology & Environmental Biology? (yes/no)" == context.chatbot_message.text)
+    assert ("Did you want the course: Ecology & Environmental Biology?" == context.chatbot_message.text)
 
 
 
@@ -160,4 +165,4 @@ def step_impl(context):
     if (elem.is_displayed() == False):
         onne_button = context.driver.find_element_by_class_name("open-button")
         onne_button.click()
-        context.driver.implicitly_wait(1)
+        context.driver.implicitly_wait(2)
