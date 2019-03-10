@@ -15,12 +15,6 @@ socketio = SocketIO(app) # Apply SocketIO to 'app' to use it
 def sessions():
         return render_template('session.html') # Helps render the HTML page, called a 'template'
 
-# Turn any links in the outgoing message into clickable hrefs
-def linkifyMessage(message):
-        if('text' in message):
-                message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', message['text'])
-        return message
-
 def messageReceived(sessionId, message):
         print('Message received from',sessionId,':',message)
         chat_logger.logUser(sessionId, message)
@@ -48,7 +42,7 @@ def handle_connection(json):
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. https://www.gla.ac.uk/study/visiting/internationalsummerschool/whyglasgow/ How can I help you?"})
+        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
 
 @socketio.on('new_message')
 def handle_message(json):
