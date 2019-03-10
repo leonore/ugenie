@@ -80,6 +80,7 @@ function closeForm() {
 }
 
 function buttonReply(chosenButton, chosenPayload) {
+	$('input.message-form-input').prop('disabled', false).attr("placeholder", "Type a message...");
 	$(".message.button-area").remove();
 	socket.emit('new_message', {
 		user_name: 'You',
