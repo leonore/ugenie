@@ -15,12 +15,6 @@ socketio = SocketIO(app) # Apply SocketIO to 'app' to use it
 def sessions():
         return render_template('session.html') # Helps render the HTML page, called a 'template'
 
-# Turn any links in the outgoing message into clickable hrefs
-def linkifyMessage(message):
-        if('text' in message):
-                message['text'] = re.sub(r'\b((?:https?:\/\/)?(?:www\.)?(?:[^\s.]+\.)+\w{2,4})\b', r'<a href="\1">\1</a>', message['text'])
-        return message
-
 def messageReceived(sessionId, message):
         print('Message received from',sessionId,':',message)
         chat_logger.logUser(sessionId, message)
@@ -78,11 +72,11 @@ def handle_message(json):
 
         # Return Rasa's response / responses
         if(type(agentMessages) is dict):
-                sendMessage(sessionId, linkifyMessage(agentMessages))
+                sendMessage(sessionId, agentMessages)
         else:
                 for agentMessage in agentMessages:
                         start = time.time()
-                        sendMessage(sessionId, linkifyMessage(agentMessage))
+                        sendMessage(sessionId, agentMessage)
                         # elapse some time for multiple bot messages to give user time to process both messages
                         time.sleep(0.8)
 
