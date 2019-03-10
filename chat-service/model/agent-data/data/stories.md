@@ -7,6 +7,20 @@
 * goodbye
  - utter_goodbye
 
+## you're wrong! but help me again
+* wrong_answer
+ - utter_help
+* confirmation
+ - utter_functionality
+
+## you're wrong! redirect me to a human
+* wrong_answer
+ - utter_help
+* denial
+ - utter_redirect
+* denial
+ - utter_sorry
+
 ## thank you
 * thank_you
  - utter_help
@@ -111,8 +125,7 @@
 * denial
   - utter_redirect
 * denial
-  - utter_help
-  - utter_functionality
+  - utter_sorry
 
 ## ielts_requirements_check_no_redirect
 * requirements_check{"course":"mechatronics"}

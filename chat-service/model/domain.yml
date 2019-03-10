@@ -53,6 +53,7 @@ intents:
 - confirmation
 - denial
 - thank_you
+- wrong_answer
 - help
 - tutor_courses_check
 - ask_terminology_functionality
@@ -99,6 +100,8 @@ templates:
   - "Goodbye!"
   - "Thanks for chatting!"
   - "Bye!"
+  utter_sorry:
+  - text: "Sorry I could not understand what you meant. Feel free to chat to me again later!"
   utter_help:
   - text: "Is there anything else I can help you with?"
     buttons:
@@ -147,4 +150,4 @@ templates:
 
 ## for development only!
   utter_lambda:
-  - text: "This is placeholder text for development."
+  - text: "This is placeholder text for development. Fun fact: Saint Valentine was also the saint of beekeeping, epilepsy and the plague!"

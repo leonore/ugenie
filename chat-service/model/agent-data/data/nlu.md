@@ -42,9 +42,18 @@
 
 ## intent:denial
 - no
-- wrong
 - n
 - No
+- nope
+- nah
+
+## intent:wrong_answer
+- wrong
+- that's not what I was looking for
+- thats not what I wanted
+- this isn't right
+- not what I wanted
+- you suck
 
 ## intent:description_check
 - tell me about [biology](course)
@@ -87,7 +96,7 @@
 - alright bye
 - so long
 - l8r alligator
-- goodbye!
+- goodbye
 
 ## intent:greet
 - hi
@@ -97,15 +106,6 @@
 - good afternoon
 - hi there
 - howdy
-- hi
-- hi
-- hi
-- hi
-- hey
-- hi
-- hello
-- hi
-- hello
 
 ## intent:help
 - help
