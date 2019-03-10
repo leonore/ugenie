@@ -25,6 +25,4 @@ story_graph.dot
 *.xlsx
 
 # Chat logs
-# commenting out to push the folder to repo
-# chat-service/model/chat-logs/
-*.txt
+chat-service/model/chat-logs/*
