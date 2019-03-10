@@ -78,11 +78,11 @@ def handle_message(json):
 
         # Return Rasa's response / responses
         if(type(agentMessages) is dict):
-                sendMessage(sessionId, linkifyMessage(agentMessages))
+                sendMessage(sessionId, agentMessages)
         else:
                 for agentMessage in agentMessages:
                         start = time.time()
-                        sendMessage(sessionId, linkifyMessage(agentMessage))
+                        sendMessage(sessionId, agentMessage)
                         # elapse some time for multiple bot messages to give user time to process both messages
                         time.sleep(0.8)
 

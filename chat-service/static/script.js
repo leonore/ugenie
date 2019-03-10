@@ -32,7 +32,7 @@ var messageArea = $('div.message-area');
 // When the client receives a 'user_message' event, print the message on the chat as a user message
 socket.on('user_message', function(msg) {
     if (typeof msg.user_name !== 'undefined') {
-        messageArea.append('<div class="message user-message">' + msg.message + '</div>');
+        messageArea.append('<div class="message user-message">' + msg.message.autoLink() + '</div>');
 		messageArea.scrollTop(messageArea.prop('scrollHeight'));
     }
 })
@@ -41,7 +41,7 @@ socket.on('user_message', function(msg) {
 socket.on('bot_message', function(msg) {
     console.log(msg);
     if (typeof msg.user_name !== 'undefined') {
-		messageArea.append('<div class="message bot-message">' + msg.message + '</div>');
+		messageArea.append('<div class="message bot-message">' + msg.message.autoLink() + '</div>');
 
 		// If this message also contains button responses, render them
 		if(typeof msg.buttons !== 'undefined'){
