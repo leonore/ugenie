@@ -146,6 +146,28 @@ def get_admission_requirements(course, requirement_type):
     requirements = first_hit['_source'][field]
     return requirements
 
+## assumes a course has been found
+def check_pt_ft_course(course):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
+    hits = res['hits']['hits']
+    cont = False
+    run_list = list()
+    for hit in hits:
+        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == 2019:
+            cont = True
+            if hit['_source']['PT'] and "part-time" not in run_list:
+                run_list.append("part-time")
+            elif hit['_source']['FT'] and "full-time" not in run_list:
+                run_list.append("full-time")
+
+    if not cont or not run_list:
+        response = "Sorry, it does not seem this course is running this year."
+    else:
+        response = str(course).title() + " runs " + ', '.join(run_list)
+
+    return response
+
+
 # Returns the home fee and internaitonal fee of an admissions course
 # For now we return all the fee information we have for the admissions courwse, whether the user is international or not
 def get_ad_fees(query):

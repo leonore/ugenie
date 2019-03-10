@@ -87,6 +87,8 @@
 - is [endodontics](course) part time
 - is [food security](course) available full time
 - can i do [gender history](course) full time
+- does [mechatronics](course) run part time
+- does [creative writing](course) run full time
 
 ## intent:goodbye
 - bye
