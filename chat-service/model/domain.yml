@@ -31,6 +31,7 @@ actions:
 - action_set_sc_course_type
 - action_set_ad_course_type
 - action_pt_ft_check
+- action_get_sc_location
 # vvv for development only vvv
 - utter_lambda
 
@@ -50,6 +51,7 @@ intents:
 # should this be deprecated?
 - inform_student
 - full_part_time_check
+- location_check
 - time_check
 - tutor_check
 - acronym_check
@@ -71,6 +73,7 @@ intents:
 # - acronym_check+course_check
 
 slots:
+## deprecate one of those?
   course_type:
     type: categorical
     values:

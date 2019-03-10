@@ -47,14 +47,6 @@
 - nope
 - nah
 
-## intent:wrong_answer
-- wrong
-- that's not what I was looking for
-- thats not what I wanted
-- this isn't right
-- not what I wanted
-- you suck
-
 ## intent:description_check
 - tell me about [biology](course)
 - what's the description for [biology](course)?
@@ -108,6 +100,7 @@
 - good afternoon
 - hi there
 - howdy
+- hi
 
 ## intent:help
 - help
@@ -130,6 +123,14 @@
 - link for [The life and legacy of Lyndon B Johnson](course)?
 - do you have more information on [The Russian Revolution](course)?
 - is there a web page for [Counselling Skills Course](course)?
+
+## intent:location_check
+- where is [Coral Reefs: Ancient and Modern](course) taking place
+- what is the building for [french stage 1](course)
+- do you have the location for [Introduction to Mindfulness](course)
+- where will [Opera Afternoons 1](course) take place
+- which room is [Songwriting Workshop](course) in
+- where is [french stage 1](course) going to take place
 
 ## intent:qualification_check
 - what qualification do i get from [astrophysics](course)
@@ -168,18 +169,13 @@
 - what time does [geology in the field](course) end
 - how long does [counselling skills](course) last
 - when does [scottish philosophy](course) end
-- what date does [opera afternoons 1](course) end
-- what time does [songwriting workshop](course) begin
 - whats the duration of [spanish stage 2](course)
 - what is the time span for [orkney in scotland](course)
-- when does [a guided tour of dutch, flemish and french art in kelvingrove art gallery](course) take place
+- what days does [a guided tour of dutch, flemish and french art in kelvingrove art gallery](course) run
 - how long is [festivals in ancient egypt](course)
 - how many hours does [working with trauma](course) last
-- what time is [brain science](course)
 - what time is [french stage 1](course)
 - when is [fancy florence](course)
-- when is [brain sciences](course)
-- what time is [brain sciences](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
@@ -200,6 +196,14 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
+
+## intent:wrong_answer
+- wrong
+- that's not what I was looking for
+- thats not what I wanted
+- this isn't right
+- not what I wanted
+- you suck
 
 ## synonym:film studies 1
 - flim studies 1
