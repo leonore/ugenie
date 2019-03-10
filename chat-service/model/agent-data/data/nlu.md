@@ -75,6 +75,12 @@
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
 
+## intent:link_check
+- do you have a link for [Introduction to Ancient Egypt 1B](course)?
+- link for [The life and legacy of Lyndon B Johnson](course)?
+- do you have more information on [The Russian Revolution](course)?
+- is there a web page for [Counselling Skills Course](course)?
+
 ## intent:fee_check
 - how much is [biology](course)?
 - how much are the fees for [biology](course)?

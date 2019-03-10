@@ -17,12 +17,31 @@ class CheckCourse(Action):
 
 # Apologises if the chat-bot returns the incorrect courses
 # For now it just says could you please rephrase but possible in the future it could give alternative suggestions
+# TODO: should this be made into a template?
 class CourseDenied(Action):
     def name(self):
         return "action_course_denied"
 
     def run(self, dispatcher, tracker, domain):
         response = "Sorry I did not understand which course you meant, could you please rephrase your question?"
+        dispatcher.utter_message(response)
+        return
+
+# CheckCourse should have ran & confirmed beforehand
+class GetShortCourseLink(Action):
+    def name(self):
+        return "action_get_sc_course_link"
+
+    def run(self, dispatcher, tracker, domain):
+        # this would be what the user confirmed
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+
+        link = elastic.get_sc_course_link(elastic_title)
+        if link:
+            response = "Here's a link to the webpage for " + elastic_title + ": " + link
+        else:
+            response = "Sorry, this short course does not seem to have a web page. This might be because it only runs for one day."
+
         dispatcher.utter_message(response)
         return
 
@@ -221,7 +240,7 @@ class GetFees(Action):
         dispatcher.utter_message(response)
         return
 
-## TODO: possibly change these messages 
+## TODO: possibly change these messages
 # making a user test the bot made them prompt:
 # "tutors" or "fees"
 # which does not trigger a useful answer from the bot

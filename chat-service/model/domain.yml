@@ -23,6 +23,8 @@ actions:
 - utter_ask_student
 - action_check_course
 - action_course_denied
+- utter_offer_course_link
+- action_get_sc_course_link
 - action_get_tutor_courses
 - action_get_type_classes
 - action_set_sc_course_type
@@ -47,6 +49,7 @@ intents:
 - time_check
 - tutor_check
 - acronym_check
+- link_check
 - confirmation
 - denial
 - thank_you
@@ -124,6 +127,13 @@ templates:
   - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
   - text: I can only provide immediate information on IELTS requirements for courses. Is this what you're looking for?
+    buttons:
+      - title: "Yes"
+        payload: "/confirmation"
+      - title: "No"
+        payload: "/denial"
+  utter_offer_course_link:
+  - text: I can try and look for the short course webpage if you would like further information.
     buttons:
       - title: "Yes"
         payload: "/confirmation"

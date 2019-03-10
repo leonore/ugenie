@@ -42,6 +42,18 @@
 * ask_terminology_functionality
  - utter_terminology_functionality
 
+## link_check_confirm
+* link_check
+- action_check_course
+* confirmation
+- action_get_sc_course_link
+
+## link_check_deny
+* link_check
+- action_check_course
+* denial
+- action_course_denied
+
 ## fee_check_confirm
 * fee_check
  - action_check_course
