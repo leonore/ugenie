@@ -97,10 +97,15 @@ templates:
   - text: Hello!
   utter_goodbye:
   - "Goodbye!"
-  - "Until next time!"
+  - "Thanks for chatting!"
   - "Bye!"
   utter_help:
   - text: "Is there anything else I can help you with?"
+    buttons:
+      - title: "Yes"
+        payload: "/confirmation"
+      - title: "No"
+        payload: "/denial"
   utter_contact:
   - text: "You can contact someone from university here: placeholder@glasgow.ac.uk"
   utter_redirect:

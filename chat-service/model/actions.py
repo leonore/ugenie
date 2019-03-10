@@ -15,6 +15,9 @@ class CheckCourse(Action):
         dispatcher.utter_button_message(response, buttons)
         return
 
+## TODO: add ContextCheck for wrong courses returned
+# to change the context to the right thing
+
 # Apologises if the chat-bot returns the incorrect courses
 # For now it just says could you please rephrase but possible in the future it could give alternative suggestions
 # TODO: should this be made into a template?

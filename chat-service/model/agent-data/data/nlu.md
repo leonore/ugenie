@@ -30,6 +30,7 @@
 - yes
 - yes
 - Yes
+- confirmation
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -45,28 +46,6 @@
 - n
 - No
 
-## intent:help
-- help
-- who are you
-- how can you help me
-- i need help
-- what can you help me with?
-- are you able to help me?
-- what can you do
-- what can you give me information about
-- give me information
-- give me help
-
-## intent:thank_you
-- thanks
-- thank you
-- thanks!
-- thank you very much
-- sweet, thanks
-- amazing thank you
-- thanks for helping
-- cheers
-
 ## intent:description_check
 - tell me about [biology](course)
 - what's the description for [biology](course)?
@@ -74,12 +53,7 @@
 - what happens in [arabic stage 1](course)
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
-
-## intent:link_check
-- do you have a link for [Introduction to Ancient Egypt 1B](course)?
-- link for [The life and legacy of Lyndon B Johnson](course)?
-- do you have more information on [The Russian Revolution](course)?
-- is there a web page for [Counselling Skills Course](course)?
+- what is [geology in the field](course) about
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -112,6 +86,7 @@
 - alright bye
 - so long
 - l8r alligator
+- goodbye!
 
 ## intent:greet
 - hi
@@ -128,10 +103,29 @@
 - hey
 - hi
 - hello
+- hi
+
+## intent:help
+- help
+- who are you
+- how can you help me
+- i need help
+- what can you help me with?
+- are you able to help me?
+- what can you do
+- what can you give me information about
+- give me information
+- give me help
 
 ## intent:inform_student
 - i'm an [eu](student) student
 - i'm from the [eu](student)
+
+## intent:link_check
+- do you have a link for [Introduction to Ancient Egypt 1B](course)?
+- link for [The life and legacy of Lyndon B Johnson](course)?
+- do you have more information on [The Russian Revolution](course)?
+- is there a web page for [Counselling Skills Course](course)?
 
 ## intent:qualification_check
 - what qualification do i get from [astrophysics](course)
@@ -149,6 +143,17 @@
 ## intent:term_check
 - what term does [housing studies](course) start
 - does [brain sciences](course) begin this year
+
+## intent:thank_you
+- thanks
+- thank you
+- thanks!
+- thank you very much
+- sweet, thanks
+- amazing thank you
+- thanks for helping
+- cheers
+- thank you
 
 ## intent:time_check
 - when does [fancy florence](course) start
