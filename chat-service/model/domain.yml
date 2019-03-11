@@ -21,7 +21,6 @@ actions:
 - action_get_tutor
 - action_course_validate
 - utter_description_check
-- utter_ask_student
 - action_check_course
 - action_course_denied
 - utter_offer_course_link
@@ -37,8 +36,7 @@ actions:
 
 entities:
 - course
-- student
-- acroynm
+- acronym
 - tutor
 - course_type
 
@@ -48,8 +46,6 @@ intents:
 - greet
 - fee_check
 - description_check
-# should this be deprecated?
-- inform_student
 - full_part_time_check
 - location_check
 - time_check
@@ -70,7 +66,7 @@ intents:
 - ask_set_ad_course_type
 # for any possible future improvements:
 # example of multi-intent
-# - acronym_check+course_check
+# - acronym_check+description_check
 
 slots:
 ## deprecate one of those?
@@ -87,13 +83,6 @@ slots:
       - terminology
   course:
     type: text
-  student:
-    type: categorical
-    values:
-    - scottish
-    - eu
-    - international
-    - other-uk
   acronym:
     type: text
   tutor:
@@ -138,8 +127,6 @@ templates:
   - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
 
 ## templates for more intricate stories
-  utter_ask_student:
-  - text: And are you a Scottish, EU, International, or Other-UK student?
   utter_confirm_requirement_type:
   - text: I can only provide immediate information on IELTS requirements for courses. Is this what you're looking for?
     buttons:
