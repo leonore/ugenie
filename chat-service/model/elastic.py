@@ -331,11 +331,11 @@ def get_sc_type_courses(query):
     course_set_unformatted = course_set
     # If len > 1 we return a formatted list
     if len(course_set) > 1:
-        course_set = return_list(course_set)
-        return course_set, res['hits']['total'], course_set_unformatted
+        # course_set = return_list(course_set)
+        return course_set, res['hits']['total']
     # If len = 1 we return the single course
     elif len(course_set) == 1:
-        return str(course_set[0]).title(), res['hits']['total'], course_set_unformatted
+        return str(course_set[0]).title(), res['hits']['total']
     # If len < 1 if means we matched no courses so we return false
     else:
         return False, False, False
@@ -435,8 +435,8 @@ def filterForWeekday(weekday, course_list):
         return False
 
 # print(get_sc_type_courses("music")[2])
-print(filterForMonths("april", get_sc_type_courses("art")[2]))
-print(filterForWeekday("thursday", get_sc_type_courses("spanish")[2]))
+print(filterForMonths("april", get_sc_type_courses("art")[0]))
+print(filterForWeekday("thursday", get_sc_type_courses("spanish")[0]))
 # print(weekdayToNum("Tue"))
 # print(weekdayToNum("wednesday"))
 # print(weekdayToNum("Friday"))

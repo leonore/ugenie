@@ -217,7 +217,12 @@ class GetClassTypes(Action):
         if tracker.get_slot("course_type") == "short":
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:
-                response = "These are some of the short classes which I have found : " + elastic_output
+                if tracker.get_slot("month"):
+                    elastic_output = elastic.filterForMonths(elastic_output)
+                if tracker.get_slot("weekday"):
+                    elastic_output = elastic.filterForWeekday(elastic_output)
+                if elastic_output:
+                    response = "These are some of the short classes which I have found : " + elastic.return_list(elastic_output)
             else:
                 response = "Sorry, I could not find any short courses in that subject area"
             dispatcher.utter_message(response)
@@ -226,7 +231,7 @@ class GetClassTypes(Action):
         elif tracker.get_slot("course_type") == "admissions":
             elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
             if elastic_output:
-                response = "These are some of the post-graduate classes which I have found : " + elastic_output
+                response = "These are some of the post-graduate classes which I have found : " + elastic.return_list(elastic_output)
             else:
                 response = "Sorry, I could not find any post-graduate courses in that subject area"
             dispatcher.utter_message(response)
