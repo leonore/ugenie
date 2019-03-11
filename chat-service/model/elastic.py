@@ -1,6 +1,8 @@
 from elasticsearch import Elasticsearch
 from network_config import elasticIP
 
+import datetime
+
 es = Elasticsearch([elasticIP])
 
 ### good functions as a starting point ###
@@ -373,3 +375,13 @@ def get_ad_type_courses(query):
     # If len < 1 if means we matched no courses so we return false
     else:
         return False, False
+
+def filterForMonths(month, course_list):
+    filtered_course_list = []
+    print(datetime.date)
+    # for course in course_list
+
+
+    return filtered_course_list
+
+print(filterForMonths(2, get_sc_type_courses("art")))
