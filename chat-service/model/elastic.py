@@ -388,25 +388,18 @@ def fullify_sc_list(course_list):
     for course in course_list:
         # print("Course = ", course)
         res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
-
         for instance in res['hits']['hits']:
             # print("Instance = ", instance['_source']["Title"])
             full_list.append(instance["_source"])
-
     return full_list
-
 
 def filterForMonths(month, course_list):
     filtered_course_list = []
     month_dec = monthToNum(month)
     full_course_list = fullify_sc_list(course_list)
-    # for course in course_list
     for course in full_course_list:
         starting_date = course["Start date"].split("/")
-        # starting_date = datetime.strptime(course["Start date"], '%d %b %Y')
-        # print(course["Title"], starting_date)
         starting_month = starting_date[1]
-        # print(starting_month)
         if int(starting_month) == month_dec:
             print(course["Title"], starting_date)
             filtered_course_list.append(course["Title"])
@@ -417,8 +410,22 @@ def filterForMonths(month, course_list):
     else:
         return False
 
+def filterForWeekday(weekday, course_list):
+    filtered_courses = []
+
+    full_course_list = fullify_sc_list(course_list)
+    for course in full_course_list:
+        sd = course["Start date"].split("/")
+        starting_date = datetime.datetime(int(sd[2]), int(sd[1]), int(sd[0]))
+        if starting_date.weekday() == weekday:
+            print(starting_date)
+            filtered_courses.append(course['Title'])
+
+    return filtered_courses
+
 # print(get_sc_type_courses("music")[2])
 print(filterForMonths("april", get_sc_type_courses("art")[2]))
+print(filterForWeekday("thursday", get_sc_type_courses("french")[2]))
 # print(monthToNum("March"))
 # print(monthToNum("july"))
 # print(monthToNum("nov"))
