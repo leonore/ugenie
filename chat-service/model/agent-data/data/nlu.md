@@ -63,7 +63,7 @@
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
 - what is [geology in the field](course) about
-- I'm looking for information on [medical phyics](course)
+- I'm looking for a description of [medical physics](course)
 
 ## intent:fee_check
 - how much is [biology](course)?
