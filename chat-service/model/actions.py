@@ -245,7 +245,7 @@ class GetClassTypes(Action):
         else:
             response = "Sorry, I did not understand"
             dispatcher.utter_message(response)
-        return
+        return[SlotSet("month", None), SlotSet("weekday", None)]
 
 # Sets the slot for coure_type to short
 class SetSCCourseType(Action):

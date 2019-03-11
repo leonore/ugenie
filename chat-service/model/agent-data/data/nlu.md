@@ -10,9 +10,9 @@
 - what [education](course) courses do you have
 - what [engineering](course) courses are there
 - what [physics](course) courses can i do
-- what courses on [russian](course) are there
+- what courses on [russian](course) are there in [april](month)
 - what [sport](course) courses are there
-- what [urban](course) courses do you have
+- what [urban](course) courses do you have on a [thursday](weekday)
 - what [media](course) courses are there
 - what [law](course) courses are there
 - what [art](course) courses are there
