@@ -98,6 +98,21 @@ slots:
     type: text
   tutor:
     type: text
+  month:
+    type: categorical
+  values:
+    - january
+    - february
+    - march
+    - april
+    - may
+    - june
+    - july
+    - august
+    - september
+    - october
+    - november
+    - december
 
 templates:
 ## ESSENTIAL
