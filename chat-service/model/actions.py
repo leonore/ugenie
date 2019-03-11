@@ -67,40 +67,41 @@ class GetCourseLocation(Action):
 
 # Sends the answer to common acronym questions
 # e.g. "what does FT stand for"
-class GetAcronym(Action):
+class GetAcronymDescription(Action):
     def name(self):
         return "action_get_acronym"
 
     def run(self, dispatcher, tracker, domain):
-        response = elastic.get_description(tracker.get_slot("acronym"))
-        # response format: (acronym, answer)
-        dispatcher.utter_message(response[1])
+        acronym = tracker.get_slot("acronym")
+        if acronym:
+            acronym_desc = elastic.get_acronym_description(acronym)
+            if acronym_desc:
+                response = acronym_desc
+            else:
+                response = "Sorry, I couldn't find any further explanation for that terminology."
+        else:
+            response = "I'm sorry, if you meant to ask me about terminology, I'm not sure I understood your message. Would you be able to clarify?"
+
+        dispatcher.utter_message(response)
         return
 
-# TODO: duplicate GetAcronym functionality here
-# I deprecated acronym training data from description_check in nlu.md
-# because there was training data for it in acronym_check which made it ambiguous
+
 # Utters the description of a course or tells the description of a term used
 class GetDescription(Action):
     def name(self):
         return "action_get_description"
 
     def run(self, dispatcher, tracker, domain):
-        # If there is a string in the 'acronym' slot, assume the user is asking about terminology
-        # Else assume the user is asking about a course
-        if tracker.get_slot("acronym") != None:
-            elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("acronym"))
-        else:
-            elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
+
+        elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
 
         if elastic_topic:
             response = str(elastic_desc)
         else:
             response = "Sorry, I could not find any details for that"
 
-        # Used to clear the acronym slot in the tracker
         dispatcher.utter_message(response)
-        return [SlotSet("acronym", None)]
+        return
 
 # assumes a course check has been done
 # so the person confirmed it's a PGT course...
@@ -144,7 +145,7 @@ class GetTime(Action):
         dispatcher.utter_message(response)
         return
 
-## IN WORK ##
+
 # Utters the tutor for a course
 class GetTutor(Action):
     def name(self):
@@ -169,6 +170,7 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
+
 # Utters the IELTS requirements to get into a course
 # TO-DO: check for correct course type --> check context
 class GetIELTSRequirements(Action):
@@ -177,6 +179,14 @@ class GetIELTSRequirements(Action):
 
     def run(self, dispatcher, tracker, domain):
         elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), "IELTS Requirements")
+
+        context = tracker.get_slot("course_type")
+        if not context or context == "short":
+            response = "I can only provide this information for PGT courses. Is this what you were looking for?"
+            buttons = [{"title":"Yes", "payload":"/confirmation"},
+                         {"title":"No", "payload":"/denial"}]
+            dispatcher.utter_button_message(response, buttons)
+
         if elastic_output == "course_not_found":
             response = "Sorry, I could not find a course with that name."
         elif elastic_output:

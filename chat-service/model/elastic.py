@@ -5,6 +5,7 @@ es = Elasticsearch([elasticIP])
 
 ### good functions as a starting point ###
 # Get specific field for a given course
+# used in get_description
 def get_sc_field(course, field):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]
@@ -184,7 +185,7 @@ def get_ad_description(query):
 
 
 # Returns the meaning of the acronym given
-def get_acronym_desc(query):
+def get_acronym_description(query):
     # acronyms are mentioned in both the question and answer so checking over multiple fields
     res = es.search(index="common_questions",
                     body={"query": {
@@ -194,60 +195,35 @@ def get_acronym_desc(query):
                         }})
 
     if res['hits']['hits']:
-        # acro = acronym given e.g. FT
-        # response = meaning of acronym
-        # score = how relevant the acronym was to the one searched
         first_hit = res['hits']['hits'][0]
-        response = first_hit['_source']['answer']
-        acro = first_hit['_source']['question']
-        score = first_hit['_score']
-        return acro, response, score
+        acronym_desc = first_hit['_source']['answer']
     else:
-        return None, None, None
+        acronym_desc = None
+    return acronym_desc
 
 ## TODO: move string formatting over to actions.py
-# Returns the course description or the terminology explanation depending on which was aksed
+# Returns the course description, checking which of short or PGT courses has the best score
 def get_description(query):
     # ct = course title
     # cat = course category
     # cscore = relevancy score for course from elastic search
-    # acro = acronym
-    # acro_desc = acronym's expansion
-    # acro_score = relevancy score of acronym from elastic search
     ct, cat, cscore = get_course_title(query)
-    acro, acro_desc, acro_score = get_acronym_desc(query)
 
-    if cscore != None and acro_score != None:
-        if cscore >= acro_score: # if course was more relevant
-            if cat == "SC": # if course was a short coures
-                course_desc, score = get_sc_field(query, 'Course description')
-                desc = str(ct).title() + " is: " + str(course_desc)
-                topic = ct
-            elif cat == "AD": # if course was a admissions course
-                desc, score = get_ad_description(query)
-                topic = ct
-        else: # if acronym was more relevant
-            desc = acro_desc
-            topic = acro
-    elif cscore != None: # if course was the only result
+    if cscore != None: # if course was the only result
         if cat == "SC": # if course was a short course
             course_desc, score = get_sc_field(query, 'Course description')
             desc = str(ct).title() + " is: " + str(course_desc)
             topic = ct
         elif cat == "AD": # if course was a admissions course
+            # getting a description for an admissions course is a more intricate process
+            # get_ad_description could also be used to parse the Further Info field of the data in the future
             desc, score = get_ad_description(query)
             topic = ct
-        else:
-            response = "Sorry, I could not find any details for that"
-            return False, False
-
-    elif acro_score != None: # if acornym was more relevant
-        desc = acro_desc
-        topic = acro
+        else: # unknown error?
+            topic, desc = False, False
 
     else: # if both course and acronym were irrelevant
-        response = "Sorry, I could not find any details for that"
-        return False, False
+        topic, desc = False, False
 
     # topic = title of course or acronyms
     # desc = course description or acronym expansion
