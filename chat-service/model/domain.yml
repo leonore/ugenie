@@ -31,7 +31,7 @@ actions:
 - action_set_sc_course_type
 - action_set_ad_course_type
 - action_pt_ft_check
-- action_get_sc_location
+- action_get_location
 # vvv for development only vvv
 - utter_lambda
 

@@ -71,18 +71,18 @@
 * ask_set_sc_course_type
  - action_set_sc_course_type
 * location_check
- - action_get_sc_location
+ - action_get_location
 
 ## location_check no context right context
 * location_check
-- action_get_sc_location
+- action_get_location
 * confirmation
 - action_set_sc_course_type
-- action_get_sc_location
+- action_get_location
 
 ## location_check no context wrong context
 * location_check
-- action_get_sc_location
+- action_get_location
 * denial
 - utter_redirect
 
@@ -384,4 +384,4 @@
     - slot{"course_type": "short"}
 * location_check{"course": "french stage 1"}
     - slot{"course": "french stage 1"}
-    - action_get_sc_location
+    - action_get_location

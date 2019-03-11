@@ -47,10 +47,10 @@ class GetShortCourseLink(Action):
 
 # check for context
 # return standard location answer
-class GetShortCourseLocation(Action):
+class GetCourseLocation(Action):
     def name(self):
-        return "action_get_sc_location"
- 
+        return "action_get_location"
+
     def run(self, dispatcher, tracker, domain):
         context = tracker.get_slot("course_type")
         if not context or context == "admissions":
