@@ -69,18 +69,19 @@ intents:
 # - acronym_check+description_check
 
 slots:
-## deprecate one of those?
   course_type:
     type: categorical
     values:
       - admissions
       - short
-  context:
-    type: categorical
-    values:
-      - admissions
-      - short
-      - terminology
+  # possibly going to be deprecated
+  # if no general context check function is made
+  # context:
+  #   type: categorical
+  #   values:
+  #     - admissions
+  #     - short
+  #     - terminology
   course:
     type: text
   acronym:
