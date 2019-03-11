@@ -30,7 +30,7 @@ def sendMessage(sessionId, message):
                 print('Sending message: ',message['text'])
                 json = {'user_name' : 'GUVA', 'message' : message['text']}
                 chat_logger.logAgent(sessionId, message['text'])
-        
+
         socketio.emit('bot_message', json, room=sessionId)
 
 @socketio.on('user_joined')
@@ -42,7 +42,9 @@ def handle_connection(json):
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?"})
+        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?",
+                                'buttons': [{'payload': '/help', 'title': 'What can you do?'},
+                                            {'payload': '/expert', 'title': 'I know what to ask you'}]})
 
 @socketio.on('new_message')
 def handle_message(json):
