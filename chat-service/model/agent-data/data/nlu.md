@@ -126,7 +126,7 @@
 ## intent:link_check
 - do you have a link for [Introduction to Ancient Egypt 1B](course)?
 - link for [The life and legacy of Lyndon B Johnson](course)?
-- do you have more information on [The Russian Revolution](course)?
+- do you have a specification document on [The Russian Revolution](course)?
 - is there a web page for [Counselling Skills Course](course)?
 
 ## intent:qualification_check
