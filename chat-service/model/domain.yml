@@ -41,6 +41,8 @@ entities:
 - acroynm
 - tutor
 - course_type
+- month
+- weekday
 
 intents:
 - requirements_check
@@ -90,29 +92,39 @@ slots:
   student:
     type: categorical
     values:
-    - scottish
-    - eu
-    - international
-    - other-uk
+      - scottish
+      - eu
+      - international
+      - other-uk
   acronym:
     type: text
   tutor:
     type: text
   month:
     type: categorical
-  values:
-    - january
-    - february
-    - march
-    - april
-    - may
-    - june
-    - july
-    - august
-    - september
-    - october
-    - november
-    - december
+    values:
+      - january
+      - february
+      - march
+      - april
+      - may
+      - june
+      - july
+      - august
+      - september
+      - october
+      - november
+      - december
+  weekday:
+    type: categorical
+    values:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
 
 templates:
 ## ESSENTIAL
