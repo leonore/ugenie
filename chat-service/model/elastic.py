@@ -186,7 +186,7 @@ def get_ad_description(query):
 # Returns the meaning of the acronym given
 def get_acronym_desc(query):
     # acronyms are mentioned in both the question and answer so checking over multiple fields
-    res = es.search(index="general_questions",
+    res = es.search(index="common_questions",
                     body={"query": {
                             "multi_match" : {
                               "query":    query,
