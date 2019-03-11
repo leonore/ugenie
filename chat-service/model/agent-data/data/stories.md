@@ -67,6 +67,18 @@
 * denial
 - action_course_denied
 
+## ft_pt_check failed
+* full_part_time_check
+ - action_check_course
+* denial
+ - action_course_denied
+
+## ft_pt_check success
+* full_part_time_check
+ - action_check_course
+* confirmation
+ - action_pt_ft_check
+
 ## fee_check_confirm
 * fee_check
  - action_check_course

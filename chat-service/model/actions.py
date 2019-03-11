@@ -85,6 +85,24 @@ class GetDescription(Action):
         dispatcher.utter_message(response)
         return [SlotSet("acronym", None)]
 
+# assumes a course check has been done
+# so the person confirmed it's a PGT course...
+class PTorFTCheck(Action):
+    def name(self):
+        return "action_pt_ft_check"
+
+    def run(self, dispatcher, tracker, domain):
+        elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+        if elastic_cat == "AD":
+            pt_ft_answer = elastic.check_pt_ft_course(elastic_title)
+        else:
+            pt_ft_answer = "Sorry, I can only check for part-time/full-time for PGT courses."
+
+        dispatcher.utter_message(pt_ft_answer)
+        # removing this as it clashes with the "else" answer
+        #return [SlotSet("course_type", "admissions")]
+        return
+
 # Utters time related information to do with a course
 # e.g. start time, year
 class GetTime(Action):
@@ -135,7 +153,7 @@ class GetTutor(Action):
         return
 
 # Utters the IELTS requirements to get into a course
-# TO-DO: check for correct course type
+# TO-DO: check for correct course type --> check context
 class GetIELTSRequirements(Action):
     def name(self):
         return "action_get_ielts_requirements"
