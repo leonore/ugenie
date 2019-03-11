@@ -383,6 +383,12 @@ def monthToNum(month):
     number = list(calendar.month_abbr).index(month)
     return number
 
+def weekdayToNum(day):
+    day = day.title()
+    day = day[:3]
+    number = list(calendar.day_abbr).index(day)
+    return number
+
 def fullify_sc_list(course_list):
     full_list = []
     for course in course_list:
@@ -401,7 +407,7 @@ def filterForMonths(month, course_list):
         starting_date = course["Start date"].split("/")
         starting_month = starting_date[1]
         if int(starting_month) == month_dec:
-            print(course["Title"], starting_date)
+            # print(course["Title"], starting_date)
             filtered_course_list.append(course["Title"])
 
     filtered_course_set = list(set(filtered_course_list))
@@ -411,21 +417,30 @@ def filterForMonths(month, course_list):
         return False
 
 def filterForWeekday(weekday, course_list):
-    filtered_courses = []
-
+    filtered_course_list = []
+    weekday_dec = weekdayToNum(weekday)
     full_course_list = fullify_sc_list(course_list)
     for course in full_course_list:
         sd = course["Start date"].split("/")
         starting_date = datetime.datetime(int(sd[2]), int(sd[1]), int(sd[0]))
-        if starting_date.weekday() == weekday:
-            print(starting_date)
-            filtered_courses.append(course['Title'])
+        # print(starting_date.weekday())
+        if starting_date.weekday() == weekday_dec:
+            # print(starting_date)
+            filtered_course_list.append(course['Title'])
 
-    return filtered_courses
+    filtered_course_set = list(set(filtered_course_list))
+    if filtered_course_set:
+        return return_list(filtered_course_set)
+    else:
+        return False
 
 # print(get_sc_type_courses("music")[2])
 print(filterForMonths("april", get_sc_type_courses("art")[2]))
-print(filterForWeekday("thursday", get_sc_type_courses("french")[2]))
+print(filterForWeekday("thursday", get_sc_type_courses("spanish")[2]))
+# print(weekdayToNum("Tue"))
+# print(weekdayToNum("wednesday"))
+# print(weekdayToNum("Friday"))
+
 # print(monthToNum("March"))
 # print(monthToNum("july"))
 # print(monthToNum("nov"))
