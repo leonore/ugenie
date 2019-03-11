@@ -386,27 +386,11 @@ def monthToNum(month):
 def fullify_sc_list(course_list):
     full_list = []
     for course in course_list:
-        print()
-        print("Course = ", course)
+        # print("Course = ", course)
         res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
-        # print(res['hits']['hits'])
-        # print()
-    #     res = es.search(index="short_courses", body={    "query" : {
-    #     "constant_score" : {
-    #         "filter" : {
-    #             "term" : {
-    #                 "Title" : course
-    #             }
-    #         }
-    #     }
-    # }})
 
-        # search title
-        # append to list
-        # print(res)
-        # print(res['hits']['hits'])
         for instance in res['hits']['hits']:
-            print("Instance = ", instance['_source']["Title"])
+            # print("Instance = ", instance['_source']["Title"])
             full_list.append(instance["_source"])
 
     return full_list
@@ -427,8 +411,11 @@ def filterForMonths(month, course_list):
             print(course["Title"], starting_date)
             filtered_course_list.append(course["Title"])
 
-    filtered_course_set = set(filtered_course_list)
-    return filtered_course_set
+    filtered_course_set = list(set(filtered_course_list))
+    if filtered_course_set:
+        return return_list(filtered_course_set)
+    else:
+        return False
 
 # print(get_sc_type_courses("music")[2])
 print(filterForMonths("april", get_sc_type_courses("art")[2]))
