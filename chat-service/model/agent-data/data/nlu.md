@@ -1,3 +1,71 @@
+## intent:greet
+- hi
+- hey
+- hello
+- good morning
+- good afternoon
+- hi there
+- howdy
+- hi
+
+## intent:goodbye
+- bye
+- goodbye
+- see you later
+- bye bye
+- alright bye
+- so long
+- l8r alligator
+- goodbye
+
+## intent:confirmation
+- yes
+- yeah
+- y
+- okay
+- right
+- yep
+- Yes
+- confirmation
+
+## intent:denial
+- no
+- n
+- No
+- nope
+- nah
+
+## intent:help
+- help
+- who are you
+- how can you help me
+- i need help
+- what can you help me with?
+- are you able to help me?
+- what can you do
+- what can you give me information about
+- give me information
+- give me help
+
+## intent:thank_you
+- thanks
+- thank you
+- thanks
+- thank you very much
+- sweet thanks
+- amazing thank you
+- thanks for helping
+- cheers
+- thank you
+
+## intent:wrong_answer
+- wrong
+- that's not what I was looking for
+- thats not what I wanted
+- this isn't right
+- not what I wanted
+- you suck
+
 ## intent:acronym_check
 - I don't understand what [ATAS](acronym) means
 - what does [MaRio decision](acronym) mean
@@ -17,35 +85,12 @@
 - what [law](course) courses are there
 - what [art](course) courses are there
 - what [spanish](course) courses are there
-
-## intent:confirmation
-- yes
-- yeah
-- y
-- yes
-- yes
-- yes
-- yes
-- yes
-- yes
-- yes
-- Yes
-- confirmation
-
-## intent:course_check
-- what courses are there in [art and art history](subject)
-- tell me some [science](subject) courses
+- what courses are there in [art](course)
+- tell me some [science](course) courses
 
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
 - how many credits do i get from doing [opera afternoons 1](course)
-
-## intent:denial
-- no
-- n
-- No
-- nope
-- nah
 
 ## intent:description_check
 - tell me about [biology](course)
@@ -82,42 +127,6 @@
 - does [mechatronics](course) run part time
 - does [creative writing](course) run full time
 
-## intent:goodbye
-- bye
-- goodbye
-- see you later
-- bye bye
-- alright bye
-- so long
-- l8r alligator
-- goodbye
-
-## intent:greet
-- hi
-- hey
-- hello
-- good morning
-- good afternoon
-- hi there
-- howdy
-- hi
-
-## intent:help
-- help
-- who are you
-- how can you help me
-- i need help
-- what can you help me with?
-- are you able to help me?
-- what can you do
-- what can you give me information about
-- give me information
-- give me help
-
-## intent:inform_student
-- i'm an [eu](student) student
-- i'm from the [eu](student)
-
 ## intent:link_check
 - do you have a link for [Introduction to Ancient Egypt 1B](course)?
 - link for [The life and legacy of Lyndon B Johnson](course)?
@@ -150,17 +159,6 @@
 ## intent:term_check
 - what term does [housing studies](course) start
 - does [brain sciences](course) begin this year
-
-## intent:thank_you
-- thanks
-- thank you
-- thanks!
-- thank you very much
-- sweet, thanks
-- amazing thank you
-- thanks for helping
-- cheers
-- thank you
 
 ## intent:time_check
 - when does [fancy florence](course) start
@@ -196,14 +194,6 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
-
-## intent:wrong_answer
-- wrong
-- that's not what I was looking for
-- thats not what I wanted
-- this isn't right
-- not what I wanted
-- you suck
 
 ## synonym:film studies 1
 - flim studies 1
