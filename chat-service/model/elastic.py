@@ -328,17 +328,17 @@ def get_sc_type_courses(query):
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get("Title"))
         course_set = list(set(course_list))
-
+    course_set_unformatted = course_set
     # If len > 1 we return a formatted list
     if len(course_set) > 1:
-        course_list = return_list(course_set)
-        return course_list, res['hits']['total']
+        course_set = return_list(course_set)
+        return course_set, res['hits']['total'], course_set_unformatted
     # If len = 1 we return the single course
     elif len(course_set) == 1:
-        return str(course_set[0]).title(), res['hits']['total']
+        return str(course_set[0]).title(), res['hits']['total'], course_set_unformatted
     # If len < 1 if means we matched no courses so we return false
     else:
-        return False, False
+        return False, False, False
 
 # Returns a list of relevant courses from the admissions courses file
 def get_ad_type_courses(query):
@@ -383,15 +383,42 @@ def monthToNum(month):
     number = list(calendar.month_abbr).index(month)
     return number
 
+def fullify_sc_list(course_list):
+    full_list = []
+    for course in course_list:
+        print("Course = ", course)
+        res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
+
+        # search title
+        # append to list
+        print(res['hits']['hits'])
+        for instance in res['hits']['hits']:
+            print("Instance = ", instance)
+            full_list.append(instance["_source"])
+
+    return full_list
+
+
 def filterForMonths(month, course_list):
     filtered_course_list = []
-    print(datetime.date)
+    month_dec = monthToNum(month)
+    full_course_list = fullify_sc_list(course_list)
     # for course in course_list
+    for course in full_course_list:
+        starting_date = course["Start date"].split("/")
+        # starting_date = datetime.strptime(course["Start date"], '%d %b %Y')
+        # print(course["Title"], starting_date)
+        starting_month = starting_date[1]
+        # print(starting_month)
+        if int(starting_month) == month_dec:
+            print(course["Title"], starting_date)
+            filtered_course_list.append(course["Title"])
 
+    filtered_course_set = set(filtered_course_list)
+    return filtered_course_set
 
-    return filtered_course_list
-
-print(filterForMonths(2, get_sc_type_courses("art")))
-print(monthToNum("March"))
-print(monthToNum("july"))
-print(monthToNum("nov"))
+print(get_sc_type_courses("music")[2])
+print(filterForMonths("april", get_sc_type_courses("art")[2]))
+# print(monthToNum("March"))
+# print(monthToNum("july"))
+# print(monthToNum("nov"))
