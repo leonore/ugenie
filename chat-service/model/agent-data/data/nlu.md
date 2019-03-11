@@ -7,6 +7,8 @@
 - hi there
 - howdy
 - hi
+- hello there
+- yoooo
 
 ## intent:goodbye
 - bye
@@ -40,10 +42,9 @@
 - who are you
 - how can you help me
 - i need help
-- what can you help me with?
-- are you able to help me?
+- what can you help me with
+- are you able to help me
 - what can you do
-- what can you give me information about
 - give me information
 - give me help
 
@@ -73,6 +74,7 @@
 - what are [IELTS requirements](acronym)
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
+- what is [ATAS](acronym)
 
 ## intent:ask_type_classes
 - what [education](course) courses do you have
@@ -92,15 +94,17 @@
 - how many credits is [intermediate hieroglyphics](course)
 - how many credits do i get from doing [opera afternoons 1](course)
 
+
 ## intent:description_check
 - tell me about [biology](course)
-- what's the description for [biology](course)?
+- what's the description for [biology](course)
 - what is [a history of the fbi](course)
 - what happens in [arabic stage 1](course)
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
 - what is [geology in the field](course) about
 - I'm looking for a description of [medical physics](course)
+- description of [songwriting workshop](course)
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -128,10 +132,10 @@
 - does [creative writing](course) run full time
 
 ## intent:link_check
-- do you have a link for [Introduction to Ancient Egypt 1B](course)?
-- link for [The life and legacy of Lyndon B Johnson](course)?
-- do you have a specification document on [The Russian Revolution](course)?
-- is there a web page for [Counselling Skills Course](course)?
+- do you have a link for [Introduction to Ancient Egypt 1B](course)
+- link for [The life and legacy of Lyndon B Johnson](course)
+- do you have a specification document on [The Russian Revolution](course)
+- is there a web page for [Counselling Skills Course](course)
 
 ## intent:location_check
 - where is [Coral Reefs: Ancient and Modern](course) taking place

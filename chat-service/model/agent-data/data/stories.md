@@ -11,9 +11,17 @@
 * thank_you
  - utter_help
 
+## user says something unexpected
+* out_of_scope
+ - utter_out_of_scope
+
 ## user asks for functionality
 * help
  - utter_functionality
+
+## user has been here before
+* expert
+ - utter_expert
 
 ## provide help, user says yes
 * thank_you
