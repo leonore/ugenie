@@ -67,6 +67,25 @@
 * denial
 - action_course_denied
 
+## location_check with context
+* ask_set_sc_course_type
+ - action_set_sc_course_type
+* location_check
+ - action_get_location
+
+## location_check no context right context
+* location_check
+- action_get_location
+* confirmation
+- action_set_sc_course_type
+- action_get_location
+
+## location_check no context wrong context
+* location_check
+- action_get_location
+* denial
+- utter_redirect
+
 ## ft_pt_check failed
 * full_part_time_check
  - action_check_course
@@ -217,13 +236,6 @@
 * confirmation
     - action_get_fee
 
-## Get times for french stage 1
-* time_check{"course": "french stage 1"}
-    - slot{"course": "french stage 1"}
-    - action_check_course
-* confirmation
-    - action_get_time
-
 ## Get tutor for german stage 2
 * tutor_check{"course": "german stage 2"}
     - slot{"course": "german stage 2"}
@@ -362,3 +374,14 @@
 * ask_admissions_courses_functionality
     - action_utter_admissions_courses_functionality
     - slot{"course_type": "admissions"}
+
+## Getting location check to work
+* greet
+    - utter_greet
+    - utter_functionality
+* ask_short_courses_functionality
+    - action_utter_short_courses_functionality
+    - slot{"course_type": "short"}
+* location_check{"course": "french stage 1"}
+    - slot{"course": "french stage 1"}
+    - action_get_location

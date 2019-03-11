@@ -15,9 +15,6 @@ class CheckCourse(Action):
         dispatcher.utter_button_message(response, buttons)
         return
 
-## TODO: add ContextCheck for wrong courses returned
-# to change the context to the right thing
-
 # Apologises if the chat-bot returns the incorrect courses
 # For now it just says could you please rephrase but possible in the future it could give alternative suggestions
 # TODO: should this be made into a template?
@@ -46,6 +43,26 @@ class GetShortCourseLink(Action):
             response = "Sorry, this short course does not seem to have a web page. This might be because it only runs for one day."
 
         dispatcher.utter_message(response)
+        return
+
+# check for context
+# return standard location answer
+class GetCourseLocation(Action):
+    def name(self):
+        return "action_get_location"
+
+    def run(self, dispatcher, tracker, domain):
+        context = tracker.get_slot("course_type")
+        if not context or context == "admissions":
+            response = "I can only provide this information for short courses. Is this what you were looking for?"
+            buttons = [{"title":"Yes", "payload":"/confirmation"},
+                         {"title":"No", "payload":"/denial"}]
+            dispatcher.utter_button_message(response, buttons)
+
+        else:
+            response =  "The building will be confirmed by email three days before the start date, and the room number will be listed at reception before the class!"
+            dispatcher.utter_message(response)
+
         return
 
 # Sends the answer to common acronym questions
