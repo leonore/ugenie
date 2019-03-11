@@ -2,6 +2,7 @@ from elasticsearch import Elasticsearch
 from network_config import elasticIP
 
 import datetime
+import calendar
 
 es = Elasticsearch([elasticIP])
 
@@ -376,6 +377,12 @@ def get_ad_type_courses(query):
     else:
         return False, False
 
+def monthToNum(month):
+    month = month.title()
+    month = month[:3]
+    number = list(calendar.month_abbr).index(month)
+    return number
+
 def filterForMonths(month, course_list):
     filtered_course_list = []
     print(datetime.date)
@@ -385,3 +392,6 @@ def filterForMonths(month, course_list):
     return filtered_course_list
 
 print(filterForMonths(2, get_sc_type_courses("art")))
+print(monthToNum("March"))
+print(monthToNum("july"))
+print(monthToNum("nov"))
