@@ -7,6 +7,7 @@ actions:
 - utter_contact
 - utter_help
 - utter_functionality
+- utter_sorry
 - action_utter_short_courses_functionality
 - action_utter_admissions_courses_functionality
 - utter_terminology_functionality
@@ -23,6 +24,8 @@ actions:
 - utter_ask_student
 - action_check_course
 - action_course_denied
+- utter_offer_course_link
+- action_get_sc_course_link
 - action_get_tutor_courses
 - action_get_type_classes
 - action_set_sc_course_type
@@ -47,9 +50,11 @@ intents:
 - time_check
 - tutor_check
 - acronym_check
+- link_check
 - confirmation
 - denial
 - thank_you
+- wrong_answer
 - help
 - tutor_courses_check
 - ask_terminology_functionality
@@ -94,14 +99,21 @@ templates:
   - text: Hello!
   utter_goodbye:
   - "Goodbye!"
-  - "Until next time!"
+  - "Thanks for chatting!"
   - "Bye!"
+  utter_sorry:
+  - text: "Sorry I could not understand what you meant. Feel free to chat to me again later!"
   utter_help:
   - text: "Is there anything else I can help you with?"
+    buttons:
+      - title: "Yes"
+        payload: "/confirmation"
+      - title: "No"
+        payload: "/denial"
   utter_contact:
   - text: "You can contact someone from university here: placeholder@glasgow.ac.uk"
   utter_redirect:
-  - text: "Sorry I couldn't be of help. Can I redirect you to someone who might?"
+  - text: "Can I redirect you to a human who might be more helpful?"
     buttons:
       - title: "Yes"
         payload: "/confirmation"
@@ -129,7 +141,14 @@ templates:
         payload: "/confirmation"
       - title: "No"
         payload: "/denial"
+  utter_offer_course_link:
+  - text: I can try and look for the short course webpage if you would like further information.
+    buttons:
+      - title: "Yes"
+        payload: "/confirmation"
+      - title: "No"
+        payload: "/denial"
 
 ## for development only!
   utter_lambda:
-  - text: "This is placeholder text for development."
+  - text: "This is placeholder text for development. Fun fact: Saint Valentine was also the saint of beekeeping, epilepsy and the plague!"

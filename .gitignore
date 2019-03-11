@@ -25,4 +25,4 @@ story_graph.dot
 *.xlsx
 
 # Chat logs
-chat-service/model/chat-logs/
+chat-service/model/chat-logs/*

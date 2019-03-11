@@ -30,6 +30,7 @@
 - yes
 - yes
 - Yes
+- confirmation
 
 ## intent:course_check
 - what courses are there in [art and art history](subject)
@@ -41,31 +42,18 @@
 
 ## intent:denial
 - no
-- wrong
 - n
 - No
+- nope
+- nah
 
-## intent:help
-- help
-- who are you
-- how can you help me
-- i need help
-- what can you help me with?
-- are you able to help me?
-- what can you do
-- what can you give me information about
-- give me information
-- give me help
-
-## intent:thank_you
-- thanks
-- thank you
-- thanks!
-- thank you very much
-- sweet, thanks
-- amazing thank you
-- thanks for helping
-- cheers
+## intent:wrong_answer
+- wrong
+- that's not what I was looking for
+- thats not what I wanted
+- this isn't right
+- not what I wanted
+- you suck
 
 ## intent:description_check
 - tell me about [biology](course)
@@ -74,6 +62,8 @@
 - what happens in [arabic stage 1](course)
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
+- what is [geology in the field](course) about
+- I'm looking for a description of [medical physics](course)
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -87,7 +77,7 @@
 - how much does[ the kennedy brothers](course) course charge
 - how many pounds is [west end lectures](course)
 - how much is [german stage 2](course)
-- what is [the price of fancy florence](course)
+- what is the price of [fancy florence](course)
 - how much money is [brain sciences](course)
 
 ## intent:full_part_time_check
@@ -106,6 +96,7 @@
 - alright bye
 - so long
 - l8r alligator
+- goodbye
 
 ## intent:greet
 - hi
@@ -115,17 +106,28 @@
 - good afternoon
 - hi there
 - howdy
-- hi
-- hi
-- hi
-- hi
-- hey
-- hi
-- hello
+
+## intent:help
+- help
+- who are you
+- how can you help me
+- i need help
+- what can you help me with?
+- are you able to help me?
+- what can you do
+- what can you give me information about
+- give me information
+- give me help
 
 ## intent:inform_student
 - i'm an [eu](student) student
 - i'm from the [eu](student)
+
+## intent:link_check
+- do you have a link for [Introduction to Ancient Egypt 1B](course)?
+- link for [The life and legacy of Lyndon B Johnson](course)?
+- do you have a specification document on [The Russian Revolution](course)?
+- is there a web page for [Counselling Skills Course](course)?
 
 ## intent:qualification_check
 - what qualification do i get from [astrophysics](course)
@@ -143,6 +145,17 @@
 ## intent:term_check
 - what term does [housing studies](course) start
 - does [brain sciences](course) begin this year
+
+## intent:thank_you
+- thanks
+- thank you
+- thanks!
+- thank you very much
+- sweet, thanks
+- amazing thank you
+- thanks for helping
+- cheers
+- thank you
 
 ## intent:time_check
 - when does [fancy florence](course) start

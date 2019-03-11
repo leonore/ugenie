@@ -3,12 +3,20 @@ from network_config import elasticIP
 
 es = Elasticsearch([elasticIP])
 
-# DEPRECATED?
-# Get answer to common questions about acronyms
-# def get_acronym_answer(query):
-#    res = es.search(index="general_questions", body={"query": {"match": {"question": query}}})
-#    first_hit = res['hits']['hits'][0]
-#    return first_hit['_source']['question'], first_hit['_source']['answer'] # gives answer in text
+### good functions as a starting point ###
+# Get specific field for given short course
+# e.g.  fees, tutor, course description, credits attached, subject area
+def get_sc_field(query, field):
+    res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
+    first_hit = res['hits']['hits'][0]
+    return  first_hit['_source'][field], first_hit['_score']
+
+# Get specific field for given admissions course
+# e.g. title, start date, int fee
+def get_admissions_field(query, field):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    first_hit = res['hits']['hits'][0]
+    return first_hit['_source'][field]
 
 # Returns the full title of a short course according to the database
 def get_sc_title(query):
@@ -61,19 +69,19 @@ def get_course_title(query):
 
     return course, course_cat, course_score
 
-# Get specific field for given short course
-# e.g.  fees, tutor, course description, credits attached, subject area
-def get_sc_field(query, field):
-    res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
-    first_hit = res['hits']['hits'][0]
-    return  first_hit['_source'][field], first_hit['_score']
+# given a course, return a link if available
+# course should have been checked
+def get_sc_course_link(course):
 
-# Get specific field for given admissions course
-# e.g. title, start date, int fee
-def get_admissions_field(query, field):
-    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+    res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]
-    return first_hit['_source'][field]
+    # specifiation is a typo within the given dataset
+    link = first_hit['_source']["Link to Course specifiation"]
+    print(link)
+    if link == "N/A":
+        return False
+    else:
+        return link
 
 # Returns a string informing the start time, end time, start date, end date and title if exist
 def get_sc_times(query):
