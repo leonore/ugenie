@@ -217,15 +217,24 @@ class GetClassTypes(Action):
         if tracker.get_slot("course_type") == "short":
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:
+                print(elastic_output)
                 if tracker.get_slot("month"):
-                    elastic_output = elastic.filterForMonths(elastic_output)
+                    elastic_output = elastic.filterForMonths(tracker.get_slot("month"), elastic_output)
+                    print(elastic_output)
                 if tracker.get_slot("weekday"):
-                    elastic_output = elastic.filterForWeekday(elastic_output)
+                    elastic_output = elastic.filterForWeekday(tracker.get_slot("weekday"), elastic_output)
+                    print(elastic_output)
                 if elastic_output:
-                    response = "These are some of the short classes which I have found : " + elastic.return_list(elastic_output)
+                    print("EO+", elastic_output)
+                    print("EO_LIST+", elastic.return_list(elastic_output))
+                    elastic_output = elastic.return_list(elastic_output)
+                    response = "These are some of the short classes which I have found : " + elastic_output
+                else:
+                    response = "Sorry, I could not find any courses with those specifications"
             else:
                 response = "Sorry, I could not find any short courses in that subject area"
             dispatcher.utter_message(response)
+            return[SlotSet("month", None), SlotSet("weekday", None)]
 
         # If the user is currently asking about post graduate courses, we will only look for relevant post graduate courses
         elif tracker.get_slot("course_type") == "admissions":
@@ -235,6 +244,7 @@ class GetClassTypes(Action):
             else:
                 response = "Sorry, I could not find any post-graduate courses in that subject area"
             dispatcher.utter_message(response)
+            return[SlotSet("month", None), SlotSet("weekday", None)]
 
         # If the user has not specified already which course type they want we ask them to clarify with the use of buttons
         elif not (tracker.get_slot("course_type")):
@@ -245,7 +255,7 @@ class GetClassTypes(Action):
         else:
             response = "Sorry, I did not understand"
             dispatcher.utter_message(response)
-        return[SlotSet("month", None), SlotSet("weekday", None)]
+        return
 
 # Sets the slot for coure_type to short
 class SetSCCourseType(Action):

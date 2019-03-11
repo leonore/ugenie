@@ -296,11 +296,14 @@ def get_tutor_courses(query):
 def return_list(set):
     course_list = ""
     course_len = len(set)
-    for counter in set:
-        if counter != set[course_len-1]:
-            # print(counter['_source']['Title'])
-            course_list += str(counter).title() + ", "
-    course_list += " and " + str(set[course_len-1]).title()
+    if course_len > 1:
+        for counter in set:
+            if counter != set[course_len-1]:
+                # print(counter['_source']['Title'])
+                course_list += str(counter).title() + ", "
+        course_list += " and " + str(set[course_len-1]).title()
+    else:
+        course_list = set[0]
     return course_list
 
 # Returns a list of relevant courses from the short courses file
@@ -328,17 +331,17 @@ def get_sc_type_courses(query):
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get("Title"))
         course_set = list(set(course_list))
-    course_set_unformatted = course_set
+    # course_set_unformatted = course_set
     # If len > 1 we return a formatted list
     if len(course_set) > 1:
         # course_set = return_list(course_set)
         return course_set, res['hits']['total']
     # If len = 1 we return the single course
     elif len(course_set) == 1:
-        return str(course_set[0]).title(), res['hits']['total']
+        return list(str(course_set[0]).title()), res['hits']['total']
     # If len < 1 if means we matched no courses so we return false
     else:
-        return False, False, False
+        return False, False
 
 # Returns a list of relevant courses from the admissions courses file
 def get_ad_type_courses(query):
@@ -368,7 +371,7 @@ def get_ad_type_courses(query):
 
     # If len > 1 we return a formatted list
     if len(course_set) > 1:
-        course_list = return_list(course_set)
+        # course_list = return_list(course_set)
         return course_list, res['hits']['total']
     # If len = 1 we return the single course
     elif len(course_set) == 1:
@@ -400,6 +403,7 @@ def fullify_sc_list(course_list):
     return full_list
 
 def filterForMonths(month, course_list):
+    print("course list = ", course_list)
     filtered_course_list = []
     month_dec = monthToNum(month)
     full_course_list = fullify_sc_list(course_list)
@@ -412,11 +416,13 @@ def filterForMonths(month, course_list):
 
     filtered_course_set = list(set(filtered_course_list))
     if filtered_course_set:
-        return return_list(filtered_course_set)
+        return filtered_course_set
+        # return return_list(filtered_course_set)
     else:
         return False
 
 def filterForWeekday(weekday, course_list):
+    print("course list = ", course_list)
     filtered_course_list = []
     weekday_dec = weekdayToNum(weekday)
     full_course_list = fullify_sc_list(course_list)
@@ -430,17 +436,17 @@ def filterForWeekday(weekday, course_list):
 
     filtered_course_set = list(set(filtered_course_list))
     if filtered_course_set:
-        return return_list(filtered_course_set)
+        return filtered_course_set
+        # return return_list(filtered_course_set)
     else:
         return False
 
 # print(get_sc_type_courses("music")[2])
-# print(filterForMonths("april", get_sc_type_courses("art")[0]))
+print(filterForMonths("april", get_sc_type_courses("art")[0]))
 # print(filterForWeekday("thursday", get_sc_type_courses("spanish")[0]))
 # print(weekdayToNum("Tue"))
 # print(weekdayToNum("wednesday"))
 # print(weekdayToNum("Friday"))
-
 # print(monthToNum("March"))
 # print(monthToNum("july"))
 # print(monthToNum("nov"))
