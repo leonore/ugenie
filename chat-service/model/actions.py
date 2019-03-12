@@ -89,7 +89,7 @@ class GetAcronymDescription(Action):
     def run(self, dispatcher, tracker, domain):
         acronym = tracker.get_slot("acronym")
         if acronym:
-            acronym_desc = elastic.get_acronym_description(acronym)
+            topic, acronym_desc = elastic.get_description(acronym)
             if acronym_desc:
                 response = acronym_desc
             else:
