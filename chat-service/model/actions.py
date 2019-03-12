@@ -218,17 +218,21 @@ class GetClassTypes(Action):
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:
                 print(elastic_output)
+                month_text = ""
+                weekday_text = ""
                 if tracker.get_slot("month"):
                     elastic_output = elastic.filterForMonths(tracker.get_slot("month"), elastic_output)
+                    month_text = " in " + tracker.get_slot("month").title()
                     print(elastic_output)
                 if tracker.get_slot("weekday"):
                     elastic_output = elastic.filterForWeekday(tracker.get_slot("weekday"), elastic_output)
+                    weekday_text = " on " + tracker.get_slot("weekday").title()
                     print(elastic_output)
                 if elastic_output:
                     print("EO+", elastic_output)
                     print("EO_LIST+", elastic.return_list(elastic_output))
                     elastic_output = elastic.return_list(elastic_output)
-                    response = "These are some of the short classes which I have found : " + elastic_output
+                    response = "These are some of the short classes which I have found " + weekday_text + month_text + ": " + elastic_output
                 else:
                     response = "Sorry, I could not find any courses with those specifications"
             else:
