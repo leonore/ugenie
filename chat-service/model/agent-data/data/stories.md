@@ -1,7 +1,7 @@
 ## user greet
 * greet
  - utter_greet
- - utter_functionality
+ - action_utter_functionality
 
 ## user goodbye
 * goodbye
@@ -9,7 +9,7 @@
 
 ## user thank you
 * thank_you
- - utter_help
+ - action_utter_help
 
 ## user says something unexpected
 * out_of_scope
@@ -17,7 +17,7 @@
 
 ## user asks for functionality
 * help
- - utter_functionality
+ - action_utter_functionality
 
 ## user has been here before
 * expert
@@ -25,13 +25,13 @@
 
 ## provide help, user says yes
 * thank_you
-   - utter_help
+   - action_utter_help
 * confirmation
-   - utter_functionality
+   - action_utter_functionality
 
 ## provide help, user says no
 * thank_you
-   - utter_help
+   - action_utter_help
 * denial
    - utter_goodbye
 
@@ -68,15 +68,15 @@
 
 ## you're wrong! but help me again
 * wrong_answer
- - utter_help
+ - action_utter_help
 * confirmation
- - utter_functionality
+ - action_utter_functionality
 
 ## you're wrong! redirect me to a human
 * wrong_answer
- - utter_help
+ - action_utter_help
 * denial
- - utter_redirect
+ - action_utter_redirect
 * denial
  - utter_sorry
 
@@ -109,7 +109,7 @@
 * location_check
 - action_get_location
 * denial
-- utter_redirect
+- action_utter_redirect
 
 ## user FT/PT check, right bot suggestion
 * full_part_time_check
@@ -208,23 +208,23 @@
 
 ## user ielts check, right bot suggestion
 * requirements_check
-   - utter_confirm_requirement_type
+   - action_confirm_requirement_type
 * confirmation
    - action_get_ielts_requirements
 
 ## user ielts check, wrong bot suggestion, no redirect
 * requirements_check
-  - utter_confirm_requirement_type
+  - action_confirm_requirement_type
 * denial
-  - utter_redirect
+  - action_utter_redirect
 * denial
   - utter_sorry
 
 ## user ielts check, wrong bot suggestion, redirect
 * requirements_check
-  - utter_confirm_requirement_type
+  - action_confirm_requirement_type
 * denial
-  - utter_redirect
+  - action_utter_redirect
 * confirmation
   - utter_contact
 
@@ -334,7 +334,7 @@
 ## Generated Course link Story
 * greet
     - utter_greet
-    - utter_functionality
+    - action_utter_functionality
 * ask_short_courses_functionality
     - action_utter_short_courses_functionality
     - slot{"course_type": "short"}
@@ -342,7 +342,7 @@
     - slot{"course": "geology in the field"}
     - action_get_description
     - slot{"acronym": null}
-    - utter_offer_course_link
+    - action_offer_course_link
 * confirmation
     - action_get_sc_course_link
 
@@ -350,7 +350,7 @@
 ## extended functionality story
 * greet
  - utter_greet
- - utter_functionality
+ - action_utter_functionality
 * ask_short_courses_functionality
  - action_utter_short_courses_functionality
 * tutor_check
@@ -358,13 +358,13 @@
 * tutor_courses_check
  - action_get_tutor_courses
 * thank_you
- - utter_help
- - utter_functionality
+ - action_utter_help
+ - action_utter_functionality
 
 ## Getting greet + functionality to work
 * greet
     - utter_greet
-    - utter_functionality
+    - action_utter_functionality
 * ask_admissions_courses_functionality
     - action_utter_admissions_courses_functionality
     - slot{"course_type": "admissions"}
@@ -372,7 +372,7 @@
 ## Getting location check to work
 * greet
     - utter_greet
-    - utter_functionality
+    - action_utter_functionality
 * ask_short_courses_functionality
     - action_utter_short_courses_functionality
     - slot{"course_type": "short"}

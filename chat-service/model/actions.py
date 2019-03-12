@@ -27,13 +27,28 @@ class CourseDenied(Action):
         dispatcher.utter_message(response)
         return
 
-# CheckCourse should have ran & confirmed beforehand
+# after giving a short course description, offer a short course link
+# confirmation would leak to GetShortCourseLink below
+class OfferCourseLink(Action):
+    def name(self):
+        return "action_offer_course_link"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "I can try and look for the short course webpage if you would like further information?"
+        buttons = [{"title":"Yes", "payload":"/confirmation"},
+                   {"title":"No", "payload":"/denial"}]
+
+        dispatcher.utter_button_message(response, buttons)
+        return
+
+
 class GetShortCourseLink(Action):
     def name(self):
         return "action_get_sc_course_link"
 
     def run(self, dispatcher, tracker, domain):
-        # this would be what the user confirmed
+        # CheckCourse should have ran & confirmed beforehand
+        # so this would be what the user confirmed
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
         link = elastic.get_sc_course_link(elastic_title)
@@ -170,22 +185,24 @@ class GetTutor(Action):
         dispatcher.utter_message(response)
         return
 
+class ConfirmRequirementType(Action):
+    def name(self):
+        return "action_confirm_requirement_type"
+
+    def run(self, dispatcher, tracker, domain):
+        # at the moment we only have usable PGT data + IELTS requirements, hence this answer
+        response = "Currently, I can only provide immediate information on English IELTS requirements for PGT courses. Is this what you're looking for?"
+        buttons = [{"title":"Yes", "payload":"/confirmation"},
+                   {"title":"No", "payload":"/denial"}]
 
 # Utters the IELTS requirements to get into a course
-# TO-DO: check for correct course type --> check context
+# The user would have been informed this is IELTS + for admissions
 class GetIELTSRequirements(Action):
     def name(self):
         return "action_get_ielts_requirements"
 
     def run(self, dispatcher, tracker, domain):
         elastic_output = elastic.get_admission_requirements(tracker.get_slot("course"), "IELTS Requirements")
-
-        context = tracker.get_slot("course_type")
-        if not context or context == "short":
-            response = "I can only provide this information for PGT courses. Is this what you were looking for?"
-            buttons = [{"title":"Yes", "payload":"/confirmation"},
-                         {"title":"No", "payload":"/denial"}]
-            dispatcher.utter_button_message(response, buttons)
 
         if elastic_output == "course_not_found":
             response = "Sorry, I could not find a course with that name."
@@ -195,7 +212,8 @@ class GetIELTSRequirements(Action):
             response = "This course does not seem to have any IELTS requirement specified."
 
         dispatcher.utter_message(response)
-        return
+        # the user asked about an admissions course so I assume this is the context they're interested in
+        return [SlotSet("course_type", "admissions")]
 
 # Utters a list of courses the tutor in question teaches
 # e.g. "what classes does Sam Cook teach"
@@ -286,6 +304,40 @@ class GetFees(Action):
             response = str(elastic_output)
 
         dispatcher.utter_message(response)
+        return
+
+class UtterHelp(Action):
+    def name(self):
+        return "action_utter_help"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "Is there anything else I can help you with?"
+        buttons = [{"title": "Yes", "payload":"/confirmation"},
+                   {"title": "No", "payload":"/denial"}]
+        dispatcher.utter_button_message(response, buttons)
+        return
+
+class UtterRedirect(Action):
+    def name(self):
+        return "action_utter_redirect"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "Can I redirect you to a human who might be more helpful?"
+        buttons = [{"title": "Yes", "payload":"/confirmation"},
+                   {"title": "No", "payload":"/denial"}]
+        dispatcher.utter_button_message(response, buttons)
+        return
+
+class UtterFunctionality(Action):
+    def name(self):
+        return "action_utter_functionality"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "Here are some things you can ask me about..."
+        buttons = [{"title": "Short courses", "payload": "/ask_short_courses_functionality"},
+                   {"title": "Admissions", "payload": "/ask_admissions_courses_functionality"},
+                   {"title": "Terminology", "payload": "/ask_terminology_functionality"},]
+        dispatcher.utter_button_message(response, buttons)
         return
 
 ## TODO: possibly change these messages
