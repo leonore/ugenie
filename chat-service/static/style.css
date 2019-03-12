@@ -24,7 +24,7 @@ button {
 /* Button used to open the chat form */
 
 .open-button {
-	background-color: #005398;
+	background-color: #003865;
 	color: white;
 	padding: 16px 20px;
 	border: none;
@@ -58,7 +58,7 @@ button {
 .chat-container {
 	max-width: 280px;
 	padding: 10px;
-	background-color: #005398;
+	background-color: #003865;
 	border-radius: 15px 15px 0 0;
 }
 
@@ -143,34 +143,35 @@ button {
 }
 
 .message.bot-message {
-	background: #00B5D1;
+	background: #e5e5ea;
 	max-width: 95%;
 	float: left;
+	color: black;
 }
 
 .message.user-message {
-	background: #0075B0;
+	background: #003865;
 	max-width: 95%;
 	float: right;
 }
 
 .message.button-area {
-	margin: 0 auto; 
+	margin: 0 auto;
 	padding: 0;
-	width: 100%; 
+	width: 100%;
 	text-align: center;
 }
 
 .message.reply-button {
-	background: #0075B0;
+	background: #003865;
 	border: none;
-	-webkit-transition-duration: 0.4s; 
+	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
 	margin:3px 3px;
 }
 
 .message.reply-button:hover {
-	background: #00B5D1; 
+	background: #0075B0;
 	cursor: pointer;
 }
 

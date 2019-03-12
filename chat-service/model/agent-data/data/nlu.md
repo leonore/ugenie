@@ -58,6 +58,7 @@
 - thanks for helping
 - cheers
 - thank you
+- nice
 
 ## intent:wrong_answer
 - wrong
