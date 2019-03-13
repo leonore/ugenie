@@ -1,3 +1,97 @@
+## intent:greet
+- hi
+- hey
+- hello
+- good morning
+- good afternoon
+- hi there
+- howdy
+- hi
+- hello there
+- yoooo
+
+## intent:goodbye
+- bye
+- goodbye
+- see you later
+- bye bye
+- alright bye
+- so long
+- l8r alligator
+- goodbye
+
+## intent:confirmation
+- yes
+- yeah
+- y
+- okay
+- right
+- yep
+- Yes
+- confirmation
+
+## intent:denial
+- no
+- n
+- No
+- nope
+- nah
+
+## intent:help
+- help
+- who are you
+- how can you help me
+- i need help
+- what can you help me with
+- are you able to help me
+- what can you do
+- give me information
+- give me help
+
+## intent:thank_you
+- thanks
+- thank you
+- thanks
+- thank you very much
+- sweet thanks
+- amazing thank you
+- thanks for helping
+- cheers
+- thank you
+- nice
+
+## intent:wrong_answer
+- wrong
+- that's not what I was looking for
+- thats not what I wanted
+- this isn't right
+- not what I wanted
+- you suck
+
+## intent:sc_common_question
+- [funding](question_topic)
+- is there [funding](question_topic) available
+- is there [funding](question_topic) for short courses
+- can I get [funding](question_topic)
+- is there [funding](question_topic)
+- [refund](question_topic)
+- how do I get [refunded](question_topic)
+- [refund](question_topic) for a course
+- I want to get [refunded](question_topic)
+- [refund](question_topic) my course
+- can I have a [refund](question_topic)
+- how do I [transfer](question_topic)
+- [transferring](question_topic) courses
+- can I [transfer](question_topic)
+- is it possible to [transfer](question_topic)
+- I want to [transfer](question_topic)
+- [transfer](question_topic) me
+- can I [cancel](question_topic)
+- how do I [cancel](question_topic) my course
+- [cancelling](question_topic) my course
+- I want to [cancel](question_topic)
+- can I [cancel](question_topic) my course
+
 ## intent:acronym_check
 - I don't understand what [ATAS](acronym) means
 - what does [MaRio decision](acronym) mean
@@ -5,6 +99,7 @@
 - what are [IELTS requirements](acronym)
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
+- what is [ATAS](acronym)
 
 ## intent:ask_type_classes
 - what [education](course) courses do you have
@@ -17,45 +112,24 @@
 - what [law](course) courses are there
 - what [art](course) courses are there
 - what [spanish](course) courses are there
-
-## intent:confirmation
-- yes
-- yeah
-- y
-- yes
-- yes
-- yes
-- yes
-- yes
-- yes
-- yes
-- Yes
-- confirmation
-
-## intent:course_check
-- what courses are there in [art and art history](subject)
-- tell me some [science](subject) courses
+- what courses are there in [art](course)
+- tell me some [science](course) courses
 
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
 - how many credits do i get from doing [opera afternoons 1](course)
 
-## intent:denial
-- no
-- n
-- No
-- nope
-- nah
 
 ## intent:description_check
 - tell me about [biology](course)
-- what's the description for [biology](course)?
+- what's the description for [biology](course)
 - what is [a history of the fbi](course)
 - what happens in [arabic stage 1](course)
 - what is [working with trauma](course)
 - tell me about [opera afternoons](course)
 - what is [geology in the field](course) about
 - I'm looking for a description of [medical physics](course)
+- description of [songwriting workshop](course)
 
 ## intent:fee_check
 - how much is [biology](course)?
@@ -82,47 +156,11 @@
 - does [mechatronics](course) run part time
 - does [creative writing](course) run full time
 
-## intent:goodbye
-- bye
-- goodbye
-- see you later
-- bye bye
-- alright bye
-- so long
-- l8r alligator
-- goodbye
-
-## intent:greet
-- hi
-- hey
-- hello
-- good morning
-- good afternoon
-- hi there
-- howdy
-- hi
-
-## intent:help
-- help
-- who are you
-- how can you help me
-- i need help
-- what can you help me with?
-- are you able to help me?
-- what can you do
-- what can you give me information about
-- give me information
-- give me help
-
-## intent:inform_student
-- i'm an [eu](student) student
-- i'm from the [eu](student)
-
 ## intent:link_check
-- do you have a link for [Introduction to Ancient Egypt 1B](course)?
-- link for [The life and legacy of Lyndon B Johnson](course)?
-- do you have a specification document on [The Russian Revolution](course)?
-- is there a web page for [Counselling Skills Course](course)?
+- do you have a link for [Introduction to Ancient Egypt 1B](course)
+- link for [The life and legacy of Lyndon B Johnson](course)
+- do you have a specification document on [The Russian Revolution](course)
+- is there a web page for [Counselling Skills Course](course)
 
 ## intent:location_check
 - where is [Coral Reefs: Ancient and Modern](course) taking place
@@ -150,17 +188,6 @@
 ## intent:term_check
 - what term does [housing studies](course) start
 - does [brain sciences](course) begin this year
-
-## intent:thank_you
-- thanks
-- thank you
-- thanks!
-- thank you very much
-- sweet, thanks
-- amazing thank you
-- thanks for helping
-- cheers
-- thank you
 
 ## intent:time_check
 - when does [fancy florence](course) start
@@ -196,14 +223,6 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
-
-## intent:wrong_answer
-- wrong
-- that's not what I was looking for
-- thats not what I wanted
-- this isn't right
-- not what I wanted
-- you suck
 
 ## synonym:film studies 1
 - flim studies 1

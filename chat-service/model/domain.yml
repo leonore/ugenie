@@ -3,17 +3,19 @@
 actions:
 - utter_greet
 - utter_goodbye
-- utter_redirect
 - utter_contact
-- utter_help
-- utter_functionality
+- action_utter_help
+- action_utter_redirect
+- action_utter_functionality
 - utter_sorry
+- utter_out_of_scope
+- utter_expert
 - action_utter_short_courses_functionality
 - action_utter_admissions_courses_functionality
 - utter_terminology_functionality
 - utter_fee_check
 - action_get_fee
-- utter_confirm_requirement_type
+- action_confirm_requirement_type
 - action_get_ielts_requirements
 - action_get_description
 - action_get_time
@@ -21,10 +23,9 @@ actions:
 - action_get_tutor
 - action_course_validate
 - utter_description_check
-- utter_ask_student
 - action_check_course
 - action_course_denied
-- utter_offer_course_link
+- action_offer_course_link
 - action_get_sc_course_link
 - action_get_tutor_courses
 - action_get_type_classes
@@ -32,15 +33,16 @@ actions:
 - action_set_ad_course_type
 - action_pt_ft_check
 - action_get_location
+- action_get_sc_resource
 # vvv for development only vvv
 - utter_lambda
 
 entities:
 - course
-- student
-- acroynm
-- tutor
 - course_type
+- tutor
+- acronym
+- question_type
 
 intents:
 - requirements_check
@@ -48,8 +50,6 @@ intents:
 - greet
 - fee_check
 - description_check
-# should this be deprecated?
-- inform_student
 - full_part_time_check
 - location_check
 - time_check
@@ -61,6 +61,9 @@ intents:
 - thank_you
 - wrong_answer
 - help
+- expert
+- out_of_scope
+- sc_common_question
 - tutor_courses_check
 - ask_terminology_functionality
 - ask_short_courses_functionality
@@ -70,91 +73,53 @@ intents:
 - ask_set_ad_course_type
 # for any possible future improvements:
 # example of multi-intent
-# - acronym_check+course_check
+# - acronym_check+description_check
 
 slots:
-## deprecate one of those?
   course_type:
     type: categorical
     values:
       - admissions
       - short
-  context:
-    type: categorical
-    values:
-      - admissions
-      - short
-      - terminology
+  # possibly going to be deprecated
+  # if no general context check function is made
+  # context:
+  #   type: categorical
+  #   values:
+  #     - admissions
+  #     - short
+  #     - terminology
   course:
     type: text
-  student:
-    type: categorical
-    values:
-    - scottish
-    - eu
-    - international
-    - other-uk
+  tutor:
+    type: text
   acronym:
     type: text
-  tutor:
+  question_topic:
     type: text
 
 templates:
 ## ESSENTIAL
   utter_greet:
-  - text: Hello!
+  - "Hello!"
+  - "Hi!"
   utter_goodbye:
   - "Goodbye!"
   - "Thanks for chatting!"
-  - "Bye!"
+  - "Hope to see you again!"
   utter_sorry:
   - text: "Sorry I could not understand what you meant. Feel free to chat to me again later!"
-  utter_help:
-  - text: "Is there anything else I can help you with?"
-    buttons:
-      - title: "Yes"
-        payload: "/confirmation"
-      - title: "No"
-        payload: "/denial"
+  utter_out_of_scope:
+  - text: "I'm afraid I might not be trained to answer your question, but here's a fun fact: Saint Valentine was also the saint of beekeeping, fainting, epilepsy and the plague!"
   utter_contact:
   - text: "You can contact someone from university here: placeholder@glasgow.ac.uk"
-  utter_redirect:
-  - text: "Can I redirect you to a human who might be more helpful?"
-    buttons:
-      - title: "Yes"
-        payload: "/confirmation"
-      - title: "No"
-        payload: "/denial"
-  utter_functionality:
-  - text: "Here are some things you can ask me about..."
-    buttons:
-      - title: "Short courses"
-        payload: "/ask_short_courses_functionality"
-      - title: "Admissions"
-        payload: '/ask_admissions_courses_functionality'
-      - title: "Terminology"
-        payload: '/ask_terminology_functionality'
+  utter_expert:
+  - "Alright, what is your question?"
+  - "Ask away!"
+  - "I'm all ears then!"
   utter_terminology_functionality:
   - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
 
-## templates for more intricate stories
-  utter_ask_student:
-  - text: And are you a Scottish, EU, International, or Other-UK student?
-  utter_confirm_requirement_type:
-  - text: I can only provide immediate information on IELTS requirements for courses. Is this what you're looking for?
-    buttons:
-      - title: "Yes"
-        payload: "/confirmation"
-      - title: "No"
-        payload: "/denial"
-  utter_offer_course_link:
-  - text: I can try and look for the short course webpage if you would like further information.
-    buttons:
-      - title: "Yes"
-        payload: "/confirmation"
-      - title: "No"
-        payload: "/denial"
-
 ## for development only!
   utter_lambda:
-  - text: "This is placeholder text for development. Fun fact: Saint Valentine was also the saint of beekeeping, epilepsy and the plague!"
+  - text: "This is placeholder text for development"

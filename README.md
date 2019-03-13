@@ -60,8 +60,11 @@ Here are some questions you can ask UGenie:
 - What [category] courses are there?
 - How much is [course/short course]?
 - When is [short course]?
+- Where is [short course]?
 - Who teaches [short course]?
 - What other courses does [tutor] teach?
 - What does [acronym] mean?
 - What does [acronym] of a course mean?
 - what grades do I need to get into [course]?
+- does [course] run part-time/full-time?
+- do you have a link for [short course]?
