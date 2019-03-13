@@ -68,6 +68,30 @@
 - not what I wanted
 - you suck
 
+## intent:sc_common_question
+- [funding](question_topic)
+- is there [funding](question_topic) available
+- is there [funding](question_topic) for short courses
+- can I get [funding](question_topic)
+- is there [funding](question_topic)
+- [refund](question_topic)
+- how do I get [refunded](question_topic)
+- [refund](question_topic) for a course
+- I want to get [refunded](question_topic)
+- [refund](question_topic) my course
+- can I have a [refund](question_topic)
+- how do I [transfer](question_topic)
+- [transferring](question_topic) courses
+- can I [transfer](question_topic)
+- is it possible to [transfer](question_topic)
+- I want to [transfer](question_topic)
+- [transfer](question_topic) me
+- can I [cancel](question_topic)
+- how do I [cancel](question_topic) my course
+- [cancelling](question_topic) my course
+- I want to [cancel](question_topic)
+- can I [cancel](question_topic) my course
+
 ## intent:acronym_check
 - I don't understand what [ATAS](acronym) means
 - what does [MaRio decision](acronym) mean

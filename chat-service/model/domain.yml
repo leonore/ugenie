@@ -33,14 +33,16 @@ actions:
 - action_set_ad_course_type
 - action_pt_ft_check
 - action_get_location
+- action_get_sc_resource
 # vvv for development only vvv
 - utter_lambda
 
 entities:
 - course
-- acronym
-- tutor
 - course_type
+- tutor
+- acronym
+- question_type
 
 intents:
 - requirements_check
@@ -61,6 +63,7 @@ intents:
 - help
 - expert
 - out_of_scope
+- sc_common_question
 - tutor_courses_check
 - ask_terminology_functionality
 - ask_short_courses_functionality
@@ -88,9 +91,11 @@ slots:
   #     - terminology
   course:
     type: text
+  tutor:
+    type: text
   acronym:
     type: text
-  tutor:
+  question_topic:
     type: text
 
 templates:
@@ -105,7 +110,7 @@ templates:
   utter_sorry:
   - text: "Sorry I could not understand what you meant. Feel free to chat to me again later!"
   utter_out_of_scope:
-  - text: "I'm afraid I might not be trained to answer your question, but here's a fun fact: Saint Valentine was also the saint of beekeeping, epilepsy and the plague!"
+  - text: "I'm afraid I might not be trained to answer your question, but here's a fun fact: Saint Valentine was also the saint of beekeeping, fainting, epilepsy and the plague!"
   utter_contact:
   - text: "You can contact someone from university here: placeholder@glasgow.ac.uk"
   utter_expert:

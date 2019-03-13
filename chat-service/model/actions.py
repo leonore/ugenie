@@ -60,6 +60,35 @@ class GetShortCourseLink(Action):
         dispatcher.utter_message(response)
         return
 
+class GetShortCourseResource(Action):
+    def name(self):
+        return "action_get_sc_resource"
+
+    def run(self, dispatcher, tracker, domain):
+        context = tracker.get_slot("course_type")
+
+        if not context or context == "admissions":
+            response = "I can only provide this information for short courses. Is this what you were looking for?"
+            buttons = [{"title":"Yes", "payload":"/confirmation"},
+                         {"title":"No", "payload":"/denial"}]
+
+            dispatcher.utter_button_message(response, buttons)
+            return
+
+        else:
+            question = tracker.get_slot("question_topic")
+            if question:
+                resource = elastic.get_sc_resource_link(question)
+                if resource:
+                    response = "Here's a resource that might be helpful: " + resource
+                else:
+                    response = "I'm sorry, I couldn't find an appropriate resource for your query."
+            else:
+                response = "I'm sorry, I'm afraid I'm not able to understand what you mean. Could you try and rephrase your question?"
+
+            dispatcher.utter_message(response)
+            return[SlotSet("course_type", "short")]
+
 # check for context
 # return standard location answer
 class GetCourseLocation(Action):
@@ -73,12 +102,12 @@ class GetCourseLocation(Action):
             buttons = [{"title":"Yes", "payload":"/confirmation"},
                          {"title":"No", "payload":"/denial"}]
             dispatcher.utter_button_message(response, buttons)
+            return
 
         else:
             response =  "The building will be confirmed by email three days before the start date, and the room number will be listed at reception before the class!"
             dispatcher.utter_message(response)
-
-        return
+            return[SlotSet("course_type", "short")]
 
 # Sends the answer to common acronym questions
 # e.g. "what does FT stand for"
