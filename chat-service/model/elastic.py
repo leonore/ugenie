@@ -410,6 +410,7 @@ def fullify_sc_list(course_list):
             full_list.append(instance["_source"])
     return full_list
 
+# Filters a list of courses that start in a particular month
 def filterForMonths(month, course_list):
     # Turns the month into a interger representation (e.g. january -> 0)
     # Expands the course_list to get different times
@@ -453,6 +454,7 @@ def filterForWeekday(weekday, course_list):
     else:
         return False
 
+# Returns a formatted list of tutors of a given course
 def getMultiTutors(course):
     course_instances = fullify_sc_list([course])
     tutor_list = []
@@ -464,6 +466,3 @@ def getMultiTutors(course):
     answer = return_list(tutor_list)
     print(answer)
     return len(tutor_list), answer
-
-print(get_sc_times("french stage 1"))
-print(getMultiTutors("french stage 1"))
