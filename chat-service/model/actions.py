@@ -76,12 +76,15 @@ class GetSCResource(Action):
             return
 
         else:
-            user_message = tracker.latest_message.text
-            resource = elastic.get_sc_resource_link(user_message)
-            if resource:
-                response = "Here's a resource that might be helpful: " + resource
+            question = tracker.get_slot("question_topic")
+            if question:
+                resource = elastic.get_sc_resource_link(question)
+                if resource:
+                    response = "Here's a resource that might be helpful: " + resource
+                else:
+                    response = "I'm sorry, I couldn't find an appropriate resource for your query."
             else:
-                response = "I'm sorry, I couldn't find an appropriate resource for your query."
+                response = "I'm sorry, I'm afraid I'm not able to understand what you mean. Could you try and rephrase your question?"
 
             dispatcher.utter_message(response)
             return[SlotSet("course_type", "short")]

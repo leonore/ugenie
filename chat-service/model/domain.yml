@@ -39,9 +39,10 @@ actions:
 
 entities:
 - course
-- acronym
-- tutor
 - course_type
+- tutor
+- acronym
+- question_type
 
 intents:
 - requirements_check
@@ -90,9 +91,11 @@ slots:
   #     - terminology
   course:
     type: text
+  tutor:
+    type: text
   acronym:
     type: text
-  tutor:
+  question_topic:
     type: text
 
 templates:
