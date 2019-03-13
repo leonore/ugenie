@@ -204,6 +204,7 @@
 - how many hours does [working with trauma](course) last
 - what time is [french stage 1](course)
 - when is [fancy florence](course)
+- what time is [cleopatra: queen of egypt](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
