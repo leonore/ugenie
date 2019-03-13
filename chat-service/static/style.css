@@ -41,6 +41,7 @@ button {
 	right: 28px;
 	width: 280px;
 	border-radius: 20px;
+	box-shadow: 0 0 15px 5px #262626;;
 }
 
 .open-button:hover {
@@ -66,6 +67,8 @@ button {
 	padding: 10px;
 	background-color: #003865;
 	border-radius: 15px 15px 0 0;
+	box-shadow: 0 0 30px 5px #43596b;;
+
 }
 
 
