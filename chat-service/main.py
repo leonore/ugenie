@@ -23,12 +23,12 @@ def sendMessage(sessionId, message):
         # If the message contains button responses, put those in the json to send back to the chat
         if 'buttons' in message:
                 print('Sending message: ',message['text'],' with buttons: ',message['buttons'])
-                json = {'user_name' : 'GUVA', 'message' : message['text'], 'buttons' : message['buttons']}
+                json = {'user_name' : 'UGenie', 'message' : message['text'], 'buttons' : message['buttons']}
                 chat_logger.logAgent(sessionId, message['text'])
                 chat_logger.logAgent(sessionId, message['buttons'])
         else:
                 print('Sending message: ',message['text'])
-                json = {'user_name' : 'GUVA', 'message' : message['text']}
+                json = {'user_name' : 'UGenie', 'message' : message['text']}
                 chat_logger.logAgent(sessionId, message['text'])
 
         socketio.emit('bot_message', json, room=sessionId)
@@ -42,8 +42,8 @@ def handle_connection(json):
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, {'text': "Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?",
-                                'buttons': [{'payload': '/help', 'title': 'What can you do?'},
+        sendMessage(sessionId, {'text': "Hello, I'm UGenie, the Glasgow University virtual assistant! How can I help you?"},
+                                'buttons': [{'payload': '/help', 'title': 'What can I ask you?'},
                                             {'payload': '/expert', 'title': 'I know what to ask you'}]})
 
 @socketio.on('new_message')

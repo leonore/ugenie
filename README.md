@@ -9,7 +9,7 @@ Our application consists of:
 * connected to a Natural Language Understanding unit (`RASA`)
 * which makes queries to a free-text search engine (`Elasticsearch`)
 
-An online prototype of the bot, nicknamed **GUVA** during development, is available [here :robot:](https://bit.do/uofg-bot)
+An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot)
 ______________
 
 Cloning this repository from 15th of March 2019 should include a trained version of the bot.
@@ -54,7 +54,7 @@ The bot should then be running at [localhost:5000](localhost:5000)
 _____
 #### Interacting with the bot
 
-Here are some questions you can ask GUVA:
+Here are some questions you can ask UGenie:
 - how can you help me?
 - What is [course]?
 - What [category] courses are there?
