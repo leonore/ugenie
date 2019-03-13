@@ -20,7 +20,7 @@
 - what [spanish](course) courses are there
 - what [spanish](course) courses are there on a [thursday](weekday)
 - what [french](course) courses are there in [november](month)
-- what [german](course) courses are there in [february](month)
+- what [german](course) courses start in [february](month)
 
 ## intent:confirmation
 - yes
