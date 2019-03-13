@@ -96,15 +96,15 @@ slots:
   tutor:
     type: text
   acronym:
-    type: text
-    # type: categorical
-    # values:
-    #   - plan code
-    #   - mario decision
-    #   - ft
-    #   - pt
-    #   - ielts requirements
-    #   - atas
+    # type: text
+    type: categorical
+    values:
+      - plan code
+      - mario decision
+      - ft
+      - pt
+      - ielts requirements
+      - atas
   question_topic:
     type: text
   month:
