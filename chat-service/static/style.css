@@ -140,6 +140,7 @@ button {
 	margin-bottom: 5px;
 	clear: both;
 	color: #fefefe;
+	word-wrap: break-word;
 }
 
 .message.bot-message {
