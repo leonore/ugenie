@@ -7,6 +7,8 @@ help:
 	@echo "        Train the chatbot interactively"
 	@echo "    run"
 	@echo "        Start the chatbot in the normal way (without training)"
+	@echo "    populate"
+	@echo "        Populate the database (if you're not sure it's up to date)"
 	@echo "    clean f=filename"
 	@echo "        Zip all current chat logs into an archive called 'filename' and remove text files"
 
@@ -29,6 +31,9 @@ run:
 	make run-actions&
 	cd chat-service; python3 main.py
 
+populate:
+	cd elastic-db; python3 populate_elastic.py;
+
 clean:
-	echo "zipping logs"
+	"zipping chat logs!"
 	zip chat-service/model/chat-logs/$(f).zip chat-service/model/chat-logs/*.txt; rm chat-service/model/chat-logs/*.txt;

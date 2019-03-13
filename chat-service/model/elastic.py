@@ -4,29 +4,17 @@ from network_config import elasticIP
 es = Elasticsearch([elasticIP])
 
 ### good functions as a starting point ###
-# Get specific field for given short course
-# e.g.  fees, tutor, course description, credits attached, subject area
-def get_sc_field(query, field):
-    res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
+# Get specific field for a given course
+def get_sc_field(course, field):
+    res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]
     return  first_hit['_source'][field], first_hit['_score']
 
-# Get specific field for given admissions course
-# e.g. title, start date, int fee
-def get_admissions_field(query, field):
-    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
+def get_admissions_field(course, field):
+    res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
     first_hit = res['hits']['hits'][0]
-    return first_hit['_source'][field]
+    return first_hit['_source'][field], first_hit['_score']
 
-# Returns the full title of a short course according to the database
-def get_sc_title(query):
-    title = get_sc_field(query, 'Title')
-    return title
-
-# Returns the full title of a admissions course according to the database
-def get_admissions_title(query):
-    title = get_admissions_field(query, 'Lookup Name')
-    return title
 
 # Returns the most relevant course title in both the short courses and the admissions file, and returns the file type it was in
 def get_course_title(query):
@@ -70,26 +58,27 @@ def get_course_title(query):
     return course, course_cat, course_score
 
 # given a course, return a link if available
-# course should have been checked
+# action_check_course will have ran in actions
 def get_sc_course_link(course):
-
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]
+
     # specifiation is a typo within the given dataset
     link = first_hit['_source']["Link to Course specifiation"]
-    print(link)
+
     if link == "N/A":
         return False
     else:
         return link
 
+## TODO: move string formatting over to actions.py
 # Returns a string informing the start time, end time, start date, end date and title if exist
-def get_sc_times(query):
+def get_sc_times(course):
     # duration = number of days a course runs for
     # title = title of the course according to the database
     # start_time, end_time = military time of when the course begins and ends in a days#
     # start_data, end_date = calender dates of begining and end of course
-    res = es.search(index="short_courses", body={"query": {"match": {"Title": query}}})
+    res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]['_source']
     duration = first_hit['Duration (days)']
     title = first_hit['Title']
@@ -104,6 +93,7 @@ def get_sc_times(query):
         answer = "%s runs from %s to %s on %s" % (title.title(), start_time, end_time, date)
     return answer
 
+## TODO: move string formatting over to actions.py
 # Returns the year in which the course starts and informs if it begins in january
 def get_ad_times(query):
     # title = title of the course according to the database
@@ -146,6 +136,7 @@ def get_admission_requirements(course, requirement_type):
     requirements = first_hit['_source'][field]
     return requirements
 
+## TODO: move string formatting over to actions.py
 ## assumes a course has been found
 def check_pt_ft_course(course):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
@@ -167,7 +158,7 @@ def check_pt_ft_course(course):
 
     return response
 
-
+## TODO: move string formatting over to actions.py
 # Returns the home fee and internaitonal fee of an admissions course
 # For now we return all the fee information we have for the admissions courwse, whether the user is international or not
 def get_ad_fees(query):
@@ -179,6 +170,7 @@ def get_ad_fees(query):
     response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
     return response
 
+## TODO: move string formatting over to actions.py
 # Returns the kind of course an admissions course is
 def get_ad_description(query):
     # title = title of course according to the database
@@ -190,16 +182,17 @@ def get_ad_description(query):
     response = "%s is a %s course" % (title.title(), desc)
     return response, first_hit['_score']
 
+
 # Returns the meaning of the acronym given
 def get_acronym_desc(query):
-    res = es.search(index="general_questions",
+    # acronyms are mentioned in both the question and answer so checking over multiple fields
+    res = es.search(index="common_questions",
                     body={"query": {
                             "multi_match" : {
                               "query":    query,
-                              "fields": [ "question", "answer" ]
-                            }
-                          }
-                         })
+                              "fields": [ "question", "answer" ] }
+                        }})
+
     if res['hits']['hits']:
         # acro = acronym given e.g. FT
         # response = meaning of acronym
@@ -212,7 +205,10 @@ def get_acronym_desc(query):
     else:
         return None, None, None
 
-# Returns the course description or the terminology explanation depending on which was aksed
+## TODO: move string formatting over to actions.py
+# Returns the course description or the terminology explanation depending on which was asked
+# Elastic's scoring feature is very useful to check what answer is most suitable to the query
+# Hence why this function is not decoupled for admissions, short courses, terminology
 def get_description(query):
     # ct = course title
     # cat = course category
@@ -244,15 +240,13 @@ def get_description(query):
             desc, score = get_ad_description(query)
             topic = ct
         else:
-            response = "Sorry, I could not find any details for that"
             return False, False
 
-    elif acro_score != None: # if acornym was more relevant
+    elif acro_score != None: # if acronym was more relevant
         desc = acro_desc
         topic = acro
 
     else: # if both course and acronym were irrelevant
-        response = "Sorry, I could not find any details for that"
         return False, False
 
     # topic = title of course or acronyms
@@ -308,15 +302,15 @@ def get_sc_type_courses(query):
             "bool":{
                 "should":[
                     {"match":{
-                    "Title":query
+                        "Title":query
                     }},
                     {"match":{
                     "Subject area":query
                     }}
                 ],
             }
-    }
-    })
+        }})
+
     course_list = []
     course_set = []
 
@@ -352,8 +346,8 @@ def get_ad_type_courses(query):
                     }}
                 ],
             }
-    }
-    })
+        }})
+
     course_list = []
     course_set = []
 

@@ -1,6 +1,6 @@
 # don't forget to launch ES if running outside docker
 from elasticsearch import Elasticsearch, helpers
-from load_questions import general_questions, short_questions
+from load_questions import questions
 import xlrd, datetime, os, time
 
 if os.environ.get('DOCKER'):
@@ -9,7 +9,6 @@ if os.environ.get('DOCKER'):
     time.sleep(52)
     elasticIP = "elastic"
 else: # LOCAL DEPLOYMENT
-    time.sleep(12)
     elasticIP = "localhost"
 
 book1 = xlrd.open_workbook('data/short_courses.xlsx')
@@ -18,6 +17,7 @@ wb1 = book1.sheet_by_index(0)
 book2 = xlrd.open_workbook('data/admissions.xlsx')
 wb2 = book2.sheet_by_index(0)
 
+# standardising the formatting of the customer-provided data sheets
 def parse_value(cell):
     try:
         # we check for date first
@@ -76,24 +76,28 @@ for node in adm_courses
 ]
 
 # read common questions
-# currently not reading in short questions
 actions3 = [
     {
-    "_index" : "general_questions",
+    "_index" : "common_questions",
     "_type" : "external",
     "_id" : str(node['index']),
     "_source" : node
     }
-for node in general_questions
+for node in questions
 ]
 
 es = Elasticsearch([elasticIP], port=9200)
 
 # the database isn't populated with all our data, repopulate
-if not es.indices.exists(["admissions", "short_courses", "general_questions"]):
+if not es.indices.exists(["admissions", "short_courses", "common_questions"]):
     # WIPE INDICES BEFORE RELOADING -- IN CASE SOMETHING WENT WRONG
     es.indices.delete("_all")
 
     helpers.bulk(es, actions1)
     helpers.bulk(es, actions2)
     helpers.bulk(es, actions3)
+
+    print("Populated elastic!\n")
+
+else:
+    print("All indices already in database.")
