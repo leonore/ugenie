@@ -156,11 +156,15 @@ class PTorFTCheck(Action):
     def run(self, dispatcher, tracker, domain):
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         if elastic_cat == "AD":
-            pt_ft_answer = elastic.check_pt_ft_course(elastic_title)
+            pt_ft_answer, pt_ft_variables = elastic.check_pt_ft_course(elastic_title)
         else:
-            pt_ft_answer = "Sorry, I can only check for part-time/full-time for PGT courses."
+            response = "Sorry, I can only check for part-time/full-time for PGT courses."
 
-        dispatcher.utter_message(pt_ft_answer)
+        if pt_ft_answer == "not_running":
+            response = "Sorry, it does not seem this course is running this year"
+        elif pt_ft_answer == "running":
+            response = pt_ft_variables[0] + " runs " + ', '.join(pt_ft_variables[1])
+        dispatcher.utter_message(response)
         # removing this as it clashes with the "else" answer
         #return [SlotSet("course_type", "admissions")]
         return
@@ -374,8 +378,12 @@ class GetFees(Action):
             elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
             response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
         elif elastic_cat == "AD":
-            elastic_output = elastic.get_ad_fees(elastic_title)
-            response = str(elastic_output)
+            # fee_variables
+            # 0       1         2
+            # course, home_fee, int_fee
+            fee_variables = elastic.get_ad_fees(elastic_title)
+            response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[1], fee_variables[0], fee_variables[1])
+
 
         dispatcher.utter_message(response)
         return

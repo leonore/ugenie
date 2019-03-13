@@ -159,11 +159,9 @@ def check_pt_ft_course(course):
                 run_list.append("full-time")
 
     if not cont or not run_list:
-        response = "Sorry, it does not seem this course is running this year."
+        return "not_running", []
     else:
-        response = str(course).title() + " runs " + ', '.join(run_list)
-
-    return response
+        return "running", [str(course).title(), run_list]
 
 ## TODO: move string formatting over to actions.py
 # Returns the home fee and internaitonal fee of an admissions course
@@ -174,8 +172,10 @@ def get_ad_fees(query):
     title = first_hit['Lookup Name']
     home_fee = first_hit['Home Fee']
     int_fee = first_hit['Int Fee']
-    response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
-    return response
+    fee_variables = [title.title(), str(home_fee), str(int_fee)]
+    return fee_variables
+    # response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
+    # return response
 
 ## TODO: move string formatting over to actions.py
 # Returns the kind of course an admissions course is
@@ -186,6 +186,7 @@ def get_ad_description(query):
     first_hit = res['hits']['hits'][0]
     title = first_hit['_source']['Lookup Name']
     desc = first_hit['_source']['Apply Centre Description']
+    ad_desc_variables = [title, desc]
     response = "%s is a %s course" % (title.title(), desc)
     return response, first_hit['_score']
 
