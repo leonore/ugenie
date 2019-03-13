@@ -183,6 +183,7 @@ class GetTime(Action):
             # title, sdate, edate, stime, etime, duration
             time_variables = elastic.get_sc_times(elastic_title)
 
+            # If the course begins in January, then it will specify,
             if time_variables[5] is not 1:
                 answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (time_variables[0], time_variables[1], time_variables[2], time_variables[3], time_variables[4])
             else:
@@ -190,7 +191,13 @@ class GetTime(Action):
             response = str(answer)
 
         elif elastic_cat == "AD":
+            # time_variables
+            # 0      1     2
+            # title, term, january_start
             time_variables = elastic.get_ad_times(elastic_title)
+
+            # If the course begins in January, then it will specify,
+            # Otherwise it will not mention the start month as we do not have more information
             if time_variables[2]:
                 answer = "%s starts in %s and begins in January." % (time_variables[0], time_variables[1])
             else:

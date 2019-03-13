@@ -101,8 +101,6 @@ def get_sc_times(course):
     start_time, end_time = first_hit['Start time'], first_hit['End time']
     start_date, end_date = first_hit['Start date'], first_hit['End date']
 
-    # 0      1      2      3      4      5
-    # title, sdate, edate, stime, etime, duration
     time_variables = [title.title(), start_date, end_date, start_time, end_time, duration]
     return time_variables
 
@@ -118,17 +116,8 @@ def get_ad_times(query):
     term = first_hit['Admit Term']
     january = first_hit['JanuaryStart']
 
-    # If the course begins in January, then it will specify,
-    # Otherwise it will not mention the start month as we do not have more information
-    # 0      1     2
-    # title, term, january_start
     time_variables = [title.title(), term, january]
     return time_variables
-    # if january:
-    #     answer = "%s starts in %s and begins in January." % (title.title(), term)
-    # else:
-    #     answer = "%s starts in %s" % (title.title(), term)
-    # return answer
 
 ## IN WORK ##
 # Returns the requirements for an admissions course
@@ -161,7 +150,8 @@ def check_pt_ft_course(course):
     cont = False
     run_list = list()
     for hit in hits:
-        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == 2019:
+        now = datetime.datetime.now()
+        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == now.year:
             cont = True
             if hit['_source']['PT'] and "part-time" not in run_list:
                 run_list.append("part-time")
