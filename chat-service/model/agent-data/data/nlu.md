@@ -68,6 +68,30 @@
 - not what I wanted
 - you suck
 
+## intent:sc_common_question
+- funding
+- is there funding available
+- is there funding for short courses
+- can I get funding
+- is there funding
+- refund
+- how do I get refunded
+- refund for a course
+- I want to get refunded
+- refund my course
+- can I have a refund
+- how do I transfer
+- transferring courses
+- can I transfer
+- is it possible to transfer
+- I want to transfer
+- transfer me
+- can I cancel
+- how do I cancel my course
+- cancelling my course
+- I want to cancel
+- can I cancel my course
+
 ## intent:acronym_check
 - I don't understand what [ATAS](acronym) means
 - what does [MaRio decision](acronym) mean

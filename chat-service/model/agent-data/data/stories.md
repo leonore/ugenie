@@ -92,6 +92,25 @@
 * denial
 - action_course_denied
 
+## user asks for funding being in the SC course context
+* ask_set_sc_course_type
+ - action_set_sc_course_type
+* sc_common_question
+ - action_get_sc_resource
+
+## user asks for funding without having set a context
+* sc_common_question
+ - action_get_sc_resource
+* confirmation
+ - action_set_sc_course_type
+ - action_get_sc_resource
+
+## user asks for funding but didn't want it for short courses
+* sc_common_question
+ - action_get_sc_resource
+* denial
+ - action_utter_redirect
+
 ## user asks for course location while being in the SC course context
 * ask_set_sc_course_type
  - action_set_sc_course_type
@@ -102,7 +121,6 @@
 * location_check
 - action_get_location
 * confirmation
-- action_set_sc_course_type
 - action_get_location
 
 ## user asks for a course location but didn't want it for short courses

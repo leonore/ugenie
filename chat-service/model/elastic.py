@@ -71,6 +71,19 @@ def get_sc_course_link(course):
     else:
         return link
 
+# given a query in a short-course context
+# parse common questions and find most suitable link to answer
+def get_sc_resource_link(query):
+    res = es.search(index="common_questions", body={"query": {"match": {"question": query}}})
+
+    try:
+        first_hit = res['hits']['hits'][0]
+    except:
+        return False
+
+    resource = first_hit['_source']["answer"]
+    return resource
+
 ## TODO: move string formatting over to actions.py
 # Returns a string informing the start time, end time, start date, end date and title if exist
 def get_sc_times(course):
