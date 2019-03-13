@@ -449,7 +449,7 @@ def filterForWeekday(weekday, course_list):
         return False
 
 # print(get_sc_type_courses("music")[2])
-print(filterForMonths("april", get_sc_type_courses("art")[0]))
+# print(filterForMonths("april", get_sc_type_courses("art")[0]))
 # print(filterForWeekday("thursday", get_sc_type_courses("spanish")[0]))
 # print(weekdayToNum("Tue"))
 # print(weekdayToNum("wednesday"))
