@@ -387,73 +387,68 @@ def get_ad_type_courses(query):
     else:
         return False, False
 
+# Turns month string to number (e.g. "november" -> 10)
 def monthToNum(month):
     month = month.title()
     month = month[:3]
     number = list(calendar.month_abbr).index(month)
     return number
 
+# Turns weekday string to number (e.g. "wednesday" -> 2)
 def weekdayToNum(day):
     day = day.title()
     day = day[:3]
     number = list(calendar.day_abbr).index(day)
     return number
 
+# Function to receive a list of courses and expand it with all the different instances of it
 def fullify_sc_list(course_list):
     full_list = []
     for course in course_list:
-        # print("Course = ", course)
         res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
         for instance in res['hits']['hits']:
-            # print("Instance = ", instance['_source']["Title"])
             full_list.append(instance["_source"])
     return full_list
 
 def filterForMonths(month, course_list):
-    print("course list = ", course_list)
+    # Turns the month into a interger representation (e.g. january -> 0)
+    # Expands the course_list to get different times
     filtered_course_list = []
     month_dec = monthToNum(month)
     full_course_list = fullify_sc_list(course_list)
+
+    # Finds courses in the expanded list that match the designated time and adds them to the filtered list
     for course in full_course_list:
         starting_date = course["Start date"].split("/")
         starting_month = starting_date[1]
         if int(starting_month) == month_dec:
-            # print(course["Title"], starting_date)
             filtered_course_list.append(course["Title"])
 
+    # Turns the list of courses into a set to remove duplicate titles
     filtered_course_set = list(set(filtered_course_list))
     if filtered_course_set:
         return filtered_course_set
-        # return return_list(filtered_course_set)
     else:
         return False
 
+# Filters a list of courses 'course_list' that start on a particaular weekday 'weekday'
 def filterForWeekday(weekday, course_list):
-    print("course list = ", course_list)
+    # Turns the weekday into a interger representation (e.g. monday -> 0)
+    # Expands the course_list to get different times
     filtered_course_list = []
     weekday_dec = weekdayToNum(weekday)
     full_course_list = fullify_sc_list(course_list)
+
+    # Finds courses in the expanded list that match the designated time and adds them to the filtered list
     for course in full_course_list:
         sd = course["Start date"].split("/")
         starting_date = datetime.datetime(int(sd[2]), int(sd[1]), int(sd[0]))
-        # print(starting_date.weekday())
         if starting_date.weekday() == weekday_dec:
-            # print(starting_date)
             filtered_course_list.append(course['Title'])
 
+    # Turns the list of courses into a set to remove duplicate titles
     filtered_course_set = list(set(filtered_course_list))
     if filtered_course_set:
         return filtered_course_set
-        # return return_list(filtered_course_set)
     else:
         return False
-
-# print(get_sc_type_courses("music")[2])
-# print(filterForMonths("april", get_sc_type_courses("art")[0]))
-# print(filterForWeekday("thursday", get_sc_type_courses("spanish")[0]))
-# print(weekdayToNum("Tue"))
-# print(weekdayToNum("wednesday"))
-# print(weekdayToNum("Friday"))
-# print(monthToNum("March"))
-# print(monthToNum("july"))
-# print(monthToNum("nov"))
