@@ -99,15 +99,12 @@ def get_sc_times(course):
     duration = first_hit['Duration (days)']
     title = first_hit['Title']
     start_time, end_time = first_hit['Start time'], first_hit['End time']
+    start_date, end_date = first_hit['Start date'], first_hit['End date']
 
-    # If the course is a short course then there is no reason to tell the end date
-    if duration is not 1:
-        start_date, end_date = first_hit['Start date'], first_hit['End date']
-        answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (title.title(), start_date, end_date, start_time, end_time)
-    else:
-        date = first_hit['Start date']
-        answer = "%s runs from %s to %s on %s" % (title.title(), start_time, end_time, date)
-    return answer
+    # 0      1      2      3      4      5
+    # title, sdate, edate, stime, etime, duration
+    time_variables = [title.title(), start_date, end_date, start_time, end_time, duration]
+    return time_variables
 
 ## TODO: move string formatting over to actions.py
 # Returns the year in which the course starts and informs if it begins in january
@@ -123,11 +120,15 @@ def get_ad_times(query):
 
     # If the course begins in January, then it will specify,
     # Otherwise it will not mention the start month as we do not have more information
-    if january:
-        answer = "%s starts in %s and begins in January." % (title.title(), term)
-    else:
-        answer = "%s starts in %s" % (title.title(), term)
-    return answer
+    # 0      1     2
+    # title, term, january_start
+    time_variables = [title.title(), term, january]
+    return time_variables
+    # if january:
+    #     answer = "%s starts in %s and begins in January." % (title.title(), term)
+    # else:
+    #     answer = "%s starts in %s" % (title.title(), term)
+    # return answer
 
 ## IN WORK ##
 # Returns the requirements for an admissions course
