@@ -231,8 +231,15 @@ class GetTutor(Action):
         # The short-courses file tells the tutor for each class taught,
         # Although we do not know tutor information for the admissions courses so cannot return it
         if elastic_cat == "SC":
-            elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
-            response = "The tutor for " + str(elastic_title).title() + " is: " + str(elastic_output) + "."
+            # elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
+            tutor_number, tutor_list = elastic.getMultiTutors(tracker.get_slot("course"))
+            if tutor_number == 1:
+                response = "The tutor for " + str(elastic_title).title() + " is: " + str(tutor_list) + "."
+            elif tutor_number > 1:
+                response = "There are " + str(tutor_number) + " different tutors for " + str(elastic_title).title() + ":"
+                response += str(tutor_list)
+            else:
+                response = "Sorry, I could not find any tutors for " + str(elastic_title)
         elif elastic_output == "AD":
             response = "Sorry, I do not know who teaches " + str(elastic_title).title()
         else:

@@ -453,5 +453,17 @@ def filterForWeekday(weekday, course_list):
     else:
         return False
 
+def getMultiTutors(course):
+    course_instances = fullify_sc_list([course])
+    tutor_list = []
+    for instance in course_instances:
+        tutor_list.append(instance["Tutor"])
+
+
+    tutor_list = list(set(tutor_list))
+    answer = return_list(tutor_list)
+    print(answer)
+    return len(tutor_list), answer
 
 print(get_sc_times("french stage 1"))
+print(getMultiTutors("french stage 1"))
