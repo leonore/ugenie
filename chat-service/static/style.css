@@ -6,6 +6,12 @@
 body {
 	font-family: 'nimbus-sans', sans-serif;
 	color: #343536;
+	/* background-color:red; */
+	background-image: url("screencapture-gla-ac-uk-study-short-2019-03-13-16_58_34.png");
+	background-size: cover;
+	height:1920px;
+	/* background-size: 300px 100px;  */
+
 }
 
 
