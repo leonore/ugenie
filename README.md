@@ -21,6 +21,23 @@ Cloning this repository from 15th of March 2019 should include a trained version
 
 --------
 
+#### Launching with Docker
+This is easier for direct interaction with the bot.
+
+##### Set up 
+
+- Download a release of UGenie (to be linked), which should include a data archive and a model archive
+    - the model folder is a trained instance of the bot
+    - The data archive contents should be stored in `elastic-db/data`
+    - The model contents should be stored in `chat-service/agent-data/models`
+        - clearer instructions tbc 
+
+##### Launch
+```bash
+docker-compose up --build
+```
+This should populate the database when launching. The bot should then be running at [localhost:5000](localhost:5000)
+
 #### Manuel dependency setup
 How to get yourself set up with dependencies manually, for development:
 
@@ -41,16 +58,6 @@ make run
 ```
 
 The bot should then be running at [localhost:5000](localhost:5000)
-
-#### Launching from Docker
-This is easier for direct interaction with the bot.
-*NB: Need to figure out how to train the bot from Docker containers because it doesn't work from VM so our build would fail*
-
-```bash
-docker-compose up --build
-```
-The bot should then be running at [localhost:5000](localhost:5000)
-
 _____
 #### Interacting with the bot
 
