@@ -185,14 +185,17 @@ class GetTime(Action):
             # time_variables
             # 0      1      2      3      4      5
             # title, sdate, edate, stime, etime, duration
-            time_variables = elastic.get_sc_times(elastic_title)
+            instance_variables = elastic.get_sc_times(elastic_title)
 
             # If the course begins in January, then it will specify,
-            if time_variables[5] is not 1:
-                answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (time_variables[0], time_variables[1], time_variables[2], time_variables[3], time_variables[4])
-            else:
-                answer = "%s runs from %s to %s on %s" % (time_variables[0], time_variables[3], time_variables[4], time_variables[1])
-            response = str(answer)
+            response = "I have found " + str(len(instance_variables)) + " instance(s) of that course: \n"
+            i = 1
+            for time_variables in instance_variables:
+                if time_variables[5] is not 1:
+                    response += "Instance " + str(i) + " of %s starts on %s and ends on %s, and runs from %s to %s \n" % (time_variables[0], time_variables[1], time_variables[2], time_variables[3], time_variables[4])
+                else:
+                    response += "Instance " + str(i) + " of %s runs from %s to %s on %s \n" % (time_variables[0], time_variables[3], time_variables[4], time_variables[1])
+                i += 1
 
         elif elastic_cat == "AD":
             # time_variables

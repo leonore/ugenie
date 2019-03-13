@@ -96,13 +96,21 @@ def get_sc_times(course):
     # start_data, end_date = calender dates of begining and end of course
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]['_source']
-    duration = first_hit['Duration (days)']
-    title = first_hit['Title']
-    start_time, end_time = first_hit['Start time'], first_hit['End time']
-    start_date, end_date = first_hit['Start date'], first_hit['End date']
+    course_title = first_hit["Title"]
+    list_instances = fullify_sc_list([course_title])
+    # print(list_instances)
+    instance_variables = []
+    for instance in list_instances:
+        # print(instance['Start time'])
+        duration = first_hit['Duration (days)']
+        title = first_hit['Title']
+        start_time, end_time = first_hit['Start time'], first_hit['End time']
+        start_date, end_date = first_hit['Start date'], first_hit['End date']
+        instance_variables.append([title.title(), start_date, end_date, start_time, end_time, duration])
 
-    time_variables = [title.title(), start_date, end_date, start_time, end_time, duration]
-    return time_variables
+    print(instance_variables)
+    # time_variables = [title.title(), start_date, end_date, start_time, end_time, duration]
+    return instance_variables
 
 ## TODO: move string formatting over to actions.py
 # Returns the year in which the course starts and informs if it begins in january
@@ -444,3 +452,6 @@ def filterForWeekday(weekday, course_list):
         return filtered_course_set
     else:
         return False
+
+
+print(get_sc_times("french stage 1"))
