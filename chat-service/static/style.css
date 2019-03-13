@@ -108,6 +108,12 @@ button {
 	float: center;
 }
 
+.chat-header .title img {
+	height:35px;
+	margin-left: auto;
+  margin-right: auto;
+}
+
 
 /* Sent message text area */
 
