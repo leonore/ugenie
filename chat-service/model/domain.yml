@@ -40,9 +40,11 @@ actions:
 entities:
 - course
 - course_type
+- month
+- weekday
 - tutor
 - acronym
-- question_type
+- question_topic
 
 intents:
 - requirements_check
@@ -97,6 +99,31 @@ slots:
     type: text
   question_topic:
     type: text
+  month:
+    type: categorical
+    values:
+      - january
+      - february
+      - march
+      - april
+      - may
+      - june
+      - july
+      - august
+      - september
+      - october
+      - november
+      - december
+  weekday:
+    type: categorical
+    values:
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+      - friday
+      - saturday
+      - sunday
 
 templates:
 ## ESSENTIAL

@@ -274,19 +274,44 @@ class GetClassTypes(Action):
         if tracker.get_slot("course_type") == "short":
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:
-                response = "These are some of the short classes which I have found : " + elastic_output
+                # print(elastic_output)
+                month_text = ""
+                weekday_text = ""
+                if tracker.get_slot("month"):
+                    elastic_output = elastic.filterForMonths(tracker.get_slot("month"), elastic_output)
+                    month_text = " in " + tracker.get_slot("month").title()
+                    print(elastic_output)
+                if tracker.get_slot("weekday"):
+                    elastic_output = elastic.filterForWeekday(tracker.get_slot("weekday"), elastic_output)
+                    weekday_text = " on " + tracker.get_slot("weekday").title()
+                    print(elastic_output)
+                if elastic_output:
+                    print("EO+", elastic_output)
+                    print("EO_LIST+", elastic.return_list(elastic_output))
+                    elastic_output = elastic.return_list(elastic_output)
+                    response = "These are some of the short classes which I have found " + weekday_text + month_text + ": " + elastic_output
+                else:
+                    response = "Sorry, I could not find any courses with those specifications"
             else:
                 response = "Sorry, I could not find any short courses in that subject area"
             dispatcher.utter_message(response)
+            return[SlotSet("month", None), SlotSet("weekday", None)]
 
         # If the user is currently asking about post graduate courses, we will only look for relevant post graduate courses
         elif tracker.get_slot("course_type") == "admissions":
             elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
             if elastic_output:
-                response = "These are some of the post-graduate classes which I have found : " + elastic_output
+                # print(elastic_output)
+                if tracker.get_slot("month"):
+                    response = "Post-Graduate courses either start at the begining of Semester 1 or Semester 2"
+                elif tracker.get_slot("weekday"):
+                    response = "Sorry, I do not know what days post-graduate courses are on"
+                else:
+                    response = "These are some of the post-graduate classes which I have found : " + elastic.return_list(elastic_output)
             else:
                 response = "Sorry, I could not find any post-graduate courses in that subject area"
             dispatcher.utter_message(response)
+            return[SlotSet("month", None), SlotSet("weekday", None)]
 
         # If the user has not specified already which course type they want we ask them to clarify with the use of buttons
         elif not (tracker.get_slot("course_type")):

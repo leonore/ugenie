@@ -1,6 +1,9 @@
 from elasticsearch import Elasticsearch
 from network_config import elasticIP
 
+import datetime
+import calendar
+
 es = Elasticsearch([elasticIP])
 
 ### good functions as a starting point ###
@@ -300,11 +303,14 @@ def get_tutor_courses(query):
 def return_list(set):
     course_list = ""
     course_len = len(set)
-    for counter in set:
-        if counter != set[course_len-1]:
-            # print(counter['_source']['Title'])
-            course_list += str(counter).title() + ", "
-    course_list += " and " + str(set[course_len-1]).title()
+    if course_len > 1:
+        for counter in set:
+            if counter != set[course_len-1]:
+                # print(counter['_source']['Title'])
+                course_list += str(counter).title() + ", "
+        course_list += " and " + str(set[course_len-1]).title()
+    else:
+        course_list = set[0]
     return course_list
 
 # Returns a list of relevant courses from the short courses file
@@ -332,14 +338,14 @@ def get_sc_type_courses(query):
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get("Title"))
         course_set = list(set(course_list))
-
+    # course_set_unformatted = course_set
     # If len > 1 we return a formatted list
     if len(course_set) > 1:
-        course_list = return_list(course_set)
-        return course_list, res['hits']['total']
+        # course_set = return_list(course_set)
+        return course_set, res['hits']['total']
     # If len = 1 we return the single course
     elif len(course_set) == 1:
-        return str(course_set[0]).title(), res['hits']['total']
+        return list(str(course_set[0]).title()), res['hits']['total']
     # If len < 1 if means we matched no courses so we return false
     else:
         return False, False
@@ -372,7 +378,7 @@ def get_ad_type_courses(query):
 
     # If len > 1 we return a formatted list
     if len(course_set) > 1:
-        course_list = return_list(course_set)
+        # course_list = return_list(course_set)
         return course_list, res['hits']['total']
     # If len = 1 we return the single course
     elif len(course_set) == 1:
@@ -380,3 +386,74 @@ def get_ad_type_courses(query):
     # If len < 1 if means we matched no courses so we return false
     else:
         return False, False
+
+def monthToNum(month):
+    month = month.title()
+    month = month[:3]
+    number = list(calendar.month_abbr).index(month)
+    return number
+
+def weekdayToNum(day):
+    day = day.title()
+    day = day[:3]
+    number = list(calendar.day_abbr).index(day)
+    return number
+
+def fullify_sc_list(course_list):
+    full_list = []
+    for course in course_list:
+        # print("Course = ", course)
+        res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
+        for instance in res['hits']['hits']:
+            # print("Instance = ", instance['_source']["Title"])
+            full_list.append(instance["_source"])
+    return full_list
+
+def filterForMonths(month, course_list):
+    print("course list = ", course_list)
+    filtered_course_list = []
+    month_dec = monthToNum(month)
+    full_course_list = fullify_sc_list(course_list)
+    for course in full_course_list:
+        starting_date = course["Start date"].split("/")
+        starting_month = starting_date[1]
+        if int(starting_month) == month_dec:
+            # print(course["Title"], starting_date)
+            filtered_course_list.append(course["Title"])
+
+    filtered_course_set = list(set(filtered_course_list))
+    if filtered_course_set:
+        return filtered_course_set
+        # return return_list(filtered_course_set)
+    else:
+        return False
+
+def filterForWeekday(weekday, course_list):
+    print("course list = ", course_list)
+    filtered_course_list = []
+    weekday_dec = weekdayToNum(weekday)
+    full_course_list = fullify_sc_list(course_list)
+    for course in full_course_list:
+        sd = course["Start date"].split("/")
+        starting_date = datetime.datetime(int(sd[2]), int(sd[1]), int(sd[0]))
+        # print(starting_date.weekday())
+        if starting_date.weekday() == weekday_dec:
+            # print(starting_date)
+            filtered_course_list.append(course['Title'])
+
+    filtered_course_set = list(set(filtered_course_list))
+    if filtered_course_set:
+        return filtered_course_set
+        # return return_list(filtered_course_set)
+    else:
+        return False
+
+# print(get_sc_type_courses("music")[2])
+# print(filterForMonths("april", get_sc_type_courses("art")[0]))
+# print(filterForWeekday("thursday", get_sc_type_courses("spanish")[0]))
+# print(weekdayToNum("Tue"))
+# print(weekdayToNum("wednesday"))
+# print(weekdayToNum("Friday"))
+# print(monthToNum("March"))
+# print(monthToNum("july"))
+# print(monthToNum("nov"))

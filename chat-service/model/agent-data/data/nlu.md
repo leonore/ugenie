@@ -103,13 +103,14 @@
 
 ## intent:ask_type_classes
 - what [education](course) courses do you have
-- what [engineering](course) courses are there
+- what [engineering](course) courses are there on [tuesday](weekday)
 - what [physics](course) courses can i do
-- what courses on [russian](course) are there
+- what courses on [russian](course) are there in [april](month)
+- what [physics](course) courses start in [january](month)
 - what [sport](course) courses are there
-- what [urban](course) courses do you have
+- what [urban](course) courses do you have on a [monday](weekday)
 - what [media](course) courses are there
-- what [law](course) courses are there
+- what [law](course) courses are there in [september](month)
 - what [art](course) courses are there
 - what [spanish](course) courses are there
 - what courses are there in [art](course)
