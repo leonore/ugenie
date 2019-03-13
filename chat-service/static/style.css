@@ -32,7 +32,7 @@ button {
 .open-button {
 	background-color: #003865;
 	color: white;
-	padding: 16px 20px;
+	padding: 8px 10px;
 	border: none;
 	cursor: pointer;
 	opacity: 0.9;
@@ -42,10 +42,15 @@ button {
 	width: 280px;
 	border-radius: 20px;
 	box-shadow: 0 0 15px 5px #262626;;
+	font-size:25px;
 }
 
 .open-button:hover {
 	opacity: 1;
+}
+
+.open-button img{
+	height:28px;
 }
 
 
