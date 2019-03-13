@@ -98,7 +98,7 @@ def step_impl(context):
     except:
         raise Exception("the chatbot message cannot be seen  ")
 
-    assert(context.chatbot_message.text=="Hello, I'm GUVA, the Glasgow University Virtual Assistant. How can I help you?")
+    assert(context.chatbot_message.text=="Hello, I'm UGenie, the Glasgow University virtual assistant! How can I help you?")
 
 
 
@@ -124,7 +124,7 @@ def setp_impl(context):
 
 @when(u'the user asks for further')
 def step_impl(context):
-    
+
     elem = context.driver.find_element_by_xpath('//*[@id="myForm"]/div/form/input')
     if (elem.is_displayed() == False):
         onne_button = context.driver.find_element_by_class_name("open-button")
