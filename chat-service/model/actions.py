@@ -60,7 +60,7 @@ class GetShortCourseLink(Action):
         dispatcher.utter_message(response)
         return
 
-class GetSCResource(Action):
+class GetShortCourseResource(Action):
     def name(self):
         return "action_get_sc_resource"
 
@@ -99,7 +99,7 @@ class GetCourseLocation(Action):
         context = tracker.get_slot("course_type")
         if not context or context == "admissions":
             response = "I can only provide this information for short courses. Is this what you were looking for?"
-            buttons = [{"title":"Yes", "payload":"/action_get_location"},
+            buttons = [{"title":"Yes", "payload":"/confirmation"},
                          {"title":"No", "payload":"/denial"}]
             dispatcher.utter_button_message(response, buttons)
             return
