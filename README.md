@@ -58,6 +58,8 @@ Here are some questions you can ask UGenie:
 - how can you help me?
 - What is [course]?
 - What [category] courses are there?
+- What [category] courses are there in [month]?
+- What [category] courses are there on [weekday]?
 - How much is [course/short course]?
 - When is [short course]?
 - Where is [short course]?
