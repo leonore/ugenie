@@ -35,5 +35,5 @@ populate:
 	cd elastic-db; python3 populate_elastic.py;
 
 clean:
-	"zipping chat logs!"
+	echo "zipping chat logs!"
 	zip chat-service/model/chat-logs/$(f).zip chat-service/model/chat-logs/*.txt; rm chat-service/model/chat-logs/*.txt;
