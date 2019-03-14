@@ -32,7 +32,7 @@ button {
 .open-button {
 	background-color: #003865;
 	color: white;
-	padding: 8px 10px;
+	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
 	opacity: 0.9;
@@ -41,17 +41,18 @@ button {
 	right: 28px;
 	width: 280px;
 	border-radius: 20px;
-	box-shadow: 0 0 15px 5px #262626;;
-	font-size:25px;
+	box-shadow: -3px -3px 5px 0px rgba(0,0,0,0.15);
+/*	box-shadow: 0 0 5px 5px #262626; */
+/*	font-size:15px; */
 }
 
 .open-button:hover {
 	opacity: 1;
 }
 
-.open-button img{
+/* .open-button img{
 	height:28px;
-}
+} */
 
 
 /* The popup chat */
@@ -72,7 +73,8 @@ button {
 	padding: 10px;
 	background-color: #003865;
 	border-radius: 15px 15px 0 0;
-	box-shadow: 0 0 30px 5px #43596b;;
+	box-shadow: -3px -3px 5px 0px rgba(0,0,0,0.15);
+/* box-shadow: 0 0 5px 5px #43596b; */
 
 }
 

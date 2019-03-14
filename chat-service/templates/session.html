@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Flask Chat</title>
+    <title>Chat to UGenie - University of Glasgow</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
@@ -11,14 +11,14 @@
 <body>
 
     <!-- should this be changed back to Glasgow University Virtual Assistant? need suggestions -->
-    <button class="open-button" onclick="openForm()"><img src="../static/icon.png" alt="Icon">&nbsp Chat to UGenie</button>
+    <button class="open-button" onclick="openForm()">Chat to UGenie</button>
 
     <div class="chat-popup" id="myForm">
         <div class="chat-container">
 
 			<div class="chat-header">
 				<a href="#" class="close" onclick="closeForm()"></a>
-				<div class="title">&nbsp&nbsp&nbsp&nbsp<img src="../static/icon.png" alt="Icon"><br>UGenie</div>
+				<div class="title">&nbsp&nbsp&nbsp&nbsp<img src="{{ url_for('static', filename='icon.png') }}" alt="Icon"><br>UGenie</div>
 			</div>
 
             <div class="message-area"></div>
