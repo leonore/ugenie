@@ -100,6 +100,8 @@
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
 - what is [ATAS](acronym)
+- what is [FT](acronym)
+- what does [PT](acronym) stand for
 
 ## intent:ask_type_classes
 - what [education](course) courses do you have
@@ -204,6 +206,7 @@
 - how many hours does [working with trauma](course) last
 - what time is [french stage 1](course)
 - when is [fancy florence](course)
+- what time is [cleopatra: queen of egypt](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)

@@ -156,11 +156,15 @@ class PTorFTCheck(Action):
     def run(self, dispatcher, tracker, domain):
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
         if elastic_cat == "AD":
-            pt_ft_answer = elastic.check_pt_ft_course(elastic_title)
+            pt_ft_answer, pt_ft_variables = elastic.check_pt_ft_course(elastic_title)
         else:
-            pt_ft_answer = "Sorry, I can only check for part-time/full-time for PGT courses."
+            response = "Sorry, I can only check for part-time/full-time for PGT courses."
 
-        dispatcher.utter_message(pt_ft_answer)
+        if pt_ft_answer == "not_running":
+            response = "Sorry, it does not seem this course is running this year"
+        elif pt_ft_answer == "running":
+            response = pt_ft_variables[0] + " runs " + ', '.join(pt_ft_variables[1])
+        dispatcher.utter_message(response)
         # removing this as it clashes with the "else" answer
         #return [SlotSet("course_type", "admissions")]
         return
@@ -178,11 +182,34 @@ class GetTime(Action):
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
         if elastic_cat == "SC":
-            elastic_output = elastic.get_sc_times(elastic_title)
-            response = str(elastic_output)
+            # time_variables
+            # 0      1      2      3      4      5
+            # title, sdate, edate, stime, etime, duration
+            instance_variables = elastic.get_sc_times(elastic_title)
+
+            # If the course begins in January, then it will specify,
+            response = "I have found " + str(len(instance_variables)) + " instance(s) of that course: \n"
+            i = 1
+            for time_variables in instance_variables:
+                if time_variables[5] is not 1:
+                    response += "Instance " + str(i) + " of %s starts on %s and ends on %s, and runs from %s to %s \n" % (time_variables[0], time_variables[1], time_variables[2], time_variables[3], time_variables[4])
+                else:
+                    response += "Instance " + str(i) + " of %s runs from %s to %s on %s \n" % (time_variables[0], time_variables[3], time_variables[4], time_variables[1])
+                i += 1
+
         elif elastic_cat == "AD":
-            elastic_output = elastic.get_ad_times(elastic_title)
-            response = str(elastic_output)
+            # time_variables
+            # 0      1     2
+            # title, term, january_start
+            time_variables = elastic.get_ad_times(elastic_title)
+
+            # If the course begins in January, then it will specify,
+            # Otherwise it will not mention the start month as we do not have more information
+            if time_variables[2]:
+                answer = "%s starts in %s and begins in January." % (time_variables[0], time_variables[1])
+            else:
+                answer = "%s starts in %s" % (time_variables[0], time_variables[1])
+            response = str(answer)
         else:
             response = "Sorry, I could not find the information for times for this course"
 
@@ -204,8 +231,15 @@ class GetTutor(Action):
         # The short-courses file tells the tutor for each class taught,
         # Although we do not know tutor information for the admissions courses so cannot return it
         if elastic_cat == "SC":
-            elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
-            response = "The tutor for " + str(elastic_title).title() + " is: " + str(elastic_output) + "."
+            # elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
+            tutor_number, tutor_list = elastic.getMultiTutors(tracker.get_slot("course"))
+            if tutor_number == 1:
+                response = "The tutor for " + str(elastic_title).title() + " is: " + str(tutor_list) + "."
+            elif tutor_number > 1:
+                response = "There are " + str(tutor_number) + " different tutors for " + str(elastic_title).title() + ":"
+                response += str(tutor_list)
+            else:
+                response = "Sorry, I could not find any tutors for " + str(elastic_title)
         elif elastic_output == "AD":
             response = "Sorry, I do not know who teaches " + str(elastic_title).title()
         else:
@@ -354,8 +388,12 @@ class GetFees(Action):
             elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
             response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
         elif elastic_cat == "AD":
-            elastic_output = elastic.get_ad_fees(elastic_title)
-            response = str(elastic_output)
+            # fee_variables
+            # 0       1         2
+            # course, home_fee, int_fee
+            fee_variables = elastic.get_ad_fees(elastic_title)
+            response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[1], fee_variables[0], fee_variables[1])
+
 
         dispatcher.utter_message(response)
         return

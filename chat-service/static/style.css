@@ -6,6 +6,12 @@
 body {
 	font-family: 'nimbus-sans', sans-serif;
 	color: #343536;
+	/* background-color:red; */
+	background-image: url("screencapture-gla-ac-uk-study-short-2019-03-13-16_58_34.png");
+	background-size: cover;
+	height:1920px;
+	/* background-size: 300px 100px;  */
+
 }
 
 
@@ -29,17 +35,24 @@ button {
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
-	opacity: 0.8;
+	opacity: 0.9;
 	position: fixed;
 	bottom: 23px;
 	right: 28px;
 	width: 280px;
 	border-radius: 20px;
+	box-shadow: -3px -3px 5px 0px rgba(0,0,0,0.15);
+/*	box-shadow: 0 0 5px 5px #262626; */
+/*	font-size:15px; */
 }
 
 .open-button:hover {
 	opacity: 1;
 }
+
+/* .open-button img{
+	height:28px;
+} */
 
 
 /* The popup chat */
@@ -60,6 +73,9 @@ button {
 	padding: 10px;
 	background-color: #003865;
 	border-radius: 15px 15px 0 0;
+	box-shadow: -3px -3px 5px 0px rgba(0,0,0,0.15);
+/* box-shadow: 0 0 5px 5px #43596b; */
+
 }
 
 
@@ -97,6 +113,12 @@ button {
 
 .chat-header .title {
 	float: center;
+}
+
+.chat-header .title img {
+	height:35px;
+	margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -192,4 +214,8 @@ button {
 	border: 1px solid #dfdfdf;
 	border-radius: 10px;
 	padding: 10px;
+}
+
+.message-form-input:focus {
+	outline:none;
 }

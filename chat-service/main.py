@@ -42,7 +42,7 @@ def handle_connection(json):
         sessionId = request.sid
 
         # Print the welcome message on the chat interface
-        sendMessage(sessionId, {'text': "Hello, I'm UGenie, the Glasgow University virtual assistant! How can I help you?"},
+        sendMessage(sessionId, {'text': "Hello, I'm UGenie, the Glasgow University virtual assistant! How can I help you?",
                                 'buttons': [{'payload': '/help', 'title': 'What can I ask you?'},
                                             {'payload': '/expert', 'title': 'I know what to ask you'}]})
 

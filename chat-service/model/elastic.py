@@ -96,18 +96,21 @@ def get_sc_times(course):
     # start_data, end_date = calender dates of begining and end of course
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]['_source']
-    duration = first_hit['Duration (days)']
-    title = first_hit['Title']
-    start_time, end_time = first_hit['Start time'], first_hit['End time']
-
-    # If the course is a short course then there is no reason to tell the end date
-    if duration is not 1:
+    course_title = first_hit["Title"]
+    list_instances = fullify_sc_list([course_title])
+    # print(list_instances)
+    instance_variables = []
+    for instance in list_instances:
+        # print(instance['Start time'])
+        duration = first_hit['Duration (days)']
+        title = first_hit['Title']
+        start_time, end_time = first_hit['Start time'], first_hit['End time']
         start_date, end_date = first_hit['Start date'], first_hit['End date']
-        answer = "%s starts on %s and ends on %s, and runs from %s to %s" % (title.title(), start_date, end_date, start_time, end_time)
-    else:
-        date = first_hit['Start date']
-        answer = "%s runs from %s to %s on %s" % (title.title(), start_time, end_time, date)
-    return answer
+        instance_variables.append([title.title(), start_date, end_date, start_time, end_time, duration])
+
+    print(instance_variables)
+    # time_variables = [title.title(), start_date, end_date, start_time, end_time, duration]
+    return instance_variables
 
 ## TODO: move string formatting over to actions.py
 # Returns the year in which the course starts and informs if it begins in january
@@ -121,13 +124,8 @@ def get_ad_times(query):
     term = first_hit['Admit Term']
     january = first_hit['JanuaryStart']
 
-    # If the course begins in January, then it will specify,
-    # Otherwise it will not mention the start month as we do not have more information
-    if january:
-        answer = "%s starts in %s and begins in January." % (title.title(), term)
-    else:
-        answer = "%s starts in %s" % (title.title(), term)
-    return answer
+    time_variables = [title.title(), term, january]
+    return time_variables
 
 ## IN WORK ##
 # Returns the requirements for an admissions course
@@ -160,7 +158,8 @@ def check_pt_ft_course(course):
     cont = False
     run_list = list()
     for hit in hits:
-        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == 2019:
+        now = datetime.datetime.now()
+        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == now.year:
             cont = True
             if hit['_source']['PT'] and "part-time" not in run_list:
                 run_list.append("part-time")
@@ -168,11 +167,9 @@ def check_pt_ft_course(course):
                 run_list.append("full-time")
 
     if not cont or not run_list:
-        response = "Sorry, it does not seem this course is running this year."
+        return "not_running", []
     else:
-        response = str(course).title() + " runs " + ', '.join(run_list)
-
-    return response
+        return "running", [str(course).title(), run_list]
 
 ## TODO: move string formatting over to actions.py
 # Returns the home fee and internaitonal fee of an admissions course
@@ -183,8 +180,10 @@ def get_ad_fees(query):
     title = first_hit['Lookup Name']
     home_fee = first_hit['Home Fee']
     int_fee = first_hit['Int Fee']
-    response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
-    return response
+    fee_variables = [title.title(), str(home_fee), str(int_fee)]
+    return fee_variables
+    # response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
+    # return response
 
 ## TODO: move string formatting over to actions.py
 # Returns the kind of course an admissions course is
@@ -195,6 +194,7 @@ def get_ad_description(query):
     first_hit = res['hits']['hits'][0]
     title = first_hit['_source']['Lookup Name']
     desc = first_hit['_source']['Apply Centre Description']
+    ad_desc_variables = [title, desc]
     response = "%s is a %s course" % (title.title(), desc)
     return response, first_hit['_score']
 
@@ -387,73 +387,82 @@ def get_ad_type_courses(query):
     else:
         return False, False
 
+# Turns month string to number (e.g. "november" -> 10)
 def monthToNum(month):
     month = month.title()
     month = month[:3]
     number = list(calendar.month_abbr).index(month)
     return number
 
+# Turns weekday string to number (e.g. "wednesday" -> 2)
 def weekdayToNum(day):
     day = day.title()
     day = day[:3]
     number = list(calendar.day_abbr).index(day)
     return number
 
+# Function to receive a list of courses and expand it with all the different instances of it
 def fullify_sc_list(course_list):
     full_list = []
     for course in course_list:
-        # print("Course = ", course)
         res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
         for instance in res['hits']['hits']:
-            # print("Instance = ", instance['_source']["Title"])
             full_list.append(instance["_source"])
     return full_list
 
+# Filters a list of courses that start in a particular month
 def filterForMonths(month, course_list):
-    print("course list = ", course_list)
+    # Turns the month into a interger representation (e.g. january -> 0)
+    # Expands the course_list to get different times
     filtered_course_list = []
     month_dec = monthToNum(month)
     full_course_list = fullify_sc_list(course_list)
+
+    # Finds courses in the expanded list that match the designated time and adds them to the filtered list
     for course in full_course_list:
         starting_date = course["Start date"].split("/")
         starting_month = starting_date[1]
         if int(starting_month) == month_dec:
-            # print(course["Title"], starting_date)
             filtered_course_list.append(course["Title"])
 
+    # Turns the list of courses into a set to remove duplicate titles
     filtered_course_set = list(set(filtered_course_list))
     if filtered_course_set:
         return filtered_course_set
-        # return return_list(filtered_course_set)
     else:
         return False
 
+# Filters a list of courses 'course_list' that start on a particaular weekday 'weekday'
 def filterForWeekday(weekday, course_list):
-    print("course list = ", course_list)
+    # Turns the weekday into a interger representation (e.g. monday -> 0)
+    # Expands the course_list to get different times
     filtered_course_list = []
     weekday_dec = weekdayToNum(weekday)
     full_course_list = fullify_sc_list(course_list)
+
+    # Finds courses in the expanded list that match the designated time and adds them to the filtered list
     for course in full_course_list:
         sd = course["Start date"].split("/")
         starting_date = datetime.datetime(int(sd[2]), int(sd[1]), int(sd[0]))
-        # print(starting_date.weekday())
         if starting_date.weekday() == weekday_dec:
-            # print(starting_date)
             filtered_course_list.append(course['Title'])
 
+    # Turns the list of courses into a set to remove duplicate titles
     filtered_course_set = list(set(filtered_course_list))
     if filtered_course_set:
         return filtered_course_set
-        # return return_list(filtered_course_set)
     else:
         return False
 
-# print(get_sc_type_courses("music")[2])
-# print(filterForMonths("april", get_sc_type_courses("art")[0]))
-# print(filterForWeekday("thursday", get_sc_type_courses("spanish")[0]))
-# print(weekdayToNum("Tue"))
-# print(weekdayToNum("wednesday"))
-# print(weekdayToNum("Friday"))
-# print(monthToNum("March"))
-# print(monthToNum("july"))
-# print(monthToNum("nov"))
+# Returns a formatted list of tutors of a given course
+def getMultiTutors(course):
+    course_instances = fullify_sc_list([course])
+    tutor_list = []
+    for instance in course_instances:
+        tutor_list.append(instance["Tutor"])
+
+
+    tutor_list = list(set(tutor_list))
+    answer = return_list(tutor_list)
+    print(answer)
+    return len(tutor_list), answer
