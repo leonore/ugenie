@@ -50,7 +50,7 @@ Here's a simplified tree-view of the repository:
 Our MVC pattern has a smart model and a dumb controller. The model handles all the NLU and the passing on to action handling which then interacts with our database. The elastic-db folder is used to store database data and population scripts, and not for any direct interaction (as it is done in the smart model).
 
 The main controller is the main.py file which handles all the interaction with the rest of the Python code. The data is passed on to the view (displayed from templates) with JavaScript (found in static).
-The NLU training data is stored in agent-data. Any processing of it is in the model. More precise documentation on understanding the different components, getting set up, can be found [on the Wiki](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/wikis/home).
+The NLU training data is stored in agent-data. Any processing of it is in the model. More precise documentation on understanding the different components, getting set up, can be found [on the iki](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/wikis/home).
 
 --------
 
