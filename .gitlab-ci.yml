@@ -31,7 +31,6 @@ test_prototype:
   tags:
     - shell
 
-
 # Testing the interface Features, make sure  all chatbot's features are stable in the deployed version
 # testBehave:
 # stage:  tests
@@ -46,16 +45,13 @@ test_prototype:
 #   - shell
 
 # Testing the components of the chatbot
- unitTesting:
-  stage:  tests
-    script:
-
-   - cd tests
-   - cd unit_testing
-   - pyhton3 runner.py
-
-# tags:
-#   - shell
+unitTesting:
+ stage: tests
+ script:
+   - cd tests/unit_testing
+   - python3 runner.py
+ tags:
+   - shell
 
 # clean up large dangling images from VM, if they exist
 # adding on_failure tag again because doing this too much seems to impact caching
