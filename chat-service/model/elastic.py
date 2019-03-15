@@ -363,7 +363,7 @@ def fullify_list(course_list, course_type):
         title, index = "Lookup Name", "admissions"
     else:
         # this should not have been called
-        return False, False
+        return False
 
     full_list = []
     for course in course_list:
