@@ -179,10 +179,10 @@ def get_ad_description(query):
     first_hit = res['hits']['hits'][0]
     title = first_hit['_source']['Lookup Name'].title() # normalise course titles if they're all caps
     desc = first_hit['_source']['Apply Centre Description']
-    ad_desc_variables = [title, desc]
-    response = "%s is a %s course" % (title, desc)
+    #ad_desc_variables = [title, desc]
+    #response = "%s is a %s course" % (title, desc)
 
-    return response, first_hit['_score']
+    return title, desc, first_hit['_score']
 
 
 # Returns the meaning of the acronym given
@@ -205,47 +205,52 @@ def get_acronym_desc(query):
     else:
         return None, None, None
 
-## TODO: move string formatting over to actions.py
 # Returns the course description or the terminology explanation depending on which was asked
-# Elastic's scoring feature is very useful to check what answer is most suitable to the query
+# If NLU fails RASA-side, Elastic's scoring feature is very useful to check what answer is most suitable to the query
 # Hence why this function is not decoupled for admissions, short courses, terminology
 def get_description(query):
     # cscore = relevancy score for course from elastic search
     # acro_score = relevancy score of acronym from elastic search
+    # ct = course title
+    # cat = "AD" or "SC" or "acronym"
     ct, cat, cscore = get_course_title(query)
     acro, acro_desc, acro_score = get_acronym_desc(query)
 
-    if cscore != None and acro_score != None:
+    if cscore != None and acro_score != None: # both acronyms and courses were returned
         if cscore >= acro_score: # if course was more relevant
             if cat == "SC": # if course was a short coures
                 course_desc, score = get_sc_field(query, 'Course description')
-                desc = str(ct).title() + " is: " + str(course_desc)
-                topic = ct
+                title = str(ct).title()
+                desc = str(course_desc)
             elif cat == "AD": # if course was a admissions course
-                desc, score = get_ad_description(query)
-                topic = ct
+                title, desc, score = get_ad_description(query)
+
         else: # if acronym was more relevant
             desc = acro_desc
-            topic = acro
-    elif cscore != None: # if course was the only result
+            title = acro
+            category = "acronym"
+
+    elif cscore != None: # only course was returned
         if cat == "SC": # if course was a short course
             course_desc, score = get_sc_field(query, 'Course description')
-            desc = str(ct).title() + " is: " + str(course_desc)
-            topic = ct
+            desc = str(course_desc)
+            title = str(ct).title()
+
         elif cat == "AD": # if course was a admissions course
-            desc, score = get_ad_description(query)
-            topic = ct
+            title, desc, score = get_ad_description(query)
+
         else:
-            return False, False
+            return False, False, False
 
     elif acro_score != None: # if acronym was more relevant
         desc = acro_desc
-        topic = acro
+        title = acro
+        cat = "acronym"
 
     else: # if both course and acronym were irrelevant
-        return False, False
+        return False, False, False
 
-    return topic, desc
+    return cat, title, desc
 
 # Returns the tutor's name and a list of classes that they teach
 def get_tutor_courses(query):

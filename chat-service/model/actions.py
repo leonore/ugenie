@@ -1,5 +1,8 @@
 from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet
+
+# data is gotten in elastic.py
+# and processed into strings in actions.py
 import elastic
 
 # Asks the user to confirm the course
@@ -137,10 +140,14 @@ class GetDescription(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        elastic_topic, elastic_desc = elastic.get_description(tracker.get_slot("course"))
+        elastic_cat, elastic_title, elastic_desc = elastic.get_description(tracker.get_slot("course"))
 
-        if elastic_topic:
-            response = str(elastic_desc)
+        if elastic_cat in ["SC", "acronym"]:
+            # string formatting isn't needed because the description is provided in the data
+            response = elastic_desc
+        elif elastic_cat == "AD":
+            # string formatting is needed for a custom description
+            response = "{} is a {} course".format(elastic_title, elastic_desc)
         else:
             response = "Sorry, I could not find any details for that"
 
