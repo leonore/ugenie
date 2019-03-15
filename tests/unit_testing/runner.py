@@ -1,7 +1,7 @@
 import unittest
 import sys
 
-sys.path.append('chat-service/model')
+sys.path.append('../../chat-service/model')
 import test_elastic
 
 # initialize the test suite

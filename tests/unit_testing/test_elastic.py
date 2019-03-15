@@ -1,7 +1,7 @@
 import unittest
 import sys
 
-sys.path.append('chat-service/model')
+sys.path.append('../../chat-service/model')
 import elastic
 
 class TestElastic(unittest.TestCase):
@@ -85,15 +85,15 @@ class TestElastic(unittest.TestCase):
             'Food Security')[0], True)
 
 # test  getting the cost of a admission  course when the course's  name is both gevin
-    def test_get_sc_type_courses(self):
-        self.assertEqual('Introduction to Ancient Egypt 1B' in elastic.get_sc_type_courses(
-            'Festivals in Ancient Egypt')[0], True)
-        self.assertEqual(len(elastic.get_sc_type_courses(
-            'Festivals in Ancient Egypt')[0]) < 4, False)
-        self.assertEqual('Introducing Geology' in elastic. get_sc_type_courses(
-            'Introducing Geology')[0], True)
-        self.assertEqual(len(elastic.get_sc_type_courses(
-            'Festivals in Ancient Egypt')[0]) < 4, False)
+    def test_get_type_courses(self):
+        self.assertEqual('Introduction to Ancient Egypt 1B' in elastic.get_type_courses(
+            'Festivals in Ancient Egypt', "short")[0], True)
+        self.assertEqual(len(elastic.get_type_courses(
+            'Festivals in Ancient Egypt', "short")[0]) < 4, False)
+        self.assertEqual('Introducing Geology' in elastic.get_type_courses(
+            'Introducing Geology', "short")[0], True)
+        self.assertEqual(len(elastic.get_type_courses(
+            'Festivals in Ancient Egypt', "short")[0]) < 4, False)
 
     # test  get_acronym_descd in elastic
     # test  wait for work
