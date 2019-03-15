@@ -114,7 +114,7 @@ class CheckCourse(Action):
 
     def run(self, dispatcher, tracker, domain):
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
-        response = "Did you want the course: " + str(elastic_title).title() + "?"
+        response = "Did you want the course: {}?".format(elastic_title)
         buttons = [{"title":"Yes", "payload":"/confirmation"},
                     {"title":"No", "payload":"/denial"}]
 
@@ -148,7 +148,7 @@ class GetShortCourseLink(Action):
 
         link = elastic.get_sc_course_link(elastic_title)
         if link:
-            response = "Here's a link to the webpage for " + elastic_title + ": " + link
+            response = "Here's a link to the webpage for {}: {}".format(elastic_title, link)
         else:
             response = "Sorry, this short course does not seem to have a web page. This might be because it only runs for one day."
 
@@ -176,7 +176,7 @@ class GetShortCourseResource(Action):
             if question:
                 resource = elastic.get_sc_resource_link(question)
                 if resource:
-                    response = "Here's a resource that might be helpful: " + resource
+                    response = "Here's a resource that might be helpful: {}".format(resource)
                 else:
                     response = "I'm sorry, I couldn't find an appropriate resource for your query."
             else:
@@ -280,7 +280,7 @@ class PTorFTCheck(Action):
         if pt_ft_answer == "not_running":
             response = "Sorry, it does not seem this course is running this year"
         elif pt_ft_answer == "running":
-            response = pt_ft_variables[0] + " runs " + ', '.join(pt_ft_variables[1])
+            response =  "{} runs {}".format(pt_ft_variables[0], ', '.join(pt_ft_variables[1]))
 
         dispatcher.utter_message(response)
         return
@@ -303,7 +303,7 @@ class GetTime(Action):
             instance_variables = elastic.get_sc_times(elastic_title)
 
             # If the course begins in January, then it will specify,
-            response = "I have found " + str(len(instance_variables)) + " instance(s) of that course: \n"
+            response = "I have found {} instance(s) of that course: \n".format(str(len(instance_variables)))
             i = 1
             for time_variables in instance_variables:
                 if time_variables[5] is not 1:
@@ -346,7 +346,7 @@ class GetTutor(Action):
         if elastic_cat == "SC":
             tutor_number, tutor_list = elastic.getMultiTutors(tracker.get_slot("course"))
             if tutor_number == 1:
-                response = "The tutor for " + str(elastic_title).title() + " is: " + str(tutor_list) + "."
+                response = "The tutor for {} is: {}.".format(elastic_title, str(tutor_list))
             elif tutor_number > 1:
                 response = "There are " + str(tutor_number) + " different tutors for " + str(elastic_title).title() + ":"
                 response += str(tutor_list)
@@ -354,10 +354,10 @@ class GetTutor(Action):
                 response = "Sorry, I could not find any tutors for " + str(elastic_title)
 
         elif elastic_output == "AD":
-            response = "Sorry, I do not know who teaches " + str(elastic_title).title()
+            response = "Sorry, I do not know who teaches {}".format(elastic_title)
 
         else:
-            response = "Sorry, I could not find the tutor for " + str(elastic_title).title()
+            response = "Sorry, I could not find the tutor for {}".format(elastic_title)
 
         dispatcher.utter_message(response)
         return
@@ -389,7 +389,7 @@ class GetIELTSRequirements(Action):
         if elastic_output == "course_not_found":
             response = "Sorry, I could not find a course with that name."
         elif elastic_output:
-            response = "The admission requirements are " + elastic_output
+            response = "The admission requirements are {}".format(elastic_output)
         else:
             response = "This course does not seem to have any IELTS requirement specified."
 
@@ -409,7 +409,7 @@ class GetTutorCourses(Action):
         elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
 
         if elastic_output:
-            response = str(elastic_tutor) + " teaches: " + str(elastic_output)
+            response = "{} teaches: {}".format(str(elastic_tutor), str(elastic_output))
         else:
             response = "Sorry, I could not find any courses with that tutor"
 

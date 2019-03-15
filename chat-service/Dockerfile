@@ -1,5 +1,6 @@
 FROM python:3.6.6-slim
 
+# leverage cache, only copy other files later on
 COPY ./interface-requirements.txt /app/requirements.txt
 
 # install requirements
