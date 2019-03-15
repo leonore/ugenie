@@ -52,10 +52,8 @@ def train_core():
         policies=[MemoizationPolicy(max_history=5), KerasPolicy()]
         )
     training_data = agent.load_data(training_data_file)
-    agent.train(
-        training_data,
-        validation_split=0.2
-        )
+    agent.train(training_data)
+    #agent.train(training_data, validation_split=0.2) --> we had this forever but it actually made the bot dumber :(
     agent.persist(model_path)
     return agent
 

@@ -16,6 +16,7 @@ run-actions:
 	cd chat-service/model; python3 -m rasa_core_sdk.endpoint --actions actions
 
 train:
+	cd chat-service/model/agent-data; rm -r models/;
 	cd chat-service/model; python3 -c "import trainer; trainer.train()"
 
 # & makes processes run in background

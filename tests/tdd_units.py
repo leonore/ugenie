@@ -31,3 +31,9 @@ print("Found right answer for MaRio decision with get_acronym_desc")
 # assert sorted(sc) == sorted(new_sc), "New functionality doesn't match for short courses"
 # assert type(new_ad) is list, new_ad # check functionality works
 # print("New function functionality works")
+
+title, credits = elastic.get_sc_credits("songwriting workshop")
+assert not credits, "Songwriting workshop should return 0 credits, returned " + str(credits)
+title, credits = elastic.get_sc_credits("spanish stage 3")
+assert credits == 10, "Spanish stage 3 should return 0 credits, returned " + str(credits)
+print("Credits function works")
