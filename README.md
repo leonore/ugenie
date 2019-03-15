@@ -61,8 +61,12 @@ _____
 #### Interacting with the bot
 
 Here are some questions you can ask UGenie:
-- how can you help me?
+- How can you help me?
+- Can you redirect me to a human?
+- What does [acronym] mean?
 - What is [course] about?
+- What are the English requirements for [course]?
+- Does [course] run part-time/full-time?
 - What [category] courses are there?
 - What [category] courses are there in [month]?
 - What [category] courses are there on [weekday]?
@@ -71,13 +75,9 @@ Here are some questions you can ask UGenie:
 - What time is [short course]?
 - Who teaches [short course]?
 - What other courses does [tutor] teach?
-- What does [acronym] mean?
-- what are the english requirements for [course]?
-- does [course] run part-time/full-time?
-- do you have a link for [short course]?
-- can you redirect me to a human?
+- Are there credits attached to [course]?
+- Do you have a link for [short course]?
 - Is there funding available for short courses?
 - Can I cancel my course?
 - Can I get a refund?
 - Can I transfer courses?
-- Are there credits attached to [course]?
