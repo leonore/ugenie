@@ -10,11 +10,12 @@ help:
 	@echo "    populate"
 	@echo "        Populate the database (if you're not sure it's up to date)"
 	@echo "    clean f=filename"
-	@echo "        Zip all current chat logs into an archive called 'filename' and remove text files"
+	@echo "        Zip all current chat logs into an archive called 'filename.zip' and remove text files"
 
 run-actions:
 	cd chat-service/model; python3 -m rasa_core_sdk.endpoint --actions actions
 
+# this removes any past models to avoid any clashes
 train:
 	cd chat-service/model/agent-data; rm -r models/;
 	cd chat-service/model; python3 -c "import trainer; trainer.train()"

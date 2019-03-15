@@ -31,7 +31,7 @@ test_prototype:
   tags:
     - shell
 
-# Testing the interface Features, make sure  all chatbot's features are stable in the deployed version
+# Testing the interface Features, make sure all chatbot's features are stable in the deployed version
 # testBehave:
 # stage:  tests
 # script:
@@ -54,7 +54,7 @@ unitTesting:
    - shell
 
 # clean up large dangling images from VM, if they exist
-# adding on_failure tag again because doing this too much seems to impact caching
+# this is only done on failure as removing it every time removes cache
 # which is not good for build speeds
 cleanup_build:
   stage: cleanup

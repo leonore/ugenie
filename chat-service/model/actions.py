@@ -114,7 +114,7 @@ class CheckCourse(Action):
 
     def run(self, dispatcher, tracker, domain):
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
-        response = "Did you want the course: " + str(elastic_title).title() + "?"
+        response = "Did you want the course: {}?".format(str(elastic_title).title())
         buttons = [{"title":"Yes", "payload":"/confirmation"},
                     {"title":"No", "payload":"/denial"}]
 

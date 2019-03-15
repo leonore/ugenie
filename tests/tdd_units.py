@@ -4,6 +4,8 @@ sys.path.append('../chat-service/model')
 
 import elastic
 
+# a file for unit tests in test driven development
+
 cat, title, answer = elastic.get_description("mario decision")
 assert(answer == "MaRio decision means admissions have the decision-making capacity, not the school")
 print("Found right answer for MaRio decision with get_description")

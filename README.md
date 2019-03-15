@@ -23,7 +23,7 @@ ______________
 #### Launching with Docker
 This is easier for direct interaction with the bot.
 
-##### Set up 
+##### Set up
 
 - Download a [release of UGenie](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tags), which should include a data archive and a model archive
     - `models.zip` contains a trained instance of the bot
@@ -36,6 +36,8 @@ This is easier for direct interaction with the bot.
 docker-compose up --build
 ```
 This should populate the database when launching. The bot should then be running at [localhost:5000](localhost:5000)
+
+------
 
 #### Manuel dependency setup
 How to get yourself set up with dependencies manually, for development:
@@ -56,8 +58,10 @@ make train
 make run
 ```
 
-The bot should then be running at [localhost:5000](localhost:5000)
+The bot should then be running at [localhost:5000](localhost:5000)     
+*N.B.: if chat logs become excessive, run `make clean f=[filename]` to zip them up!*
 _____
+
 #### Interacting with the bot
 
 Here are some questions you can ask UGenie:

@@ -7,7 +7,7 @@ import re
 import time
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption
+app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#' # Secret key for encryption --> in live deployment this would be changed
 socketio = SocketIO(app) # Apply SocketIO to 'app' to use it
 
 # When the user enters the homepage ('/') it triggers the sessions view
