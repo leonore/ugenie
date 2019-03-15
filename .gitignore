@@ -12,7 +12,7 @@
 *.cb2
 .*.lb
 
-## Python cache files
+# Python cache files
 *.pyc
 **/__pycache__/*
 
@@ -26,3 +26,6 @@ story_graph.dot
 
 # Chat logs
 chat-service/model/chat-logs/*
+
+# Any archived trained models or stored data for releases
+*.zip
