@@ -90,7 +90,7 @@
 * link_check
 - action_check_course
 * denial
-- action_course_denied
+- utter_course_denied
 
 ## user asks for funding being in the SC course context
 * ask_set_sc_course_type
@@ -139,7 +139,7 @@
 * full_part_time_check
 - action_check_course
 * denial
-- action_course_denied
+- utter_course_denied
 
 ## user fee check, right bot suggestion
 * fee_check
@@ -151,7 +151,7 @@
 * fee_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user time check, right bot suggestion
 * time_check
@@ -163,7 +163,7 @@
 * time_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user description check, right bot suggestion
 * description_check
@@ -175,7 +175,7 @@
 * description_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user tutor check, right bot suggestion
 * tutor_check
@@ -187,7 +187,7 @@
 * tutor_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user asks for tutor's courses
 * tutor_courses_check{"tutor":"Pamela Ross"}
@@ -195,34 +195,34 @@
 
 ## user acronym check
 * acronym_check
-- action_get_acronym
+- action_get_description
 
 ## acronym check for ATAS
 * acronym_check{"acronym":"ATAS"}
  - slot{"acronym": "ATAS"}
- - action_get_acronym
+ - action_get_description
 
 ## acronym check for mario
 * acronym_check{"acronym":"MaRio"}
  - slot{"acronym": "Mario"}
- - action_get_acronym
+ - action_get_description
 
 ## acronym check for PT
 * acronym_check{"acronym":"PT"}
  - slot{"acronym": "PT"}
- - action_get_acronym
+ - action_get_description
 
 ## acronym check for Plan Code
 * acronym_check{"acronym": "plan code"}
    - slot{"acronym": "plan code"}
-   - action_get_acronym
+   - action_get_description
 
 ## extended acronym check for IELTS
 * greet
    - utter_greet
 * acronym_check{"acronym": "IELTS"}
    - slot{"acronym": "IELTS"}
-   - action_get_acronym
+   - action_get_description
 
 ## user ielts check, right bot suggestion
 * requirements_check
@@ -397,3 +397,21 @@
 * location_check{"course": "french stage 1"}
     - slot{"course": "french stage 1"}
     - action_get_location
+
+## Generated Story 624971726596039983
+* greet
+    - utter_greet
+* description_check{"course": "academic practice"}
+    - slot{"course": "academic practice"}
+    - action_get_description
+* location_check{"course": "academic practice"}
+    - slot{"course": "academic practice"}
+    - action_get_location
+* denial
+    - action_utter_redirect
+* confirmation
+    - utter_contact
+* thank_you
+    - action_utter_help
+* denial
+    - utter_goodbye

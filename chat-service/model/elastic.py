@@ -6,6 +6,7 @@ import calendar
 
 es = Elasticsearch([elasticIP])
 
+
 ### good functions as a starting point ###
 # Get specific field for a given course
 def get_sc_field(course, field):
@@ -60,6 +61,7 @@ def get_course_title(query):
 
     return course, course_cat, course_score
 
+
 # given a course, return a link if available
 # action_check_course will have ran in actions
 def get_sc_course_link(course):
@@ -74,8 +76,8 @@ def get_sc_course_link(course):
     else:
         return link
 
-# given a query in a short-course context
-# parse common questions and find most suitable link to answer
+
+# given a query in a short-course context, parse common questions and find most suitable link to answer
 def get_sc_resource_link(query):
     res = es.search(index="common_questions", body={"query": {"match": {"question": query}}})
 
@@ -87,36 +89,27 @@ def get_sc_resource_link(query):
     resource = first_hit['_source']["answer"]
     return resource
 
-## TODO: move string formatting over to actions.py
+
 # Returns a string informing the start time, end time, start date, end date and title if exist
 def get_sc_times(course):
-    # duration = number of days a course runs for
-    # title = title of the course according to the database
-    # start_time, end_time = military time of when the course begins and ends in a days#
-    # start_data, end_date = calender dates of begining and end of course
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]['_source']
     course_title = first_hit["Title"]
     list_instances = fullify_sc_list([course_title])
-    # print(list_instances)
+
     instance_variables = []
     for instance in list_instances:
-        # print(instance['Start time'])
         duration = first_hit['Duration (days)']
         title = first_hit['Title']
         start_time, end_time = first_hit['Start time'], first_hit['End time']
         start_date, end_date = first_hit['Start date'], first_hit['End date']
         instance_variables.append([title.title(), start_date, end_date, start_time, end_time, duration])
 
-    print(instance_variables)
-    # time_variables = [title.title(), start_date, end_date, start_time, end_time, duration]
     return instance_variables
 
-## TODO: move string formatting over to actions.py
+
 # Returns the year in which the course starts and informs if it begins in january
 def get_ad_times(query):
-    # title = title of the course according to the database
-    # term = year the course begins
     # january = boolean if the course begins in January of not
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
@@ -127,18 +120,13 @@ def get_ad_times(query):
     time_variables = [title.title(), term, january]
     return time_variables
 
-## IN WORK ##
-# Returns the requirements for an admissions course
+
+# Returns the IELTS requirements for an admissions course
+# this checks for requirement type for future scalability
 def get_admission_requirements(course, requirement_type):
-    #if requirement_type is "ielts":
-    #    field = "IELTS requirements"
-    #elif requirement_type is "general":
-    #    field = "Ent Req"
-    #    return False
-    field = requirement_type
+
     try:
         res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
-        print(res)
     except:
         return "course_not_found"
 
@@ -147,16 +135,18 @@ def get_admission_requirements(course, requirement_type):
     except:
         return "course_not_found"
 
-    requirements = first_hit['_source'][field]
+    requirements = first_hit['_source'][requirement_type]
     return requirements
 
-## TODO: move string formatting over to actions.py
-## assumes a course has been found
+
+# checks if an admissions course runs part time or full time
 def check_pt_ft_course(course):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
     hits = res['hits']['hits']
-    cont = False
+    cont = False # assume the course isn't continuing first (does not have a row with this year)
     run_list = list()
+
+    # loop for the multiple rows for one course in the admissions data
     for hit in hits:
         now = datetime.datetime.now()
         if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == now.year:
@@ -171,9 +161,9 @@ def check_pt_ft_course(course):
     else:
         return "running", [str(course).title(), run_list]
 
-## TODO: move string formatting over to actions.py
-# Returns the home fee and internaitonal fee of an admissions course
-# For now we return all the fee information we have for the admissions courwse, whether the user is international or not
+
+# Returns the home fee and international fee of an admissions course
+# For now we return all the fee information we have for the admissions course = failproof bot answer regardless of enquirer's nationality
 def get_ad_fees(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
@@ -181,22 +171,18 @@ def get_ad_fees(query):
     home_fee = first_hit['Home Fee']
     int_fee = first_hit['Int Fee']
     fee_variables = [title.title(), str(home_fee), str(int_fee)]
-    return fee_variables
-    # response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (title.title(), str(home_fee), title.title(), str(int_fee))
-    # return response
 
-## TODO: move string formatting over to actions.py
-# Returns the kind of course an admissions course is
+    return fee_variables
+
+
+# Returns the kind of course an admissions course is e.g. Education PGT
 def get_ad_description(query):
-    # title = title of course according to the database
-    # desc = short title for type of courses e.g. Education PGT
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]
-    title = first_hit['_source']['Lookup Name']
+    title = first_hit['_source']['Lookup Name'].title() # normalise course titles if they're all caps
     desc = first_hit['_source']['Apply Centre Description']
-    ad_desc_variables = [title, desc]
-    response = "%s is a %s course" % (title.title(), desc)
-    return response, first_hit['_score']
+
+    return title, desc, first_hit['_score']
 
 
 # Returns the meaning of the acronym given
@@ -210,73 +196,70 @@ def get_acronym_desc(query):
                         }})
 
     if res['hits']['hits']:
-        # acro = acronym given e.g. FT
-        # response = meaning of acronym
         # score = how relevant the acronym was to the one searched
         first_hit = res['hits']['hits'][0]
         response = first_hit['_source']['answer']
-        acro = first_hit['_source']['question']
+        acronym = first_hit['_source']['question']
         score = first_hit['_score']
-        return acro, response, score
+        return acronym, response, score
     else:
         return None, None, None
 
-## TODO: move string formatting over to actions.py
+
 # Returns the course description or the terminology explanation depending on which was asked
-# Elastic's scoring feature is very useful to check what answer is most suitable to the query
+# If NLU fails RASA-side, Elastic's scoring feature is very useful to check what answer is most suitable to the query
 # Hence why this function is not decoupled for admissions, short courses, terminology
 def get_description(query):
-    # ct = course title
-    # cat = course category
     # cscore = relevancy score for course from elastic search
-    # acro = acronym
-    # acro_desc = acronym's expansion
     # acro_score = relevancy score of acronym from elastic search
+    # ct = course title
+    # cat = "AD" or "SC" or "acronym"
+
     ct, cat, cscore = get_course_title(query)
     acro, acro_desc, acro_score = get_acronym_desc(query)
 
-    if cscore != None and acro_score != None:
+    if cscore != None and acro_score != None: # both acronyms and courses were returned
         if cscore >= acro_score: # if course was more relevant
             if cat == "SC": # if course was a short coures
                 course_desc, score = get_sc_field(query, 'Course description')
-                desc = str(ct).title() + " is: " + str(course_desc)
-                topic = ct
+                title = str(ct).title()
+                desc = str(course_desc)
             elif cat == "AD": # if course was a admissions course
-                desc, score = get_ad_description(query)
-                topic = ct
+                title, desc, score = get_ad_description(query)
+
         else: # if acronym was more relevant
             desc = acro_desc
-            topic = acro
-    elif cscore != None: # if course was the only result
+            title = acro
+            category = "acronym"
+
+    elif cscore != None: # only course was returned
         if cat == "SC": # if course was a short course
             course_desc, score = get_sc_field(query, 'Course description')
-            desc = str(ct).title() + " is: " + str(course_desc)
-            topic = ct
+            desc = str(course_desc)
+            title = str(ct).title()
+
         elif cat == "AD": # if course was a admissions course
-            desc, score = get_ad_description(query)
-            topic = ct
+            title, desc, score = get_ad_description(query)
+
         else:
-            return False, False
+            return False, False, False
 
     elif acro_score != None: # if acronym was more relevant
         desc = acro_desc
-        topic = acro
+        title = acro
+        cat = "acronym"
 
     else: # if both course and acronym were irrelevant
-        return False, False
+        return False, False, False
 
-    # topic = title of course or acronyms
-    # desc = course description or acronym expansion
-    return topic, desc
+    return cat, title, desc
+
 
 # Returns the tutor's name and a list of classes that they teach
 def get_tutor_courses(query):
-    # course_list = list of courses the tutor teaches
-    # res_len = lenght of list of relevant results
-    # tutor = name of tutor according to the database
     res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
     course_list = ""
-    res_len = 0
+    res_len = 0 # length of list of relevant results
     if res['hits']['total']:
         res_len = len(res['hits']['hits'])
         first_hit = res['hits']['hits'][0]
@@ -291,7 +274,6 @@ def get_tutor_courses(query):
         # e.g. "one, two, three, and four"
         for counter in res['hits']['hits']:
             if counter != res['hits']['hits'][res_len-1]:
-                # print(counter['_source']['Title'])
                 course_list += str(counter['_source']['Title']).title() + ", "
         course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 
@@ -306,86 +288,62 @@ def return_list(set):
     if course_len > 1:
         for counter in set:
             if counter != set[course_len-1]:
-                # print(counter['_source']['Title'])
                 course_list += str(counter).title() + ", "
         course_list += " and " + str(set[course_len-1]).title()
     else:
         course_list = set[0]
     return course_list
 
-# Returns a list of relevant courses from the short courses file
-def get_sc_type_courses(query):
-    # Elasticsearch to match both the title of the course and subject area for relevancy
-    res = es.search(index="short_courses",
+def get_type_courses(query, type):
+    if type == "short":
+        title, subject, index = "Title", "Subject area", "short_courses"
+    elif type == "admissions":
+        title, subject, index = "Lookup Name", "Apply Centre Description", "admissions"
+    else:
+        # this should not have been called
+        return False, False
+
+    res = es.search(index=index,
     body={"query":{
             "bool":{
                 "should":[
                     {"match":{
-                        "Title":query
+                        title: query
                     }},
                     {"match":{
-                    "Subject area":query
+                        subject: query
                     }}
                 ],
             }
         }})
-
     course_list = []
     course_set = []
 
     # Creates a list of the top 10 matched courses then turns it into a list to remove duplicates
     if res:
         for course in (res['hits']['hits']):
-            course_list.append(course['_source'].get("Title"))
+            course_list.append(course['_source'].get(title))
         course_set = list(set(course_list))
-    # course_set_unformatted = course_set
-    # If len > 1 we return a formatted list
+
     if len(course_set) > 1:
         # course_set = return_list(course_set)
-        return course_set, res['hits']['total']
-    # If len = 1 we return the single course
+        return course_set, res['hits']['total'] # multiple courses were matched
     elif len(course_set) == 1:
-        return list(str(course_set[0]).title()), res['hits']['total']
-    # If len < 1 if means we matched no courses so we return false
+        return str(course_set[0]).title(), res['hits']['total']  # one course was matched
     else:
-        return False, False
+        return False, False # no courses were matched
+    return False, False
 
-# Returns a list of relevant courses from the admissions courses file
-def get_ad_type_courses(query):
-    # Elasticsearch to match both the title of the course and subject area for relevancy
-    res = es.search(index="admissions",
-    body={"query":{
-            "bool":{
-                "should":[
-                    {"match":{
-                    "Lookup Name":query
-                    }},
-                    {"match":{
-                    "Apply Centre Description":query
-                    }}
-                ],
-            }
-        }})
 
-    course_list = []
-    course_set = []
+# Function to receive a list of courses and expand it with all the different instances of it
+def fullify_sc_list(course_list):
+    full_list = []
+    for course in course_list:
+        res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
+        for instance in res['hits']['hits']:
+            full_list.append(instance["_source"])
+    return full_list
 
-    # Creates a list of the top 10 matched courses then turns it into a list to remove duplicates
-    if res:
-        for course in (res['hits']['hits']):
-            course_list.append(course['_source'].get("Lookup Name"))
-        course_set = list(set(course_list))
-
-    # If len > 1 we return a formatted list
-    if len(course_set) > 1:
-        # course_list = return_list(course_set)
-        return course_list, res['hits']['total']
-    # If len = 1 we return the single course
-    elif len(course_set) == 1:
-        return str(course_set[0]).title(), res['hits']['total']
-    # If len < 1 if means we matched no courses so we return false
-    else:
-        return False, False
 
 # Turns month string to number (e.g. "november" -> 10)
 def monthToNum(month):
@@ -401,19 +359,9 @@ def weekdayToNum(day):
     number = list(calendar.day_abbr).index(day)
     return number
 
-# Function to receive a list of courses and expand it with all the different instances of it
-def fullify_sc_list(course_list):
-    full_list = []
-    for course in course_list:
-        res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
-        for instance in res['hits']['hits']:
-            full_list.append(instance["_source"])
-    return full_list
 
 # Filters a list of courses that start in a particular month
 def filterForMonths(month, course_list):
-    # Turns the month into a interger representation (e.g. january -> 0)
-    # Expands the course_list to get different times
     filtered_course_list = []
     month_dec = monthToNum(month)
     full_course_list = fullify_sc_list(course_list)
@@ -432,10 +380,8 @@ def filterForMonths(month, course_list):
     else:
         return False
 
-# Filters a list of courses 'course_list' that start on a particaular weekday 'weekday'
+# Filters a list of courses 'course_list' that start on a particular weekday 'weekday'
 def filterForWeekday(weekday, course_list):
-    # Turns the weekday into a interger representation (e.g. monday -> 0)
-    # Expands the course_list to get different times
     filtered_course_list = []
     weekday_dec = weekdayToNum(weekday)
     full_course_list = fullify_sc_list(course_list)
@@ -454,15 +400,15 @@ def filterForWeekday(weekday, course_list):
     else:
         return False
 
+
 # Returns a formatted list of tutors of a given course
 def getMultiTutors(course):
     course_instances = fullify_sc_list([course])
     tutor_list = []
+
     for instance in course_instances:
         tutor_list.append(instance["Tutor"])
 
-
     tutor_list = list(set(tutor_list))
     answer = return_list(tutor_list)
-    print(answer)
     return len(tutor_list), answer
