@@ -14,11 +14,14 @@
     <button class="open-button" onclick="openForm()">Chat to UGenie</button>
 
     <div class="chat-popup" id="myForm">
+	
+		<img class="icon" src="{{ url_for('static', filename='icon.png') }}" alt="Icon">
+		
         <div class="chat-container">
 
 			<div class="chat-header">
 				<a href="#" class="close" onclick="closeForm()"></a>
-				<div class="title">&nbsp&nbsp&nbsp&nbsp<img src="{{ url_for('static', filename='icon.png') }}" alt="Icon"><br>UGenie</div>
+				<div class="title">UGenie</div>
 			</div>
 
             <div class="message-area"></div>
