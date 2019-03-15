@@ -170,21 +170,17 @@ def get_ad_fees(query):
     course_title = first_hit["Lookup Name"]
     course_instances = fullify_ad_list([course_title])
     home_fee, int_fee = None, None
+
+    # Goes through course instances looking if they have fee data
     for course in course_instances:
-        # print(course["Lookup Name"])
         now = datetime.datetime.now()
         if course["Admit Term"] >= now.year:
-            print(course["Admit Term"])
-            if course["Home Fee"] and course["Int Fee"]:
-                home_fee = course['Home Fee']
-                int_fee = course['Int Fee']
-    if home_fee == None and int_fee == None:
-        context = "no_relevant_fees"
-    else:
-        context = "relevant_fees"
-        # if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] <= now.year:
+            if course["Home Fee"]:
+                home_fee = str(course['Home Fee'])
+            if course["Int Fee"]:
+                int_fee = str(course['Int Fee'])
 
-    fee_variables = [course_title.title(), str(home_fee), str(int_fee), context]
+    fee_variables = [course_title.title(), home_fee, int_fee]
 
     return fee_variables
 
@@ -436,5 +432,3 @@ def getMultiTutors(course):
     tutor_list = list(set(tutor_list))
     answer = return_list(tutor_list)
     return len(tutor_list), answer
-
-print(get_ad_fees("Adult Education, Community Development & Youth Work"))
