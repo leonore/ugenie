@@ -45,11 +45,11 @@ test_prototype:
 #   - shell
 
 # Testing the components of the chatbot
-unitTesting:
+unitTesting_elastic:
  stage: tests
  script:
    - cd tests/unit_testing
-   - python3 runner.py
+   - python3 elastic_runner.py
  tags:
    - shell
 

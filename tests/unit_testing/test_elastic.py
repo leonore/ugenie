@@ -65,11 +65,9 @@ class TestElastic(unittest.TestCase):
     # test  getting the cost of a short course when the course's  name is both gevin
     def test_lastic_get_ad_fees(self):
         self.assertEqual(elastic.get_ad_fees(
-            'CHINESE STUDIES')[1] == '7650', True)
+            'CHINESE STUDIES')[1] == '8000', True)
         self.assertEqual(elastic.get_ad_fees(
-            'CHILDHOOD PRACTICE')[2] == 'None', True)
-        self.assertEqual(elastic.get_ad_fees(
-            'Film Curation')[1] == 'None', True)
+            'Film Curation')[1] == '8000', True)
         self.assertEqual(elastic.get_ad_fees(
             'Food Security')[2] == '21020', True)
 
