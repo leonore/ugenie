@@ -12,7 +12,6 @@ Our application consists of:
 An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot)
 ______________
 
-Cloning this repository from 15th of March 2019 should include a trained version of the bot.
 - [Launching with Docker](#launching-with-docker)
 - [Sample questions to ask the bot](#interacting-with-the-bot)
 - [Extra documentation on different app components](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/wikis/home#handover-documentation)
@@ -27,10 +26,10 @@ This is easier for direct interaction with the bot.
 ##### Set up 
 
 - Download a [release of UGenie](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tags), which should include a data archive and a model archive
-    - the model folder is a trained instance of the bot
-    - The data archive contents should be stored in `elastic-db/data`
-    - The model contents should be stored in `chat-service/agent-data/models`
-        - clearer instructions tbc 
+    - `models.zip` contains a trained instance of the bot
+       - it should be decompressed in `chat-service/agent-data/` to create the path `chat-service/agent-data/models`
+    - `data.zip` contains the client-provided university data
+       - it should be decompressed in `elastic-db/` to create the path `elastic-db/data`
 
 ##### Launch
 ```bash
@@ -48,7 +47,7 @@ python -m spacy download en
 pip install flask-socketio
 pip install elasticsearch
 pip install xlrd
-````
+````  
 *N.B. Python should be `3.6+`*
 
 ##### Launching after setup
@@ -63,17 +62,22 @@ _____
 
 Here are some questions you can ask UGenie:
 - how can you help me?
-- What is [course]?
+- What is [course] about?
 - What [category] courses are there?
 - What [category] courses are there in [month]?
 - What [category] courses are there on [weekday]?
 - How much is [course/short course]?
-- When is [short course]?
-- Where is [short course]?
+- What building is [short course] in?
+- What time is [short course]?
 - Who teaches [short course]?
 - What other courses does [tutor] teach?
 - What does [acronym] mean?
-- What does [acronym] of a course mean?
-- what grades do I need to get into [course]?
+- what are the english requirements for [course]?
 - does [course] run part-time/full-time?
 - do you have a link for [short course]?
+- can you redirect me to a human?
+- Is there funding available for short courses?
+- Can I cancel my course?
+- Can I get a refund?
+- Can I transfer courses?
+- Are there credits attached to [course]?
