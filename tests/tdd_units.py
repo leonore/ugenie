@@ -24,7 +24,7 @@ acro, desc, score = elastic.get_acronym_desc("mario decision")
 assert(desc == "MaRio decision means admissions have the decision-making capacity, not the school"), desc
 print("Found right answer for MaRio decision with get_acronym_desc")
 
-# tests that were ran while cleaning up code
+# tests that were ran while cleaning up code -- test driven development
 # sc, sc_len = elastic.get_sc_type_courses("art")
 # new_sc, new_sc_len = elastic.get_type_courses("art", "short")
 # new_ad, new_ad_len = elastic.get_type_courses("science", "admissions")
