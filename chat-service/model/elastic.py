@@ -149,7 +149,7 @@ def check_pt_ft_course(course):
     # loop for the multiple rows for one course in the admissions data
     for hit in hits:
         now = datetime.datetime.now()
-        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == now.year:
+        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] >= now.year:
             cont = True
             if hit['_source']['PT'] and "part-time" not in run_list:
                 run_list.append("part-time")
@@ -167,10 +167,24 @@ def check_pt_ft_course(course):
 def get_ad_fees(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
-    title = first_hit['Lookup Name']
-    home_fee = first_hit['Home Fee']
-    int_fee = first_hit['Int Fee']
-    fee_variables = [title.title(), str(home_fee), str(int_fee)]
+    course_title = first_hit["Lookup Name"]
+    course_instances = fullify_ad_list([course_title])
+    home_fee, int_fee = None, None
+    for course in course_instances:
+        # print(course["Lookup Name"])
+        now = datetime.datetime.now()
+        if course["Admit Term"] >= now.year:
+            print(course["Admit Term"])
+            if course["Home Fee"] and course["Int Fee"]:
+                home_fee = course['Home Fee']
+                int_fee = course['Int Fee']
+    if home_fee == None and int_fee == None:
+        context = "no_relevant_fees"
+    else:
+        context = "relevant_fees"
+        # if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] <= now.year:
+
+    fee_variables = [course_title.title(), str(home_fee), str(int_fee), context]
 
     return fee_variables
 
@@ -345,6 +359,16 @@ def fullify_sc_list(course_list):
     return full_list
 
 
+# Function to receive a list of courses and expand it with all the different instances of it
+def fullify_ad_list(course_list):
+    full_list = []
+    for course in course_list:
+        res = es.search(index="admissions", body={"query": {"match_phrase": {"Lookup Name": course}}})
+        for instance in res['hits']['hits']:
+            full_list.append(instance["_source"])
+    return full_list
+
+
 # Turns month string to number (e.g. "november" -> 10)
 def monthToNum(month):
     month = month.title()
@@ -412,3 +436,5 @@ def getMultiTutors(course):
     tutor_list = list(set(tutor_list))
     answer = return_list(tutor_list)
     return len(tutor_list), answer
+
+print(get_ad_fees("Adult Education, Community Development & Youth Work"))
