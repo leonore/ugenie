@@ -1,7 +1,6 @@
 import sys
-#elastic path
-#path should be changed
-sys.path.insert(0, '/dissertation/chat-service')
+
+sys.path.append('../chat-service/')
 import unittest
 import main
 
