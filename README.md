@@ -9,7 +9,7 @@ Our application consists of:
 * connected to a Natural Language Understanding unit (`RASA`)
 * which makes queries to a free-text search engine (`Elasticsearch`)
 
-An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here:robot:](https://bit.do/uofg-bot)
+An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot)
 ______________
 
 - [Launching with Docker](#launching-with-docker)

@@ -27,7 +27,7 @@ def train_interactive():
                   interpreter=interpreter, action_endpoint=action_endpoint)
     data = agent.load_data(stories_file)
     agent.train(data)
-    interactive.run_interactive_learning(agent, training_data_file)
+    interactive.run_interactive_learning(agent, stories_file)
     return agent
 
 # Train Rasa-NLU Model
