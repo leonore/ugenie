@@ -45,6 +45,18 @@ test_prototype:
 # tags:
 #   - shell
 
+# Testing the components of the chatbot
+ unitTesting:
+  stage:  tests
+    script:
+
+   - cd tests
+   - cd unit_testing
+   - pyhton3 runner.py
+
+# tags:
+#   - shell
+
 # clean up large dangling images from VM, if they exist
 # adding on_failure tag again because doing this too much seems to impact caching
 # which is not good for build speeds
