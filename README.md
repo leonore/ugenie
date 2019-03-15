@@ -1,4 +1,4 @@
-# CS01 - Virtual Assistant for UofG's External Relations
+# CS01 - Virtual Assistant for UofG's External Relations &nbsp;<img src="chat-service/static/icon.png" width="30" height="30" alt="UGenie's face">
 
 [![build status](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/badges/master/pipeline.svg)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/commits/master)             
 
@@ -13,12 +13,12 @@ An online prototype of the bot, nicknamed **GUVA** during development, and named
 ______________
 
 Cloning this repository from 15th of March 2019 should include a trained version of the bot.
+- [Launching with Docker](#launching-with-docker)
+- [Sample questions to ask the bot](#interacting-with-the-bot)
+- [Extra documentation on different app components](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/wikis/home#handover-documentation)
+- [Contribution guide (includes codebase structure information)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/blob/master/CONTRIBUTING.md)
 - [Set up dependencies manually](#manual-dependency-setup)
     - [Launching from manual set-up](#launching-after-setup)
-- [Launching from Docker](#launching-from-docker)
-- [Sample questions to ask the bot](#interacting-with-the-bot)
-- [Extra documentation on different app components](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tree/master/docs)
-
 --------
 
 #### Launching with Docker
@@ -26,7 +26,7 @@ This is easier for direct interaction with the bot.
 
 ##### Set up 
 
-- Download a release of UGenie (to be linked), which should include a data archive and a model archive
+- Download a [release of UGenie](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tags), which should include a data archive and a model archive
     - the model folder is a trained instance of the bot
     - The data archive contents should be stored in `elastic-db/data`
     - The model contents should be stored in `chat-service/agent-data/models`
