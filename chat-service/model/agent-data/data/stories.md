@@ -125,10 +125,30 @@
 * location_check
 - action_get_location
 * confirmation
+- action_set_sc_course_type
 - action_get_location
 
 ## user asks for a course location but didn't want it for short courses
 * location_check
+- action_get_location
+* denial
+- action_utter_redirect
+
+## user asks for credits check while being in the SC course context
+* ask_set_sc_course_type
+ - action_set_sc_course_type
+* credits_check
+ - action_get_credits
+
+## user asks for course location without having set a context
+* credits_check
+- action_get_credits
+* confirmation
+- action_set_sc_course_type
+- action_get_location
+
+## user asks for a course location but didn't want it for short courses
+* credits_check
 - action_get_location
 * denial
 - action_utter_redirect

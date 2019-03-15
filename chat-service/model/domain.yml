@@ -20,6 +20,7 @@ actions:
 - action_get_description
 - action_get_time
 - action_get_tutor
+- action_get_credits
 - action_course_validate
 - utter_description_check
 - action_check_course
@@ -53,6 +54,7 @@ intents:
 - ask_human
 - description_check
 - full_part_time_check
+- credits_check
 - location_check
 - time_check
 - tutor_check

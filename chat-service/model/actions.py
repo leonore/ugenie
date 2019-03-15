@@ -106,7 +106,7 @@ class UtterContact(Action):
 
         dispatcher.utter_message(response)
         return
-        
+
 # Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
@@ -188,7 +188,7 @@ class GetShortCourseResource(Action):
 
 
 # Return standard location answer, as we don't have any specific data for it
-class GetCourseLocation(Action):
+class GetLocation(Action):
     def name(self):
         return "action_get_location"
 
@@ -207,6 +207,34 @@ class GetCourseLocation(Action):
             dispatcher.utter_message(response)
             return[SlotSet("course_type", "short")]
 
+
+# Return credits for short courses, or a standard answer for PGT courses
+class GetCredits(Action):
+    def name(self):
+        return "action_get_credits"
+
+    def run(self, dispatcher, tracker, domain):
+        context = tracker.get_slot("course_type")
+
+        if not context:
+            response = "I can only provide specific credits information for short courses. Is this what you were looking for?"
+            buttons = [{"title":"Yes", "payload":"/confirmation"},
+                         {"title":"No", "payload":"/denial"}]
+            dispatcher.utter_button_message(response, buttons)
+            return
+
+        elif context == "admissions":
+            response = "Standard PGT university courses are usually worth 120 credits, but I don't have any more specific information."
+
+        else:
+            elastic_title, elastic_result = elastic.get_sc_credits(tracker.get_slot("course"))
+            if elastic_result:
+                response = "{} is worth {} credits".format(elastic_title, elastic_result)
+            else:
+                response = "There doesn't seem to be any credits attached to the course {}".format(elastic_title)
+
+        dispatcher.utter_message(response)
+        return
 
 # Utters the description of a course or tells the description of a term used
 # This action is not granular because of the ambiguity of "what is" statements

@@ -90,7 +90,7 @@ def get_sc_resource_link(query):
     return resource
 
 
-# Returns a string informing the start time, end time, start date, end date and title if exist
+# Returns start time, end time, start date, end date and title if exist
 def get_sc_times(course):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]['_source']
@@ -106,6 +106,15 @@ def get_sc_times(course):
         instance_variables.append([title.title(), start_date, end_date, start_time, end_time, duration])
 
     return instance_variables
+
+# Returns how many credits a short course is worth
+def get_sc_credits(course):
+    res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
+    first_hit = res['hits']['hits'][0]['_source']
+    course_title = first_hit["Title"].title()
+    credits = first_hit["Credits attached"]
+
+    return course_title, credits
 
 
 # Returns the year in which the course starts and informs if it begins in january
