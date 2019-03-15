@@ -190,16 +190,14 @@
 - is there an online resource for [art and anatomy](course)
 
 ## intent:location_check
-- where is [Coral Reefs: Ancient and Modern](course) taking place
+- where is [Coral Reefs: Ancient and Modern](course) going to take place
 - what is the building for [french stage 1](course)
 - do you have the location for [Introduction to Mindfulness](course)
 - where will [Opera Afternoons 1](course) take place
 - which room is [Songwriting Workshop](course) in
-- where is [french stage 1](course) going to take place
 - location for [spanish stage 3](course)
 - where is the room for [art history](course)
 - building for [film studies 1](course)
-- where is [art and anatomy](course) located
 - do you have room for [art history](course)
 - where is the building for [hidden art in glasgow](course)
 
