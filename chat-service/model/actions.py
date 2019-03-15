@@ -121,7 +121,7 @@ class GetAcronymDescription(Action):
     def run(self, dispatcher, tracker, domain):
         acronym = tracker.get_slot("acronym")
         if acronym:
-            topic, acronym_desc = elastic.get_description(acronym)
+            acronym, acronym_desc, score = elastic.get_acronym_desc(acronym)
             if acronym_desc:
                 response = acronym_desc
             else:
@@ -140,7 +140,17 @@ class GetDescription(Action):
 
     def run(self, dispatcher, tracker, domain):
 
-        elastic_cat, elastic_title, elastic_desc = elastic.get_description(tracker.get_slot("course"))
+        course = tracker.get_slot("course")
+        acronym = tracker.get_slot("acronym")
+
+        if course:
+            elastic_cat, elastic_title, elastic_desc = elastic.get_description(course)
+        elif acronym:
+            elastic_cat, elastic_title, elastic_desc = elastic.get_description(acronym)
+        else:
+            response = "Sorry, I can't seem to pick up what you're asking about"
+            dispatcher.utter_message(response)
+            return
 
         if elastic_cat in ["SC", "acronym"]:
             # string formatting isn't needed because the description is provided in the data
@@ -149,7 +159,7 @@ class GetDescription(Action):
             # string formatting is needed for a custom description
             response = "{} is a {} course".format(elastic_title, elastic_desc)
         else:
-            response = "Sorry, I could not find any details for that"
+            response = "Sorry, I could not find any details for that."
 
         dispatcher.utter_message(response)
         return

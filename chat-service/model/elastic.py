@@ -205,6 +205,17 @@ def get_acronym_desc(query):
     else:
         return None, None, None
 
+def get_relevancy_score(query):
+    ct, cat, cscore = get_course_title(query)
+    acro, acro_desc, acro_score = get_acronym_desc(query)
+
+    if acro_score >= cscore:
+        return acro, acro_desc
+    elif cscore > acro_score:
+        return ct, cat
+    else:
+        return False, False
+
 # Returns the course description or the terminology explanation depending on which was asked
 # If NLU fails RASA-side, Elastic's scoring feature is very useful to check what answer is most suitable to the query
 # Hence why this function is not decoupled for admissions, short courses, terminology
@@ -213,6 +224,7 @@ def get_description(query):
     # acro_score = relevancy score of acronym from elastic search
     # ct = course title
     # cat = "AD" or "SC" or "acronym"
+    print(query)
     ct, cat, cscore = get_course_title(query)
     acro, acro_desc, acro_score = get_acronym_desc(query)
 

@@ -99,8 +99,6 @@
 - what are [IELTS requirements](acronym)
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
-- what is [ATAS](acronym)
-- what is [FT](acronym)
 - what does [PT](acronym) stand for
 
 ## intent:ask_type_classes

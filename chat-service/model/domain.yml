@@ -103,6 +103,8 @@ slots:
       - mario decision
       - ft
       - pt
+      - PT
+      - FT
       - ielts requirements
       - atas
   question_topic:
@@ -153,7 +155,7 @@ templates:
   - "Ask away!"
   - "I'm all ears then!"
   utter_terminology_functionality:
-  - text: You can ask me about terminology like MaRio, IELTS requirements, FT, PT, ATAS...
+  - text: "You can ask me about the following terminology: MaRio decision, IELTS requirements, FT, PT, ATAS, Plan Code."
 
 ## for development only!
   utter_lambda:

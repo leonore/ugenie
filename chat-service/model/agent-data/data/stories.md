@@ -195,34 +195,34 @@
 
 ## user acronym check
 * acronym_check
-- action_get_acronym
+- action_get_description
 
 ## acronym check for ATAS
 * acronym_check{"acronym":"ATAS"}
  - slot{"acronym": "ATAS"}
- - action_get_acronym
+ - action_get_description
 
 ## acronym check for mario
 * acronym_check{"acronym":"MaRio"}
  - slot{"acronym": "Mario"}
- - action_get_acronym
+ - action_get_description
 
 ## acronym check for PT
 * acronym_check{"acronym":"PT"}
  - slot{"acronym": "PT"}
- - action_get_acronym
+ - action_get_description
 
 ## acronym check for Plan Code
 * acronym_check{"acronym": "plan code"}
    - slot{"acronym": "plan code"}
-   - action_get_acronym
+   - action_get_description
 
 ## extended acronym check for IELTS
 * greet
    - utter_greet
 * acronym_check{"acronym": "IELTS"}
    - slot{"acronym": "IELTS"}
-   - action_get_acronym
+   - action_get_description
 
 ## user ielts check, right bot suggestion
 * requirements_check
@@ -397,3 +397,21 @@
 * location_check{"course": "french stage 1"}
     - slot{"course": "french stage 1"}
     - action_get_location
+
+## Generated Story 624971726596039983
+* greet
+    - utter_greet
+* description_check{"course": "academic practice"}
+    - slot{"course": "academic practice"}
+    - action_get_description
+* location_check{"course": "academic practice"}
+    - slot{"course": "academic practice"}
+    - action_get_location
+* denial
+    - action_utter_redirect
+* confirmation
+    - utter_contact
+* thank_you
+    - action_utter_help
+* denial
+    - utter_goodbye
