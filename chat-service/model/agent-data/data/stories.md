@@ -244,7 +244,7 @@
 * denial
   - action_utter_redirect
 * confirmation
-  - utter_contact
+  - action_utter_contact
 
 ## Stories that follow are mainly generated with interactive training
 ## two description checks
@@ -408,7 +408,7 @@
 * denial
     - action_utter_redirect
 * confirmation
-    - utter_contact
+    - action_utter_contact
 * thank_you
     - action_utter_help
 * denial

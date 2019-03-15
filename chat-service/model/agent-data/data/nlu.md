@@ -100,7 +100,7 @@
 - what is the [JACS code](acronym) of a course
 - what is the term [Plan Code](acronym)
 - what does [PT](acronym) stand for
-- what is [FT](acronym)
+- what is [PT](acronym)
 - what is [ATAS](acronym)
 
 ## intent:ask_type_classes

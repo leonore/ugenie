@@ -3,7 +3,7 @@
 actions:
 - utter_greet
 - utter_goodbye
-- utter_contact
+- action_utter_contact
 - action_utter_help
 - action_utter_redirect
 - action_utter_functionality
@@ -143,8 +143,6 @@ templates:
   - "Sorry I did not understand which course you meant, could you please rephrase your question?"
   utter_out_of_scope:
   - text: "I'm afraid I might not be trained to answer your question, but here's a fun fact: Saint Valentine was also the saint of beekeeping, fainting, epilepsy and the plague!"
-  utter_contact:
-  - text: "You can contact someone about short courses here: shortcourses@glasgow.ac.uk, and you can contact someone about postgraduate courses here: PGAdmissions@glasgow.ac.uk"
   utter_expert:
   - "Alright, what is your question?"
   - "Ask away!"
