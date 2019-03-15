@@ -398,9 +398,7 @@
     - slot{"course": "french stage 1"}
     - action_get_location
 
-## Generated Story 624971726596039983
-* greet
-    - utter_greet
+## Extended story to generate admissions graph in documentation
 * description_check{"course": "academic practice"}
     - slot{"course": "academic practice"}
     - action_get_description

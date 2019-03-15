@@ -203,10 +203,10 @@ class GetDescription(Action):
         course = tracker.get_slot("course")
         acronym = tracker.get_slot("acronym")
 
-        if course:
-            elastic_cat, elastic_title, elastic_desc = elastic.get_description(course)
-        elif acronym:
+        if acronym:
             elastic_cat, elastic_title, elastic_desc = elastic.get_description(acronym)
+        elif course:
+            elastic_cat, elastic_title, elastic_desc = elastic.get_description(course)
         else:
             response = "Sorry, I can't seem to pick up what you're asking about"
             dispatcher.utter_message(response)
@@ -222,7 +222,7 @@ class GetDescription(Action):
             response = "Sorry, I could not find any details for that."
 
         dispatcher.utter_message(response)
-        return
+        return[SlotSet("acronym", None)]
 
 
 # checks when a PGT course runs, or returns appropriate message
