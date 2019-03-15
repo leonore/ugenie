@@ -487,7 +487,6 @@ class GetFees(Action):
                 response = response + "%s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[2])
             if response == "":
                 response = "Sorry, I could not find any fees for that course"
-            # response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[1], fee_variables[0], fee_variables[1])
 
         dispatcher.utter_message(response)
         return
