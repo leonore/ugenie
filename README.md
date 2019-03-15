@@ -9,7 +9,7 @@ Our application consists of:
 * connected to a Natural Language Understanding unit (`RASA`)
 * which makes queries to a free-text search engine (`Elasticsearch`)
 
-An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot)
+An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here:robot:](https://bit.do/uofg-bot)
 ______________
 
 - [Launching with Docker](#launching-with-docker)
@@ -46,11 +46,9 @@ How to get yourself set up with dependencies manually, for development:
 pip install rasa_core
 pip install rasa_nlu[spacy]
 python -m spacy download en
-pip install flask-socketio
-pip install elasticsearch
-pip install xlrd
+pip install -r requirements.txt # socket.io + elasticsearch wrapper + xlrd
 ````  
-*N.B. Python should be `3.6+`*
+*N.B. Python should be `3.6+`. RASA installation is done in steps because it is a heavy package, and linking the spaCy english model only works this way.*
 
 ##### Launching after setup
 ```bash
@@ -76,7 +74,7 @@ Here are some questions you can ask UGenie:
 - What [category] courses are there on [weekday]?
 - How much is [course/short course]?
 - What building is [short course] in?
-- What time is [short course]?
+- What time is [short course] at?
 - Who teaches [short course]?
 - What other courses does [tutor] teach?
 - Are there credits attached to [course]?
