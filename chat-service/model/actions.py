@@ -27,7 +27,7 @@ class UtterSCFunctionality(Action):
         return "action_utter_short_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about a course's time, location, tutors, fees, or a description!"
+        response = "You can ask me about what courses we have within a subject area, a course's time, location, tutors, credits, fees, or a description!"
         dispatcher.utter_message(response)
 
         return [SlotSet("course_type", "short")]
@@ -39,7 +39,7 @@ class UtterADFunctionality(Action):
         return "action_utter_admissions_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about a course's fees, English requirements, and whether it runs part-time or full-time!"
+        response = "You can ask me about what courses we have within a subject area, a course's fees, English requirements, and whether it runs part-time or full-time!"
         dispatcher.utter_message(response)
 
         return [SlotSet("course_type", "admissions")]
