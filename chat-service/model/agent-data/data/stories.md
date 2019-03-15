@@ -23,6 +23,10 @@
 * expert
  - utter_expert
 
+## user asks to be redirect to a human
+* ask_human
+ - action_utter_contact
+
 ## provide help, user says yes
 * thank_you
    - action_utter_help
@@ -197,33 +201,6 @@
 * acronym_check
 - action_get_description
 
-## acronym check for ATAS
-* acronym_check{"acronym":"ATAS"}
- - slot{"acronym": "ATAS"}
- - action_get_description
-
-## acronym check for mario
-* acronym_check{"acronym":"MaRio"}
- - slot{"acronym": "Mario"}
- - action_get_description
-
-## acronym check for PT
-* acronym_check{"acronym":"PT"}
- - slot{"acronym": "PT"}
- - action_get_description
-
-## acronym check for Plan Code
-* acronym_check{"acronym": "plan code"}
-   - slot{"acronym": "plan code"}
-   - action_get_description
-
-## extended acronym check for IELTS
-* greet
-   - utter_greet
-* acronym_check{"acronym": "IELTS"}
-   - slot{"acronym": "IELTS"}
-   - action_get_description
-
 ## user ielts check, right bot suggestion
 * requirements_check
    - action_confirm_requirement_type
@@ -244,7 +221,7 @@
 * denial
   - action_utter_redirect
 * confirmation
-  - utter_contact
+  - action_utter_contact
 
 ## Stories that follow are mainly generated with interactive training
 ## two description checks
@@ -303,50 +280,9 @@
     - action_get_description
     - slot{"acronym": null}
 
-## Check for short course description
-* description_check{"course": "opera afternoons"}
-    - slot{"course": "opera afternoons"}
-    - action_get_description
-    - slot{"acronym": null}
-
-## Get short courses Ruth Ezra teaches
-* tutor_courses_check{"tutor": "Ruth Ezra"}
-    - slot{"tutor": "Ruth Ezra"}
-    - action_get_tutor_courses
-
-## Get short courses William Manley teaches
-* tutor_courses_check{"tutor": "William Manley"}
-    - slot{"tutor": "William Manley"}
-    - action_get_tutor_courses
-
-## Get short courses Alison Greer teaches
-* tutor_courses_check{"tutor": "alison greer"}
-    - slot{"tutor": "alison greer"}
-    - action_get_tutor_courses
-
-## Get short courses Clare Crines teaches
-* tutor_courses_check{"tutor": "Clare Crines"}
-    - slot{"tutor": "Clare Crines"}
-    - action_get_tutor_courses
-
 ## Get short courses Ann Laird teaches
 * tutor_courses_check{"tutor": "Ann Laird"}
     - slot{"tutor": "Ann Laird"}
-    - action_get_tutor_courses
-
-## Get short courses Stephen Mather teaches
-* tutor_courses_check{"tutor": "Stephen Mather"}
-    - slot{"tutor": "Stephen Mather"}
-    - action_get_tutor_courses
-
-## Get short courses Ronnie Scott teaches
-* tutor_courses_check{"tutor": "Ronnie Scott"}
-    - slot{"tutor": "Ronnie Scott"}
-    - action_get_tutor_courses
-
-## Get short courses Fiona Reid teaches
-* tutor_courses_check{"tutor": "Fiona Reid"}
-    - slot{"tutor": "Fiona Reid"}
     - action_get_tutor_courses
 
 ## Generated Course link Story
@@ -379,14 +315,6 @@
  - action_utter_help
  - action_utter_functionality
 
-## Getting greet + functionality to work
-* greet
-    - utter_greet
-    - action_utter_functionality
-* ask_admissions_courses_functionality
-    - action_utter_admissions_courses_functionality
-    - slot{"course_type": "admissions"}
-
 ## Getting location check to work
 * greet
     - utter_greet
@@ -408,7 +336,7 @@
 * denial
     - action_utter_redirect
 * confirmation
-    - utter_contact
+    - action_utter_contact
 * thank_you
     - action_utter_help
 * denial

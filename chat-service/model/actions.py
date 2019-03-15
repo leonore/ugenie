@@ -91,6 +91,22 @@ class UtterRedirect(Action):
         return
 
 
+class UtterContact(Action):
+    def name(self):
+        return "action_utter_contact"
+
+    def run(self, dispatcher, tracker, domain):
+        context = tracker.get_slot("course_type")
+        if context == "short":
+            response = "You can contact someone about short courses at the following: shortcourses@glasgow.ac.uk"
+        elif context == "admissions":
+            response = "You can contact someone about PGT admissions at the following: PGAdmissions@glasgow.ac.uk"
+        else:
+            response = "If your query is about short courses, you can contact shortcourses@glasgow.ac.uk, and if it is about postgraduate admissions, you can contact PGAdmissions@glasgow.ac.uk"
+
+        dispatcher.utter_message(response)
+        return
+        
 # Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
