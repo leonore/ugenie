@@ -385,8 +385,9 @@ class GetClassTypes(Action):
 
     def run(self, dispatcher, tracker, domain):
         # If the user is currently asking about short courses, we will only look for relevant short courses
-        if tracker.get_slot("course_type") == "short":
-            elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
+        context = tracker.get_slot("course_type")
+        if context == "short":
+            elastic_output, elastic_length = elastic.get_type_courses(tracker.get_slot("course"), context)
             if elastic_output:
                 month_text = ""
                 weekday_text = ""
@@ -411,8 +412,8 @@ class GetClassTypes(Action):
             return[SlotSet("month", None), SlotSet("weekday", None)]
 
         # If the user is currently asking about post graduate courses, we will only look for relevant post graduate courses
-        elif tracker.get_slot("course_type") == "admissions":
-            elastic_output, elastic_length = elastic.get_ad_type_courses(tracker.get_slot("course"))
+        elif context == "admissions":
+            elastic_output, elastic_length = elastic.get_type_courses(tracker.get_slot("course"), context)
             if elastic_output:
                 # print(elastic_output)
                 if tracker.get_slot("month"):
@@ -427,7 +428,7 @@ class GetClassTypes(Action):
             return[SlotSet("month", None), SlotSet("weekday", None)]
 
         # If the user has not specified already which course type they want we ask them to clarify with the use of buttons
-        elif not (tracker.get_slot("course_type")):
+        elif not context:
             response = "Did you want..."
             buttons = [{"title":"Short Courses", "payload":"/ask_set_sc_course_type"},
                         {"title":"Post Graduate", "payload":"/ask_set_ad_course_type"}]

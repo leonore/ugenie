@@ -90,7 +90,7 @@
 * link_check
 - action_check_course
 * denial
-- action_course_denied
+- utter_course_denied
 
 ## user asks for funding being in the SC course context
 * ask_set_sc_course_type
@@ -139,7 +139,7 @@
 * full_part_time_check
 - action_check_course
 * denial
-- action_course_denied
+- utter_course_denied
 
 ## user fee check, right bot suggestion
 * fee_check
@@ -151,7 +151,7 @@
 * fee_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user time check, right bot suggestion
 * time_check
@@ -163,7 +163,7 @@
 * time_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user description check, right bot suggestion
 * description_check
@@ -175,7 +175,7 @@
 * description_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user tutor check, right bot suggestion
 * tutor_check
@@ -187,7 +187,7 @@
 * tutor_check
  - action_check_course
 * denial
- - action_course_denied
+ - utter_course_denied
 
 ## user asks for tutor's courses
 * tutor_courses_check{"tutor":"Pamela Ross"}

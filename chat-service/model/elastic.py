@@ -214,7 +214,7 @@ def get_description(query):
     # acro_score = relevancy score of acronym from elastic search
     # ct = course title
     # cat = "AD" or "SC" or "acronym"
-    print(query)
+
     ct, cat, cscore = get_course_title(query)
     acro, acro_desc, acro_score = get_acronym_desc(query)
 
@@ -293,73 +293,46 @@ def return_list(set):
         course_list = set[0]
     return course_list
 
-## TODO: make this one function
-# Returns a list of relevant courses from the short courses file
-def get_sc_type_courses(query):
-    # query to match both the title of the course and subject area for relevancy
-    res = es.search(index="short_courses",
+def get_type_courses(query, type):
+    if type == "short":
+        title, subject, index = "Title", "Subject area", "short_courses"
+    elif type == "admissions":
+        title, subject, index = "Lookup Name", "Apply Centre Description", "admissions"
+    else:
+        # this should not have been called
+        return False, False
+
+    res = es.search(index=index,
     body={"query":{
             "bool":{
                 "should":[
                     {"match":{
-                        "Title":query
+                        title: query
                     }},
                     {"match":{
-                    "Subject area":query
+                        subject: query
                     }}
                 ],
             }
         }})
-
     course_list = []
     course_set = []
 
     # Creates a list of the top 10 matched courses then turns it into a list to remove duplicates
     if res:
         for course in (res['hits']['hits']):
-            course_list.append(course['_source'].get("Title"))
+            course_list.append(course['_source'].get(title))
         course_set = list(set(course_list))
 
     if len(course_set) > 1:
         # course_set = return_list(course_set)
         return course_set, res['hits']['total'] # multiple courses were matched
     elif len(course_set) == 1:
-        return list(str(course_set[0]).title()), res['hits']['total']  # one course was matched
-    else:
-        return False, False # no courses were matched
-
-# Returns a list of relevant courses from the admissions courses file
-def get_ad_type_courses(query):
-    # query to match both the title of the course and subject area for relevancy
-    res = es.search(index="admissions",
-    body={"query":{
-            "bool":{
-                "should":[
-                    {"match":{
-                    "Lookup Name":query
-                    }},
-                    {"match":{
-                    "Apply Centre Description":query
-                    }}
-                ],
-            }
-        }})
-
-    course_list = []
-    course_set = []
-
-    # Creates a list of the top 10 matched courses then turns it into a list to remove duplicates
-    if res:
-        for course in (res['hits']['hits']):
-            course_list.append(course['_source'].get("Lookup Name"))
-        course_set = list(set(course_list))
-
-    if len(course_set) > 1:
-        return course_list, res['hits']['total'] # multiple courses were matched
-    elif len(course_set) == 1:
         return str(course_set[0]).title(), res['hits']['total']  # one course was matched
     else:
         return False, False # no courses were matched
+    return False, False
+
 
 # Function to receive a list of courses and expand it with all the different instances of it
 def fullify_sc_list(course_list):

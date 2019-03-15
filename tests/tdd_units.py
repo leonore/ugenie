@@ -23,3 +23,10 @@ print("Found right answer for Coral reefs")
 acro, desc, score = elastic.get_acronym_desc("mario decision")
 assert(desc == "MaRio decision means admissions have the decision-making capacity, not the school"), desc
 print("Found right answer for MaRio decision with get_acronym_desc")
+
+# sc, sc_len = elastic.get_sc_type_courses("art")
+# new_sc, new_sc_len = elastic.get_type_courses("art", "short")
+# new_ad, new_ad_len = elastic.get_type_courses("science", "admissions")
+# assert sorted(sc) == sorted(new_sc), "New functionality doesn't match for short courses"
+# assert type(new_ad) is list, new_ad # check functionality works
+# print("New function functionality works")
