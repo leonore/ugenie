@@ -95,7 +95,7 @@ def get_sc_times(course):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
     first_hit = res['hits']['hits'][0]['_source']
     course_title = first_hit["Title"]
-    list_instances = fullify_sc_list([course_title])
+    list_instances = fullify_list([course_title], "short")
 
     instance_variables = []
     for instance in list_instances:
@@ -168,7 +168,7 @@ def get_ad_fees(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
     course_title = first_hit["Lookup Name"]
-    course_instances = fullify_ad_list([course_title])
+    course_instances = fullify_list([course_title], "admissions")
     home_fee, int_fee = None, None
 
     # Goes through course instances looking if they have fee data
@@ -346,20 +346,18 @@ def get_type_courses(query, type):
 
 
 # Function to receive a list of courses and expand it with all the different instances of it
-def fullify_sc_list(course_list):
+def fullify_list(course_list, course_type):
+    if course_type == "short":
+        title, index = "Title", "short_courses"
+    elif course_type == "admissions":
+        title, index = "Lookup Name", "admissions"
+    else:
+        # this should not have been called
+        return False, False
+
     full_list = []
     for course in course_list:
-        res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
-        for instance in res['hits']['hits']:
-            full_list.append(instance["_source"])
-    return full_list
-
-
-# Function to receive a list of courses and expand it with all the different instances of it
-def fullify_ad_list(course_list):
-    full_list = []
-    for course in course_list:
-        res = es.search(index="admissions", body={"query": {"match_phrase": {"Lookup Name": course}}})
+        res = es.search(index=index, body={"query": {"match_phrase": {title: course}}})
         for instance in res['hits']['hits']:
             full_list.append(instance["_source"])
     return full_list
