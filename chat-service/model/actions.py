@@ -432,16 +432,12 @@ class UtterFunctionality(Action):
         dispatcher.utter_button_message(response, buttons)
         return
 
-## TODO: possibly change these messages
-# making a user test the bot made them prompt:
-# "tutors" or "fees"
-# which does not trigger a useful answer from the bot
 class UtterSCFunctionality(Action):
     def name(self):
         return "action_utter_short_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about course times, course tutors, credits, fees, or a description!"
+        response = "You can ask me about a course's time, tutors, fees, or a description!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "short")]
 
@@ -450,6 +446,6 @@ class UtterADFunctionality(Action):
         return "action_utter_admissions_courses_functionality"
 
     def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about course fees, course requirements, and a brief course description!"
+        response = "You can ask me about a course's fees, English requirements, and whether it runs part-time or full-time!"
         dispatcher.utter_message(response)
         return [SlotSet("course_type", "admissions")]
