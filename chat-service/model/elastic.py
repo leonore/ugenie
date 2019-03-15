@@ -107,6 +107,7 @@ def get_sc_times(course):
 
     return instance_variables
 
+
 # Returns how many credits a short course is worth
 def get_sc_credits(course):
     res = es.search(index="short_courses", body={"query": {"match": {"Title": course}}})
