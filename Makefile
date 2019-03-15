@@ -11,6 +11,8 @@ help:
 	@echo "        Populate the database (if you're not sure it's up to date)"
 	@echo "    clean f=filename"
 	@echo "        Zip all current chat logs into an archive called 'filename' and remove text files"
+	@echo "    testing"
+	@echo "        Run available tests"
 
 run-actions:
 	cd chat-service/model; python3 -m rasa_core_sdk.endpoint --actions actions
@@ -34,6 +36,10 @@ run:
 
 populate:
 	cd elastic-db; python3 populate_elastic.py;
+
+testing:
+	cd tests/unit_testing; python elastic_runner.py;
+	cd tests; python tdd_units.py; python test_prototype.py; python testing_elastic.py;
 
 clean:
 	echo "zipping chat logs!"
