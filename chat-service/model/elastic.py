@@ -149,7 +149,7 @@ def check_pt_ft_course(course):
     # loop for the multiple rows for one course in the admissions data
     for hit in hits:
         now = datetime.datetime.now()
-        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] == now.year:
+        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] >= now.year:
             cont = True
             if hit['_source']['PT'] and "part-time" not in run_list:
                 run_list.append("part-time")
@@ -167,10 +167,20 @@ def check_pt_ft_course(course):
 def get_ad_fees(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]['_source']
-    title = first_hit['Lookup Name']
-    home_fee = first_hit['Home Fee']
-    int_fee = first_hit['Int Fee']
-    fee_variables = [title.title(), str(home_fee), str(int_fee)]
+    course_title = first_hit["Lookup Name"]
+    course_instances = fullify_ad_list([course_title])
+    home_fee, int_fee = None, None
+
+    # Goes through course instances looking if they have fee data
+    for course in course_instances:
+        now = datetime.datetime.now()
+        if course["Admit Term"] >= now.year:
+            if course["Home Fee"]:
+                home_fee = str(course['Home Fee'])
+            if course["Int Fee"]:
+                int_fee = str(course['Int Fee'])
+
+    fee_variables = [course_title.title(), home_fee, int_fee]
 
     return fee_variables
 
@@ -340,6 +350,16 @@ def fullify_sc_list(course_list):
     full_list = []
     for course in course_list:
         res = es.search(index="short_courses", body={"query": {"match_phrase": {"Title": course}}})
+        for instance in res['hits']['hits']:
+            full_list.append(instance["_source"])
+    return full_list
+
+
+# Function to receive a list of courses and expand it with all the different instances of it
+def fullify_ad_list(course_list):
+    full_list = []
+    for course in course_list:
+        res = es.search(index="admissions", body={"query": {"match_phrase": {"Lookup Name": course}}})
         for instance in res['hits']['hits']:
             full_list.append(instance["_source"])
     return full_list

@@ -106,7 +106,7 @@ class UtterContact(Action):
 
         dispatcher.utter_message(response)
         return
-        
+
 # Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
@@ -480,7 +480,13 @@ class GetFees(Action):
             # 0       1         2
             # course, home_fee, int_fee
             fee_variables = elastic.get_ad_fees(elastic_title)
-            response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[1], fee_variables[0], fee_variables[1])
+            response = ""
+            if fee_variables[1]:
+                response = "%s costs £%s if you are from Scotland or the EU. " % (fee_variables[0], fee_variables[1])
+            if fee_variables[2]:
+                response = response + "%s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[2])
+            if response == "":
+                response = "Sorry, I could not find any fees for that course"
 
         dispatcher.utter_message(response)
         return
