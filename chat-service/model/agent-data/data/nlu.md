@@ -68,6 +68,15 @@
 - not what I wanted
 - you suck
 
+## intent:ask_human
+- can I speak to a human
+- speak to human
+- can you redirect me
+- email address
+- who can I contact
+- let me speak to a human
+- redirect me to a human
+
 ## intent:sc_common_question
 - [funding](question_topic)
 - is there [funding](question_topic) available

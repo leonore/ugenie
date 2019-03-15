@@ -23,6 +23,10 @@
 * expert
  - utter_expert
 
+## user asks to be redirect to a human
+* ask_human
+ - action_utter_contact
+
 ## provide help, user says yes
 * thank_you
    - action_utter_help
