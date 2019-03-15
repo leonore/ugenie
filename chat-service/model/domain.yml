@@ -19,7 +19,6 @@ actions:
 - action_get_ielts_requirements
 - action_get_description
 - action_get_time
-- action_get_acronym
 - action_get_tutor
 - action_course_validate
 - utter_description_check

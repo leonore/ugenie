@@ -112,26 +112,6 @@ class GetCourseLocation(Action):
             dispatcher.utter_message(response)
             return[SlotSet("course_type", "short")]
 
-# Sends the answer to common acronym questions
-# e.g. "what does FT stand for"
-class GetAcronymDescription(Action):
-    def name(self):
-        return "action_get_acronym"
-
-    def run(self, dispatcher, tracker, domain):
-        acronym = tracker.get_slot("acronym")
-        if acronym:
-            acronym, acronym_desc, score = elastic.get_acronym_desc(acronym)
-            if acronym_desc:
-                response = acronym_desc
-            else:
-                response = "Sorry, I couldn't find any further explanation for that terminology."
-        else:
-            response = "I'm sorry, if you meant to ask me about terminology, I'm not sure I understood your message. Would you be able to clarify?"
-
-        dispatcher.utter_message(response)
-        return
-
 
 # Utters the description of a course or tells the description of a term used
 class GetDescription(Action):
