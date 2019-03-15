@@ -28,7 +28,7 @@
 - right
 - yep
 - Yes
-- confirmation
+- confirm
 
 ## intent:denial
 - no
@@ -67,6 +67,7 @@
 - this isn't right
 - not what I wanted
 - you suck
+- not useful
 
 ## intent:ask_human
 - can I speak to a human
@@ -111,6 +112,7 @@
 - what does [PT](acronym) stand for
 - what is [PT](acronym)
 - what is [ATAS](acronym)
+- what is the acronym [FT](acronym)
 
 ## intent:ask_type_classes
 - what [education](course) courses do you have
@@ -130,7 +132,15 @@
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
 - how many credits do i get from doing [opera afternoons 1](course)
-
+- is [songwriting workshop](course) worth any credits
+- are there credits for [french stage 1](course)
+- credits from [painting landscapes](course)
+- credits attached [cleopatra queen of egypt](course)
+- credits attached to [cleopatra queen of egypt](course)
+- do I get credits for [democracy in the UK](course)
+- are there credits available for [art history](course)
+- will I get credits for [coral reefs ancient and modern](course)
+- does [art and anatomy](course) have credits
 
 ## intent:description_check
 - tell me about [biology](course)
@@ -144,19 +154,22 @@
 - description of [songwriting workshop](course)
 
 ## intent:fee_check
-- how much is [biology](course)?
-- how much are the fees for [biology](course)?
-- how much does it cost to do [biology](course)?
-- how much does it cost to study [biology](course)?
-- how much does [biology](course) cost?
-- whats the cost to do [biology](course)?
-- whats the price of [biology](course)?
+- how much is [biology](course)
+- how much are the fees for [biology](course)
+- how much does it cost to do [biology](course)
+- how much does it cost to study [biology](course)
+- how much does [biology](course) cost
+- whats the cost to do [biology](course)
+- whats the price of [biology](course)
 - how much money is [film studies 1](course)
-- how much does[ the kennedy brothers](course) course charge
+- how much does[the kennedy brothers](course) course charge
 - how many pounds is [west end lectures](course)
 - how much is [german stage 2](course)
 - what is the price of [fancy florence](course)
 - how much money is [brain sciences](course)
+- cost for [art and anatomy](course)
+- international fees for [mechatronics](course)
+- how much is the fee for [computing science](course)
 
 ## intent:full_part_time_check
 - is [brain sciences](course) full time
@@ -173,19 +186,20 @@
 - link for [The life and legacy of Lyndon B Johnson](course)
 - do you have a specification document on [The Russian Revolution](course)
 - is there a web page for [Counselling Skills Course](course)
+- online resource for [art and anatomy](course)
+- is there an online resource for [art and anatomy](course)
 
 ## intent:location_check
-- where is [Coral Reefs: Ancient and Modern](course) taking place
+- where is [Coral Reefs: Ancient and Modern](course) going to take place
 - what is the building for [french stage 1](course)
 - do you have the location for [Introduction to Mindfulness](course)
 - where will [Opera Afternoons 1](course) take place
 - which room is [Songwriting Workshop](course) in
-- where is [french stage 1](course) going to take place
-
-## intent:qualification_check
-- what qualification do i get from [astrophysics](course)
-- is [brain sciences](course) a [MSc](qualification)
-- do i get a [MEd](qualification) from doing [brain sciences](course)
+- location for [spanish stage 3](course)
+- where is the room for [art history](course)
+- building for [film studies 1](course)
+- do you have room for [art history](course)
+- where is the building for [hidden art in glasgow](course)
 
 ## intent:requirements_check
 - what are the requirements for [mechatronics](course)
@@ -196,10 +210,8 @@
 - what are the IELTS requirements for [computer systems engineering](course)
 - what grades do I require for [antiquities trafficking and art crime](course)
 - what grades do I need for [applied mathematics](course)
-
-## intent:term_check
-- what term does [housing studies](course) start
-- does [brain sciences](course) begin this year
+- are there any requirements for [academic practice](course)
+- are there english requirements for [computing science](course)
 
 ## intent:time_check
 - when does [fancy florence](course) start
@@ -208,9 +220,11 @@
 - what time does [geology in the field](course) end
 - how long does [counselling skills](course) last
 - when does [scottish philosophy](course) end
-- whats the duration of [spanish stage 2](course)
-- what is the time span for [orkney in scotland](course)
-- what days does [a guided tour of dutch, flemish and french art in kelvingrove art gallery](course) run
+- duration of [spanish stage 2](course)
+- days for [orkney in scotland](course)
+- start of [spanish stage 1](course)
+- beginning of [spanish stage 1](course)
+- what days does [art history](course) run
 - how long is [festivals in ancient egypt](course)
 - how many hours does [working with trauma](course) last
 - what time is [french stage 1](course)
@@ -219,7 +233,7 @@
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
-- who is the tutor for [flim studies 1](course:film studies 1)
+- who is the tutor for [film studies 1](course)
 - who teaches [german stage 2](course)
 - who is the tutor for [spanish stage 4](course)
 - who teaches [fancy florence](course)
@@ -236,6 +250,3 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
-
-## synonym:film studies 1
-- flim studies 1
