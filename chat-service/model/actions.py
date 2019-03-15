@@ -5,6 +5,92 @@ from rasa_core_sdk.events import SlotSet
 # and processed into strings in actions.py
 import elastic
 
+
+# Offer functionality
+class UtterFunctionality(Action):
+    def name(self):
+        return "action_utter_functionality"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "Here are some things you can ask me about..."
+        buttons = [{"title": "Short courses", "payload": "/ask_short_courses_functionality"},
+                   {"title": "Admissions", "payload": "/ask_admissions_courses_functionality"},
+                   {"title": "Terminology", "payload": "/ask_terminology_functionality"},]
+
+        dispatcher.utter_button_message(response, buttons)
+        return
+
+
+# utter short courses functionality and set the context
+class UtterSCFunctionality(Action):
+    def name(self):
+        return "action_utter_short_courses_functionality"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "You can ask me about a course's time, location, tutors, fees, or a description!"
+        dispatcher.utter_message(response)
+
+        return [SlotSet("course_type", "short")]
+
+
+# utter admissions functionality and set the context
+class UtterADFunctionality(Action):
+    def name(self):
+        return "action_utter_admissions_courses_functionality"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "You can ask me about a course's fees, English requirements, and whether it runs part-time or full-time!"
+        dispatcher.utter_message(response)
+
+        return [SlotSet("course_type", "admissions")]
+
+
+# Sets the slot for coure_type to short
+class SetSCCourseType(Action):
+    def name(self):
+        return "action_set_sc_course_type"
+
+    def run(self, dispatcher, tracker, domain):
+        return [SlotSet("course_type", "short")]
+
+
+# Sets the slot for coure_type to admissions
+class SetADCourseType(Action):
+    def name(self):
+        return "action_set_ad_course_type"
+
+    def run(self, dispatcher, tracker, domain):
+        return [SlotSet("course_type", "admissions")]
+
+
+# Offer more help
+class UtterHelp(Action):
+    def name(self):
+        return "action_utter_help"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "Is there anything else I can help you with?"
+        buttons = [{"title": "Yes", "payload":"/confirmation"},
+                   {"title": "No", "payload":"/denial"}]
+
+        dispatcher.utter_button_message(response, buttons)
+        return
+
+
+# Offer redirection to a human
+class UtterRedirect(Action):
+    def name(self):
+        return "action_utter_redirect"
+
+    def run(self, dispatcher, tracker, domain):
+        response = "Can I redirect you to a human who might be more helpful?"
+        buttons = [{"title": "Yes", "payload":"/confirmation"},
+                   {"title": "No", "payload":"/denial"}]
+
+        dispatcher.utter_button_message(response, buttons)
+        return
+
+
 # Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
@@ -15,20 +101,10 @@ class CheckCourse(Action):
         response = "Did you want the course: " + str(elastic_title).title() + "?"
         buttons = [{"title":"Yes", "payload":"/confirmation"},
                     {"title":"No", "payload":"/denial"}]
+
         dispatcher.utter_button_message(response, buttons)
         return
 
-# Apologises if the chat-bot returns the incorrect courses
-# For now it just says could you please rephrase but possible in the future it could give alternative suggestions
-# TODO: should this be made into a template?
-class CourseDenied(Action):
-    def name(self):
-        return "action_course_denied"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "Sorry I did not understand which course you meant, could you please rephrase your question?"
-        dispatcher.utter_message(response)
-        return
 
 # after giving a short course description, offer a short course link
 # confirmation would leak to GetShortCourseLink below
@@ -61,7 +137,8 @@ class GetShortCourseLink(Action):
             response = "Sorry, this short course does not seem to have a web page. This might be because it only runs for one day."
 
         dispatcher.utter_message(response)
-        return
+        return[SlotSet("course_type", "short")]
+
 
 class GetShortCourseResource(Action):
     def name(self):
@@ -92,14 +169,16 @@ class GetShortCourseResource(Action):
             dispatcher.utter_message(response)
             return[SlotSet("course_type", "short")]
 
-# check for context
-# return standard location answer
+
+
+# Return standard location answer, as we don't have any specific data for it
 class GetCourseLocation(Action):
     def name(self):
         return "action_get_location"
 
     def run(self, dispatcher, tracker, domain):
         context = tracker.get_slot("course_type")
+
         if not context or context == "admissions":
             response = "I can only provide this information for short courses. Is this what you were looking for?"
             buttons = [{"title":"Yes", "payload":"/confirmation"},
@@ -114,6 +193,7 @@ class GetCourseLocation(Action):
 
 
 # Utters the description of a course or tells the description of a term used
+# This action is not granular because of the ambiguity of "what is" statements
 class GetDescription(Action):
     def name(self):
         return "action_get_description"
@@ -144,8 +224,8 @@ class GetDescription(Action):
         dispatcher.utter_message(response)
         return
 
-# assumes a course check has been done
-# so the person confirmed it's a PGT course...
+
+# checks when a PGT course runs, or returns appropriate message
 class PTorFTCheck(Action):
     def name(self):
         return "action_pt_ft_check"
@@ -161,25 +241,23 @@ class PTorFTCheck(Action):
             response = "Sorry, it does not seem this course is running this year"
         elif pt_ft_answer == "running":
             response = pt_ft_variables[0] + " runs " + ', '.join(pt_ft_variables[1])
+
         dispatcher.utter_message(response)
-        # removing this as it clashes with the "else" answer
-        #return [SlotSet("course_type", "admissions")]
         return
 
-# Utters time related information to do with a course
-# e.g. start time, year
+
+# Utters time related information to do with a course e.g. start time, year
 class GetTime(Action):
     def name(self):
         return "action_get_time"
 
     def run(self, dispatcher, tracker, domain):
-        # elastic_title = title of the course from the database
         # elastic_cat = course category e.g. short course / admissions courses
-        # elastic_score = the score of how relevant the course was to the elastic search
+        # elastic_score = course relevancy score
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
         if elastic_cat == "SC":
-            # time_variables
+            # instances_variables
             # 0      1      2      3      4      5
             # title, sdate, edate, stime, etime, duration
             instance_variables = elastic.get_sc_times(elastic_title)
@@ -208,7 +286,7 @@ class GetTime(Action):
                 answer = "%s starts in %s" % (time_variables[0], time_variables[1])
             response = str(answer)
         else:
-            response = "Sorry, I could not find the information for times for this course"
+            response = "Sorry, I could not find information on times for this course"
 
         dispatcher.utter_message(response)
         return
@@ -220,15 +298,12 @@ class GetTutor(Action):
         return "action_get_tutor"
 
     def run(self, dispatcher, tracker, domain):
-        # elastic_title = title of the course from the database
         # elastic_cat = course category e.g. short course / admissions courses
-        # elastic_score = the score of how relevant the course was to the elastic search
+        # elastic_score = course relevancy score
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
 
-        # The short-courses file tells the tutor for each class taught,
-        # Although we do not know tutor information for the admissions courses so cannot return it
+        # we don't have teaching information about PGT
         if elastic_cat == "SC":
-            # elastic_output, elastic_score = elastic.get_sc_field(tracker.get_slot("course"), "Tutor")
             tutor_number, tutor_list = elastic.getMultiTutors(tracker.get_slot("course"))
             if tutor_number == 1:
                 response = "The tutor for " + str(elastic_title).title() + " is: " + str(tutor_list) + "."
@@ -237,13 +312,16 @@ class GetTutor(Action):
                 response += str(tutor_list)
             else:
                 response = "Sorry, I could not find any tutors for " + str(elastic_title)
+
         elif elastic_output == "AD":
             response = "Sorry, I do not know who teaches " + str(elastic_title).title()
+
         else:
             response = "Sorry, I could not find the tutor for " + str(elastic_title).title()
 
         dispatcher.utter_message(response)
         return
+
 
 class ConfirmRequirementType(Action):
     def name(self):
@@ -254,6 +332,10 @@ class ConfirmRequirementType(Action):
         response = "Currently, I can only provide immediate information on English IELTS requirements for PGT courses. Is this what you're looking for?"
         buttons = [{"title":"Yes", "payload":"/confirmation"},
                    {"title":"No", "payload":"/denial"}]
+
+        dispatcher.utter_button_message(response, buttons)
+        return
+
 
 # Utters the IELTS requirements to get into a course
 # The user would have been informed this is IELTS + for admissions
@@ -272,8 +354,9 @@ class GetIELTSRequirements(Action):
             response = "This course does not seem to have any IELTS requirement specified."
 
         dispatcher.utter_message(response)
-        # the user asked about an admissions course so I assume this is the context they're interested in
+        # the user confirmed it's an admissions course so I assume this is the context they're interested in
         return [SlotSet("course_type", "admissions")]
+
 
 # Utters a list of courses the tutor in question teaches
 # e.g. "what classes does Sam Cook teach"
@@ -282,8 +365,7 @@ class GetTutorCourses(Action):
         return "action_get_tutor_courses"
 
     def run(self, dispatcher, tracker, domain):
-        # elastic_tutor = the name of the tutor according to the database
-        # elastic_output is the list of courses they teach
+        # elastic_output is the list of courses a tutor teaches
         elastic_tutor, elastic_output = elastic.get_tutor_courses(tracker.get_slot("tutor"))
 
         if elastic_output:
@@ -293,6 +375,7 @@ class GetTutorCourses(Action):
 
         dispatcher.utter_message(response)
         return
+
 
 # Returns a list of up to 10 courses that match the user's choice of relevnacy
 # e.g. what art courses are there / what spanish courses are there
@@ -305,7 +388,6 @@ class GetClassTypes(Action):
         if tracker.get_slot("course_type") == "short":
             elastic_output, elastic_length = elastic.get_sc_type_courses(tracker.get_slot("course"))
             if elastic_output:
-                # print(elastic_output)
                 month_text = ""
                 weekday_text = ""
                 if tracker.get_slot("month"):
@@ -355,21 +437,6 @@ class GetClassTypes(Action):
             dispatcher.utter_message(response)
         return
 
-# Sets the slot for coure_type to short
-class SetSCCourseType(Action):
-    def name(self):
-        return "action_set_sc_course_type"
-
-    def run(self, dispatcher, tracker, domain):
-        return [SlotSet("course_type", "short")]
-
-# Sets the slot for coure_type to admissions
-class SetADCourseType(Action):
-    def name(self):
-        return "action_set_ad_course_type"
-
-    def run(self, dispatcher, tracker, domain):
-        return [SlotSet("course_type", "admissions")]
 
 # Utters the cost of a course
 class GetFees(Action):
@@ -377,10 +444,11 @@ class GetFees(Action):
         return "action_get_fee"
 
     def run(self, dispatcher, tracker, domain):
-        # elastic_title = title of the course from the database
         # elastic_cat = course category e.g. short course / admissions courses
-        # elastic_score = the score of how relevant the course was to the elastic search
+        # elastic_score = course relevancy score
+
         elastic_title, elastic_cat, elastic_score = elastic.get_course_title(tracker.get_slot("course"))
+
         if elastic_cat == "SC":
             elastic_output, elastic_score = elastic.get_sc_field(elastic_title, "Cost")
             response = str(elastic_title).title() + " costs £" + str(elastic_output) + "."
@@ -391,58 +459,5 @@ class GetFees(Action):
             fee_variables = elastic.get_ad_fees(elastic_title)
             response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[1], fee_variables[0], fee_variables[1])
 
-
         dispatcher.utter_message(response)
         return
-
-class UtterHelp(Action):
-    def name(self):
-        return "action_utter_help"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "Is there anything else I can help you with?"
-        buttons = [{"title": "Yes", "payload":"/confirmation"},
-                   {"title": "No", "payload":"/denial"}]
-        dispatcher.utter_button_message(response, buttons)
-        return
-
-class UtterRedirect(Action):
-    def name(self):
-        return "action_utter_redirect"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "Can I redirect you to a human who might be more helpful?"
-        buttons = [{"title": "Yes", "payload":"/confirmation"},
-                   {"title": "No", "payload":"/denial"}]
-        dispatcher.utter_button_message(response, buttons)
-        return
-
-class UtterFunctionality(Action):
-    def name(self):
-        return "action_utter_functionality"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "Here are some things you can ask me about..."
-        buttons = [{"title": "Short courses", "payload": "/ask_short_courses_functionality"},
-                   {"title": "Admissions", "payload": "/ask_admissions_courses_functionality"},
-                   {"title": "Terminology", "payload": "/ask_terminology_functionality"},]
-        dispatcher.utter_button_message(response, buttons)
-        return
-
-class UtterSCFunctionality(Action):
-    def name(self):
-        return "action_utter_short_courses_functionality"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about a course's time, tutors, fees, or a description!"
-        dispatcher.utter_message(response)
-        return [SlotSet("course_type", "short")]
-
-class UtterADFunctionality(Action):
-    def name(self):
-        return "action_utter_admissions_courses_functionality"
-
-    def run(self, dispatcher, tracker, domain):
-        response = "You can ask me about a course's fees, English requirements, and whether it runs part-time or full-time!"
-        dispatcher.utter_message(response)
-        return [SlotSet("course_type", "admissions")]

@@ -23,7 +23,7 @@ actions:
 - action_course_validate
 - utter_description_check
 - action_check_course
-- action_course_denied
+- utter_course_denied
 - action_offer_course_link
 - action_get_sc_course_link
 - action_get_tutor_courses
@@ -73,8 +73,8 @@ intents:
 - ask_set_sc_course_type
 - ask_set_ad_course_type
 # for any possible future improvements:
-# example of multi-intent
-# - acronym_check+description_check
+# example of multi-intent when using tensorflow pipeline
+# - time_check+description_check
 
 slots:
   course_type:
@@ -82,14 +82,6 @@ slots:
     values:
       - admissions
       - short
-  # possibly going to be deprecated
-  # if no general context check function is made
-  # context:
-  #   type: categorical
-  #   values:
-  #     - admissions
-  #     - short
-  #     - terminology
   course:
     type: text
   tutor:
@@ -101,11 +93,12 @@ slots:
       - plan code
       - mario decision
       - ft
+      - FT
       - pt
       - PT
-      - FT
       - ielts requirements
       - atas
+      - ATAS
   question_topic:
     type: text
   month:
@@ -144,7 +137,10 @@ templates:
   - "Thanks for chatting!"
   - "Hope to see you again!"
   utter_sorry:
-  - text: "Sorry I could not understand what you meant. Feel free to chat to me again later!"
+  - "Sorry I could not understand what you meant. Feel free to chat to me again later!"
+  - "Sorry about that. Feel free to come back to chat!"
+  utter_course_denied:
+  - "Sorry I did not understand which course you meant, could you please rephrase your question?"
   utter_out_of_scope:
   - text: "I'm afraid I might not be trained to answer your question, but here's a fun fact: Saint Valentine was also the saint of beekeeping, fainting, epilepsy and the plague!"
   utter_contact:
@@ -153,8 +149,9 @@ templates:
   - "Alright, what is your question?"
   - "Ask away!"
   - "I'm all ears then!"
+  - "I'm listening..."
   utter_terminology_functionality:
-  - text: "You can ask me about the following terminology: MaRio decision, IELTS requirements, FT, PT, ATAS, Plan Code."
+  - text: "You can ask me about the following terminology: MaRio decision, IELTS requirements, FT, PT, ATAS, and Plan Code."
 
 ## for development only!
   utter_lambda:
