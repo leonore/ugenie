@@ -106,7 +106,7 @@ class UtterContact(Action):
 
         dispatcher.utter_message(response)
         return
-        
+
 # Asks the user to confirm the course
 class CheckCourse(Action):
     def name(self):
@@ -188,7 +188,7 @@ class GetShortCourseResource(Action):
 
 
 # Return standard location answer, as we don't have any specific data for it
-class GetCourseLocation(Action):
+class GetLocation(Action):
     def name(self):
         return "action_get_location"
 
@@ -207,6 +207,30 @@ class GetCourseLocation(Action):
             dispatcher.utter_message(response)
             return[SlotSet("course_type", "short")]
 
+
+# Return credits for short courses, or a standard answer for PGT courses
+class GetCredits(Action):
+    def name(self):
+        return "action_get_credits"
+
+    def run(self, dispatcher, tracker, domain):
+        course = tracker.get_slot("course")
+        title, category, score = elastic.get_course_title(course)
+
+        if category == "AD":
+            response = "Standard PGT university courses are usually worth 120 credits, but I don't have any more specific information."
+
+        elif category == "SC":
+            elastic_title, elastic_result = elastic.get_sc_credits(course)
+            if elastic_result:
+                response = "{} is worth {} credits".format(elastic_title, elastic_result)
+            else:
+                response = "There doesn't seem to be any credits attached to the course {}".format(elastic_title)
+        else:
+            response = "I'm sorry, I don't think I understood the course right."
+
+        dispatcher.utter_message(response)
+        return
 
 # Utters the description of a course or tells the description of a term used
 # This action is not granular because of the ambiguity of "what is" statements
@@ -480,7 +504,13 @@ class GetFees(Action):
             # 0       1         2
             # course, home_fee, int_fee
             fee_variables = elastic.get_ad_fees(elastic_title)
-            response = "%s costs £%s if you are from Scotland or the EU, %s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[1], fee_variables[0], fee_variables[1])
+            response = ""
+            if fee_variables[1]:
+                response = "%s costs £%s if you are from Scotland or the EU. " % (fee_variables[0], fee_variables[1])
+            if fee_variables[2]:
+                response = response + "%s costs £%s if you are from elsewhere in the UK or abroad." % (fee_variables[0], fee_variables[2])
+            if response == "":
+                response = "Sorry, I could not find any fees for that course"
 
         dispatcher.utter_message(response)
         return

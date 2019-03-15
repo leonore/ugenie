@@ -1,14 +1,20 @@
 language: "en"
 
+# the pipeline tokenizes with spacy
+# and uses tensorflow for word vectors, as it was found to work better
+# e.g. for intricate where/when intents
+
 pipeline:
  - name: "nlp_spacy"
    model: "en"
  - name: "tokenizer_spacy"
  - name: "ner_crf"
- - name: "intent_featurizer_spacy"
- - name: "intent_classifier_sklearn"
-# pipeline for multi intent
-# - name: "intent_featurizer_count_vectors"
-# - name: "intent_classifier_tensorflow_embedding"
+ - name: "intent_featurizer_count_vectors"
+ - name: "intent_classifier_tensorflow_embedding"
+# add this for multi-intents
 #   intent_tokenization_flag: true
 #   intent_split_symbol: "+"
+
+# old spacy pipeline
+# - name: "intent_featurizer_spacy"
+# - name: "intent_classifier_sklearn"
