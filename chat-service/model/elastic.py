@@ -6,6 +6,7 @@ import calendar
 
 es = Elasticsearch([elasticIP])
 
+
 ### good functions as a starting point ###
 # Get specific field for a given course
 def get_sc_field(course, field):
@@ -59,6 +60,7 @@ def get_course_title(query):
         return None, None, None
 
     return course, course_cat, course_score
+
 
 # given a course, return a link if available
 # action_check_course will have ran in actions
@@ -172,15 +174,13 @@ def get_ad_fees(query):
 
     return fee_variables
 
-## TODO: move string formatting over to actions.py
+
 # Returns the kind of course an admissions course is e.g. Education PGT
 def get_ad_description(query):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": query}}})
     first_hit = res['hits']['hits'][0]
     title = first_hit['_source']['Lookup Name'].title() # normalise course titles if they're all caps
     desc = first_hit['_source']['Apply Centre Description']
-    #ad_desc_variables = [title, desc]
-    #response = "%s is a %s course" % (title, desc)
 
     return title, desc, first_hit['_score']
 
@@ -253,6 +253,7 @@ def get_description(query):
         return False, False, False
 
     return cat, title, desc
+
 
 # Returns the tutor's name and a list of classes that they teach
 def get_tutor_courses(query):
@@ -343,6 +344,7 @@ def fullify_sc_list(course_list):
             full_list.append(instance["_source"])
     return full_list
 
+
 # Turns month string to number (e.g. "november" -> 10)
 def monthToNum(month):
     month = month.title()
@@ -356,6 +358,7 @@ def weekdayToNum(day):
     day = day[:3]
     number = list(calendar.day_abbr).index(day)
     return number
+
 
 # Filters a list of courses that start in a particular month
 def filterForMonths(month, course_list):
@@ -396,6 +399,7 @@ def filterForWeekday(weekday, course_list):
         return filtered_course_set
     else:
         return False
+
 
 # Returns a formatted list of tutors of a given course
 def getMultiTutors(course):
