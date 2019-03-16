@@ -59,7 +59,7 @@ def get_course_title(query):
     else:
         return None, None, None
 
-    return course, course_cat, course_score
+    return course.title(), course_cat, course_score
 
 
 # given a course, return a link if available
@@ -392,7 +392,7 @@ def weekdayToNum(day):
 def filterForMonths(month, course_list):
     filtered_course_list = []
     month_dec = monthToNum(month)
-    full_course_list = fullify_sc_list(course_list)
+    full_course_list = fullify_list(course_list, "short")
 
     # Finds courses in the expanded list that match the designated time and adds them to the filtered list
     for course in full_course_list:
@@ -412,7 +412,7 @@ def filterForMonths(month, course_list):
 def filterForWeekday(weekday, course_list):
     filtered_course_list = []
     weekday_dec = weekdayToNum(weekday)
-    full_course_list = fullify_sc_list(course_list)
+    full_course_list = fullify_list(course_list, "short")
 
     # Finds courses in the expanded list that match the designated time and adds them to the filtered list
     for course in full_course_list:
@@ -431,7 +431,7 @@ def filterForWeekday(weekday, course_list):
 
 # Returns a formatted list of tutors of a given course
 def getMultiTutors(course):
-    course_instances = fullify_sc_list([course])
+    course_instances = fullify_list([course], "short")
     tutor_list = []
 
     for instance in course_instances:
