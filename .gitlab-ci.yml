@@ -32,17 +32,17 @@ test_prototype:
     - shell
 
 # Testing the interface Features, make sure all chatbot's features are stable in the deployed version
-testBehave:
-stage:  tests
-script:
-  - PATH=$PATH:/home/ubuntu/Mohammed
-  - cd tests
-  - cd bdd
-  - pip install -r bdd_requirements.txt
-  - cd tests
-  - behave
-tags:
-  - shell
+# testBehave:
+# stage:  tests
+# script:
+#   - PATH=$PATH:/home/ubuntu/Mohammed
+#   - cd tests
+#   - cd bdd
+#   - pip install -r bdd_requirements.txt
+#   - cd tests
+#   - behave
+# tags:
+#   - shell
 
 # Testing the components of the chatbot
 unitTesting_elastic:

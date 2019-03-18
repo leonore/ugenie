@@ -333,7 +333,6 @@
  - action_get_tutor_courses
 * thank_you
  - action_utter_help
- - action_utter_functionality
 
 ## Getting location check to work
 * greet
@@ -357,7 +356,3 @@
     - action_utter_redirect
 * confirmation
     - action_utter_contact
-* thank_you
-    - action_utter_help
-* denial
-    - utter_goodbye

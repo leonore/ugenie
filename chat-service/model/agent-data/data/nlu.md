@@ -6,9 +6,9 @@
 - good afternoon
 - hi there
 - howdy
-- hi
+- Hi
 - hello there
-- yoooo
+- yo
 
 ## intent:goodbye
 - bye
@@ -18,6 +18,7 @@
 - alright bye
 - so long
 - l8r alligator
+- later alligator
 - goodbye
 
 ## intent:confirmation
@@ -59,6 +60,8 @@
 - cheers
 - thank you
 - nice
+- alright
+- cool
 
 ## intent:wrong_answer
 - wrong
@@ -128,6 +131,7 @@
 - what [spanish](course) courses are there
 - what courses are there in [art](course)
 - tell me some [science](course) courses
+- what courses in [law](course)
 
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
