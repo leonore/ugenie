@@ -9,7 +9,7 @@ Our application consists of:
 * connected to a Natural Language Understanding unit (`RASA`)
 * which makes queries to a free-text search engine (`Elasticsearch`)
 
-An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot)
+An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot). It is currently running `v1.1`
 ______________
 
 - [Launching with Docker](#launching-with-docker)
@@ -20,10 +20,7 @@ ______________
     - [Launching from manual set-up](#launching-after-setup)
 --------
 
-#### Launching with Docker
-This is easier for direct interaction with the bot.
-
-##### Set up
+#### Set up
 
 - Download a [release of UGenie](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tags), which should include a data archive and a model archive
     - `models.zip` contains a trained instance of the bot
@@ -31,7 +28,11 @@ This is easier for direct interaction with the bot.
     - `data.zip` contains the client-provided university data
        - it should be decompressed in `elastic-db/` to create the path `elastic-db/data`
 
-##### Launch
+
+---------
+#### Launching with Docker
+This is easier for direct interaction with the bot and dependency setup.
+
 ```bash
 docker-compose up --build
 ```
@@ -50,9 +51,20 @@ pip install -r requirements.txt # socket.io + elasticsearch wrapper + xlrd
 ````  
 *N.B. Python should be `3.6+`. RASA installation is done in steps because it is a heavy package, and linking the spaCy english model only works this way.*
 
+Elasticsearch also needs to be installed and ran as a background process:
+- **with Docker**
+```bash
+docker-compose up elastic
+```
+
+- **Installing manually**
+
+Installation varies quite a bit depending on OS, please look through [the official Elastic reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) for instructions!
+
 ##### Launching after setup
 ```bash
-make train
+make populate # populate elastic with the data from data.zip
+make train # not necessary if the models.zip was downloaded and nothing has been changed
 make run
 ```
 
