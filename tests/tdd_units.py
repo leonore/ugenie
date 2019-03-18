@@ -39,3 +39,7 @@ assert not credits, "Songwriting workshop should return 0 credits, returned " + 
 title, credits = elastic.get_sc_credits("spanish stage 3")
 assert credits == 10, "Spanish stage 3 should return 0 credits, returned " + str(credits)
 print("Credits function works")
+
+run, vars = elastic.check_pt_ft_course("international law")
+assert "part-time" and "full-time" in vars[1], vars
+print("PT/FT function debugged")

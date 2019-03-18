@@ -116,15 +116,15 @@ class TestElastic(unittest.TestCase):
 
     def test_get_course_title(self):
         self.assertEqual(elastic.get_course_title(
-            "Brain Sciences"), ('BRAIN SCIENCES', 'AD', 9.722658))
+            "Brain Sciences"), ('Brain Sciences', 'AD', 9.722658))
         self.assertEqual(elastic.get_course_title("ANIMAL WELFARE SCIENCE"),
-                         ('ANIMAL WELFARE SCIENCE, ETHICS AND LAW', 'AD', 8.870279))
+                         ('Animal Welfare Science, Ethics And Law', 'AD', 8.870279))
         self.assertEqual(elastic.get_course_title("Orkney"),
-                         ('Orkney in Scotland', 'SC', 4.4347043))
+                         ('Orkney In Scotland', 'SC', 4.4347043))
         self.assertEqual(elastic.get_course_title("Film"),
                          ('Film Curation', 'AD', 5.484622))
         self.assertEqual(elastic.get_course_title(
-            "Film Studies"), ('Film studies 1', 'SC', 9.140733))
+            "Film Studies"), ('Film Studies 1', 'SC', 9.140733))
         self.assertEqual(elastic.get_course_title(
             "szdfedg"), (None, None, None))
 
@@ -162,9 +162,9 @@ class TestElastic(unittest.TestCase):
         self.assertEqual(elastic.weekdayToNum("Thursday"), 3)
 
  # test  fullify_sc_list in elastic
-    def test_fullify_sc_list(self):
-        cources_list = elastic.fullify_sc_list(
-            ['Writing Fiction', 'Writing Poetry'])
+    def test_fullify_list(self):
+        cources_list = elastic.fullify_list(
+            ['Writing Fiction', 'Writing Poetry'], "short")
         self.assertEqual(cources_list[0]['Tutor'], 'Alan McMunnigall')
         self.assertEqual(cources_list[0]['Cost'], 125)
         self.assertEqual(cources_list[1]['Class code'], 8087)
