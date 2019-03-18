@@ -356,3 +356,11 @@
     - action_utter_redirect
 * confirmation
     - action_utter_contact
+
+## Asks for refund and then asks for help
+* sc_common_question
+ - action_get_sc_resource
+* denial
+ - action_utter_redirect
+* confirmation
+ - action_utter_contact
