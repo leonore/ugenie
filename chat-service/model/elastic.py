@@ -346,10 +346,9 @@ def get_type_courses(query, type):
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get(title))
         course_set = list(set(course_list))
-
     if len(course_set) > 1:
         # course_set = return_list(course_set)
-        return course_set, res['hits']['total'] # multiple courses were matched
+        return return_list(course_set), len(course_set)# multiple courses were matched
     elif len(course_set) == 1:
         return str(course_set[0]).title(), res['hits']['total']  # one course was matched
     else:
