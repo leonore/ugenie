@@ -278,6 +278,7 @@ def get_description(query):
 
 # Returns the tutor's name and a list of classes that they teach
 def get_tutor_courses(query):
+
     res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
     course_list = ""
     res_len = 0 # length of list of relevant results

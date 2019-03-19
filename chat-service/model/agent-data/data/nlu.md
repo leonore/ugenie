@@ -151,7 +151,7 @@
 - what's the description for [biology](course)
 - what is [a history of the fbi](course)
 - what happens in [arabic stage 1](course)
-- what is [working with trauma](course)
+- what is the [working with trauma](course) course about
 - tell me about [opera afternoons](course)
 - what is [geology in the field](course) about
 - I'm looking for a description of [medical physics](course)

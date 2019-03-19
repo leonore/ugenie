@@ -465,7 +465,7 @@ class GetClassTypes(Action):
                 elif tracker.get_slot("weekday"):
                     response = "Sorry, I do not know what days post-graduate courses are on"
                 else:
-                    response = "These are some of the post-graduate classes which I have found : " + elastic.return_list(elastic_output)
+                    response = "These are some of the post-graduate classes which I have found : " + elastic_output
 
             else:
                 response = "Sorry, I could not find any post-graduate courses in that subject area"
