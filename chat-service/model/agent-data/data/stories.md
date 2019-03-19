@@ -13,7 +13,7 @@
 
 ## user says something unexpected
 * out_of_scope
- - utter_out_of_scope
+ - utter_chitchat
 
 ## user asks for functionality
 * help
@@ -52,11 +52,15 @@
 - utter_terminology_functionality
 
 ## setting course type to SC
+* ask_type_classes
+ - action_get_type_classes
 * ask_set_sc_course_type
  - action_set_sc_course_type
  - action_get_type_classes
 
 ## setting course type to AD
+* ask_type_classes
+ - action_get_type_classes
 * ask_set_ad_course_type
  - action_set_ad_course_type
  - action_get_type_classes
@@ -97,8 +101,6 @@
 - utter_course_denied
 
 ## user asks for funding being in the SC course context
-* ask_set_sc_course_type
- - action_set_sc_course_type
 * sc_common_question
  - action_get_sc_resource
 
@@ -116,8 +118,6 @@
  - action_utter_redirect
 
 ## user asks for course location while being in the SC course context
-* ask_set_sc_course_type
- - action_set_sc_course_type
 * location_check
  - action_get_location
 
@@ -135,8 +135,6 @@
 - action_utter_redirect
 
 ## user asks for credits check while being in the SC course context
-* ask_set_sc_course_type
- - action_set_sc_course_type
 * credits_check
  - action_get_credits
 
@@ -333,7 +331,6 @@
  - action_get_tutor_courses
 * thank_you
  - action_utter_help
- - action_utter_functionality
 
 ## Getting location check to work
 * greet
@@ -357,7 +354,11 @@
     - action_utter_redirect
 * confirmation
     - action_utter_contact
-* thank_you
-    - action_utter_help
+
+## Asks for refund and then asks for help
+* sc_common_question
+ - action_get_sc_resource
 * denial
-    - utter_goodbye
+ - action_utter_redirect
+* confirmation
+ - action_utter_contact

@@ -8,7 +8,7 @@ actions:
 - action_utter_redirect
 - action_utter_functionality
 - utter_sorry
-- utter_out_of_scope
+- utter_chitchat
 - utter_expert
 - action_utter_short_courses_functionality
 - action_utter_admissions_courses_functionality
@@ -144,8 +144,9 @@ templates:
   - "Sorry about that. Feel free to come back to chat!"
   utter_course_denied:
   - "Sorry I did not understand which course you meant, could you please rephrase your question?"
-  utter_out_of_scope:
-  - text: "I'm afraid I might not be trained to answer your question, but here's a fun fact: Saint Valentine was also the saint of beekeeping, fainting, epilepsy and the plague!"
+  utter_chitchat:
+  - "Fun fact: Saint Valentine was also the saint of beekeeping, fainting, epilepsy and the plague!"
+  - "What did the computer do at lunchtime? It had a byte!"
   utter_expert:
   - "Alright, what is your question?"
   - "Ask away!"

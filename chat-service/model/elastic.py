@@ -152,18 +152,19 @@ def get_admission_requirements(course, requirement_type):
 # checks if an admissions course runs part time or full time
 def check_pt_ft_course(course):
     res = es.search(index="admissions", body={"query": {"match": {"Lookup Name": course}}})
-    hits = res['hits']['hits']
+    course_title = res['hits']['hits'][0]["_source"]["Lookup Name"]
+    hits = fullify_list([course_title], "admissions")
     cont = False # assume the course isn't continuing first (does not have a row with this year)
     run_list = list()
 
     # loop for the multiple rows for one course in the admissions data
     for hit in hits:
         now = datetime.datetime.now()
-        if hit['_source']['Lookup Name'] == course and hit['_source']['Admit Term'] >= now.year:
+        if hit['Admit Term'] >= now.year:
             cont = True
-            if hit['_source']['PT'] and "part-time" not in run_list:
+            if hit['PT'] and "part-time" not in run_list:
                 run_list.append("part-time")
-            elif hit['_source']['FT'] and "full-time" not in run_list:
+            elif hit['FT'] and "full-time" not in run_list:
                 run_list.append("full-time")
 
     if not cont or not run_list:
@@ -277,8 +278,8 @@ def get_description(query):
 
 # Returns the tutor's name and a list of classes that they teach
 def get_tutor_courses(query):
+
     res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
-    course_list = ""
     res_len = 0 # length of list of relevant results
     if res['hits']['total']:
         res_len = len(res['hits']['hits'])
@@ -292,10 +293,11 @@ def get_tutor_courses(query):
     elif res_len > 1: # if they teach more than one course
         # for loop and if used to make sure the list is grammatically correct
         # e.g. "one, two, three, and four"
+        course_list = []
         for counter in res['hits']['hits']:
-            if counter != res['hits']['hits'][res_len-1]:
-                course_list += str(counter['_source']['Title']).title() + ", "
-        course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
+            course_list.append(str(counter['_source']['Title']).title())
+        course_list = list(set(course_list))
+        course_list = return_list(course_list)
 
     return tutor, course_list
 
@@ -344,18 +346,18 @@ def get_type_courses(query, type):
         for course in (res['hits']['hits']):
             course_list.append(course['_source'].get(title))
         course_set = list(set(course_list))
-
     if len(course_set) > 1:
         # course_set = return_list(course_set)
-        return course_set, res['hits']['total'] # multiple courses were matched
+        return course_set, len(course_set)# multiple courses were matched
     elif len(course_set) == 1:
-        return str(course_set[0]).title(), res['hits']['total']  # one course was matched
+        return course_set[0].title(), res['hits']['total']  # one course was matched
     else:
         return False, False # no courses were matched
     return False, False
 
 
 # Function to receive a list of courses and expand it with all the different instances of it
+# Returns ["_source"] of dictionary
 def fullify_list(course_list, course_type):
     if course_type == "short":
         title, index = "Title", "short_courses"

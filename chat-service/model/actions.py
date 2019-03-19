@@ -51,6 +51,7 @@ class SetSCCourseType(Action):
         return "action_set_sc_course_type"
 
     def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message("I'm looking for the short course information now...")
         return [SlotSet("course_type", "short")]
 
 
@@ -60,6 +61,7 @@ class SetADCourseType(Action):
         return "action_set_ad_course_type"
 
     def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message("I'm looking for the PGT course information now...")
         return [SlotSet("course_type", "admissions")]
 
 
@@ -463,7 +465,8 @@ class GetClassTypes(Action):
                 elif tracker.get_slot("weekday"):
                     response = "Sorry, I do not know what days post-graduate courses are on"
                 else:
-                    response = "These are some of the post-graduate classes which I have found : " + elastic.return_list(elastic_output)
+                    elastic_output = elastic.return_list(elastic_output)
+                    response = "These are some of the post-graduate classes which I have found : " + elastic_output
 
             else:
                 response = "Sorry, I could not find any post-graduate courses in that subject area"

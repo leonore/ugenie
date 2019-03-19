@@ -6,9 +6,9 @@
 - good afternoon
 - hi there
 - howdy
-- hi
+- Hi
 - hello there
-- yoooo
+- yo
 
 ## intent:goodbye
 - bye
@@ -18,6 +18,7 @@
 - alright bye
 - so long
 - l8r alligator
+- later alligator
 - goodbye
 
 ## intent:confirmation
@@ -59,6 +60,8 @@
 - cheers
 - thank you
 - nice
+- alright
+- cool
 
 ## intent:wrong_answer
 - wrong
@@ -128,6 +131,7 @@
 - what [spanish](course) courses are there
 - what courses are there in [art](course)
 - tell me some [science](course) courses
+- what courses in [law](course)
 
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
@@ -147,7 +151,7 @@
 - what's the description for [biology](course)
 - what is [a history of the fbi](course)
 - what happens in [arabic stage 1](course)
-- what is [working with trauma](course)
+- what is the [working with trauma](course) course about
 - tell me about [opera afternoons](course)
 - what is [geology in the field](course) about
 - I'm looking for a description of [medical physics](course)
@@ -250,3 +254,7 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
+
+## intent:out_of_scope
+- joke
+- fun fact
