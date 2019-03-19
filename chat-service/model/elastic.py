@@ -280,7 +280,6 @@ def get_description(query):
 def get_tutor_courses(query):
 
     res = es.search(index="short_courses", body={"query": {"match": {"Tutor": query}}})
-    course_list = ""
     res_len = 0 # length of list of relevant results
     if res['hits']['total']:
         res_len = len(res['hits']['hits'])
@@ -294,11 +293,14 @@ def get_tutor_courses(query):
     elif res_len > 1: # if they teach more than one course
         # for loop and if used to make sure the list is grammatically correct
         # e.g. "one, two, three, and four"
+        course_list = []
         for counter in res['hits']['hits']:
-            if counter != res['hits']['hits'][res_len-1]:
-                course_list += str(counter['_source']['Title']).title() + ", "
-        course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
+            course_list.append(str(counter['_source']['Title']).title())
+        course_list = list(set(course_list))
+        course_list = return_list(course_list)
+        # course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 
+    # course_list = list(set(course_list))
     return tutor, course_list
 
 
