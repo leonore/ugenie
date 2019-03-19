@@ -52,11 +52,15 @@
 - utter_terminology_functionality
 
 ## setting course type to SC
+* ask_type_classes
+ - action_get_type_classes
 * ask_set_sc_course_type
  - action_set_sc_course_type
  - action_get_type_classes
 
 ## setting course type to AD
+* ask_type_classes
+ - action_get_type_classes
 * ask_set_ad_course_type
  - action_set_ad_course_type
  - action_get_type_classes
@@ -97,8 +101,6 @@
 - utter_course_denied
 
 ## user asks for funding being in the SC course context
-* ask_set_sc_course_type
- - action_set_sc_course_type
 * sc_common_question
  - action_get_sc_resource
 
@@ -116,8 +118,6 @@
  - action_utter_redirect
 
 ## user asks for course location while being in the SC course context
-* ask_set_sc_course_type
- - action_set_sc_course_type
 * location_check
  - action_get_location
 
@@ -135,8 +135,6 @@
 - action_utter_redirect
 
 ## user asks for credits check while being in the SC course context
-* ask_set_sc_course_type
- - action_set_sc_course_type
 * credits_check
  - action_get_credits
 

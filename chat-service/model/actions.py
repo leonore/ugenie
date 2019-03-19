@@ -51,6 +51,7 @@ class SetSCCourseType(Action):
         return "action_set_sc_course_type"
 
     def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message("I'm looking for the short course information now...")
         return [SlotSet("course_type", "short")]
 
 
@@ -60,6 +61,7 @@ class SetADCourseType(Action):
         return "action_set_ad_course_type"
 
     def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message("I'm looking for the PGT course information now...")
         return [SlotSet("course_type", "admissions")]
 
 
