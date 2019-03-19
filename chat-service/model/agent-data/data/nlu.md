@@ -254,3 +254,7 @@
 - what other courses does [Ronnie Scott](tutor) teach
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
+
+## intent:out_of_scope
+- joke
+- fun fact
