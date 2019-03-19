@@ -298,9 +298,7 @@ def get_tutor_courses(query):
             course_list.append(str(counter['_source']['Title']).title())
         course_list = list(set(course_list))
         course_list = return_list(course_list)
-        # course_list += " and " + str(res['hits']['hits'][res_len-1]['_source']['Title']).title()
 
-    # course_list = list(set(course_list))
     return tutor, course_list
 
 
