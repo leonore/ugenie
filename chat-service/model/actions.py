@@ -443,7 +443,7 @@ class GetClassTypes(Action):
                     elastic_output = elastic.filterForWeekday(tracker.get_slot("weekday"), elastic_output)
                     weekday_text = " on " + tracker.get_slot("weekday").title()
                 if elastic_output:
-                    elastic_output = elastic_output
+                    elastic_output = elastic.return_list(elastic_output)
                     response = "These are some of the short classes which I have found " + weekday_text + month_text + ": " + elastic_output
 
                 else:
@@ -465,6 +465,7 @@ class GetClassTypes(Action):
                 elif tracker.get_slot("weekday"):
                     response = "Sorry, I do not know what days post-graduate courses are on"
                 else:
+                    elastic_output = elastic.return_list(elastic_output)
                     response = "These are some of the post-graduate classes which I have found : " + elastic_output
 
             else:
