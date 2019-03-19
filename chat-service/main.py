@@ -83,5 +83,7 @@ def handle_message(json):
                         time.sleep(0.8)
 
 if __name__ == '__main__':
+        # Disable or enable logging
+        chat_logger.enable(flag=False)
         # Takes optional host and port arguments but by default will listen on localhost:5000
         socketio.run(app, host='0.0.0.0', port=5000, debug=True)
