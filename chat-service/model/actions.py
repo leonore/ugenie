@@ -443,7 +443,7 @@ class GetClassTypes(Action):
                     elastic_output = elastic.filterForWeekday(tracker.get_slot("weekday"), elastic_output)
                     weekday_text = " on " + tracker.get_slot("weekday").title()
                 if elastic_output:
-                    elastic_output = elastic.return_list(elastic_output)
+                    elastic_output = elastic_output
                     response = "These are some of the short classes which I have found " + weekday_text + month_text + ": " + elastic_output
 
                 else:
