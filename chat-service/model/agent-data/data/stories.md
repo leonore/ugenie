@@ -13,7 +13,7 @@
 
 ## user says something unexpected
 * out_of_scope
- - utter_out_of_scope
+ - utter_chitchat
 
 ## user asks for functionality
 * help
