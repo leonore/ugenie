@@ -138,16 +138,16 @@
 * credits_check
  - action_get_credits
 
-## user asks for course location without having set a context
+## user asks for credits without having set a context
 * credits_check
 - action_get_credits
 * confirmation
 - action_set_sc_course_type
-- action_get_location
+- action_get_credits
 
-## user asks for a course location but didn't want it for short courses
+## user asks for credits but didn't want it for short courses
 * credits_check
-- action_get_location
+- action_get_credits
 * denial
 - action_utter_redirect
 
