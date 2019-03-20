@@ -131,7 +131,7 @@
 - what courses are there in [art](course)
 - tell me some [science](course) courses
 - what courses in [law](course)
-- what [media](course) courses are there in november
+- what [media](course) courses are there in [november](month)
 
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
