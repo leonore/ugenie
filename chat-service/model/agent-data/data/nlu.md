@@ -40,7 +40,6 @@
 
 ## intent:help
 - help
-- who are you
 - how can you help me
 - i need help
 - what can you help me with
@@ -132,6 +131,7 @@
 - what courses are there in [art](course)
 - tell me some [science](course) courses
 - what courses in [law](course)
+- what [media](course) courses are there in [november](month)
 
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
@@ -156,6 +156,7 @@
 - what is [geology in the field](course) about
 - I'm looking for a description of [medical physics](course)
 - description of [songwriting workshop](course)
+- what is [you the jury](course)
 
 ## intent:fee_check
 - how much is [biology](course)

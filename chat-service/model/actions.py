@@ -278,11 +278,16 @@ class PTorFTCheck(Action):
             pt_ft_answer, pt_ft_variables = elastic.check_pt_ft_course(elastic_title)
         else:
             response = "Sorry, I can only check for part-time/full-time for PGT courses."
+            dispatcher.utter_message(response)
+            return
 
         if pt_ft_answer == "not_running":
             response = "Sorry, it does not seem this course is running this year"
         elif pt_ft_answer == "running":
             response =  "{} runs {}".format(pt_ft_variables[0], ', '.join(pt_ft_variables[1]))
+        # this is for good practice -- normally the function only ever returns running or not running
+        else:
+            response = "Sorry, it seems I wasn't able to follow through with your query."
 
         dispatcher.utter_message(response)
         return
