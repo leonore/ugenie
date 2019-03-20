@@ -43,3 +43,7 @@ print("Credits function works")
 run, vars = elastic.check_pt_ft_course("international law")
 assert "part-time" and "full-time" in vars[1], vars
 print("PT/FT function debugged")
+
+title, category, score = elastic.get_course_title("you the juror")
+assert category == "SC", [title, category, score]
+print("Course title function debugged")
