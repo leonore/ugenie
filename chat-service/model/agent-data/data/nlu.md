@@ -1,109 +1,3 @@
-## intent:greet
-- hi
-- hey
-- hello
-- good morning
-- good afternoon
-- hi there
-- howdy
-- Hi
-- hello there
-- yo
-
-## intent:goodbye
-- bye
-- goodbye
-- see you later
-- bye bye
-- alright bye
-- so long
-- l8r alligator
-- later alligator
-- goodbye
-
-## intent:confirmation
-- yes
-- yeah
-- y
-- okay
-- right
-- yep
-- Yes
-- confirm
-
-## intent:denial
-- no
-- n
-- No
-- nope
-- nah
-
-## intent:help
-- help
-- how can you help me
-- i need help
-- what can you help me with
-- are you able to help me
-- what can you do
-- give me information
-- give me help
-
-## intent:thank_you
-- thanks
-- thank you
-- thanks
-- thank you very much
-- sweet thanks
-- amazing thank you
-- thanks for helping
-- cheers
-- thank you
-- nice
-- alright
-- cool
-
-## intent:wrong_answer
-- wrong
-- that's not what I was looking for
-- thats not what I wanted
-- this isn't right
-- not what I wanted
-- you suck
-- not useful
-
-## intent:ask_human
-- can I speak to a human
-- speak to human
-- can you redirect me
-- email address
-- who can I contact
-- let me speak to a human
-- redirect me to a human
-
-## intent:sc_common_question
-- [funding](question_topic)
-- is there [funding](question_topic) available
-- is there [funding](question_topic) for short courses
-- can I get [funding](question_topic)
-- is there [funding](question_topic)
-- [refund](question_topic)
-- how do I get [refunded](question_topic)
-- [refund](question_topic) for a course
-- I want to get [refunded](question_topic)
-- [refund](question_topic) my course
-- can I have a [refund](question_topic)
-- how do I [transfer](question_topic)
-- [transferring](question_topic) courses
-- can I [transfer](question_topic)
-- is it possible to [transfer](question_topic)
-- I want to [transfer](question_topic)
-- [transfer](question_topic) me
-- can I [cancel](question_topic)
-- how do I [cancel](question_topic) my course
-- [cancelling](question_topic) my course
-- I want to [cancel](question_topic)
-- can I [cancel](question_topic) my course
-
 ## intent:acronym_check
 - I don't understand what [ATAS](acronym) means
 - what does [MaRio decision](acronym) mean
@@ -115,6 +9,15 @@
 - what is [PT](acronym)
 - what is [ATAS](acronym)
 - what is the acronym [FT](acronym)
+
+## intent:ask_human
+- can I speak to a human
+- speak to human
+- can you redirect me
+- email address
+- who can I contact
+- let me speak to a human
+- redirect me to a human
 
 ## intent:ask_type_classes
 - what [education](course) courses do you have
@@ -133,6 +36,17 @@
 - what courses in [law](course)
 - what [media](course) courses are there in [november](month)
 
+## intent:confirmation
+- yes
+- yeah
+- y
+- okay
+- right
+- yep
+- Yes
+- confirm
+- Yes
+
 ## intent:credits_check
 - how many credits is [intermediate hieroglyphics](course)
 - how many credits do i get from doing [opera afternoons 1](course)
@@ -145,6 +59,13 @@
 - are there credits available for [art history](course)
 - will I get credits for [coral reefs ancient and modern](course)
 - does [art and anatomy](course) have credits
+
+## intent:denial
+- no
+- n
+- No
+- nope
+- nah
 
 ## intent:description_check
 - tell me about [biology](course)
@@ -186,6 +107,39 @@
 - does [mechatronics](course) run part time
 - does [creative writing](course) run full time
 
+## intent:goodbye
+- bye
+- goodbye
+- see you later
+- bye bye
+- alright bye
+- so long
+- l8r alligator
+- later alligator
+- goodbye
+
+## intent:greet
+- hi
+- hey
+- hello
+- good morning
+- good afternoon
+- hi there
+- howdy
+- Hi
+- hello there
+- yo
+
+## intent:help
+- help
+- how can you help me
+- i need help
+- what can you help me with
+- are you able to help me
+- what can you do
+- give me information
+- give me help
+
 ## intent:link_check
 - do you have a link for [Introduction to Ancient Egypt 1B](course)
 - link for [The life and legacy of Lyndon B Johnson](course)
@@ -206,6 +160,10 @@
 - do you have room for [art history](course)
 - where is the building for [hidden art in glasgow](course)
 
+## intent:out_of_scope
+- joke
+- fun fact
+
 ## intent:requirements_check
 - what are the requirements for [mechatronics](course)
 - what are the english requirements for [academic practice](course)
@@ -217,6 +175,44 @@
 - what grades do I need for [applied mathematics](course)
 - are there any requirements for [academic practice](course)
 - are there english requirements for [computing science](course)
+
+## intent:sc_common_question
+- [funding](question_topic)
+- is there [funding](question_topic) available
+- is there [funding](question_topic) for short courses
+- can I get [funding](question_topic)
+- is there [funding](question_topic)
+- [refund](question_topic)
+- how do I get [refunded](question_topic)
+- [refund](question_topic) for a course
+- I want to get [refunded](question_topic)
+- [refund](question_topic) my course
+- can I have a [refund](question_topic)
+- how do I [transfer](question_topic)
+- [transferring](question_topic) courses
+- can I [transfer](question_topic)
+- is it possible to [transfer](question_topic)
+- I want to [transfer](question_topic)
+- [transfer](question_topic) me
+- can I [cancel](question_topic)
+- how do I [cancel](question_topic) my course
+- [cancelling](question_topic) my course
+- I want to [cancel](question_topic)
+- can I [cancel](question_topic) my course
+
+## intent:thank_you
+- thanks
+- thank you
+- thanks
+- thank you very much
+- sweet thanks
+- amazing thank you
+- thanks for helping
+- cheers
+- thank you
+- nice
+- alright
+- cool
 
 ## intent:time_check
 - when does [fancy florence](course) start
@@ -234,7 +230,9 @@
 - how many hours does [working with trauma](course) last
 - what time is [french stage 1](course)
 - when is [fancy florence](course)
+- when is the [creative writing workshop](course)
 - what time is [cleopatra: queen of egypt](course)
+- when is the [creative writing workshop](course)
 
 ## intent:tutor_check
 - who teaches [french stage 1](course)
@@ -256,6 +254,11 @@
 - what does [Fiona Reid](tutor) teach
 - what other courses does [Sonia Bates](tutor) tutor
 
-## intent:out_of_scope
-- joke
-- fun fact
+## intent:wrong_answer
+- wrong
+- that's not what I was looking for
+- thats not what I wanted
+- this isn't right
+- not what I wanted
+- you suck
+- not useful
