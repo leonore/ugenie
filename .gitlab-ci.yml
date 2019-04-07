@@ -22,6 +22,16 @@ build_actions:
   script:
     - docker build -t action/server:$image_tag .
 
+build_dissertation:
+  stage: build
+  script:
+    - latexmk -pdf -cd dissertation/dissertation.tex
+  artifacts:
+    paths:
+      - "*.pdf"
+  tags:
+    - shell
+
 
 # check for the responsive deployed prototype
 test_prototype:
