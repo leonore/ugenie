@@ -61,12 +61,10 @@ With an open-ended project such as a chatbot, we had to make sure to limit our i
 
 \subsection{Key Achievements}
 
-%%This project was a learning experience for the whole team as it involved a lot of components and development processes none of us had previous knowledge of. With Natural Language Processing, what we learned allowed us to build our own chat agent trained to recognise relevant intents and entities, and manage dialogue. We learnt about Elasticsearch and integrated it as our main database, along with the import scripts to be able to import the dense and often inconsistent data that we were given to work with. We also Dockerised our application in order to host it online, which proved challenging because of the chatbot's CPU-heavy NLP features. In terms of teamwork, we found a lack of communication and reviewing each other's work made successful development more difficult, and throughout the course of the project, learned how to much more efficiently manage a project. \nameref{sec:rationale} and \nameref{sec:agile} provide more reflection on how we tackled different challenges.
-
 The main technical challenge for this project was gathering enough knowledge on Natural Language Processing (NLP) to be able to create a dialogue agent. Following research and development, we delivered a functional chatbot, hosted online and accessible to anyone. The application is easily deployable with Docker, which was a challenging process because of the chatbot's CPU-heavy NLP features which had to be containerised accordingly. The chatbot itself can give instant, concurrent, 24/7 responses for a large range of questions, on short courses, postgraduate courses, and common questions, such as the meaning of terminology. We challenged our familiarity with the MySQL database by migrating to Elasticsearch, which allows for much more flexible and scalable data storage. We designed an appealing chat interface, with a design conforming to the University marketing guidelines\cite{brandguidelines}. Conversation is guided through both free user input and buttons to maintain the dialogue's context, and the chatbot is able to redirect the user to an appropriate member of staff if necessary. We also implemented a chat logging system for staff to monitor the performance of the bot and gather information to better understand the needs of users. Additionally, we only used open-source libraries and frameworks to develop our chatbot, rather than popular commercial solutions, meaning that our customers would not depend on a commercial product in order to run our application.
 
 %==============================================================================
-%% find a better section title that highlights our components were chosen for best practices
+
 \section{Research and Development}
 \label{sec:rationale}
 
@@ -128,7 +126,7 @@ One team member habitually found themselves managing client correspondence and l
 \subsection{Requirements Gathering}
 \label{subsec:get_reqs}
 
-At the start of the project, we used ethnographic methods to develop user stories and the adjacent user scenarios to help us define the functionality we wanted to implement. The customers' non-technical background meant that writing user stories  helped us transform their ideas into a set of actionable functional and non-functional requirements at different levels of specificity\cite{userstories:mgs}. To help prioritise our requirements, we separated our user stories into MoSCoW categories. Examples can be found in the Appendix \ref{apdx:moscow}.
+At the start of the project, we used ethnographic methods to develop user stories and the adjacent user scenarios to help us define the functionality we wanted to implement. The customers' non-technical background meant that writing user stories  helped us transform their ideas into a set of actionable functional and non-functional requirements at different levels of specificity\cite{userstories:mgs}. To help prioritise our requirements, we separated our user stories into MoSCoW categories. Examples can be found in Appendix \ref{apdx:moscow}.
 
 Requirements gathering is a continuous progress, and as the project developed, the customers would voice suggestions or new requirements they had. One new requirement was to have an admin interface to facilitate the configuration and addition of new data. Although it was decided not to prioritise it due to time constraints, we made sure that our database stayed scalable for new data. Also, before the last iteration, it was suggested that we incorporate a button feature into our chatbot. Despite the late request, in line with the second principle behind the Agile Manifesto, ``Welcome changing requirements, even late in development"\cite{agilemanifesto}, we worked hard in order to implement this feature, undeterred by having to rework a lot of the chatbot's functionality. Occurrences like this ensured that our clients held us in high esteem.
 
@@ -178,7 +176,7 @@ All our commits were checked into a Continuous Integration (CI) pipeline, which 
 \subsubsection{Testing}
 
 %% Unit Testing
-It was important for us to have a test suite that checked that the core functionality of our system would not break when adding new features. The Rasa library made it straightforward to extend functionality, but we found ourselves making basic syntax or logic errors which were easily fixed, but meant that we had to restart the chatbot again, which was time consuming. We implemented functions to test the main and elastic Python modules specifically as they played a crucial role in functionality. The implemented unit tests for the main components in the project covered over 90\% of smaller modules. Example of coverage is detailed in the Appendix \ref{apdx:coverage}. However, as we were new to the Rasa library, we were unsure of how to test their provided packages. As such, we did not prioritise the testing of our Rasa modules. Reflecting on this, it might have been a big oversight for appropriate quality assurance, and we would prioritise this should we do it again.
+It was important for us to have a test suite that checked that the core functionality of our system would not break when adding new features. The Rasa library made it straightforward to extend functionality, but we found ourselves making basic syntax or logic errors which were easily fixed, but meant that we had to restart the chatbot again, which was time consuming. We implemented functions to test the main and elastic Python modules specifically as they played a crucial role in functionality. The implemented unit tests for the main components in the project covered over 90\% of smaller modules. Example of coverage is detailed in Appendix \ref{apdx:coverage}. However, as we were new to the Rasa library, we were unsure of how to test their provided packages. As such, we did not prioritise the testing of our Rasa modules. Reflecting on this, it might have been a big oversight for appropriate quality assurance, and we would prioritise this should we do it again.
 
 %% Behaviour-Driven Development
 Early in the project, the Testing Manager also decided to use Behaviour-Driven Development (BDD) to test our application. The decision was made based on the fact that our set of requirements was based on user stories, which BDD is most adapted for\cite{bdd:Goulart}. It would also allow us to test that the chatbot responded correctly to different user inputs, and as such, test correct functionality from the Rasa modules.
@@ -249,6 +247,7 @@ Finally, it can be said that this project introduced us to valuable professional
 \bigskip
 \bigskip
 
+\section*{Appendix}
 \appendix
 \section{Design Wireframes}
 \label{apdx:wireframes}
@@ -318,8 +317,7 @@ Finally, it can be said that this project introduced us to valuable professional
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.85\linewidth]{figures/ppiteration6.PNG}
+    \caption{Formatted Excel sheet with our Planning Poker estimations. Metadata includes estimated days, final estimation, average, standard deviation and agreement.}
 \end{figure}
-
-Stored meta-data includes estimated days, final estimation, average, standard deviation and agreement.
 
 \end{document}
