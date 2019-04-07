@@ -13,6 +13,8 @@
 .*.lb
 *.bbl
 *.blg
+# avoid compiled files
+*.pdf
 
 # Python cache files
 *.pyc
