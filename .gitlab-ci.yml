@@ -29,7 +29,8 @@ build_dissertation:
   artifacts:
     paths:
       - "*.pdf"
-  tags: shell
+  tags:
+    - shell
 
 
 # check for the responsive deployed prototype
