@@ -1,7 +1,5 @@
 # CS01 - Virtual Assistant for UofG's External Relations &nbsp;<img src="chat-service/static/icon.png" width="30" height="30" alt="UGenie's face">
 
-[![build status](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/badges/master/pipeline.svg)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/commits/master)             
-
 This software engineering project is to create a **virtual assistant / chatbot** that will help answer the increasing volume of application and course enquiries at the University of Glasgow's External Relations Directorate.     
 
 Our application consists of:
@@ -9,20 +7,18 @@ Our application consists of:
 * connected to a Natural Language Understanding unit (`RASA`)
 * which makes queries to a free-text search engine (`Elasticsearch`)
 
-An online prototype of the bot, nicknamed **GUVA** during development, and named **UGenie** in our final design, is available [here :robot:](https://bit.do/uofg-bot). It is usually updated to the latest released version.
 ______________
 
 - [Launching with Docker](#launching-with-docker)
 - [Sample questions to ask the bot](#interacting-with-the-bot)
-- [Extra documentation on different app components](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/wikis/home#handover-documentation)
-- [Contribution guide (includes codebase structure information)](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/blob/master/CONTRIBUTING.md)
+- [Contribution guide (includes codebase structure information)](CONTRIBUTING.md)
 - [Set up dependencies manually](#manual-dependency-setup)
     - [Launching from manual set-up](#launching-after-setup)
 --------
 
 #### Set up
 
-- Download a [release of UGenie](http://stgit.dcs.gla.ac.uk/tp3-2018-cs01/dissertation/tags), which should include a data archive and a model archive
+- Download a release of UGenie, which should include a data archive and a model archive
     - `models.zip` contains a trained instance of the bot
        - it should be decompressed in `chat-service/agent-data/` to create the path `chat-service/agent-data/models`
     - `data.zip` contains the client-provided university data
