@@ -1,32 +1,3 @@
-### Contributors
-
-Mohammad Alnakhli - 2229683a@student.gla.ac.uk      
-James Conway - 2247492c@student.gla.ac.uk       
-Sam Cook - 2254258h@student.gla.ac.uk     
-Leonore Papaloizos - 2264897v@student.gla.ac.uk     
-
-### Structure & Roles
-
-#### Informal roles (issue label "manager")
-
-`Quality Assurance`: Mohammad Alnakhli   
-`Interface`: James Conway     
-`NLP`: Sam Cook       
-`Deployment`: Leonore Papaloizos     
-
-#### Formal roles
-
-Quality Assurer: Mohammad Alnakhli    
-Test Manager: Mohammad Alnakhli    
-Chief Architect: James Conway   
-Librarian: James Conway    
-Project Manager: Sam Cook     
-Customer Liaison: Sam Cook      
-Secretary: Leonore Papaloizos        
-Tool Smith: Leonore Papaloizos     
-
--------
-
 ### Codebase structure
 
 Our codebase is based on the Model-View-Controller architectural pattern.     
